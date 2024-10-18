@@ -6,6 +6,10 @@ import { CardHorarioComponent } from './card-horario/card-horario.component';
 import { CarouselImageComponent } from './carousel-image/carousel-image.component';
 import { ModalTiempoComponent } from './components/modal-tiempo/modal-tiempo.component';
 import { ModalInstructionsComponent } from './components/modal-instructions/modal-instructions.component';
+import { CardRegistroComponent } from './card-registro/card-registro.component';
+import { CardRegistroEmpresaComponent } from './card-registro-empresa/card-registro-empresa.component';
+import { CardPerfilComponent } from './card-perfil/card-perfil.component';
+import { FooterComponent } from './footer/footer.component';
 
 
 
@@ -16,7 +20,11 @@ import { ModalInstructionsComponent } from './components/modal-instructions/moda
     CardHorarioComponent,
     CarouselImageComponent,
     ModalTiempoComponent,
-    ModalInstructionsComponent
+    ModalInstructionsComponent,
+    CardRegistroComponent,
+    CardRegistroEmpresaComponent,
+    CardPerfilComponent,
+    FooterComponent
   ],
   imports: [
     CommonModule
