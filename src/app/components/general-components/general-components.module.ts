@@ -28,6 +28,19 @@ import { FooterComponent } from './footer/footer.component';
   ],
   imports: [
     CommonModule
+    
+  ],
+  exports: [
+    CardEmpresaComponent,
+    CardSportFeaturesComponent,
+    CardHorarioComponent,
+    CarouselImageComponent,
+    ModalTiempoComponent,
+    ModalInstructionsComponent,
+    CardRegistroComponent,
+    CardRegistroEmpresaComponent,
+    CardPerfilComponent,
+    FooterComponent
   ]
 })
 export class GeneralComponentsModule { }

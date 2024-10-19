@@ -1,1 +1,8 @@
-<p>home works!</p>
+<h1>hola</h1>
+<!-- <app-card-empresa ></app-card-empresa> -->
+
+<div class="">
+    @for (cancha of primerosBuscado; track $index) {
+        <app-card-empresa [caracteristicas]="cancha" />
+    }
+</div>
