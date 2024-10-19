@@ -1,5 +1,7 @@
 # ReservaGrassV2
 
+## version de node 20.16.0
+
 This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 18.2.9.
 
 ## Development server
