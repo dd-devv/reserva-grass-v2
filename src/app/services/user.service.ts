@@ -99,7 +99,7 @@ export class UserService {
   }
 
   obtener_empresa_publico(id: any): Observable<any> {
-    let headers = new HttpHeaders({ 'Content-Type': 'application/json'});
+    let headers = new HttpHeaders({ 'Content-Type': 'application/json' });
     return this._http.get(this.url + 'obtener_empresa_publico/' + id, { headers: headers });
   }
 
@@ -120,7 +120,7 @@ export class UserService {
   }
 
   listar_empresas_dist(region: any, provincia: any, distrito: any): Observable<any> {
-    return this._http.get(this.url + 'listar_empresas_dist/' + region + '/' + provincia +  '/' + distrito);
+    return this._http.get(this.url + 'listar_empresas_dist/' + region + '/' + provincia + '/' + distrito);
   }
 
   actualizar_empresa(id: any, data: any, token: any): Observable<any> {
@@ -141,7 +141,7 @@ export class UserService {
   obtener_caracteristicas_empresa_publico(): Observable<any> {
     return this._http.get(this.url + 'obtener_caracteristicas_empresa_publico');
   }
-  
+
   listar_empresas_publico(): Observable<any> {
     return this._http.get(this.url + 'listar_empresas_publico');
   }
@@ -168,7 +168,7 @@ export class UserService {
   }
 
   obtener_canchas(id: any): Observable<any> {
-    let headers = new HttpHeaders({ 'Content-Type': 'application/json'});
+    let headers = new HttpHeaders({ 'Content-Type': 'application/json' });
     return this._http.get(this.url + 'obtener_canchas/' + id);
   }
 
@@ -200,7 +200,7 @@ export class UserService {
 
   actualizar_reserva_total_grass(id: any, total: number, token: any): Observable<any> {
     let headers = new HttpHeaders({ 'Content-Type': 'application/json', 'authorization': token });
-    return this._http.put(this.url + 'actualizar_reserva_total_grass/' + id, {data: total}, {headers: headers});
+    return this._http.put(this.url + 'actualizar_reserva_total_grass/' + id, { data: total }, { headers: headers });
   }
 
   obtener_reservaciones_empresa(id: any, token: any): Observable<any> {
@@ -215,7 +215,7 @@ export class UserService {
 
   actualizar_reserva_reservado_empresa(id: any, token: any): Observable<any> {
     let headers = new HttpHeaders({ 'Content-Type': 'application/json', 'authorization': token });
-    return this._http.put(this.url + 'actualizar_reserva_reservado_empresa/' + id, { data: true }, {headers: headers});
+    return this._http.put(this.url + 'actualizar_reserva_reservado_empresa/' + id, { data: true }, { headers: headers });
   }
 
 
@@ -241,7 +241,7 @@ export class UserService {
 
   actualizar_reserva_reservado_admin(id: any, token: any): Observable<any> {
     let headers = new HttpHeaders({ 'Content-Type': 'application/json', 'authorization': token });
-    return this._http.put(this.url + 'actualizar_reserva_reservado_admin/' + id, { data: true }, {headers: headers});
+    return this._http.put(this.url + 'actualizar_reserva_reservado_admin/' + id, { data: true }, { headers: headers });
   }
 
   //SUSCRIPCIONES
@@ -272,7 +272,7 @@ export class UserService {
 
   actualizar_suscripcion_confirmado_admin(id: any, token: any): Observable<any> {
     let headers = new HttpHeaders({ 'Content-Type': 'application/json', 'authorization': token });
-    return this._http.put(this.url + 'actualizar_suscripcion_confirmado_admin/' + id, { data: true }, {headers: headers});
+    return this._http.put(this.url + 'actualizar_suscripcion_confirmado_admin/' + id, { data: true }, { headers: headers });
   }
 
   //KPI
@@ -356,7 +356,7 @@ export class UserService {
 
   actualizar_empresa_verificado_admin(id: any, token: any): Observable<any> {
     let headers = new HttpHeaders({ 'Content-Type': 'application/json', 'authorization': token });
-    return this._http.put(this.url + 'actualizar_empresa_verificado_admin/' + id, { data: true }, {headers: headers});
+    return this._http.put(this.url + 'actualizar_empresa_verificado_admin/' + id, { data: true }, { headers: headers });
   }
 
   obtener_caracteristicas_admin(id: any, token: any): Observable<any> {
@@ -447,111 +447,4 @@ export class UserService {
     let headers = new HttpHeaders({ 'Content-Type': 'application/json', 'authorization': token });
     return this._http.put(this.url + 'cerrar_mensaje_admin/' + id, data, { headers: headers });
   }
-
-
-  public isAutenticatedUser(): Boolean {
-
-    const token = localStorage.getItem('token') || sessionStorage.getItem('token');
-
-    if (!token) {
-      return false;
-    }
-
-    try {
-      const helper = new JwtHelperService();
-      var decodedToken = helper.decodeToken(<any>token);
-
-      if (helper.isTokenExpired(token)) {
-        localStorage.clear();
-        return false;
-      }
-
-      if (!decodedToken) {
-        localStorage.clear();
-        return false;
-      }
-    } catch (error) {
-      localStorage.clear();
-      return false;
-    }
-
-    return true;
-  }
-
-  public isAutenticatedAdmin(): Boolean {
-
-    const token = localStorage.getItem('token') || sessionStorage.getItem('token');
-
-    if (!token) {
-      return false;
-    }
-
-    try {
-      const helper = new JwtHelperService();
-      var decodedToken = helper.decodeToken(<any>token);
-
-      if (helper.isTokenExpired(token)) {
-        localStorage.clear();
-        return false;
-      }
-
-      if (!decodedToken) {
-        localStorage.clear();
-        return false;
-      }
-
-      if (decodedToken.role !== 'ADMIN') {
-        return false;
-      }
-
-    } catch (error) {
-      localStorage.clear();
-      return false;
-    }
-
-    if (decodedToken.role == 'ADMIN') {
-      return true;
-    }
-
-    return true;
-  }
-
-  public isAutenticatedGrass(): Boolean {
-
-    const token = localStorage.getItem('token') || sessionStorage.getItem('token');
-
-    if (!token) {
-      return false;
-    }
-
-    try {
-      const helper = new JwtHelperService();
-      var decodedToken = helper.decodeToken(<any>token);
-
-      if (helper.isTokenExpired(token)) {
-        localStorage.clear();
-        return false;
-      }
-
-      if (!decodedToken) {
-        localStorage.clear();
-        return false;
-      }
-
-      if (decodedToken.role !== 'GRASS') {
-        return false;
-      }
-
-    } catch (error) {
-      localStorage.clear();
-      return false;
-    }
-
-    if (decodedToken.role == 'GRASS') {
-      return true;
-    }
-
-    return true;
-  }
-
 }
