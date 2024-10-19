@@ -3,20 +3,23 @@ import { BrowserModule } from '@angular/platform-browser';
 
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
-import { HttpClientModule } from '@angular/common/http';
 import { PublicModule } from './components/public/public.module';
+import { provideHttpClient, withInterceptorsFromDi } from '@angular/common/http';
+import { PaginatePipe } from './pipes/paginate.pipe';
 
 @NgModule({
   declarations: [
-    AppComponent
+    AppComponent,
+    PaginatePipe
   ],
   imports: [
     BrowserModule,
     AppRoutingModule,
-    HttpClientModule,
     PublicModule
   ],
-  providers: [],
+  providers: [
+    provideHttpClient(withInterceptorsFromDi())
+  ],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
