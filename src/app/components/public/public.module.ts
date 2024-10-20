@@ -5,12 +5,16 @@ import { PublicRoutingModule } from './public-routing.module';
 import { HomeComponent } from './pages/home/home.component';
 import { ContactComponent } from './pages/contact/contact.component';
 import { GeneralComponentsModule } from '../general-components/general-components.module';
+import { ContainerComponent } from './container/container.component';
+import { CanchaComponent } from './pages/cancha/cancha.component';
 
 
 @NgModule({
   declarations: [
     HomeComponent,
-    ContactComponent
+    ContactComponent,
+    ContainerComponent,
+    CanchaComponent
   ],
   imports: [
     CommonModule,

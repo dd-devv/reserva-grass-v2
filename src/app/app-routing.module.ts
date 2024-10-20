@@ -5,9 +5,12 @@ import { ContactComponent } from './components/public/pages/contact/contact.comp
 import { authenticatedUserGuard } from './guards/authenticated-user.guard';
 
 const routes: Routes = [
-  //Rutas publicas
-  {path: '', component: HomeComponent, canActivate: [authenticatedUserGuard]},
-  {path: 'contacto', component: ContactComponent, canActivate: [authenticatedUserGuard]},
+
+  // Lazy load para el módulo de autenticación
+  {path: '', 
+    loadChildren: () => import('./components/public/public.module').then(m => m.PublicModule),
+    canActivate: [authenticatedUserGuard]
+  },
 
   // Lazy load para el módulo de autenticación
   {path: 'auth', 
