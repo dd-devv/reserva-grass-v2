@@ -1,124 +1,112 @@
 <div
-  class="max-w-80 flex flex-col gap-1 justify-between rounded-lg p-2 bg-forestGreen-100 border border-green-500 w-full h-96"
->
-  <div
-    id="animation-carousel"
-    class="relative w-full h-1/2"
-    data-carousel="static"
-  >
+  class="max-w-80 flex flex-col gap-1 justify-between rounded-lg p-3 bg-forestGreen-100 border border-green-500 w-full h-96">
+  <div id="animation-carousel" class="relative w-full h-1/2" data-carousel="static">
     <!-- Carousel wrapper -->
     <div class="relative h-full overflow-hidden rounded-lg">
       <!-- Item 1 -->
       <div>
-        <ng-container
-          *ngIf="
+        <ng-container *ngIf="
             caracteristicas?.empresa?.portada &&
             caracteristicas.empresa.portada.length > 0
-          "
-        >
-          <img
-            [src]="
+          ">
+          <img [src]="
               url +
               'obtener_imagen_portada/' +
               caracteristicas.empresa.portada[0].imagen
-            "
-            class="absolute block w-full -translate-x-1/2 -translate-y-1/2 top-1/2 left-1/2"
-            [alt]="caracteristicas.empresa.nombre"
-          />
+              " class="absolute block w-full -translate-x-1/2 -translate-y-1/2 top-1/2 left-1/2  rounded-lg"
+            [alt]="caracteristicas.empresa.nombre" />
         </ng-container>
-        <ng-container
-          *ngIf="
+        <ng-container *ngIf="
             !caracteristicas?.empresa?.portada ||
             caracteristicas.empresa.portada.length === 0
-          "
-        >
-          <img
-            [src]="url + 'obtener_imagen_portada/defaultt'"
-            class="absolute block w-full -translate-x-1/2 -translate-y-1/2 top-1/2 left-1/2"
-            [alt]="caracteristicas.empresa.nombre"
-          />
+          ">
+          <img [src]="url + 'obtener_imagen_portada/defaultt'"
+            class="absolute block w-full -translate-x-1/2 -translate-y-1/2 top-1/2 left-1/2 rounded-lg"
+            [alt]="caracteristicas.empresa.nombre" />
         </ng-container>
       </div>
     </div>
   </div>
   <div class="h-1/2 flex flex-col gap-0.5">
+    <!-- iconos de caracteristicas  -->
     <div class="flex justify-between gap-1 w-full px-4 font-bold">
-      <div *ngIf="caracteristicas.techado" class="flex gap-1 items-center">
-        <img
-          src="../../../../assets/svg-icons/droplet-off.svg"
-          alt="droplet-off"
-        />
+
+      <div class=" items-center h-6  w-6">
+        <div class="flex gap-1 items-center" >
+          <img *ngIf="caracteristicas.techado; else elseBlockDropletOff" src="../../../../assets/svg-icons/droplet-off.svg" alt="droplet-off"/>
+          <ng-template #elseBlockDropletOff>
+            <img src="../../../../assets/svg-icons/droplet-off-off.svg" alt="droplet-off-off"/>
+          </ng-template>
+        </div>
+      </div>
+      <div class=" items-center h-6  w-6">
+        <div class="flex gap-1 items-center" >
+          <img *ngIf="caracteristicas.garaje; else elseBlockCarOff" src="../../../../assets/svg-icons/car.svg" alt="car"/>
+          <ng-template #elseBlockCarOff>
+            <img src="../../../../assets/svg-icons/car-off.svg" alt="car-off"/>
+          </ng-template>
+        </div>
+      </div>
+      <div class=" items-center h-6  w-6">
+        <div class="flex gap-1 items-center" >
+          <img *ngIf="caracteristicas.iluminacion; else elseBlockIluminacionOff" src="../../../../assets/svg-icons/light.svg" alt="light"/>
+          <ng-template #elseBlockIluminacionOff>
+            <img src="../../../../assets/svg-icons/light-off.svg" alt="car-off"/>
+          </ng-template>
+        </div>
+      </div>
+      <div class=" items-center h-6  w-6">
+        <div class="flex gap-1 items-center" >
+          <img *ngIf="caracteristicas.canchas_futsal; else elseBlockFootballOff" src="../../../../assets/svg-icons/football.svg" alt="football"/>
+          <ng-template #elseBlockFootballOff>
+            <img src="../../../../assets/svg-icons/football-off.svg" alt="football-off"/>
+          </ng-template>
+        </div>
       </div>
 
-      <div *ngIf="caracteristicas.garaje" class="flex gap-1 items-center">
-        <img src="../../../../assets/svg-icons/car.svg" alt="car" />
+
+      <div class=" items-center h-6  w-6">
+        <div class="flex gap-1 items-center" >
+          <img *ngIf="caracteristicas.canchas_voley; else elseBlockVoleyOff" src="../../../../assets/svg-icons/voley.svg" alt="voley"/>
+          <ng-template #elseBlockVoleyOff>
+            <img src="../../../../assets/svg-icons/voley-off.svg" alt="voley-off"/>
+          </ng-template>
+        </div>
       </div>
-      <div *ngIf="caracteristicas.iluminacion" class="flex gap-1 items-center">
-        <img src="../../../../assets/svg-icons/light.svg" alt="light" />
-      </div>
-      <div
-        *ngIf="caracteristicas.canchas_futsal"
-        class="flex gap-1 items-center"
-      >
-        <img
-          src="../../../../assets/svg-icons/football.svg"
-          alt="football"
-        />
-      </div>
-      <div
-        *ngIf="caracteristicas.canchas_voley"
-        class="flex gap-1 items-center"
-      >
-        <img src="../../../../assets/svg-icons/voley.svg" alt="voley" />
-      </div>
+
+
     </div>
+    
     <div class="flex flex-col">
       <p class="font-bold text-lg font-quicksand">
         {{ caracteristicas.empresa.nombre }}
       </p>
-      <div class="flex gap-2 items-center">
-        <a
-          class="font-semibold text-base text-green-800"
-          href="{{ caracteristicas.empresa.ubicacion }}"
-          target="_blank"
-          >{{ caracteristicas.empresa.direccion }}
-          <svg
-            width="8"
-            height="8"
-            viewBox="0 0 8 8"
-            fill="none"
-            xmlns="http://www.w3.org/2000/svg"
-          >
+      <div class="">
+        <a class="font-semibold text-base text-green-800" href="{{ caracteristicas.empresa.ubicacion }}"
+          target="_blank">
+          {{ caracteristicas.empresa.direccion }}
+          <svg width="10" height="10" viewBox="0 0 10 10" fill="none" xmlns="http://www.w3.org/2000/svg" class="inline">
             <path
               d="M1.33333 0.666667C1.33333 0.298477 1.63181 0 2 0L7.33333 3.57628e-07C7.70152 3.57628e-07 8 0.298477 8 0.666667V6C8 6.36819 7.70152 6.66667 7.33333 6.66667C6.96514 6.66667 6.66667 6.36819 6.66667 6V2.27614L1.13807 7.80474C0.877722 8.06509 0.455612 8.06509 0.195262 7.80474C-0.0650874 7.54439 -0.0650874 7.12228 0.195262 6.86193L5.72386 1.33333L2 1.33333C1.63181 1.33333 1.33333 1.03486 1.33333 0.666667Z"
-              fill="#135429"
-            />
+              fill="#135429" />
           </svg>
         </a>
       </div>
+      <div>
 
-      <p class="font-thin text-xs text-gray-600 text-pretty line-clamp-2">
-        {{ caracteristicas.empresa.referencia }}
-      </p>
+        <p class="font-thin text-xs text-gray-600 text-pretty line-clamp-2">
+          {{ caracteristicas.empresa.referencia }}
+        </p>
+      </div>
     </div>
     <div class="mt-auto flex justify-center">
       <button
-        class="text-sm flex gap-2 justify-center items-center w-fit p-4 self-center bg-green-500 rounded-3xl py-1.5 hover:scale-105 hover:bg-green-600 text-green-900 mb-1"
-      >
+        class="text-sm flex gap-2 justify-center items-center w-fit p-4 self-center bg-green-500 rounded-3xl py-1.5 hover:scale-105 hover:bg-green-600 text-green-900 mb-1">
         BUTTON
-        <svg
-          width="13"
-          height="24"
-          viewBox="0 0 13 24"
-          fill="none"
-          xmlns="http://www.w3.org/2000/svg"
-        >
-          <path
-            fill-rule="evenodd"
-            clip-rule="evenodd"
+        <svg width="13" height="24" viewBox="0 0 13 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+          <path fill-rule="evenodd" clip-rule="evenodd"
             d="M10.6569 12.711L4.99994 18.368L3.58594 16.954L8.53594 12.004L3.58594 7.05401L4.99994 5.64001L10.6569 11.297C10.8444 11.4845 10.9497 11.7389 10.9497 12.004C10.9497 12.2692 10.8444 12.5235 10.6569 12.711Z"
-            fill="#135429"
-          />
+            fill="#135429" />
         </svg>
       </button>
     </div>
