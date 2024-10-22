@@ -15,6 +15,7 @@ export interface CanchaMain {
     ubicacion: string;
     referencia: string;
     portada: any;
+    path: string;
 }
 interface portada {
     imagen?: string;
