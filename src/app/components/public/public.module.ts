@@ -7,6 +7,7 @@ import { ContactComponent } from './pages/contact/contact.component';
 import { GeneralComponentsModule } from '../general-components/general-components.module';
 import { ContainerComponent } from './container/container.component';
 import { CanchaComponent } from './pages/cancha/cancha.component';
+import { VerComponent } from './pages/ver/ver.component';
 
 
 @NgModule({
@@ -14,7 +15,8 @@ import { CanchaComponent } from './pages/cancha/cancha.component';
     HomeComponent,
     ContactComponent,
     ContainerComponent,
-    CanchaComponent
+    CanchaComponent,
+    VerComponent
   ],
   imports: [
     CommonModule,
