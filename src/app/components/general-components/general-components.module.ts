@@ -10,6 +10,8 @@ import { CardRegistroComponent } from './card-registro/card-registro.component';
 import { CardRegistroEmpresaComponent } from './card-registro-empresa/card-registro-empresa.component';
 import { CardPerfilComponent } from './card-perfil/card-perfil.component';
 import { FooterComponent } from './footer/footer.component';
+import { RouterModule } from '@angular/router';
+import { HeaderComponent } from './header/header.component';
 
 
 
@@ -24,11 +26,12 @@ import { FooterComponent } from './footer/footer.component';
     CardRegistroComponent,
     CardRegistroEmpresaComponent,
     CardPerfilComponent,
-    FooterComponent
+    FooterComponent,
+    HeaderComponent
   ],
   imports: [
-    CommonModule
-    
+    CommonModule,
+    RouterModule
   ],
   exports: [
     CardEmpresaComponent,
@@ -40,7 +43,8 @@ import { FooterComponent } from './footer/footer.component';
     CardRegistroComponent,
     CardRegistroEmpresaComponent,
     CardPerfilComponent,
-    FooterComponent
+    FooterComponent,
+    HeaderComponent
   ]
 })
 export class GeneralComponentsModule { }

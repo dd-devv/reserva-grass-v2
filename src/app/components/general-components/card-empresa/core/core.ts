@@ -9,6 +9,7 @@ export interface caracteristicasCancha {
 }
 
 export interface CanchaMain {
+    _id: string,
     nombre: string;
     direccion: string;
     ubicacion: string;

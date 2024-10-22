@@ -12,6 +12,7 @@ export class CardEmpresaComponent implements OnInit {
   public url: string;
   
   @Input() caracteristicas!: caracteristicasCancha;
+  @Input() urlInput!: string;
 
   constructor() { 
     this.url = GLOBAL.url;
