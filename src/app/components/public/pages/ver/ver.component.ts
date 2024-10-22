@@ -50,7 +50,7 @@ export class VerComponent implements OnInit {
     private _router: Router,
     private _userService: UserService,
     private _title: Title,
-    // private _toastrService: ToastrService
+    private _toastrService: ToastrService
   ) {
     this.screenWidth = window.innerWidth;
     this.screenHeight = window.innerHeight;
@@ -127,16 +127,16 @@ export class VerComponent implements OnInit {
   onHoraSeleccionada(filaIndex: number, columnaIndex: number) {
     const boton = this.botonesHoras[filaIndex][columnaIndex];
     if (this.horasReserva > 4 || this.horasReserva < 1) {
-      // this._toastrService.error('Se permite como máximo 4 horas!', 'ERROR');
-      // this.horasReserva = 1;
+      this._toastrService.error('Se permite como máximo 4 horas!', 'ERROR');
+      this.horasReserva = 1;
       return;
     }
 
     if (this.horasFinal > 23) {
-      // this._toastrService.error(
-      //   'Solo se puede resrevar hasta las 23:00!',
-      //   'ERROR'
-      // );
+      this._toastrService.error(
+        'Solo se puede resrevar hasta las 23:00!',
+        'ERROR'
+      );
       return;
     }
 

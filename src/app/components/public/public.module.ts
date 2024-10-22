@@ -6,7 +6,6 @@ import { HomeComponent } from './pages/home/home.component';
 import { ContactComponent } from './pages/contact/contact.component';
 import { GeneralComponentsModule } from '../general-components/general-components.module';
 import { ContainerComponent } from './container/container.component';
-import { CanchaComponent } from './pages/cancha/cancha.component';
 import { VerComponent } from './pages/ver/ver.component';
 
 
@@ -15,7 +14,6 @@ import { VerComponent } from './pages/ver/ver.component';
     HomeComponent,
     ContactComponent,
     ContainerComponent,
-    CanchaComponent,
     VerComponent
   ],
   imports: [

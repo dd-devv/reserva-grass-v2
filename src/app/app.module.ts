@@ -7,6 +7,7 @@ import { PublicModule } from './components/public/public.module';
 import { provideHttpClient, withInterceptorsFromDi } from '@angular/common/http';
 import { PaginatePipe } from './pipes/paginate.pipe';
 import { GeneralComponentsModule } from './components/general-components/general-components.module';
+import { ToastrModule } from 'ngx-toastr';
 
 @NgModule({
   declarations: [
@@ -15,6 +16,7 @@ import { GeneralComponentsModule } from './components/general-components/general
   ],
   imports: [
     BrowserModule,
+    ToastrModule.forRoot(),
     AppRoutingModule,
     PublicModule,
     GeneralComponentsModule
