@@ -1,8 +1,8 @@
-<h1>hola</h1>
-<!-- <app-card-empresa ></app-card-empresa> -->
 
 <div class="px-4 mirko">
     @for (cancha of primerosBuscado; track $index) {
-        <app-card-empresa [caracteristicas]="cancha" class="flex justify-center"/>
+        <app-card-empresa [caracteristicas]="cancha" [urlInput]="''" class="flex justify-center"/>
     }
 </div>
+
+<app-card-sport-features></app-card-sport-features>

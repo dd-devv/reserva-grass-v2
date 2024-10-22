@@ -6,6 +6,7 @@ import { AppComponent } from './app.component';
 import { PublicModule } from './components/public/public.module';
 import { provideHttpClient, withInterceptorsFromDi } from '@angular/common/http';
 import { PaginatePipe } from './pipes/paginate.pipe';
+import { GeneralComponentsModule } from './components/general-components/general-components.module';
 
 @NgModule({
   declarations: [
@@ -15,7 +16,8 @@ import { PaginatePipe } from './pipes/paginate.pipe';
   imports: [
     BrowserModule,
     AppRoutingModule,
-    PublicModule
+    PublicModule,
+    GeneralComponentsModule
   ],
   providers: [
     provideHttpClient(withInterceptorsFromDi())

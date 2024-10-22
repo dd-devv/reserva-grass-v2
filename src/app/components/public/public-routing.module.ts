@@ -12,7 +12,7 @@ const routes: Routes = [
     children: [
       { path: '', component: HomeComponent },
       { path: 'contacto', component: ContactComponent },
-      { path: 'ver/:id_cancha', component: CanchaComponent },
+      { path: 'ver', component: CanchaComponent },
     ]
   }
 ];
