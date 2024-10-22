@@ -151,3 +151,27 @@
       --seashell-950: #292929;
     }
   }
+
+
+.wrapper{
+  display: block;
+  max-width: 1440px;
+  margin: 10px auto;
+  padding: 10px;
+}
+
+@media screen and (min-width: 576px){
+    .wrapper{
+    }
+    
+}
+
+@media screen and (min-width: 900px){
+    .wrapper{
+    }
+    
+}
+@media screen and (min-width: 1200px){
+    .wrapper{
+    }
+}
