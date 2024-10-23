@@ -98,9 +98,9 @@ export class UserService {
     return this._http.get(this.url + 'obtener_empresa/' + id, { headers: headers });
   }
 
-  obtener_empresa_publico(id: any): Observable<any> {
+  obtener_empresa_publico(path: any): Observable<any> {
     let headers = new HttpHeaders({ 'Content-Type': 'application/json' });
-    return this._http.get(this.url + 'obtener_empresa_publico/' + id, { headers: headers });
+    return this._http.get(this.url + 'obtener_empresa_publico/' + path, { headers: headers });
   }
 
   listar_empresas_filtro(filtro: any): Observable<any> {

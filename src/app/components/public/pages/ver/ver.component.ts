@@ -19,7 +19,7 @@ interface BotonHora {
   styleUrl: './ver.component.css'
 })
 export class VerComponent implements OnInit {
-  public id: any;
+  public path: string = '';
   public id_cancha: any;
   public url: any;
   public load_data = false;
@@ -63,7 +63,7 @@ export class VerComponent implements OnInit {
 
     this.url = GLOBAL.url;
     const ruta = _router.url.split('/');
-    this.id = ruta[ruta.length - 1];
+    this.path = ruta[ruta.length - 1];
     this.init_data();
   }
 
@@ -177,19 +177,21 @@ export class VerComponent implements OnInit {
   init_data() {
     this.load_data = true;
 
-    this._userService.obtener_empresa_publico(this.id).subscribe((response) => {
+    this._userService.obtener_empresa_publico(this.path).subscribe((response) => {
       if (response.data == undefined) {
         // Manejo de datos indefinidos
       } else {
         this.empresa = response.data;
 
-        this._userService.obtener_canchas(this.id).subscribe((response) => {
+        this._userService.obtener_canchas(this.empresa._id).subscribe((response) => {
           if (response.data == undefined) {
             this.load_data = false;
             this.btn_crear = true;
           } else if (response.data != undefined) {
             this.btn_crear = false;
             this.canchas = response.data;
+            console.log(this.canchas);
+            
             this.load_data = false;
             this.click_ver(response.data[0]._id);
           }
