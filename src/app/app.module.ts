@@ -8,6 +8,7 @@ import { provideHttpClient, withInterceptorsFromDi } from '@angular/common/http'
 import { PaginatePipe } from './pipes/paginate.pipe';
 import { GeneralComponentsModule } from './components/general-components/general-components.module';
 import { ToastrModule } from 'ngx-toastr';
+import { GoogleMapsModule } from '@angular/google-maps';
 
 @NgModule({
   declarations: [
@@ -16,6 +17,7 @@ import { ToastrModule } from 'ngx-toastr';
   ],
   imports: [
     BrowserModule,
+    GoogleMapsModule,
     ToastrModule.forRoot(),
     AppRoutingModule,
     PublicModule,
