@@ -7,6 +7,7 @@ import { ContactComponent } from './pages/contact/contact.component';
 import { GeneralComponentsModule } from '../general-components/general-components.module';
 import { ContainerComponent } from './container/container.component';
 import { VerComponent } from './pages/ver/ver.component';
+import { NosotrosComponent } from './pages/nosotros/nosotros.component';
 
 
 @NgModule({
@@ -14,7 +15,8 @@ import { VerComponent } from './pages/ver/ver.component';
     HomeComponent,
     ContactComponent,
     ContainerComponent,
-    VerComponent
+    VerComponent,
+    NosotrosComponent
   ],
   imports: [
     CommonModule,

@@ -27,7 +27,7 @@ interface RegisterData {
 })
 export class RegistroComponent implements OnInit {
   // Inicializamos el formulario directamente
-  registerForm: FormGroup = this.initForm();
+  registerForm: FormGroup;
   regiones: Region[] = [];
   isPasswordVisible = false;
   isLoading = false;
@@ -43,15 +43,8 @@ export class RegistroComponent implements OnInit {
   ) {
     this.loadRegions();
     this.checkExistingSession();
-  }
 
-  ngOnInit(): void {
-    this.titleService.setTitle('Registro de usuario');
-    this.setupPasswordValidation();
-  }
-
-  private initForm(): FormGroup {
-    return this.fb.group(
+    this.registerForm = this.fb.group(
       {
         nombres: ['', [Validators.required, Validators.minLength(3)]],
         email: ['', [Validators.required, Validators.email]],
@@ -64,6 +57,11 @@ export class RegistroComponent implements OnInit {
         validators: this.passwordMatchValidator,
       }
     );
+  }
+
+  ngOnInit(): void {
+    this.titleService.setTitle('Registro de usuario');
+    this.setupPasswordValidation();
   }
 
   private passwordMatchValidator(g: FormGroup): null | object {
