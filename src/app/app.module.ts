@@ -9,6 +9,7 @@ import { PaginatePipe } from './pipes/paginate.pipe';
 import { GeneralComponentsModule } from './components/general-components/general-components.module';
 import { ToastrModule } from 'ngx-toastr';
 import { GoogleMapsModule } from '@angular/google-maps';
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 
 @NgModule({
   declarations: [
@@ -17,6 +18,7 @@ import { GoogleMapsModule } from '@angular/google-maps';
   ],
   imports: [
     BrowserModule,
+    BrowserAnimationsModule,
     GoogleMapsModule,
     ToastrModule.forRoot(),
     AppRoutingModule,
