@@ -4,174 +4,185 @@
 @tailwind utilities;
 
 @layer base {
-    :root {
-      --background: 200 100% 95%; /* Azul claro */
-      --foreground: 220 15% 20%; /* Gris oscuro */
-  
-      --navbar: 500 100% 98%; /* Azul muy claro */
-      --navbar-foreground: 220 20% 20%; /* Gris oscuro */
-  
-      --card: 200 100% 98%; /* Azul muy claro */
-      --card-foreground: 220 15% 25%; /* Gris oscuro */
-  
-      --popover: 210 50% 95%; /* Azul cielo */
-      --popover-foreground: 220 20% 20%; /* Gris oscuro */
-  
-      --primary: 220 100% 60%; /* Azul vibrante */
-      --primary-foreground: 0 0% 100%; /* Blanco */
-  
-      --secondary: 220 90% 85%; /* Azul suave */
-      --secondary-foreground: 220 15% 25%; /* Gris oscuro */
-  
-      --muted: 220 10% 80%; /* Gris claro */
-      --muted-foreground: 220 20% 40%; /* Gris medio */
-  
-      --accent: 220 100% 75%; /* Azul brillante */
-      --accent-foreground: 220 15% 20%; /* Gris oscuro */
-  
-      --destructive: 0 70% 50%; /* Rojo medio */
-      --destructive-foreground: 0 0% 100%; /* Blanco */
-  
-      --border: 220 15% 85%; /* Gris muy claro */
-      --input: 220 15% 85%; /* Gris muy claro */
-      --ring: 220 100% 60%; /* Azul vibrante */
-  
-      --radius: 0.5rem;
-  
-      /* Añadir variables para forestGreen en formato hexadecimal */
-      --forestGreen-50: 134 76% 97%;
-      --forestGreen-100: 137 84% 93%;
-      --forestGreen-200: 137 82% 85%;
-      --forestGreen-300: 138 78% 73%;
-      --forestGreen-400: 138 71% 58%;
-      --forestGreen-500: 138 72% 45%;
-      --forestGreen-600: 138 78% 36%;
-      --forestGreen-700: 138 74% 30%;
-      --forestGreen-800: 139 66% 24%;
-      --forestGreen-900: 140 63% 20%;
-      --forestGreen-950: 140 80% 10%;
-      
-  
-      /* Añadir variables para chambray en formato hexadecimal */
-      --chambray-50: 215 75% 97%;
-      --chambray-100: 213 73% 93%;
-      --chambray-200: 213 72% 87%;
-      --chambray-300: 212 73% 78%;
-      --chambray-400: 214 70% 68%;
-      --chambray-500: 218 68% 60%;
-      --chambray-600: 222 62% 53%;
-      --chambray-700: 225 57% 48%;
-      --chambray-800: 226 53% 39%;
-      --chambray-900: 224 48% 33%;
-      --chambray-950: 227 42% 21%;
-  
-      /* Añadir variables para seashell en formato hexadecimal */
-      --seashell-50: 0 0% 97%;
-      --seashell-100: 0 0% 94%;
-      --seashell-200: 0 0% 86%;
-      --seashell-300: 0 0% 74%;
-      --seashell-400: 0 0% 60%;
-      --seashell-500: 0 0% 49%;
-      --seashell-600: 0 0% 40%;
-      --seashell-700: 0 0% 32%;
-      --seashell-800: 0 0% 27%;
-      --seashell-900: 0 0% 24%;
-      --seashell-950: 0 0% 16%;
-    }
-  
-    .dark {
-      --background: 220 20% 15%; /* Gris muy oscuro */
-      --foreground: 220 100% 90%; /* Blanco grisáceo */
-  
-      --navbar: 220 20% 20%; /* Gris oscuro */
-      --navbar-foreground: 220 100% 90%; /* Blanco grisáceo */
-  
-      --card: 220 20% 20%; /* Gris oscuro */
-      --card-foreground: 220 100% 85%; /* Blanco grisáceo */
-  
-      --popover: 220 20% 20%; /* Gris oscuro */
-      --popover-foreground: 220 100% 85%; /* Blanco grisáceo */
-  
-      --primary: 220 100% 60%; /* Azul vibrante */
-      --primary-foreground: 220 20% 15%; /* Gris muy oscuro */
-  
-      --secondary: 220 50% 40%; /* Azul grisáceo */
-      --secondary-foreground: 220 100% 85%; /* Blanco grisáceo */
-  
-      --muted: 220 15% 30%; /* Gris medio */
-      --muted-foreground: 220 100% 70%; /* Blanco grisáceo */
-  
-      --accent: 220 60% 55%; /* Azul grisáceo */
-      --accent-foreground: 220 100% 85%; /* Blanco grisáceo */
-  
-      --destructive: 0 50% 40%; /* Rojo oscuro */
-      --destructive-foreground: 220 100% 90%; /* Blanco grisáceo */
-  
-      --border: 220 15% 45%; /* Gris oscuro */
-      --input: 220 15% 45%; /* Gris oscuro */
-      --ring: 220 100% 60%; /* Azul vibrante */
-  
-      /* modificar los colores con su equivalencia de modo oscuro  */
-      --forestGreen-50: #f0fdf3;
-      --forestGreen-100: #dcfce5;
-      --forestGreen-200: #baf8cc;
-      --forestGreen-300: #85f0a5;
-      --forestGreen-400: #48e076;
-      --forestGreen-500: #20c752;
-      --forestGreen-600: #14a540;
-      --forestGreen-700: #148336;
-      --forestGreen-800: #15662f;
-      --forestGreen-900: #135429;
-      --forestGreen-950: #052e13;
-  
-      /* Añadir variables para chambray en formato hexadecimal */
-      --chambray-50: #f1f6fd;
-      --chambray-100: #dfebfa;
-      --chambray-200: #c7dcf6;
-      --chambray-300: #a0c6f0;
-      --chambray-400: #74a6e6;
-      --chambray-500: #5387de;
-      --chambray-600: #3e6bd2;
-      --chambray-700: #3558c0;
-      --chambray-800: #2f4798;
-      --chambray-900: #2c417c;
-      --chambray-950: #1f294c;
-  
-      /* Añadir variables para seashell en formato hexadecimal */
-      --seashell-50: #f8f8f8;
-      --seashell-100: #f0f0f0;
-      --seashell-200: #dcdcdc;
-      --seashell-300: #bdbdbd;
-      --seashell-400: #989898;
-      --seashell-500: #7c7c7c;
-      --seashell-600: #656565;
-      --seashell-700: #525252;
-      --seashell-800: #464646;
-      --seashell-900: #3d3d3d;
-      --seashell-950: #292929;
-    }
+  :root {
+    --background: 200 100% 95%; /* Azul claro */
+    --foreground: 220 15% 20%; /* Gris oscuro */
+
+    --navbar: 500 100% 98%; /* Azul muy claro */
+    --navbar-foreground: 220 20% 20%; /* Gris oscuro */
+
+    --card: 200 100% 98%; /* Azul muy claro */
+    --card-foreground: 220 15% 25%; /* Gris oscuro */
+
+    --popover: 210 50% 95%; /* Azul cielo */
+    --popover-foreground: 220 20% 20%; /* Gris oscuro */
+
+    --primary: 220 100% 60%; /* Azul vibrante */
+    --primary-foreground: 0 0% 100%; /* Blanco */
+
+    --secondary: 220 90% 85%; /* Azul suave */
+    --secondary-foreground: 220 15% 25%; /* Gris oscuro */
+
+    --muted: 220 10% 80%; /* Gris claro */
+    --muted-foreground: 220 20% 40%; /* Gris medio */
+
+    --accent: 220 100% 75%; /* Azul brillante */
+    --accent-foreground: 220 15% 20%; /* Gris oscuro */
+
+    --destructive: 0 70% 50%; /* Rojo medio */
+    --destructive-foreground: 0 0% 100%; /* Blanco */
+
+    --border: 220 15% 85%; /* Gris muy claro */
+    --input: 220 15% 85%; /* Gris muy claro */
+    --ring: 220 100% 60%; /* Azul vibrante */
+
+    --radius: 0.5rem;
+
+    /* Añadir variables para forestGreen en formato hexadecimal */
+    --forestGreen-50: 134 76% 97%;
+    --forestGreen-100: 137 84% 93%;
+    --forestGreen-200: 137 82% 85%;
+    --forestGreen-300: 138 78% 73%;
+    --forestGreen-400: 138 71% 58%;
+    --forestGreen-500: 138 72% 45%;
+    --forestGreen-600: 138 78% 36%;
+    --forestGreen-700: 138 74% 30%;
+    --forestGreen-800: 139 66% 24%;
+    --forestGreen-900: 140 63% 20%;
+    --forestGreen-950: 140 80% 10%;
+
+    /* Añadir variables para chambray en formato hexadecimal */
+    --chambray-50: 215 75% 97%;
+    --chambray-100: 213 73% 93%;
+    --chambray-200: 213 72% 87%;
+    --chambray-300: 212 73% 78%;
+    --chambray-400: 214 70% 68%;
+    --chambray-500: 218 68% 60%;
+    --chambray-600: 222 62% 53%;
+    --chambray-700: 225 57% 48%;
+    --chambray-800: 226 53% 39%;
+    --chambray-900: 224 48% 33%;
+    --chambray-950: 227 42% 21%;
+
+    /* Añadir variables para seashell en formato hexadecimal */
+    --seashell-50: 0 0% 97%;
+    --seashell-100: 0 0% 94%;
+    --seashell-200: 0 0% 86%;
+    --seashell-300: 0 0% 74%;
+    --seashell-400: 0 0% 60%;
+    --seashell-500: 0 0% 49%;
+    --seashell-600: 0 0% 40%;
+    --seashell-700: 0 0% 32%;
+    --seashell-800: 0 0% 27%;
+    --seashell-900: 0 0% 24%;
+    --seashell-950: 0 0% 16%;
+
+    /* Añadir variables para pink en formato hexadecimal */
+    --pinkk-50: 324 100% 97%;
+    --pinkk-100: 336 87% 61%;
+    --pinkk-200: 336 67% 52%;
   }
 
+  .dark {
+    --background: 220 20% 15%; /* Gris muy oscuro */
+    --foreground: 220 100% 90%; /* Blanco grisáceo */
 
-.wrapper{
+    --navbar: 220 20% 20%; /* Gris oscuro */
+    --navbar-foreground: 220 100% 90%; /* Blanco grisáceo */
+
+    --card: 220 20% 20%; /* Gris oscuro */
+    --card-foreground: 220 100% 85%; /* Blanco grisáceo */
+
+    --popover: 220 20% 20%; /* Gris oscuro */
+    --popover-foreground: 220 100% 85%; /* Blanco grisáceo */
+
+    --primary: 220 100% 60%; /* Azul vibrante */
+    --primary-foreground: 220 20% 15%; /* Gris muy oscuro */
+
+    --secondary: 220 50% 40%; /* Azul grisáceo */
+    --secondary-foreground: 220 100% 85%; /* Blanco grisáceo */
+
+    --muted: 220 15% 30%; /* Gris medio */
+    --muted-foreground: 220 100% 70%; /* Blanco grisáceo */
+
+    --accent: 220 60% 55%; /* Azul grisáceo */
+    --accent-foreground: 220 100% 85%; /* Blanco grisáceo */
+
+    --destructive: 0 50% 40%; /* Rojo oscuro */
+    --destructive-foreground: 220 100% 90%; /* Blanco grisáceo */
+
+    --border: 220 15% 45%; /* Gris oscuro */
+    --input: 220 15% 45%; /* Gris oscuro */
+    --ring: 220 100% 60%; /* Azul vibrante */
+
+    /* modificar los colores con su equivalencia de modo oscuro  */
+    /* --forestGreen-50: #f0fdf3;
+    --forestGreen-100: #dcfce5;
+    --forestGreen-200: #baf8cc;
+    --forestGreen-300: #85f0a5;
+    --forestGreen-400: #48e076;
+    --forestGreen-500: #20c752;
+    --forestGreen-600: #14a540;
+    --forestGreen-700: #148336;
+    --forestGreen-800: #15662f;
+    --forestGreen-900: #135429;
+    --forestGreen-950: #052e13; */
+
+    /* Añadir variables para chambray en formato hexadecimal */
+    --chambray-50: #f1f6fd;
+    --chambray-100: #dfebfa;
+    --chambray-200: #c7dcf6;
+    --chambray-300: #a0c6f0;
+    --chambray-400: #74a6e6;
+    --chambray-500: #5387de;
+    --chambray-600: #3e6bd2;
+    --chambray-700: #3558c0;
+    --chambray-800: #2f4798;
+    --chambray-900: #2c417c;
+    --chambray-950: #1f294c;
+
+    /* Añadir variables para seashell en formato hexadecimal */
+    --seashell-50: #f8f8f8;
+    --seashell-100: #f0f0f0;
+    --seashell-200: #dcdcdc;
+    --seashell-300: #bdbdbd;
+    --seashell-400: #989898;
+    --seashell-500: #7c7c7c;
+    --seashell-600: #656565;
+    --seashell-700: #525252;
+    --seashell-800: #464646;
+    --seashell-900: #3d3d3d;
+    --seashell-950: #292929;
+  }
+}
+
+.wrapper {
   display: block;
   max-width: 1440px;
   margin: 10px auto;
   padding: 10px;
 }
 
-@media screen and (min-width: 576px){
-    .wrapper{
-    }
-    
+.tooltip {
+  @apply invisible absolute;
 }
 
-@media screen and (min-width: 900px){
-    .wrapper{
-    }
-    
+.has-tooltip:hover .tooltip {
+  @apply visible z-50;
 }
-@media screen and (min-width: 1200px){
-    .wrapper{
-    }
+
+@tailwind utilities;
+
+@media screen and (min-width: 576px) {
+  .wrapper {
+  }
+}
+
+@media screen and (min-width: 900px) {
+  .wrapper {
+  }
+}
+@media screen and (min-width: 1200px) {
+  .wrapper {
+  }
 }

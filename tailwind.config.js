@@ -125,6 +125,11 @@ module.exports = {
           900: "hsl(var(--seashell-900))",
           950: "hsl(var(--seashell-950))",
         },
+        pinkk: {
+          50: "hsl(var(--pinkk-50))",
+          100: "hsl(var(--pinkk-100))",
+          200: "hsl(var(--pinkk-200))",
+        },
       },
       // spacing: {
       //   '128': '32rem',
@@ -141,5 +146,3 @@ module.exports = {
   },
   plugins: [],
 };
-
-
