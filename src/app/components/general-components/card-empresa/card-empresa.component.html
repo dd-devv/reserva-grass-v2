@@ -49,87 +49,6 @@
           <div class="has-tooltip">
             <span
               class="tooltip rounded shadow-lg px-2 bg-gray-100 text-forestGreen-900 -mt-8"
-              >Techado</span
-            >
-            <img
-              *ngIf="caracteristicas.techado; else elseBlockDropletOff"
-              src="../../../../assets/svg-icons/droplet-off.svg"
-              alt="droplet-off"
-            />
-          </div>
-          <ng-template #elseBlockDropletOff>
-            <div class="has-tooltip">
-              <span
-                class="tooltip rounded shadow-lg px-2 bg-gray-100 text-seashell-400 -mt-8"
-                >Sin Techado</span
-              >
-              <img
-                src="../../../../assets/svg-icons/droplet-off-off.svg"
-                alt="droplet-off-off"
-              />
-            </div>
-          </ng-template>
-        </div>
-      </div>
-      <div class="items-center h-6 w-6">
-        <div class="flex gap-1 items-center">
-          <div class="has-tooltip">
-            <span
-              class="tooltip rounded shadow-lg px-2 bg-gray-100 text-forestGreen-900 -mt-8"
-              >Garaje</span
-            >
-            <img
-              *ngIf="caracteristicas.garaje; else elseBlockCarOff"
-              src="../../../../assets/svg-icons/car.svg"
-              alt="car"
-            />
-          </div>
-          <ng-template #elseBlockCarOff>
-            <div class="has-tooltip">
-              <span
-                class="tooltip rounded shadow-lg px-2 bg-gray-100 text-forestGreen-900 -mt-8"
-                >Sin Garaje</span
-              >
-              <img
-                src="../../../../assets/svg-icons/car-off.svg"
-                alt="car-off"
-              />
-            </div>
-          </ng-template>
-        </div>
-      </div>
-      <div class="items-center h-6 w-6">
-        <div class="flex gap-1 items-center">
-          <div class="has-tooltip">
-            <span
-              class="tooltip rounded shadow-lg px-2 bg-gray-100 text-forestGreen-900 -mt-8"
-              >Iluminacion</span
-            >
-            <img
-              *ngIf="caracteristicas.iluminacion; else elseBlockIluminacionOff"
-              src="../../../../assets/svg-icons/light.svg"
-              alt="light"
-            />
-          </div>
-          <ng-template #elseBlockIluminacionOff>
-            <div class="has-tooltip">
-              <span
-                class="tooltip rounded shadow-lg px-2 bg-gray-100 text-forestGreen-900 -mt-8"
-                >Sin Iluminacion</span
-              >
-              <img
-                src="../../../../assets/svg-icons/light-off.svg"
-                alt="car-off"
-              />
-            </div>
-          </ng-template>
-        </div>
-      </div>
-      <div class="items-center h-6 w-6">
-        <div class="flex gap-1 items-center">
-          <div class="has-tooltip">
-            <span
-              class="tooltip rounded shadow-lg px-2 bg-gray-100 text-forestGreen-900 -mt-8"
               >Futsal</span
             >
             <img
@@ -175,6 +94,87 @@
               <img
                 src="../../../../assets/svg-icons/voley-off.svg"
                 alt="voley-off"
+              />
+            </div>
+          </ng-template>
+        </div>
+      </div>
+      <div class="items-center h-6 w-6">
+        <div class="flex gap-1 items-center">
+          <div class="has-tooltip">
+            <span
+              class="tooltip rounded shadow-lg px-2 bg-gray-100 text-forestGreen-900 -mt-8"
+              >Garaje</span
+            >
+            <img
+              *ngIf="caracteristicas.garaje; else elseBlockCarOff"
+              src="../../../../assets/svg-icons/car.svg"
+              alt="car"
+            />
+          </div>
+          <ng-template #elseBlockCarOff>
+            <div class="has-tooltip">
+              <span
+                class="tooltip rounded shadow-lg px-2 bg-gray-100 text-forestGreen-900 -mt-8"
+                >Sin Garaje</span
+              >
+              <img
+                src="../../../../assets/svg-icons/car-off.svg"
+                alt="car-off"
+              />
+            </div>
+          </ng-template>
+        </div>
+      </div>
+      <div class="items-center h-6 w-6">
+        <div class="flex gap-1 items-center">
+          <div class="has-tooltip">
+            <span
+              class="tooltip rounded shadow-lg px-2 bg-gray-100 text-forestGreen-900 -mt-8"
+              >Techado</span
+            >
+            <img
+              *ngIf="caracteristicas.techado; else elseBlockDropletOff"
+              src="../../../../assets/svg-icons/droplet-off.svg"
+              alt="droplet-off"
+            />
+          </div>
+          <ng-template #elseBlockDropletOff>
+            <div class="has-tooltip">
+              <span
+                class="tooltip rounded shadow-lg px-2 bg-gray-100 text-seashell-400 -mt-8"
+                >Sin Techado</span
+              >
+              <img
+                src="../../../../assets/svg-icons/droplet-off-off.svg"
+                alt="droplet-off-off"
+              />
+            </div>
+          </ng-template>
+        </div>
+      </div>
+      <div class="items-center h-6 w-6">
+        <div class="flex gap-1 items-center">
+          <div class="has-tooltip">
+            <span
+              class="tooltip rounded shadow-lg px-2 bg-gray-100 text-forestGreen-900 -mt-8"
+              >Iluminacion</span
+            >
+            <img
+              *ngIf="caracteristicas.iluminacion; else elseBlockIluminacionOff"
+              src="../../../../assets/svg-icons/light.svg"
+              alt="light"
+            />
+          </div>
+          <ng-template #elseBlockIluminacionOff>
+            <div class="has-tooltip">
+              <span
+                class="tooltip rounded shadow-lg px-2 bg-gray-100 text-forestGreen-900 -mt-8"
+                >Sin Iluminacion</span
+              >
+              <img
+                src="../../../../assets/svg-icons/light-off.svg"
+                alt="car-off"
               />
             </div>
           </ng-template>
