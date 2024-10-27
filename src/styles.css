@@ -171,8 +171,6 @@
   @apply visible z-50;
 }
 
-@tailwind utilities;
-
 @media screen and (min-width: 576px) {
   .wrapper {
   }
