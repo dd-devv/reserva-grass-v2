@@ -12,6 +12,7 @@ import { CardPerfilComponent } from './card-perfil/card-perfil.component';
 import { FooterComponent } from './footer/footer.component';
 import { RouterModule } from '@angular/router';
 import { HeaderComponent } from './header/header.component';
+import { CardEmpresaSkeletonComponent } from './card-empresa-skeleton/card-empresa-skeleton.component';
 
 
 
@@ -27,13 +28,15 @@ import { HeaderComponent } from './header/header.component';
     CardRegistroEmpresaComponent,
     CardPerfilComponent,
     FooterComponent,
-    HeaderComponent
+    HeaderComponent,
+    CardEmpresaSkeletonComponent
   ],
   imports: [
     CommonModule,
     RouterModule
   ],
   exports: [
+    CardEmpresaSkeletonComponent,
     CardEmpresaComponent,
     CardSportFeaturesComponent,
     CardHorarioComponent,

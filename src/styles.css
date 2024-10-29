@@ -155,6 +155,11 @@
     --seashell-950: #292929;
   }
 }
+/* *{
+  background-color: #F8FAFC;
+  background-color: transparent;
+} */
+
 
 .wrapper {
   display: block;
