@@ -1,18 +1,18 @@
 <div class="px-4 mirko">
-  <app-card-empresa-skeleton class="flex justify-center"></app-card-empresa-skeleton>
-  <app-card-empresa-skeleton class="flex justify-center"></app-card-empresa-skeleton>
-  <app-card-empresa-skeleton class="flex justify-center"></app-card-empresa-skeleton>
-  <app-card-empresa-skeleton class="flex justify-center"></app-card-empresa-skeleton>
-  <app-card-empresa-skeleton class="flex justify-center"></app-card-empresa-skeleton>
-  <app-card-empresa-skeleton class="flex justify-center"></app-card-empresa-skeleton>
-  <app-card-empresa-skeleton class="flex justify-center"></app-card-empresa-skeleton>
-  <app-card-empresa-skeleton class="flex justify-center"></app-card-empresa-skeleton>
 
-  @for (cancha of primerosBuscado; track $index) {
-  <app-card-empresa
-    [caracteristicas]="cancha"
-    [urlInput]="''"
-    class="flex justify-center"
-  />
+  @if(load_data) {
+    @for (item of [1,2,3,4,5,6,7,8]; track $index) {
+      <app-card-empresa-skeleton class="flex justify-center"></app-card-empresa-skeleton>
+    }
   }
+  @else {
+    @for (cancha of primerosBuscado; track $index) {
+    <app-card-empresa
+      [caracteristicas]="cancha"
+      [urlInput]="''"
+      class="flex justify-center"
+    />
+    }
+  }
+
 </div>

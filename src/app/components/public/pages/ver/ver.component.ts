@@ -23,26 +23,15 @@ export class VerComponent implements OnInit {
   public id_cancha: any;
   public url: any;
   public load_data = false;
-  public load_btn = false;
   public load_btn_ver = false;
-  public load_btn_crear = false;
-  public width_view = true;
-  public btn_crear = false;
   public ver_caracteristicas = false;
   public canchas: any = [];
   public reservaciones: any = [];
   public cancha_ver: any = {};
   public empresa: any = {};
-  public horasInicio: number = 0;
-  public horasFinal: number = 0;
   public horasReserva: number = 1;
-  public masDeUno: boolean = false;
-  diasSemana: { nombre: string; fecha: Date }[] = [];
-  intervalosHorarios: { inicio: string; fin: string }[] = [];
-  botonesHoras: BotonHora[][] = [];
-  fechaHoraSeleccionada: { fecha: Date; hora: string } | null = null;
-  screenWidth: number = 0;
-  screenHeight: number = 0;
+  botonesHoras: BotonHora[] = [];
+  fechaSeleccionada: Date | null = null;
 
   ahora: Date = new Date();
 
@@ -52,15 +41,6 @@ export class VerComponent implements OnInit {
     private _title: Title,
     private _toastrService: ToastrService
   ) {
-    this.screenWidth = window.innerWidth;
-    this.screenHeight = window.innerHeight;
-
-    if (this.screenWidth >= this.screenHeight) {
-      this.width_view = true;
-    } else {
-      this.width_view = false;
-    }
-
     this.url = GLOBAL.url;
     const ruta = _router.url.split('/');
     this.path = ruta[ruta.length - 1];
@@ -70,81 +50,44 @@ export class VerComponent implements OnInit {
   ngOnInit(): void {
     this._title.setTitle('Ver Canchas');
     this.horasReserva = 1;
-  }
-
-  private calcularDiasSemana() {
-    this.diasSemana = [];
-    const hoy = new Date();
-    const primerDia = new Date(hoy);
-
-    for (let i = 0; i <= 7; i++) {
-      const dia = new Date(primerDia);
-      dia.setDate(primerDia.getDate() + i);
-      this.diasSemana.push({
-        nombre: dia
-          .toLocaleDateString('es-ES', { weekday: 'long' })
-          .slice(0, 3),
-        fecha: dia,
-      });
-    }
-  }
-
-  private calcularIntervalosHorarios() {
-    this.intervalosHorarios = [];
-    for (let i = 5; i < 24; i++) {
-      const inicio = i < 10 ? `0${i}:00` : `${i}:00`;
-      const fin = i + 1 < 10 ? `0${i + 1}:00` : `${i + 1}:00`;
-
-      this.intervalosHorarios.push({ inicio, fin });
-    }
+    this.fechaSeleccionada = new Date();
+    this.inicializarBotonesHoras();
   }
 
   private inicializarBotonesHoras() {
-    const ahora = new Date();
-    const primerDiaSemana = ahora.getDay();
+    this.botonesHoras = [];
+    const ahora = new Date(this.fechaSeleccionada!);
+    const primerHora = ahora.getHours();
 
-    for (let i = primerDiaSemana; i <= primerDiaSemana + 7; i++) {
-      const fila: BotonHora[] = [];
-      for (let j = 5; j < 24; j++) {
-        const inicio = j < 10 ? `${j}` : `${j}`;
-        const fecha = new Date(ahora);
-        fecha.setDate(ahora.getDate() + (i - primerDiaSemana));
-        const hora = inicio;
+    for (let j = primerHora; j < 24; j++) {
+      const inicio = j < 10 ? `0${j}` : `${j}`;
+      const fecha = new Date(ahora);
+      const hora = inicio;
 
-        const esDiaActual = i === primerDiaSemana;
-        const est: string =
-          esDiaActual && ahora.getHours() >= j ? 'Pasado' : 'Libre';
-        const disponible = esDiaActual ? ahora.getHours() < j : true;
+      const esDiaActual = ahora.getDate() === this.ahora.getDate();
+      const est: string =
+        esDiaActual && ahora.getHours() >= j ? 'Pasado' : 'Libre';
+      const disponible = esDiaActual ? ahora.getHours() < j : true;
 
-        const id = `00${i}${j}`.slice(-4); // Asegurar que el ID tenga cuatro dígitos
-        const boton: BotonHora = { estado: est, fecha, hora, disponible, id };
-        fila.push(boton);
-      }
-      this.botonesHoras.push(fila);
+      const id = `00${j}`.slice(-4); // Asegurar que el ID tenga cuatro dígitos
+      const boton: BotonHora = { estado: est, fecha, hora, disponible, id };
+      this.botonesHoras.push(boton);
     }
   }
 
-  onHoraSeleccionada(filaIndex: number, columnaIndex: number) {
-    const boton = this.botonesHoras[filaIndex][columnaIndex];
+  onHoraSeleccionada(index: number) {
+    const boton = this.botonesHoras[index];
     if (this.horasReserva > 4 || this.horasReserva < 1) {
       this._toastrService.error('Se permite como máximo 4 horas!', 'ERROR');
       this.horasReserva = 1;
       return;
     }
 
-    if (this.horasFinal > 23) {
-      this._toastrService.error(
-        'Solo se puede resrevar hasta las 23:00!',
-        'ERROR'
-      );
-      return;
-    }
-
     if (boton.disponible) {
       boton.estado = boton.estado === 'Libre' ? 'Reservado' : 'Libre';
       localStorage.setItem('fecha_reserva', boton.fecha.toDateString());
-      localStorage.setItem('hora_inicio', this.horasInicio.toString());
-      localStorage.setItem('hora_fin', this.horasFinal.toString());
+      localStorage.setItem('hora_inicio', boton.hora);
+      localStorage.setItem('hora_fin', this.botonesHoras[index + this.horasReserva - 1]?.hora ?? boton.hora);
       localStorage.setItem('afuera', 'Y');
       this._router.navigate(['/login']);
     }
@@ -158,20 +101,9 @@ export class VerComponent implements OnInit {
     return ahora > horaSeleccionada;
   }
 
-  select_mas_una_hora(hora: string) {
-    if (this.horasReserva > 1) {
-      this.horasInicio = parseInt(hora);
-      this.horasFinal = this.horasInicio + this.horasReserva;
-      this.masDeUno = true;
-    } else {
-      this.horasInicio = parseInt(hora);
-      this.horasFinal = this.horasInicio + 1;
-      this.masDeUno = false;
-    }
-  }
-
-  reset_horas_reserva() {
-    this.horasReserva = 1;
+  onDateChange(event: any) {
+    this.fechaSeleccionada = new Date(event.target.value);
+    this.inicializarBotonesHoras();
   }
 
   init_data() {
@@ -186,12 +118,8 @@ export class VerComponent implements OnInit {
         this._userService.obtener_canchas(this.empresa._id).subscribe((response) => {
           if (response.data == undefined) {
             this.load_data = false;
-            this.btn_crear = true;
           } else if (response.data != undefined) {
-            this.btn_crear = false;
             this.canchas = response.data;
-            console.log(this.canchas);
-            
             this.load_data = false;
             this.click_ver(response.data[0]._id);
           }
@@ -216,73 +144,9 @@ export class VerComponent implements OnInit {
           .obtener_reservaciones_public(this.cancha_ver._id)
           .subscribe((response) => {
             this.reservaciones = response.data;
-
-            if (this.reservaciones.length >= 1) {
-              const ahora = new Date();
-              const primerDiaSemana = ahora.getDay();
-
-              for (let i = primerDiaSemana; i <= primerDiaSemana + 7; i++) {
-                const fila: BotonHora[] = [];
-
-                for (let j = 5; j < 24; j++) {
-                  const inicio = j < 10 ? `0${j}` : `${j}`;
-                  const fecha = new Date(ahora);
-                  fecha.setDate(ahora.getDate() + (i - primerDiaSemana));
-                  const hora = inicio;
-
-                  let estadoBoton = 'Libre';
-                  let disponibleBtn = true;
-
-                  for (let k = 0; k < this.reservaciones.length; k++) {
-                    const reservacion = this.reservaciones[k];
-                    const reservacionFecha = new Date(reservacion.fecha);
-                    const reservacionHoraInicio = reservacion.hora_inicio;
-                    const reservacionHoraFin = reservacion.hora_fin;
-
-                    if (
-                      fecha.getDate() === reservacionFecha.getDate() &&
-                      fecha.getMonth() === reservacionFecha.getMonth() &&
-                      fecha.getFullYear() === reservacionFecha.getFullYear() &&
-                      parseInt(hora) >= parseInt(reservacionHoraInicio) &&
-                      parseInt(hora) < parseInt(reservacionHoraFin)
-                    ) {
-                      estadoBoton = reservacion.estado;
-                      disponibleBtn = false;
-                      break;
-                    }
-                  }
-
-                  const esDiaActual = i === primerDiaSemana;
-                  const est: string =
-                    esDiaActual && ahora.getHours() >= j
-                      ? 'Pasado'
-                      : estadoBoton;
-                  const disponible = esDiaActual ? ahora.getHours() < j : true;
-
-                  if (!disponible) {
-                    disponibleBtn = false;
-                  }
-
-                  const id = `00${i}${j}`.slice(-4); // Asegurar que el ID tenga cuatro dígitos
-                  const boton: BotonHora = {
-                    estado: est,
-                    fecha,
-                    hora,
-                    disponible: disponibleBtn,
-                    id,
-                  };
-                  fila.push(boton);
-                }
-
-                this.botonesHoras.push(fila);
-              }
-            } else {
-              this.inicializarBotonesHoras();
-            }
+            this.inicializarBotonesHoras();
           });
 
-        this.calcularDiasSemana();
-        this.calcularIntervalosHorarios();
         this.load_btn_ver = false;
       }
     });
