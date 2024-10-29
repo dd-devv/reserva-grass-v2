@@ -148,7 +148,9 @@ export class HomeComponent implements OnInit {
         error: (err) => console.error('Error al cargar datos', err),
       });
 
-      this.load_data = false;
+      setTimeout(() => {
+        this.load_data = false;
+      }, 1000);
   }
 
   init_data() {
