@@ -47,6 +47,7 @@ module.exports = {
       }, */
       fontFamily: {
         quicksand: ["Quicksand", "sans-serif"],
+        jetBrainsMono: ["JetBrains Mono", "sans-serif"],
       },
       colors: {
         border: "hsl(var(--border))",
