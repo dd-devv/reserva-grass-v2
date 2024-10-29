@@ -113,6 +113,9 @@ export class HomeComponent implements OnInit {
   }
 
   ngOnInit(): void {
+
+    this.load_data = true;
+
     this._title.setTitle('Reserva tu Grass');
 
     this.init_data();
