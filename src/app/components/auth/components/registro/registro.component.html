@@ -67,8 +67,8 @@
 
           <!-- Para mostrar texto de error de las validaciones -->
           @if (isValidField('nombres')) {
-          <span class="text-red-600">
-            {{ getFieldError("nombres") }}
+          <span class="text-red-600 text-xs"  >
+            {{ getFieldError("nombres") }}*
           </span>
           }
         </label>
@@ -86,8 +86,8 @@
           for="whatsapp"
           class="block mb-1 text-sm font-medium text-gray-900 dark:text-white"
           >Whatsapp @if (isValidField('whatsapp')) {
-          <span class="text-red-600">
-            {{ getFieldError("whatsapp") }}
+          <span class="text-red-600 text-xs">
+            {{ getFieldError("whatsapp") }}*
           </span>
           }
         </label>
@@ -106,8 +106,8 @@
           class="block mb-2 text-sm font-medium text-gray-900 dark:text-white"
         >
           Ingrese su ciudad @if (isValidField('region')) {
-          <span class="text-red-600">
-            {{ getFieldError("region") }}
+          <span class="text-red-600 text-xs">
+            {{ getFieldError("region") }}*
           </span>
           }
         </label>
@@ -129,8 +129,8 @@
           for="email"
           class="block mb-1 text-sm font-medium text-gray-900 dark:text-white"
           >Correo @if (isValidField('email')) {
-          <span class="text-red-600">
-            {{ getFieldError("email") }}
+          <span class="text-red-600 text-xs">
+            {{ getFieldError("email") }}*
           </span>
           }
         </label>
@@ -151,8 +151,8 @@
           class="block mb-1 text-sm font-medium text-gray-900 dark:text-white"
         >
           Contraseña @if (isValidField('password')) {
-          <span class="text-red-600">
-            {{ getFieldError("password") }}
+          <span class="text-red-600 text-xs">
+            {{ getFieldError("password") }}*
           </span>
           }
         </label>
@@ -218,10 +218,10 @@
         >
           Confirmar Contraseña @if (isValidField('confirmPassword') ||
           registerForm.errors?.['passwordMismatch']) {
-          <span class="text-red-600">
+          <span class="text-red-600 text-xs">
             {{
               getFieldError("confirmPassword") || "Las contraseñas no coinciden"
-            }}
+            }}*
           </span>
           }
         </label>
