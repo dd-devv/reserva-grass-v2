@@ -13,6 +13,7 @@ import { FooterComponent } from './footer/footer.component';
 import { RouterModule } from '@angular/router';
 import { HeaderComponent } from './header/header.component';
 import { CardEmpresaSkeletonComponent } from './card-empresa-skeleton/card-empresa-skeleton.component';
+import { ButtonSearchComponent } from './button-search/button-search.component';
 
 
 
@@ -29,13 +30,15 @@ import { CardEmpresaSkeletonComponent } from './card-empresa-skeleton/card-empre
     CardPerfilComponent,
     FooterComponent,
     HeaderComponent,
-    CardEmpresaSkeletonComponent
+    CardEmpresaSkeletonComponent,
+    ButtonSearchComponent
   ],
   imports: [
     CommonModule,
     RouterModule
   ],
   exports: [
+    ButtonSearchComponent,
     CardEmpresaSkeletonComponent,
     CardEmpresaComponent,
     CardSportFeaturesComponent,
