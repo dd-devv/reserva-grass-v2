@@ -59,8 +59,8 @@ interface CompanyCharacteristics {
 })
 export class RegistroEmpresaComponent implements OnInit {
   // Forms - initialize with definite assignment assertion
-  registrationForm: FormGroup = this.createRegistrationForm();
-  characteristicsForm: FormGroup = this.createCharacteristicsForm();
+  registrationForm: FormGroup;
+  characteristicsForm: FormGroup;
 
   // Location data
   regiones: Region[] = [];
@@ -105,14 +105,8 @@ export class RegistroEmpresaComponent implements OnInit {
     private toastr: ToastrService
   ) {
     this.loadRegions();
-  }
 
-  ngOnInit(): void {
-    this.title.setTitle('Registro de empresas');
-  }
-
-  private createRegistrationForm(): FormGroup {
-    return this.fb.group({
+    this.registrationForm = this.fb.group({
       nombre: ['', Validators.required],
       direccion: ['', Validators.required],
       email: ['', [Validators.required, Validators.email]],
@@ -127,16 +121,18 @@ export class RegistroEmpresaComponent implements OnInit {
       password: ['', [Validators.required, Validators.minLength(6)]],
       confirmPassword: ['', Validators.required]
     }, { validator: this.passwordMatchValidator });
-  }
 
-  private createCharacteristicsForm(): FormGroup {
-    return this.fb.group({
+    this.characteristicsForm = this.fb.group({
       techado: [false],
       canchas_futsal: [0, [Validators.min(0)]],
       canchas_voley: [0, [Validators.min(0)]],
       iluminacion: [false],
       garaje: [false]
     });
+  }
+
+  ngOnInit(): void {
+    this.title.setTitle('Registro de empresas');
   }
 
   private passwordMatchValidator(g: FormGroup) {
