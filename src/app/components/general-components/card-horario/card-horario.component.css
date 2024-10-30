@@ -1,0 +1,4 @@
+.voleyball-card {
+  border-color: hsl(var(--pink-100));
+  background-color: hsl(var(--pink-50));
+}
