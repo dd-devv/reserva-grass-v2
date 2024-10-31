@@ -1,1 +1,225 @@
-<p>registro-empresa works!</p>
+<div class="flex flex-col w-full p-2 bg-white gap-2 gap-y-4" id="registro-empresa-component">
+    <div class=" img-form">
+
+        <b> Aqui tiene que ir una imagen para pantallas grandes  deacuerdo al diseño en FIGMA </b>
+        <br>
+        Lorem ipsum dolor sit amet, consectetur adipisicing elit. Velit, fugiat id quis dolores tempore sit blanditiis
+        fugit voluptatum debitis ipsa ullam perspiciatis! Tenetur nesciunt atque tempore ut qui doloremque, nulla,
+        fugiat quas similique asperiores sint expedita. Vitae nostrum architecto at. Voluptatum in perspiciatis placeat
+        esse magnam dignissimos voluptatem? Itaque, quasi!
+    </div>
+    <!-- form paso 1 -->
+    <div class="form-content">
+        <div class="flex flex-col rounded-lg gap-1 p-5 ">
+            <p class="font-semibold text-2xl text-center">Registra tu Empresa</p>
+            <!-- cambiar ese lorem esta hasta el chompi -->
+            <p class="text-center text-pretty text-sm text-slate-700 mb-5 mt-3">
+                Para los brindar el espacio para cada jugada
+            </p>
+
+            <div class="flex justify-center items-center w-full flex-wrap">
+                <div class="w-10 h-10 rounded-full bg-forestGreen-500 flex justify-center items-center">
+                    <p class="text-gray-100 text-2xl font-bold">1</p>
+                </div>
+                <div class="bg-forestGreen-200 w-32 h-[2px] ">
+
+                </div>
+                <div class="w-10 h-10 rounded-full bg-forestGreen-200 flex justify-center items-center">
+                    <p class="text-forestGreen-500 text-2xl font-bold">2</p>
+                </div>
+            </div>
+        </div>
+
+        <div>
+            <form (ngSubmit)="onSubmit()" autocomplete="off"
+                class="flex flex-col justify-between rounded-l rounded-2xl border border-slate-400 px-2.5 py-8 gap-2.5">
+                <div>
+                    <label for="nombres" class="block mb-1 text-sm font-medium text-gray-900 dark:text-white">Nombre de
+                        la empresa
+                    </label>
+                    <input formControlName="nombres" id="nombres" placeholder="Ingrese el nombre de la empresa"
+                        type="text"
+                        class="block w-full p-2 h-9 text-gray-900 border border-gray-300 rounded-md bg-gray-50 text-xs focus:ring-blue-500 focus:border-blue-500 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500" />
+                </div>
+
+                <div>
+                    <label for="email" class="block mb-1 text-sm font-medium text-gray-900 dark:text-white">Correo
+                    </label>
+                    <input formControlName="email" id="email" placeholder="Ingrese su correo" type="text" id="email"
+                        class="block w-full p-2 h-9 text-gray-900 border border-gray-300 rounded-md bg-gray-50 text-xs focus:ring-blue-500 focus:border-blue-500 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500" />
+                </div>
+
+                <div>
+                    <label for="whatsapp" class="block mb-1 text-sm font-medium text-gray-900 dark:text-white">Whatsapp
+                    </label>
+                    <input formControlName="whatsapp" id="whatsapp" maxlength="9" placeholder="Ingrese su Whatsapp"
+                        type="text"
+                        class="block w-full p-2 h-9 text-gray-900 border border-gray-300 rounded-md bg-gray-50 text-xs focus:ring-blue-500 focus:border-blue-500 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500" />
+                </div>
+
+                <div>
+                    <label for="whatsapp" class="block mb-1 text-sm font-medium text-gray-900 dark:text-white">Teléfono
+                        fijo (opcional)
+                    </label>
+                    <input formControlName="whatsapp" id="whatsapp" maxlength="9" placeholder="Ingrese su teléfono fijo"
+                        type="text"
+                        class="block w-full p-2 h-9 text-gray-900 border border-gray-300 rounded-md bg-gray-50 text-xs focus:ring-blue-500 focus:border-blue-500 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500" />
+                </div>
+                <!-- Password -->
+                <div>
+                    <label for="password" class="block mb-1 text-sm font-medium text-gray-900 dark:text-white">
+                        Contraseña
+                    </label>
+                    <div class="relative">
+                        <input formControlName="password" id="password" placeholder="Ingrese su contraseña"
+                            class="block w-full p-2 h-9 text-gray-900 border border-gray-300 rounded-md bg-gray-50 text-xs focus:ring-blue-500 focus:border-blue-500 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500" />
+                        <button type="button"
+                            class="absolute inset-y-0 right-0 flex items-center pr-3 text-gray-600 dark:text-gray-400">
+                            <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"
+                                xmlns="http://www.w3.org/2000/svg">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                                    d="M15 12a3 3 0 11-6 0 3 3 0 016 0z"></path>
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                                    d="M2.458 12C3.732 7.943 7.523 5 12 5c4.478 0 8.268 2.943 9.542 7-1.274 4.057-5.064 7-9.542 7-4.477 0-8.268-2.943-9.542-7z">
+                                </path>
+                            </svg>
+                            <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"
+                                xmlns="http://www.w3.org/2000/svg">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                                    d="M13.875 18.825A10.05 10.05 0 0112 19c-4.478 0-8.268-2.943-9.543-7a9.97 9.97 0 011.563-3.029m5.858.908a3 3 0 114.243 4.243M9.878 9.878l4.242 4.242M9.88 9.88l-3.29-3.29m7.532 7.532l3.29 3.29M3 3l3.59 3.59m0 0A9.953 9.953 0 0112 5c4.478 0 8.268 2.943 9.543 7a10.025 10.025 0 01-4.132 5.411m0 0L21 21">
+                                </path>
+                            </svg>
+                        </button>
+                    </div>
+                </div>
+
+                <!-- Confirm Password -->
+                <div>
+                    <label for="confirmPassword" class="block mb-1 text-sm font-medium text-gray-900 dark:text-white">
+                        Confirmar Contraseña
+                    </label>
+                    <div class="relative">
+                        <input formControlName="confirmPassword" id="confirmPassword"
+                            placeholder="Confirme su contraseña"
+                            class="block w-full p-2 h-9 text-gray-900 border border-gray-300 rounded-md bg-gray-50 text-xs focus:ring-blue-500 focus:border-blue-500 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500" />
+                        <button type="button"
+                            class="absolute inset-y-0 right-0 flex items-center pr-3 text-gray-600 dark:text-gray-400">
+                            <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"
+                                xmlns="http://www.w3.org/2000/svg">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                                    d="M15 12a3 3 0 11-6 0 3 3 0 016 0z"></path>
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                                    d="M2.458 12C3.732 7.943 7.523 5 12 5c4.478 0 8.268 2.943 9.542 7-1.274 4.057-5.064 7-9.542 7-4.477 0-8.268-2.943-9.542-7z">
+                                </path>
+                            </svg>
+                            <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"
+                                xmlns="http://www.w3.org/2000/svg">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                                    d="M13.875 18.825A10.05 10.05 0 0112 19c-4.478 0-8.268-2.943-9.543-7a9.97 9.97 0 011.563-3.029m5.858.908a3 3 0 114.243 4.243M9.878 9.878l4.242 4.242M9.88 9.88l-3.29-3.29m7.532 7.532l3.29 3.29M3 3l3.59 3.59m0 0A9.953 9.953 0 0112 5c4.478 0 8.268 2.943 9.543 7a10.025 10.025 0 01-4.132 5.411m0 0L21 21">
+                                </path>
+                            </svg>
+                        </button>
+                    </div>
+                </div>
+
+                <button type="submit" class="w-full bg-blue-600 text-white h-9 rounded-md mt-3">
+                    Siguiente
+                </button>
+                <div class="inline-flex items-center justify-center w-full font-medium">
+                    <hr class="w-full h-px my-8 bg-gray-200 border-0 dark:bg-gray-700" />
+                    <div class="flex justify-center absolute">
+                        <p class="px-3 text-[12px] text-gray-900 bg-white left-1/2 dark:text-white dark:bg-gray-900">
+                            ¿Ya tienes cuenta?
+                            <span class="text-blue-400">
+                                <a [routerLink]="['/auth']"> Inicia Sesión </a>
+                            </span>
+                        </p>
+                    </div>
+                </div>
+            </form>
+        </div>
+    </div>
+    <!-- form paso 2 -->
+    <div class="form-content">
+        <div class="flex flex-col rounded-lg gap-1 p-5 ">
+            <p class="font-semibold text-2xl text-center">Registra tu Empresa</p>
+            <!-- cambiar ese lorem esta hasta el chompi -->
+            <p class="text-center text-pretty text-sm text-slate-700 mb-5 mt-3">
+                Para los brindar el espacio para cada jugada
+            </p>
+
+            <div class="flex justify-center items-center w-full flex-wrap">
+                <div class="w-10 h-10 rounded-full bg-forestGreen-500 flex justify-center items-center">
+                    <p class="text-gray-100 text-2xl font-bold">1</p>
+                </div>
+                <div class="bg-forestGreen-500 w-32 h-[2px] ">
+
+                </div>
+                <div class="w-10 h-10 rounded-full bg-forestGreen-500 flex justify-center items-center">
+                    <p class="text-gray-100 text-2xl font-bold">2</p>
+                </div>
+            </div>
+        </div>
+
+        <div>
+            <form (ngSubmit)="onSubmit()" autocomplete="off"
+                class="flex flex-col justify-between rounded-l rounded-2xl border border-slate-400 px-2.5 py-8 gap-2.5">
+                <div>
+                    <label for="nombres" class="block mb-1 text-sm font-medium text-gray-900 dark:text-white">Direccción
+                        de la empresa
+                    </label>
+                    <input formControlName="nombres" id="nombres" placeholder="Ingrese direccción" type="text"
+                        class="block w-full p-2 h-9 text-gray-900 border border-gray-300 rounded-md bg-gray-50 text-xs focus:ring-blue-500 focus:border-blue-500 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500" />
+                </div>
+
+
+                <div>
+                    <label for="whatsapp"
+                        class="block mb-1 text-sm font-medium text-gray-900 dark:text-white">Referencia
+                    </label>
+                    <input formControlName="whatsapp" id="whatsapp" maxlength="9" placeholder="Ingrese la Referencia"
+                        type="text"
+                        class="block w-full p-2 h-9 text-gray-900 border border-gray-300 rounded-md bg-gray-50 text-xs focus:ring-blue-500 focus:border-blue-500 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500" />
+                </div>
+
+                <div>
+                    <label for="whatsapp" class="block mb-1 text-sm font-medium text-gray-900 dark:text-white">Horario
+                        de Inicio de atención
+                        fijo (opcional)
+                    </label>
+                    <input formControlName="whatsapp" id="whatsapp" maxlength="9" placeholder="Hora de Inicio"
+                        type="text"
+                        class="block w-full p-2 h-9 text-gray-900 border border-gray-300 rounded-md bg-gray-50 text-xs focus:ring-blue-500 focus:border-blue-500 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500" />
+                </div>
+
+                <div>
+                    <label for="whatsapp" class="block mb-1 text-sm font-medium text-gray-900 dark:text-white">Horario
+                        de finalización de atención
+                    </label>
+                    <input formControlName="whatsapp" id="whatsapp" maxlength="9" placeholder="Hora final" type="text"
+                        class="block w-full p-2 h-9 text-gray-900 border border-gray-300 rounded-md bg-gray-50 text-xs focus:ring-blue-500 focus:border-blue-500 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500" />
+                </div>
+
+                <p class="text-center text-xs text-pretty text-balance mt-3">
+                    Al  <span class="font-bold">Crear Cuenta</span> aceptas nuestros
+                    Términos y condiciones, y Políticas de privacidad
+                </p>
+
+                <button type="submit" class="w-full bg-blue-600 text-white h-9 rounded-md mt-3">
+                    Crear Cuenta
+                </button>
+                <div class="inline-flex items-center justify-center w-full font-medium">
+                    <hr class="w-full h-px my-8 bg-gray-200 border-0 dark:bg-gray-700" />
+                    <div class="flex justify-center absolute">
+                        <p class="px-3 text-[12px] text-gray-900 bg-white left-1/2 dark:text-white dark:bg-gray-900">
+                            ¿Ya tienes cuenta?
+                            <span class="text-blue-400">
+                                <a [routerLink]="['/auth']"> Inicia Sesión </a>
+                            </span>
+                        </p>
+                    </div>
+                </div>
+            </form>
+        </div>
+    </div>
+</div>

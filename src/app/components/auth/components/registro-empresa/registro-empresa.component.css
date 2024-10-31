@@ -1,0 +1,48 @@
+#registro-empresa-component {
+    display: flex;
+    flex-direction: column;
+
+    .img-form {
+      display: none;
+      justify-content: center;
+      align-items: center;
+      height: 100%;
+      width: 100%;
+    }	
+
+    .form-content {
+      display: flex;
+      flex-direction: column;
+      margin: auto;
+      width: 100%;
+      max-width: 500px;
+    }	
+  }
+  
+  @media screen and (min-width: 576px) {
+    /* #registro-empresa-component {
+      flex-direction: row;
+    } */
+    .img-form {
+      justify-content: center;
+    }
+  }
+  
+  @media screen and (min-width: 900px) {
+    #registro-empresa-component {
+      flex-direction: row;
+    }
+    .img-form {
+        display: flex !important;
+        width: 50%;
+      /* justify-content: center; */
+    }
+    .form-content {
+      width: 50%;
+    }
+  }
+  @media screen and (min-width: 1200px) {
+    .wrapper {
+    }
+  }
+  
