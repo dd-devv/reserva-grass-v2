@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { FormBuilder, FormGroup, Validators } from '@angular/forms';
+import { AbstractControl, FormBuilder, FormGroup, ValidationErrors, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
 import { Title } from '@angular/platform-browser';
 import { ToastrService } from 'ngx-toastr';
@@ -32,6 +32,8 @@ export class LoginComponent implements OnInit {
   private readonly userId: string;
   private readonly courtId: string | null;
 
+  showPassword = false;
+
   constructor(
     private fb: FormBuilder,
     private userService: UserService,
@@ -46,8 +48,8 @@ export class LoginComponent implements OnInit {
     this.courtId = localStorage.getItem('id_cancha');
 
     this.loginForm = this.fb.group({
-      email: ['', [Validators.required, Validators.email]],
-      password: ['', [Validators.required, Validators.minLength(6)]],
+      email: ['', [Validators.required, Validators.email, this.gmailValidator()]],
+      password: ['', [Validators.required]]
     });
   }
 
@@ -62,14 +64,52 @@ export class LoginComponent implements OnInit {
     }
   }
 
+  private gmailValidator() {
+    return (control: AbstractControl): ValidationErrors | null => {
+      if (!control.value) return null;
+      const isGmail = control.value.toLowerCase().endsWith('@gmail.com');
+      return isGmail ? null : { invalidGmail: true };
+    };
+  }
+
+  isValidField(field: string): boolean {
+    const control = this.loginForm.get(field);
+    return !!control && control.errors !== null && (control.dirty || control.touched);
+  }
+
+  getFieldError(field: string): string {
+    const control = this.loginForm.get(field);
+    if (!control || !control.errors) return '';
+
+    const errors = control.errors;
+    const errorMessages: { [key: string]: string } = {
+      required: 'Este campo es requerido',
+      email: 'Formato de correo inválido',
+      invalidGmail: 'Solo se permiten correos de Gmail',
+    };
+
+    const firstError = Object.keys(errors)[0];
+    return errorMessages[firstError] || 'Error de validación';
+  }
+
   onSubmit(): void {
     if (this.loginForm.invalid || this.isLoading) {
+      this.loginForm.markAllAsTouched();
       return;
     }
 
     this.isLoading = true;
     const loginData: LoginData = this.loginForm.value;
+    console.log(loginData);
 
+    // this.userService.login_user(loginData).subscribe({
+    //   next: (res) => {
+    //     console.log(res);
+    //   },
+    //   error: (err) => {
+    //     console.log(err);
+    //   }
+    // });
     this.userService
       .login_user(loginData)
       .pipe(finalize(() => (this.isLoading = false)))
@@ -80,6 +120,9 @@ export class LoginComponent implements OnInit {
           } else {
             this.handleUserLogin(response);
           }
+
+          console.log(response);
+
         },
         error: (error) => {
           this.toastr.error('Error al iniciar sesión', 'ERROR');
@@ -152,7 +195,9 @@ export class LoginComponent implements OnInit {
     }
   }
 
-  togglePasswordVisibility(): void {
-    this.isPasswordVisible = !this.isPasswordVisible;
+  togglePasswordVisibility(field: 'password'): void {
+    if (field === 'password') {
+      this.showPassword = !this.showPassword;
+    }
   }
 }
