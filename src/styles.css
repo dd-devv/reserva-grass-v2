@@ -173,13 +173,6 @@
   padding: 10px;
 }
 
-.tooltip {
-  @apply invisible absolute;
-}
-
-.has-tooltip:hover .tooltip {
-  @apply visible z-50;
-}
 
 @media screen and (min-width: 576px) {
   .wrapper {
