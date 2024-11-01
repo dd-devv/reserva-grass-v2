@@ -1,5 +1,5 @@
 <!-- agregar de forma dinamica la clase voleyball-card -->
-<div
+<div [ngClass]="tipo === 'voley' ?  'bg-blue-400' : 'bg-red-400'"
   class="flex flex-col w-full gap-4 bg-forestGreen-100 border border-forestGreen-400 justify-center px-2 py-5 rounded-lg"
 >
   <div class="flex justify-center items-center">

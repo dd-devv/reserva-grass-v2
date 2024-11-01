@@ -35,6 +35,8 @@ export class VerComponent implements OnInit {
 
   ahora: Date = new Date();
 
+  public numbero = 1;
+
   constructor(
     private _router: Router,
     private _userService: UserService,
