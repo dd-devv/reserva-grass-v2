@@ -1,9 +1,13 @@
 <!-- agregar de forma dinamica la clase voleyball-card -->
-<div [ngClass]="tipo === 'futbol' ?  'bg-blue-400' : 'bg-red-400'"
+<div
+  [ngClass]="tipo === 'futbol' ? 'bg-blue-400' : 'voleyball-card'"
   class="flex flex-col w-full gap-4 bg-forestGreen-100 border border-forestGreen-400 justify-center px-2 py-5 rounded-lg"
 >
   <div class="flex justify-center items-center">
-    <button class="border border-forestGreen-500 rounded-lg w-1/2 h-8">
+    <button
+      [ngClass]="tipo === 'futbol' ? '' : 'voleyball-card'"
+      class="border border-forestGreen-500 rounded-lg w-1/2 h-8"
+    >
       dd/mm/aaa
     </button>
   </div>

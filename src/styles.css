@@ -6,15 +6,6 @@
 @tailwind components;
 @tailwind utilities;
 
-@font-face {
-  font-family: "chainalisis-regular";
-  src: url("./font/Chainalysis-Regular.ttf");
-}
-@font-face {
-  font-family: "chainalisis-bold";
-  src: url("./font/Chainalysis-Bold.ttf");
-}
-
 @layer base {
   :root {
     --background: 200 100% 95%; /* Azul claro */
