@@ -10,7 +10,7 @@ import { initFlowbite } from 'flowbite';
 export class AppComponent  implements OnInit{
   title = 'reserva-grass-v2';
 
-  ngOnInit(): void {
+    ngOnInit(): void {
     initFlowbite();
   }
 }
