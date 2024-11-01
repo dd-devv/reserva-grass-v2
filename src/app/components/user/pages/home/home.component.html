@@ -1,1 +1,425 @@
-<p>home works!</p>
+<div class="flex flex-col w-full p-2 bg-white gap-2 gap-y-4">
+  <p class="text-center font-bold text-pretty">Nombres</p>
+  <div class="flex justify-center">
+    <svg
+      width="90"
+      height="90"
+      viewBox="0 0 90 90"
+      fill="none"
+      xmlns="http://www.w3.org/2000/svg"
+      xmlns:xlink="http://www.w3.org/1999/xlink"
+    >
+      <rect width="90" height="90" fill="url(#pattern0_347_1546)" />
+      <defs>
+        <pattern
+          id="pattern0_347_1546"
+          patternContentUnits="objectBoundingBox"
+          width="1"
+          height="1"
+        >
+          <use xlink:href="#image0_347_1546" transform="scale(0.00666667)" />
+        </pattern>
+        <image
+          id="image0_347_1546"
+          width="150"
+          height="150"
+          xlink:href="data:image/png;base64,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"
+        />
+      </defs>
+    </svg>
+  </div>
+
+  <div class="mb-4 border-b border-gray-200 dark:border-gray-700">
+    <ul
+      class="items-center flex text-sm font-medium text-center"
+      id="default-styled-tab"
+      data-tabs-toggle="#default-styled-tab-content"
+      data-tabs-active-classes="text-purple-600 hover:text-purple-600 dark:text-purple-500 dark:hover:text-purple-500 border-purple-600 dark:border-purple-500"
+      data-tabs-inactive-classes="dark:border-transparent text-gray-500 hover:text-gray-600 dark:text-gray-400 border-gray-100 hover:border-gray-300 dark:border-gray-700 dark:hover:text-gray-300"
+      role="tablist"
+    >
+      <li
+        class="w-full flex items-center flex-col justify-center align-middle text-center"
+        role="presentation"
+      >
+        <button
+          class="flex flex-col justify-center items-center align-middle p-4 border-b-2 rounded-t-lg"
+          id="profile-styled-tab"
+          data-tabs-target="#styled-profile"
+          type="button"
+          role="tab"
+          aria-controls="profile"
+          aria-selected="false"
+        >
+          <svg
+            width="33"
+            height="32"
+            viewBox="0 0 33 32"
+            fill="none"
+            xmlns="http://www.w3.org/2000/svg"
+          >
+            <path
+              d="M16.5 16C18.0913 16 19.6174 15.3679 20.7426 14.2426C21.8679 13.1174 22.5 11.5913 22.5 10C22.5 8.4087 21.8679 6.88258 20.7426 5.75736C19.6174 4.63214 18.0913 4 16.5 4C14.9087 4 13.3826 4.63214 12.2574 5.75736C11.1321 6.88258 10.5 8.4087 10.5 10C10.5 11.5913 11.1321 13.1174 12.2574 14.2426C13.3826 15.3679 14.9087 16 16.5 16ZM20.5 10C20.5 11.0609 20.0786 12.0783 19.3284 12.8284C18.5783 13.5786 17.5609 14 16.5 14C15.4391 14 14.4217 13.5786 13.6716 12.8284C12.9214 12.0783 12.5 11.0609 12.5 10C12.5 8.93913 12.9214 7.92172 13.6716 7.17157C14.4217 6.42143 15.4391 6 16.5 6C17.5609 6 18.5783 6.42143 19.3284 7.17157C20.0786 7.92172 20.5 8.93913 20.5 10ZM28.5 26C28.5 28 26.5 28 26.5 28H6.5C6.5 28 4.5 28 4.5 26C4.5 24 6.5 18 16.5 18C26.5 18 28.5 24 28.5 26ZM26.5 25.992C26.498 25.5 26.192 24.02 24.836 22.664C23.532 21.36 21.078 20 16.5 20C11.92 20 9.468 21.36 8.164 22.664C6.808 24.02 6.504 25.5 6.5 25.992H26.5Z"
+              fill="#20C752"
+            />
+          </svg>
+          Datos
+        </button>
+      </li>
+      <li
+        class="w-full flex items-center flex-col justify-center align-middle text-center"
+        role="presentation"
+      >
+        <button
+          class="flex flex-col justify-center items-center align-middle p-4 border-b-2 rounded-t-lg hover:text-gray-600 hover:border-gray-300 dark:hover:text-gray-300"
+          id="dashboard-styled-tab"
+          data-tabs-target="#styled-dashboard"
+          type="button"
+          role="tab"
+          aria-controls="dashboard"
+          aria-selected="false"
+        >
+          <svg
+            width="33"
+            height="33"
+            viewBox="0 0 33 33"
+            fill="none"
+            xmlns="http://www.w3.org/2000/svg"
+          >
+            <path
+              d="M16.5 3.5C9.33203 3.5 3.5 9.33203 3.5 16.5C3.5 23.668 9.33203 29.5 16.5 29.5C23.668 29.5 29.5 23.668 29.5 16.5C29.5 9.33203 23.668 3.5 16.5 3.5ZM16.5 5.5C17.1016 5.5 17.6758 5.5625 18.25 5.65625L16.5 6.90625L14.75 5.65625C15.3203 5.56641 15.9023 5.5 16.5 5.5ZM12.3125 6.34375L15.9062 8.96875L16.5 9.40625L17.0938 8.96875L20.6875 6.34375C22.2852 7.00781 23.6953 8.02344 24.8125 9.3125L23.4375 13.5938L23.2188 14.2812L23.8125 14.6875L27.4375 17.3438C27.3047 19.1055 26.7656 20.7578 25.9062 22.1875H20.625L20.4062 22.875L19 27.2188C18.1992 27.4062 17.3594 27.5 16.5 27.5C15.6055 27.5 14.7383 27.3867 13.9062 27.1875L12.5312 22.9062L12.3125 22.2188H7.09375C6.21875 20.7812 5.69922 19.1211 5.5625 17.3438L9.15625 14.7188L9.75 14.3125L9.53125 13.625L8.125 9.375C9.25 8.05469 10.6836 7.01562 12.3125 6.34375ZM16.5 10.5938L15.9062 11.0312L11.3438 14.3438L10.7812 14.7812L11 15.4688L12.75 20.8125L12.9688 21.5H20.0312L20.25 20.8125L22 15.4688L22.2188 14.7812L21.6562 14.3438L17.0938 11.0312L16.5 10.5938ZM26.25 11.4062C26.7969 12.4531 27.1562 13.6016 27.3438 14.8125L25.5625 13.5312L26.25 11.4062ZM6.71875 11.4688L7.40625 13.5312L5.65625 14.8125C5.83984 13.625 6.1875 12.5 6.71875 11.4688ZM16.5 13.0938L19.875 15.5312L18.5938 19.5H14.4062L13.125 15.5312L16.5 13.0938ZM22.0938 24.1875H24.3438C23.4922 25.0664 22.5117 25.793 21.4062 26.3438L22.0938 24.1875ZM8.65625 24.2188H10.8438L11.5312 26.3125C10.4609 25.7695 9.48828 25.0625 8.65625 24.2188Z"
+              fill="black"
+            />
+          </svg>
+
+          Reserva
+        </button>
+      </li>
+      <li
+        class="w-full flex items-center flex-col justify-center align-middle text-center"
+        role="presentation"
+      >
+        <button
+          class="flex flex-col justify-center items-center align-middle p-4 border-b-2 rounded-t-lg hover:text-gray-600 hover:border-gray-300 dark:hover:text-gray-300"
+          id="settings-styled-tab"
+          data-tabs-target="#styled-settings"
+          type="button"
+          role="tab"
+          aria-controls="settings"
+          aria-selected="false"
+        >
+          <svg
+            width="29"
+            height="29"
+            viewBox="0 0 29 29"
+            fill="none"
+            xmlns="http://www.w3.org/2000/svg"
+          >
+            <path
+              d="M8.73839 7.29995H8.89995M17.9909 11.009L27.0071 20.0252C27.1946 20.2128 27.2999 20.4671 27.2999 20.7323V26.2999C27.2999 26.8522 26.8522 27.2999 26.2999 27.2999H22.6454V23.809H19.1545V20.3181L14.8548 16.2689C13.4731 17.3479 11.7343 17.9909 9.8454 17.9909C5.34679 17.9909 1.69995 14.344 1.69995 9.8454C1.69995 5.34679 5.34679 1.69995 9.8454 1.69995C14.344 1.69995 17.9909 5.34679 17.9909 9.8454V11.009Z"
+              stroke="black"
+              stroke-width="2"
+              stroke-linecap="round"
+              stroke-linejoin="round"
+            />
+          </svg>
+
+          Acceso
+        </button>
+      </li>
+      <li
+        class="w-full flex items-center flex-col justify-center align-middle text-center"
+        role="presentation"
+      >
+        <button
+          class="flex flex-col justify-center items-center align-middle p-4 border-b-2 rounded-t-lg hover:text-gray-600 hover:border-gray-300 dark:hover:text-gray-300"
+          id="contacts-styled-tab"
+          data-tabs-target="#styled-contacts"
+          type="button"
+          role="tab"
+          aria-controls="contacts"
+          aria-selected="false"
+        >
+          <svg
+            width="27"
+            height="25"
+            viewBox="0 0 27 25"
+            fill="none"
+            xmlns="http://www.w3.org/2000/svg"
+          >
+            <path
+              d="M17.7932 23.7L22.7343 23.7C23.4832 23.7 24.2014 23.405 24.7309 22.8799C25.2604 22.3547 25.5579 21.6426 25.5579 20.9L25.5579 4.09995C25.5579 3.35735 25.2604 2.64516 24.7309 2.12006C24.2014 1.59495 23.4832 1.29995 22.7343 1.29995L17.7932 1.29995M17.4422 12.5L1.44224 12.5M1.44224 12.5L7.55577 18.9M1.44224 12.5L7.55577 6.09995"
+              stroke="#FF3B30"
+              stroke-width="2"
+              stroke-linecap="round"
+              stroke-linejoin="round"
+            />
+          </svg>
+
+          Salir
+        </button>
+      </li>
+    </ul>
+  </div>
+  <div id="default-styled-tab-content">
+    <div
+      class="hidden p-4 space-y-4 rounded-lg bg-gray-50 dark:bg-gray-800"
+      id="styled-profile"
+      role="tabpanel"
+      aria-labelledby="profile-tab"
+    >
+      <div>
+        <label
+          for="small-input"
+          class="block mb-1 text-sm font-medium text-gray-900 dark:text-white"
+          >Nombres</label
+        >
+        <input
+          placeholder="Ingrese su nombre"
+          type="text"
+          id="small-input"
+          class="block w-full p-2 h-9 text-gray-900 border border-gray-300 rounded-md bg-gray-50 text-xs focus:ring-blue-500 focus:border-blue-500 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
+        />
+      </div>
+
+      <div>
+        <label
+          for="small-input"
+          class="block mb-1 text-sm font-medium text-gray-900 dark:text-white"
+          >Whatsapp</label
+        >
+        <input
+          placeholder="Ingrese su nombre"
+          type="text"
+          id="small-input"
+          class="block w-full p-2 h-9 text-gray-900 border border-gray-300 rounded-md bg-gray-50 text-xs focus:ring-blue-500 focus:border-blue-500 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
+        />
+      </div>
+      <div>
+        <label
+          for="countries"
+          class="block mb-2 text-sm font-medium text-gray-900 dark:text-white"
+          >Ingrese su ciudad</label
+        >
+        <select
+          id="countries"
+          class="bg-gray-50 border h-9 border-gray-300 text-gray-900 text-xs rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
+        >
+          <option selected>Seleccionar</option>
+          <option value="US">United States</option>
+          <option value="CA">Canada</option>
+          <option value="FR">France</option>
+          <option value="DE">Germany</option>
+        </select>
+      </div>
+
+      <div>
+        <label
+          for="small-input"
+          class="block mb-1 text-sm font-medium text-gray-900 dark:text-white"
+          >Correo</label
+        >
+        <input
+          placeholder="Ingrese su correo"
+          type="text"
+          id="small-input"
+          class="block w-full p-2 h-9 text-gray-900 border border-gray-300 rounded-md bg-gray-50 text-xs focus:ring-blue-500 focus:border-blue-500 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
+        />
+      </div>
+
+      <button
+        class="w-full bg-chambray-700 text-white h-9 rounded-md font-semibold"
+      >
+        Actualizar datos
+      </button>
+    </div>
+    <div
+      class="hidden p-4 space-y-4 rounded-lg bg-gray-50 dark:bg-gray-800 h-fit"
+      id="styled-dashboard"
+      role="tabpanel"
+      aria-labelledby="dashboard-tab"
+    >
+      <div
+        class="grid grid-cols-[32px_repeat(4,1fr)] auto-cols-min grid-rows-5 rounded-lg border w-full max-w-md h-[180px]"
+      >
+        <div class="bg-forestGreen-600 text-white w-8 rounded-l-lg row-span-5">
+          <p
+            class="w-full -rotate-90 flex justify-center items-center text-center h-full text-nowrap font-semibold"
+          >
+            ABCD-1234
+          </p>
+        </div>
+        <div
+          class="flex flex-col rounded-tr-lg col-span-5 w-full h-10 mb-2 px-2"
+        >
+          <div class="flex">
+            <div class="w-7/12">
+              <div class="flex flex-col">
+                <label class="text-xs font-semibold text-forestGreen-600">
+                  Empresa
+                </label>
+                <p class="font-bold capitalize">Tres cruces la gradería</p>
+              </div>
+            </div>
+            <div class="w-5/12">
+              <div class="flex flex-col">
+                <label class="text-xs font-semibold text-forestGreen-600">
+                  Cancha
+                </label>
+                <p class="font-bold">Cancha 1</p>
+              </div>
+            </div>
+          </div>
+
+          <div
+            class="w-full border-b-2 border-dotted border-forestGreen-600"
+          ></div>
+          <!-- INICIO PARTE BOLETA -->
+
+          <div class="flex flex-col">
+            <div class="flex w-full">
+              <div class="items-start flex flex-col justify-start">
+                <p class="text-forestGreen-600 text-[10px] font-bold">
+                  Dirección
+                </p>
+                <p class="text-[12px]">Av. Américas 123 San juan Bautista</p>
+              </div>
+            </div>
+            <div class="flex w-full">
+              <div class="w-7/12 items-start flex flex-col justify-start">
+                <p class="text-forestGreen-600 text-[10px] font-bold">Fecha</p>
+                <p class="text-[12px]">Domingo, 20 de agosto del 2024</p>
+              </div>
+
+              <div class="items-start flex flex-col justify-start">
+                <p class="text-forestGreen-600 text-[10px] font-bold">
+                  Horario
+                </p>
+                <p class="text-[12px]">5:00 pm - 8:00 pm</p>
+              </div>
+            </div>
+            <div class="flex w-full">
+              <div class="w-7/12 items-start flex flex-col justify-start">
+                <p class="text-forestGreen-600 text-[10px] font-bold">
+                  Monto de reservación
+                </p>
+                <p class="text-base font-bold">S/ 30</p>
+              </div>
+
+              <div class="items-start flex flex-col justify-start">
+                <p class="text-forestGreen-600 text-[10px] font-bold">
+                  Cliente
+                </p>
+                <p class="text-base font-bold">Dino</p>
+              </div>
+            </div>
+            <div class="flex">
+              <p>Creación: 3 oct 2024, 21:39:19</p>
+            </div>
+          </div>
+        </div>
+
+        <div
+          class="w-12 justify-center flex rounded-br-lg row-span-4 col-start-6 row-start-2 border-l-2 border-forestGreen-600 border-dotted my-3 items-center"
+        >
+          <img
+            class="size-10"
+            src="../../../../assets/img/qr_prueba.png"
+            alt="qr prueba"
+          />
+        </div>
+      </div>
+      <button
+        class="w-full bg-chambray-700 text-white h-9 rounded-md font-semibold"
+      >
+        Ver anteriores
+      </button>
+    </div>
+    <div
+      class="hidden flex-col p-4 space-y-4 rounded-lg bg-gray-50 dark:bg-gray-800"
+      id="styled-settings"
+      role="tabpanel"
+      aria-labelledby="settings-tab"
+    >
+      <div class="flex w-full justify-between gap-x-4">
+        <div class="w-full">
+          <input
+            placeholder="Ingrese contaseña actual"
+            type="text"
+            id="small-input"
+            class="block w-full h-9 text-gray-900 border border-gray-300 rounded-md bg-gray-50 text-xs focus:ring-blue-500 focus:border-blue-500 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
+          />
+        </div>
+
+        <button
+          class="bg-forestGreen-500 rounded-md text-forestGreen-50 inline-flex justify-center items-center px-4"
+        >
+          Verificar
+          <svg
+            width="25"
+            height="24"
+            viewBox="0 0 25 24"
+            fill="none"
+            xmlns="http://www.w3.org/2000/svg"
+          >
+            <path
+              d="M13.5 6L19.5 12M19.5 12L13.5 18M19.5 12H5.5"
+              stroke="#F0FDF3"
+              stroke-width="2"
+              stroke-linecap="round"
+              stroke-linejoin="round"
+            />
+          </svg>
+        </button>
+      </div>
+      <div class="flex w-full justify-between gap-x-4">
+        <div class="w-full">
+          <label
+            for="small-input"
+            class="block mb-1 text-sm font-medium text-gray-900 dark:text-white"
+            >Nombres</label
+          >
+          <input
+            placeholder="Ingrese su nombre"
+            type="text"
+            id="small-input"
+            class="block w-full h-9 text-gray-900 border border-gray-300 rounded-md bg-gray-50 text-xs focus:ring-blue-500 focus:border-blue-500 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
+          />
+        </div>
+
+        <div class="w-full">
+          <label
+            for="small-input"
+            class="block mb-1 text-sm font-medium text-gray-900 dark:text-white"
+            >Whatsapp</label
+          >
+          <input
+            placeholder="Ingrese su nombre"
+            type="text"
+            id="small-input"
+            class="block w-full h-9 text-gray-900 border border-gray-300 rounded-md bg-gray-50 text-xs focus:ring-blue-500 focus:border-blue-500 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
+          />
+        </div>
+      </div>
+
+      <button
+        class="w-full bg-chambray-700 text-white h-9 rounded-md font-semibold"
+      >
+        Actualizar
+      </button>
+    </div>
+    <div
+      class="hidden p-4 rounded-lg bg-gray-50 dark:bg-gray-800"
+      id="styled-contacts"
+      role="tabpanel"
+      aria-labelledby="contacts-tab"
+    >
+      <p class="text-sm text-gray-500 dark:text-gray-400">
+        This is some placeholder content the Contacts tab's associated content.
+        Clicking another tab will toggle the visibility of this one for the
+        next. The tab JavaScript swaps classes to control the content visibility
+        and styling.
+      </p>
+    </div>
+  </div>
+</div>
