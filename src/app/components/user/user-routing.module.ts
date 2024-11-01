@@ -6,6 +6,7 @@ import { ContactoComponent } from './pages/contacto/contacto.component';
 import { DatosComponent } from './pages/perfil/pages/datos/datos.component';
 import { ReservasComponent } from './pages/perfil/pages/reservas/reservas.component';
 import { AccesoComponent } from './pages/perfil/pages/acceso/acceso.component';
+import { ContainerPerfilComponent } from './pages/perfil/container-perfil/container-perfil.component';
 
 const routes: Routes = [
   {
@@ -15,7 +16,7 @@ const routes: Routes = [
       { path: '', component: HomeComponent },
       { path: 'contacto', component: ContactoComponent },
       {
-        path: 'perfil', component: ContactoComponent,
+        path: 'perfil', component: ContainerPerfilComponent,
         children: [
           { path: '', component: DatosComponent },
           { path: 'reservas', component: ReservasComponent },
