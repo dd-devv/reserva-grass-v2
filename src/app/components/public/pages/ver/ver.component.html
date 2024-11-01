@@ -1,10 +1,12 @@
 <div class="wrapper">
     <div class="contentCardSport">
-        <app-card-sport-features></app-card-sport-features>
+        @for (cancha of canchas; track $index) {
+        <app-card-sport-features [cancha]="cancha" (tipo_cancha)="handleIdcatalogos($event)"></app-card-sport-features>
+        }
     </div>
 
     <div class="">
 
     </div>
-    <app-card-horario [tipo]="'futbol'"></app-card-horario>
+    <app-card-horario [tipo]="tipo_cancha"></app-card-horario>
 </div>
