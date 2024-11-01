@@ -5,6 +5,7 @@ import { Router } from '@angular/router';
 import { GuestService } from '../../../../services/guest.service';
 import { UserService } from '../../../../services/user.service';
 import { ToastrService } from 'ngx-toastr';
+import { initFlowbite } from 'flowbite';
 
 interface Region {
   id: string;
@@ -58,6 +59,9 @@ interface CompanyCharacteristics {
   styleUrls: ['./registro-empresa.component.css']
 })
 export class RegistroEmpresaComponent implements OnInit {
+
+
+ 
   // Forms - initialize with definite assignment assertion
   registrationForm: FormGroup;
   characteristicsForm: FormGroup;
@@ -139,6 +143,7 @@ export class RegistroEmpresaComponent implements OnInit {
 
   ngOnInit(): void {
     this.title.setTitle('Registro de empresas');
+    initFlowbite();
   }
 
   togglePasswordVisibility(field: 'password' | 'confirmPassword'): void {
