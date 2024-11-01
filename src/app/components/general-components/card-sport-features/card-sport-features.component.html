@@ -1,4 +1,5 @@
 <div class="flex lg:flex-row w-full justify-center gap-4 md:gap-8">
+  @if (cancha.tipo === 'Fútbol/Futsal') {
   <div
     class="flex flex-col w-full justify-between bg-forestGreen-50 border border-forestGreen-500 rounded-lg px-4 py-4 max-w-72 gap-3"
   >
@@ -8,17 +9,17 @@
     </div>
     <div class="flex gap-4 justify-start items-center">
       <img src="../../../../assets/svg-icons/square.svg" alt="" />
-      30m x 25m
+      {{cancha.largo}}m x {{cancha.ancho}}m
     </div>
     <div class="flex gap-4 justify-start items-center">
       <img src="../../../../assets/svg-icons/sun.svg" alt="" />
-      <div>S/ 30 <span class="font-light text-xs">hora</span></div>
+      <div>S/ {{cancha.precio_dia}} <span class="font-light text-xs">hora</span></div>
     </div>
     <div class="flex gap-4 justify-start items-center">
       <img src="../../../../assets/svg-icons/moon-stars.svg" alt="" />
-      <div>S/ 40 <span class="font-light text-xs">hora</span></div>
+      <div>S/ {{cancha.precio_noche}} <span class="font-light text-xs">hora</span></div>
     </div>
-    <button
+    <button (click)="onSelect('futbol')"
       class="flex gap-2 justify-center items-center bg-green-500 rounded-lg py-2 text-white hover:scale-105 hover:duration-100"
     >
       <p>Ver horario</p>
@@ -39,6 +40,7 @@
       </svg>
     </button>
   </div>
+  } @if (cancha.tipo === 'Voley') {
   <div
     class="flex flex-col w-full justify-between bg-pinkk-50 border border-pinkk-100 rounded-lg max-w-72 max-w-72 px-4 py-4 gap-3"
   >
@@ -48,17 +50,17 @@
     </div>
     <div class="flex gap-4 justify-start items-center">
       <img src="../../../../assets/svg-icons/square-pink.svg" alt="" />
-      30m x 25m
+      {{cancha.largo}}m x {{cancha.ancho}}m
     </div>
     <div class="flex gap-4 justify-start items-center">
       <img src="../../../../assets/svg-icons/sun-pink.svg" alt="" />
-      <div>S/ 30 <span class="font-light text-xs">hora</span></div>
+      <div>S/ {{cancha.precio_dia}} <span class="font-light text-xs">hora</span></div>
     </div>
     <div class="flex gap-4 justify-start items-center">
       <img src="../../../../assets/svg-icons/moon-stars-pink.svg" alt="" />
-      <div>S/ 40 <span class="font-light text-xs">hora</span></div>
+      <div>S/ {{cancha.precio_noche}} <span class="font-light text-xs">hora</span></div>
     </div>
-    <button
+    <button (click)="onSelect('voley')"
       class="flex gap-2 justify-center items-center bg-pinkk-100 rounded-lg py-2 text-white hover:scale-105 hover:duration-100"
     >
       <p>Ver horario</p>
@@ -79,4 +81,88 @@
       </svg>
     </button>
   </div>
+  }
+  @if (cancha.tipo === 'Mixto') {
+    <div
+    class="flex flex-col w-full justify-between bg-forestGreen-50 border border-forestGreen-500 rounded-lg px-4 py-4 max-w-72 gap-3"
+  >
+    <div class="flex gap-4 justify-start items-center">
+      <img src="../../../../assets/svg-icons/football.svg" alt="" />
+      <p class="font-bold text-forestGreen-500">Futbol / Futsal <small>(mixto)</small></p>
+    </div>
+    <div class="flex gap-4 justify-start items-center">
+      <img src="../../../../assets/svg-icons/square.svg" alt="" />
+      {{cancha.largo}}m x {{cancha.ancho}}m
+    </div>
+    <div class="flex gap-4 justify-start items-center">
+      <img src="../../../../assets/svg-icons/sun.svg" alt="" />
+      <div>S/ {{cancha.precio_dia}} <span class="font-light text-xs">hora</span></div>
+    </div>
+    <div class="flex gap-4 justify-start items-center">
+      <img src="../../../../assets/svg-icons/moon-stars.svg" alt="" />
+      <div>S/ {{cancha.precio_noche}} <span class="font-light text-xs">hora</span></div>
+    </div>
+    <button  (click)="onSelect('futbol')"
+      class="flex gap-2 justify-center items-center bg-green-500 rounded-lg py-2 text-white hover:scale-105 hover:duration-100"
+    >
+      <p>Ver horario</p>
+      <svg
+        width="16"
+        height="14"
+        viewBox="0 0 16 14"
+        fill="none"
+        xmlns="http://www.w3.org/2000/svg"
+      >
+        <path
+          d="M9 1L15 7M15 7L9 13M15 7H1"
+          stroke="#F0FDF3"
+          stroke-width="2"
+          stroke-linecap="round"
+          stroke-linejoin="round"
+        />
+      </svg>
+    </button>
+  </div>
+
+  <div
+    class="flex flex-col w-full justify-between bg-pinkk-50 border border-pinkk-100 rounded-lg max-w-72 max-w-72 px-4 py-4 gap-3"
+  >
+    <div class="flex gap-4 justify-start items-center">
+      <img src="../../../../assets/svg-icons/voley-pink.svg" alt="" />
+      <p class="font-bold text-pinkk-100">Voley <small>(mixto)</small></p>
+    </div>
+    <div class="flex gap-4 justify-start items-center">
+      <img src="../../../../assets/svg-icons/square-pink.svg" alt="" />
+      {{cancha.largo_voley}}m x {{cancha.ancho_voley}}m
+    </div>
+    <div class="flex gap-4 justify-start items-center">
+      <img src="../../../../assets/svg-icons/sun-pink.svg" alt="" />
+      <div>S/ {{cancha.precio_dia_voley}} <span class="font-light text-xs">hora</span></div>
+    </div>
+    <div class="flex gap-4 justify-start items-center">
+      <img src="../../../../assets/svg-icons/moon-stars-pink.svg" alt="" />
+      <div>S/ {{cancha.precio_noche_voley}} <span class="font-light text-xs">hora</span></div>
+    </div>
+    <button  (click)="onSelect('voley')"
+      class="flex gap-2 justify-center items-center bg-pinkk-100 rounded-lg py-2 text-white hover:scale-105 hover:duration-100"
+    >
+      <p>Ver horario</p>
+      <svg
+        width="16"
+        height="14"
+        viewBox="0 0 16 14"
+        fill="none"
+        xmlns="http://www.w3.org/2000/svg"
+      >
+        <path
+          d="M9 1L15 7M15 7L9 13M15 7H1"
+          stroke="#F0FDF3"
+          stroke-width="2"
+          stroke-linecap="round"
+          stroke-linejoin="round"
+        />
+      </svg>
+    </button>
+  </div>
+  }
 </div>

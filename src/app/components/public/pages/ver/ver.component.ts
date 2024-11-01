@@ -35,7 +35,7 @@ export class VerComponent implements OnInit {
 
   ahora: Date = new Date();
 
-  public numbero = 1;
+  public tipo_cancha = 'futbol';
 
   constructor(
     private _router: Router,
@@ -54,6 +54,10 @@ export class VerComponent implements OnInit {
     this.horasReserva = 1;
     this.fechaSeleccionada = new Date();
     this.inicializarBotonesHoras();
+  }
+
+  handleIdcatalogos(tipo_cancha: string) {
+    this.tipo_cancha = tipo_cancha;
   }
 
   private inicializarBotonesHoras() {
@@ -122,6 +126,13 @@ export class VerComponent implements OnInit {
             this.load_data = false;
           } else if (response.data != undefined) {
             this.canchas = response.data;
+
+            if (this.canchas[0].tipo === 'Fútbol/Futsal' || this.canchas[0].tipo === 'Mixto') {
+              this.tipo_cancha = 'futbol';
+            } else {
+              this.tipo_cancha = 'voley';
+            }
+
             this.load_data = false;
             this.click_ver(response.data[0]._id);
           }

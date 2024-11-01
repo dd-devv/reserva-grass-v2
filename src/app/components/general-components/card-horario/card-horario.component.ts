@@ -7,6 +7,6 @@ import { Component, Input } from '@angular/core';
 })
 export class CardHorarioComponent {
 
-  @Input() tipo!: 'futbol' | 'voley';
+  @Input() tipo!: string;
 
 }

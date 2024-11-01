@@ -20,7 +20,6 @@ export class CardEmpresaComponent implements OnInit {
 
   ngOnInit(): void {
     if(this.caracteristicas) {
-      console.log(this.caracteristicas);
     }
   }
 }
