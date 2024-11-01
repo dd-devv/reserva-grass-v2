@@ -51,3 +51,31 @@
   .wrapper {
   }
 }
+
+@media screen and (min-width: 576px) {
+  /* #registro-empresa-component {
+      flex-direction: row;
+    } */
+}
+
+@media screen and (min-width: 900px) {
+  #registro-empresa-component {
+    flex-direction: row;
+  }
+  .img-form {
+    display: flex !important;
+    justify-content: center;
+    width: 50%;
+    /* justify-content: center; */
+  }
+  .form-content {
+    width: 50%;
+  }
+  .title-header {
+    display: none;
+  }
+}
+@media screen and (min-width: 1200px) {
+  .wrapper {
+  }
+}
