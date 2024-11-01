@@ -45,7 +45,7 @@ export class AuthService {
  
   
   public isAuthenticatedUser(): boolean {
-    return this.isAuthenticatedByRole('ADMIN');
+    return this.isAuthenticatedByRole('USER');
   }
 
   public isAuthenticatedAdmin(): boolean {
