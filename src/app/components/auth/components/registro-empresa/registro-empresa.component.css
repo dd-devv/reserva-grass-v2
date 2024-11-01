@@ -1,48 +1,53 @@
 #registro-empresa-component {
+  display: flex;
+  flex-direction: column;
+
+  .img-form {
+    border-radius: 16px;
+    display: none;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    width: 100%;
+    background-image: url("../../../../../assets/img/login-image.jpg");
+    background-size: cover; /* Hace que la imagen cubra todo el contenedor */
+    background-repeat: no-repeat; /* Evita que la imagen se repita */
+    background-position: center;
+  }
+
+  .form-content {
     display: flex;
     flex-direction: column;
-
-    .img-form {
-      display: none;
-      justify-content: center;
-      align-items: center;
-      height: 100%;
-      width: 100%;
-    }	
-
-    .form-content {
-      display: flex;
-      flex-direction: column;
-      margin: auto;
-      width: 100%;
-      max-width: 500px;
-    }	
+    margin: auto;
+    width: 100%;
+    max-width: 500px;
   }
-  
-  @media screen and (min-width: 576px) {
-    /* #registro-empresa-component {
+}
+
+@media screen and (min-width: 576px) {
+  /* #registro-empresa-component {
       flex-direction: row;
     } */
-    .img-form {
-      justify-content: center;
-    }
+}
+
+@media screen and (min-width: 900px) {
+  #registro-empresa-component {
+    flex-direction: row;
   }
-  
-  @media screen and (min-width: 900px) {
-    #registro-empresa-component {
-      flex-direction: row;
-    }
-    .img-form {
-        display: flex !important;
-        width: 50%;
-      /* justify-content: center; */
-    }
-    .form-content {
-      width: 50%;
-    }
+  .img-form {
+    display: flex !important;
+    justify-content: center;
+    width: 50%;
+    /* justify-content: center; */
   }
-  @media screen and (min-width: 1200px) {
-    .wrapper {
-    }
+  .form-content {
+    width: 50%;
   }
-  
+  .title-header {
+    display: none;
+  }
+}
+@media screen and (min-width: 1200px) {
+  .wrapper {
+  }
+}
