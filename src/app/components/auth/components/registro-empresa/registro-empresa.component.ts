@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { FormBuilder, FormGroup, Validators } from '@angular/forms';
+import { AbstractControl, FormBuilder, FormGroup, ValidationErrors, Validators } from '@angular/forms';
 import { Title } from '@angular/platform-browser';
 import { Router } from '@angular/router';
 import { GuestService } from '../../../../services/guest.service';
@@ -96,6 +96,10 @@ export class RegistroEmpresaComponent implements OnInit {
   map?: google.maps.Map;
   selectedLocation: google.maps.LatLngLiteral | null = null;
 
+  public step = 1;
+  showPassword = false;
+  showConfirmPassword = false;
+
   constructor(
     private fb: FormBuilder,
     private router: Router,
@@ -106,22 +110,6 @@ export class RegistroEmpresaComponent implements OnInit {
   ) {
     this.loadRegions();
 
-    this.registrationForm = this.fb.group({
-      nombre: ['', Validators.required],
-      direccion: ['', Validators.required],
-      email: ['', [Validators.required, Validators.email]],
-      telefono: ['', Validators.required],
-      telefono_fijo: [''],
-      region: ['', Validators.required],
-      provincia: ['', Validators.required],
-      distrito: ['', Validators.required],
-      ubicacion: ['', Validators.required],
-      referencia: [''],
-      horario_atencion: ['', Validators.required],
-      password: ['', [Validators.required, Validators.minLength(6)]],
-      confirmPassword: ['', Validators.required]
-    }, { validator: this.passwordMatchValidator });
-
     this.characteristicsForm = this.fb.group({
       techado: [false],
       canchas_futsal: [0, [Validators.min(0)]],
@@ -129,15 +117,120 @@ export class RegistroEmpresaComponent implements OnInit {
       iluminacion: [false],
       garaje: [false]
     });
+
+    this.registrationForm = this.fb.group({
+      nombre: ['', Validators.required],
+      direccion: ['', Validators.required],
+      email: ['', [Validators.required, this.gmailValidator()]],
+      telefono: ['', [Validators.required, this.phoneValidator()]],
+      telefono_fijo: ['', [this.telefonoFijoValidator]], // Opcional con validación
+      region: ['', Validators.required],
+      provincia: ['', Validators.required],
+      distrito: ['', Validators.required],
+      ubicacion: ['', Validators.required],
+      referencia: ['', Validators.required],
+      horario_inicio: ['', [Validators.required, this.horaValidator]],
+      horario_fin: ['', [Validators.required, this.horaValidator]],
+      password: ['', [Validators.required, Validators.minLength(6)]],
+      confirmPassword: ['', Validators.required]
+    }, { validator: [this.passwordMatchValidator, this.horasRangeValidator] });
+
   }
 
   ngOnInit(): void {
     this.title.setTitle('Registro de empresas');
   }
 
-  private passwordMatchValidator(g: FormGroup) {
-    return g.get('password')?.value === g.get('confirmPassword')?.value
-      ? null : { mismatch: true };
+  togglePasswordVisibility(field: 'password' | 'confirmPassword'): void {
+    if (field === 'password') {
+      this.showPassword = !this.showPassword;
+    } else {
+      this.showConfirmPassword = !this.showConfirmPassword;
+    }
+  }
+
+  private gmailValidator() {
+    return (control: AbstractControl): ValidationErrors | null => {
+      if (!control.value) return null;
+      const isGmail = control.value.toLowerCase().endsWith('@gmail.com');
+      return isGmail ? null : { invalidGmail: true };
+    };
+  }
+
+  private phoneValidator() {
+    return (control: AbstractControl): ValidationErrors | null => {
+      if (!control.value) return null;
+      const phonePattern = /^9\d{8}$/;
+      return phonePattern.test(control.value) ? null : { invalidPhone: true };
+    };
+  }
+
+  private passwordMatchValidator(group: FormGroup): ValidationErrors | null {
+    const password = group.get('password');
+    const confirmPassword = group.get('confirmPassword');
+
+    if (!password || !confirmPassword) return null;
+
+    return password.value === confirmPassword.value ? null : { passwordMismatch: true };
+  }
+
+  // Validador personalizado para teléfono fijo
+  private telefonoFijoValidator(control: AbstractControl): ValidationErrors | null {
+    if (!control.value) return null; // Permite valor vacío
+    const valid = /^\d+$/.test(control.value);
+    return valid ? null : { invalidLandline: true };
+  }
+
+  // Validador personalizado para horas
+  private horaValidator(control: AbstractControl): ValidationErrors | null {
+    if (!control.value) return null;
+    const hora = parseInt(control.value);
+    const valid = !isNaN(hora) && hora >= 0 && hora <= 23;
+    return valid ? null : { invalidTime: true };
+  }
+
+  // Validador de rango de horas
+  private horasRangeValidator(group: AbstractControl): ValidationErrors | null {
+    if (group instanceof FormGroup) {
+      const inicio = group.get('horario_inicio')?.value;
+      const fin = group.get('horario_fin')?.value;
+
+      if (inicio && fin) {
+        const inicioHora = parseInt(inicio);
+        const finHora = parseInt(fin);
+
+        if (inicioHora >= finHora) {
+          return { invalidTimeRange: true };
+        }
+      }
+    }
+    return null;
+  }
+
+  getFieldError(field: string): string {
+    const control = this.registrationForm.get(field);
+    if (!control || !control.errors) return '';
+
+    const errors = control.errors;
+    const errorMessages: { [key: string]: string } = {
+      required: 'Este campo es requerido',
+      email: 'Formato de correo inválido',
+      invalidGmail: 'Solo se permiten correos de Gmail',
+      minlength: `Mínimo ${errors['minlength']?.requiredLength} caracteres`,
+      invalidPhone: 'El teléfono debe empezar con 9 y tener 9 dígitos',
+      invalidLandline: 'Solo se permiten números en el teléfono fijo',
+      invalidTime: 'Debe ser una hora entre 00 y 23',
+      invalidTimeRange: 'La hora de inicio debe ser menor a la hora de fin',
+      passwordMismatch: 'Las contraseñas no coinciden'
+    };
+
+    const firstError = Object.keys(errors)[0];
+    return errorMessages[firstError] || 'Error de validación';
+  }
+
+  isValidField(field: string): boolean {
+    const control = this.registrationForm.get(field);
+    return control ? control.errors !== null && control.touched : false;
   }
 
   private async loadRegions(): Promise<void> {
@@ -201,6 +294,10 @@ export class RegistroEmpresaComponent implements OnInit {
     });
   }
 
+  nextStep(value: number) {
+    this.step = value;
+  }
+
   async onSubmit(): Promise<void> {
     if (this.registrationForm.invalid) {
       this.toastr.error('Por favor complete todos los campos requeridos');
@@ -221,7 +318,11 @@ export class RegistroEmpresaComponent implements OnInit {
 
       const characteristics: CompanyCharacteristics = {
         empresa: response.data._id,
-        ...this.characteristicsForm.value
+        techado: false,
+        canchas_futsal: 0,
+        canchas_voley: 0,
+        iluminacion: false,
+        garaje: false
       };
 
       await this.userService.crear_caracteristicas_empresa(
@@ -237,9 +338,5 @@ export class RegistroEmpresaComponent implements OnInit {
     } finally {
       this.isLoading = false;
     }
-  }
-
-  togglePasswordVisibility(): void {
-    this.passwordVisible = !this.passwordVisible;
   }
 }
