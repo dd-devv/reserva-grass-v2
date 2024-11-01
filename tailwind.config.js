@@ -49,6 +49,8 @@ module.exports = {
       fontFamily: {
         quicksand: ["Quicksand", "sans-serif"],
         jetBrainsMono: ["JetBrains Mono", "sans-serif"],
+        chainalisisRegular: ["chainalysis-regular", "sans-serif"],
+        chainalisisBold: ["chainalysis-bold", "sans-serif"],
       },
       colors: {
         border: "hsl(var(--border))",
@@ -146,6 +148,7 @@ module.exports = {
       // },
     },
   },
+<<<<<<< Updated upstream
   plugins: [
     require('flowbite/plugin') 
   ],
@@ -160,4 +163,7 @@ module.exports = {
     logs: true, // Shows info about daisyUI version and used config in the console when building your CSS
     themeRoot: ":root", // The element that receives theme color CSS variables
   },
+=======
+  plugins: [require("flowbite/plugin")],
+>>>>>>> Stashed changes
 };
