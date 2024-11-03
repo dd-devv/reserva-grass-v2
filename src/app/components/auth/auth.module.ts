@@ -8,6 +8,7 @@ import { RegistroComponent } from './components/registro/registro.component';
 import { RegistroEmpresaComponent } from './components/registro-empresa/registro-empresa.component';
 import { GeneralComponentsModule } from "../general-components/general-components.module";
 import { ReactiveFormsModule } from '@angular/forms';
+import { GoogleMapsModule } from '@angular/google-maps';
 
 
 @NgModule({
@@ -21,7 +22,8 @@ import { ReactiveFormsModule } from '@angular/forms';
     CommonModule,
     AuthRoutingModule,
     GeneralComponentsModule,
-    ReactiveFormsModule
-]
+    ReactiveFormsModule,
+    GoogleMapsModule
+  ]
 })
 export class AuthModule { }

@@ -6,6 +6,8 @@ import { GuestService } from '../../../../services/guest.service';
 import { UserService } from '../../../../services/user.service';
 import { ToastrService } from 'ngx-toastr';
 import { initFlowbite } from 'flowbite';
+import { environment } from '../../../../../environments/environment';
+import { HttpClient } from '@angular/common/http';
 
 interface Region {
   id: string;
@@ -61,7 +63,7 @@ interface CompanyCharacteristics {
 export class RegistroEmpresaComponent implements OnInit {
 
 
- 
+
   // Forms - initialize with definite assignment assertion
   registrationForm: FormGroup;
   characteristicsForm: FormGroup;
@@ -79,26 +81,53 @@ export class RegistroEmpresaComponent implements OnInit {
   isDisabledProvincia = true;
   isDisabledDistrito = true;
 
-  // Map configuration
-  readonly mapConfig = {
-    center: { lat: -13.1588, lng: -74.2232 },
-    zoom: 13,
-    styles: [
-      {
-        "featureType": "water",
-        "elementType": "geometry",
-        "stylers": [{ "color": "#e9e9e9" }, { "lightness": 17 }]
-      },
-      {
-        "featureType": "landscape",
-        "elementType": "geometry",
-        "stylers": [{ "color": "#f5f5f5" }, { "lightness": 20 }]
-      }
-    ]
+  center: google.maps.LatLngLiteral = { lat: -13.1588, lng: -74.2232 };
+  zoom = 13;
+  map: google.maps.Map | undefined;
+  marker: google.maps.Marker | undefined;
+  selectedLocation: google.maps.LatLngLiteral | null = null;
+  latitude: number | null = null;
+  longitude: number | null = null;
+  googleMapsLink: string = '';
+
+  // Define tus estilos de mapa light
+  lightMapStyles: google.maps.MapTypeStyle[] = [
+    {
+      "featureType": "water",
+      "elementType": "geometry",
+      "stylers": [
+        {
+          "color": "#e9e9e9"
+        },
+        {
+          "lightness": 17
+        }
+      ]
+    },
+    {
+      "featureType": "landscape",
+      "elementType": "geometry",
+      "stylers": [
+        {
+          "color": "#f5f5f5"
+        },
+        {
+          "lightness": 20
+        }
+      ]
+    },
+    // Agrega más estilos aquí
+  ];
+
+  mapOptions: google.maps.MapOptions = {
+    mapTypeId: google.maps.MapTypeId.SATELLITE,
+    center: this.center,
+    zoom: this.zoom
   };
 
-  map?: google.maps.Map;
-  selectedLocation: google.maps.LatLngLiteral | null = null;
+  onMapReady(map: google.maps.Map) {
+    this.map = map;
+  }
 
   public step = 1;
   showPassword = false;
@@ -110,7 +139,8 @@ export class RegistroEmpresaComponent implements OnInit {
     private title: Title,
     private guestService: GuestService,
     private userService: UserService,
-    private toastr: ToastrService
+    private toastr: ToastrService,
+    private http: HttpClient
   ) {
     this.loadRegions();
 
@@ -287,16 +317,78 @@ export class RegistroEmpresaComponent implements OnInit {
     }
   }
 
-  onMapClick(event: google.maps.MapMouseEvent): void {
+  async onMapClick(event: google.maps.MapMouseEvent) {
     if (!event.latLng) return;
 
     const lat = event.latLng.lat();
     const lng = event.latLng.lng();
 
     this.selectedLocation = { lat, lng };
-    this.registrationForm.patchValue({
-      ubicacion: `https://www.google.com/maps?q=${lat},${lng}`
-    });
+
+    // Crear instancia del geocoder
+    const geocoder = new google.maps.Geocoder();
+
+    // Construir la dirección completa
+    let fullAddress = await this.getAddressFromCoordinates(lat, lng);
+
+    // Corregimos la tipificación y agregamos el manejo de null
+    geocoder.geocode(
+      { location: { lat, lng } },
+      (results: google.maps.GeocoderResult[] | null, status: google.maps.GeocoderStatus) => {
+        if (status === 'OK' && results && results.length > 0) {
+          // Obtener los componentes de la dirección
+          const addressComponents = results[0].address_components;
+
+          // Variables para almacenar los datos
+          let district = '';
+          let province = '';
+          let department = '';
+
+          // Recorrer los componentes y extraer la información
+          addressComponents.forEach(component => {
+            const types = component.types;
+
+            if (types.includes('sublocality_level_1')) {
+              district = component.long_name;
+            }
+            if (types.includes('administrative_area_level_2')) {
+              province = component.long_name;
+            }
+            if (types.includes('administrative_area_level_1')) {
+              department = component.long_name;
+            }
+          });
+
+          // Actualizar el formulario
+          this.registrationForm.patchValue({
+            ubicacion: `https://www.google.com/maps?q=${lat},${lng}`,
+            direccion: fullAddress,
+            distrito: district,
+            provincia: province,
+            region: department
+          });
+        } else {
+          console.error('Geocoder falló debido a: ' + status);
+        }
+      }
+    );
+  }
+
+  //Obtener dirección a partie de una coordenada
+  private async getAddressFromCoordinates(latitude: number, longitude: number): Promise<string> {
+    const apiKey = environment.googleMapsApiKey; // Reemplaza con tu clave de API de Google Maps
+    const url = `https://maps.googleapis.com/maps/api/geocode/json?latlng=${latitude},${longitude}&key=${apiKey}`;
+
+    try {
+      const response: any = await this.http.get(url).toPromise();
+      if (response && response['results'] && response['results'].length > 0) {
+        return response['results'][0]['formatted_address'];
+      } else {
+        throw new Error('No se encontró ninguna dirección para las coordenadas proporcionadas.');
+      }
+    } catch (error) {
+      throw new Error('Error al obtener la dirección desde la API de Geocodificación.');
+    }
   }
 
   nextStep(value: number) {
@@ -305,6 +397,7 @@ export class RegistroEmpresaComponent implements OnInit {
 
   async onSubmit(): Promise<void> {
     if (this.registrationForm.invalid) {
+      this.registrationForm.markAllAsTouched();
       this.toastr.error('Por favor complete todos los campos requeridos');
       return;
     }
