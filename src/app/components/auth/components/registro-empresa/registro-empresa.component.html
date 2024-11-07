@@ -5,10 +5,7 @@
   Toggle modal
 </button> -->
 
-<div
-  class="flex flex-col w-full p-2 bg-white gap-2 gap-y-4"
-  id="registro-empresa-component"
->
+<div class="flex flex-col w-full p-2 bg-white gap-2 gap-y-4" id="registro-empresa-component">
   <div class="img-form">
     <p class="font-semibold text-2xl text-center">Registra tu Empresa</p>
     <p class="text-center text-pretty text-sm text-slate-700 mb-5 mt-3">
@@ -28,31 +25,23 @@
 
       @if (step === 1) {
       <div class="flex justify-center items-center w-full flex-wrap">
-        <div
-          class="w-10 h-10 rounded-full bg-forestGreen-500 flex justify-center items-center cursor-pointer"
-        >
+        <div class="w-10 h-10 rounded-full bg-forestGreen-500 flex justify-center items-center cursor-pointer">
           <a class="text-gray-100 text-2xl font-bold">1</a>
         </div>
         <div class="bg-forestGreen-200 w-32 h-[2px]"></div>
-        <div
-          class="w-10 h-10 rounded-full bg-forestGreen-200 flex justify-center items-center cursor-pointer"
-          (click)="nextStep(2)"
-        >
+        <div class="w-10 h-10 rounded-full bg-forestGreen-200 flex justify-center items-center cursor-pointer"
+          (click)="nextStep(2)">
           <a class="text-forestGreen-500 text-2xl font-bold">2</a>
         </div>
       </div>
       } @if (step === 2) {
       <div class="flex justify-center items-center w-full flex-wrap">
-        <div
-          class="w-10 h-10 rounded-full bg-forestGreen-500 flex justify-center items-center cursor-pointer"
-          (click)="nextStep(1)"
-        >
+        <div class="w-10 h-10 rounded-full bg-forestGreen-500 flex justify-center items-center cursor-pointer"
+          (click)="nextStep(1)">
           <a class="text-gray-100 text-2xl font-bold">1</a>
         </div>
         <div class="bg-forestGreen-500 w-32 h-[2px]"></div>
-        <div
-          class="w-10 h-10 rounded-full bg-forestGreen-500 flex justify-center items-center cursor-pointer"
-        >
+        <div class="w-10 h-10 rounded-full bg-forestGreen-500 flex justify-center items-center cursor-pointer">
           <a class="text-gray-100 text-2xl font-bold">2</a>
         </div>
       </div>
@@ -60,19 +49,12 @@
     </div>
 
     <div>
-      <form
-        (ngSubmit)="onSubmit()"
-        [formGroup]="registrationForm"
-        autocomplete="off"
-        class="flex flex-col justify-between rounded-l rounded-2xl border border-slate-400 px-2.5 py-8 gap-2.5"
-      >
+      <form (ngSubmit)="onSubmit()" [formGroup]="registrationForm" autocomplete="off"
+        class="flex flex-col justify-between rounded-l rounded-2xl border border-slate-400 px-2.5 py-8 gap-2.5">
         <!-- Paso 1 -->
         @if (step === 1) {
         <div>
-          <label
-            for="nombre"
-            class="block mb-1 text-sm font-medium text-gray-900 dark:text-white"
-          >
+          <label for="nombre" class="block mb-1 text-sm font-medium text-gray-900 dark:text-white">
             Nombre de la empresa
 
             <!-- Para mostrar texto de error de las validaciones -->
@@ -82,20 +64,12 @@
             </span>
             }
           </label>
-          <input
-            formControlName="nombre"
-            id="nombre"
-            placeholder="Ingrese el nombre de la empresa"
-            type="text"
-            class="block w-full p-2 h-9 text-gray-900 border border-gray-300 rounded-md bg-gray-50 text-xs focus:ring-blue-500 focus:border-blue-500 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
-          />
+          <input formControlName="nombre" id="nombre" placeholder="Ingrese el nombre de la empresa" type="text"
+            class="block w-full p-2 h-9 text-gray-900 border border-gray-300 rounded-md bg-gray-50 text-xs focus:ring-blue-500 focus:border-blue-500 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500" />
         </div>
 
         <div>
-          <label
-            for="email"
-            class="block mb-1 text-sm font-medium text-gray-900 dark:text-white"
-          >
+          <label for="email" class="block mb-1 text-sm font-medium text-gray-900 dark:text-white">
             Correo
 
             <!-- Para mostrar texto de error de las validaciones -->
@@ -105,20 +79,12 @@
             </span>
             }
           </label>
-          <input
-            formControlName="email"
-            id="email"
-            placeholder="Ingrese su correo"
-            type="text"
-            class="block w-full p-2 h-9 text-gray-900 border border-gray-300 rounded-md bg-gray-50 text-xs focus:ring-blue-500 focus:border-blue-500 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
-          />
+          <input formControlName="email" id="email" placeholder="Ingrese su correo" type="text"
+            class="block w-full p-2 h-9 text-gray-900 border border-gray-300 rounded-md bg-gray-50 text-xs focus:ring-blue-500 focus:border-blue-500 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500" />
         </div>
 
         <div>
-          <label
-            for="telefono"
-            class="block mb-1 text-sm font-medium text-gray-900 dark:text-white"
-          >
+          <label for="telefono" class="block mb-1 text-sm font-medium text-gray-900 dark:text-white">
             Whatsapp
 
             <!-- Para mostrar texto de error de las validaciones -->
@@ -128,21 +94,12 @@
             </span>
             }
           </label>
-          <input
-            formControlName="telefono"
-            id="telefono"
-            maxlength="9"
-            placeholder="Ingrese su Whatsapp"
-            type="text"
-            class="block w-full p-2 h-9 text-gray-900 border border-gray-300 rounded-md bg-gray-50 text-xs focus:ring-blue-500 focus:border-blue-500 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
-          />
+          <input formControlName="telefono" id="telefono" maxlength="9" placeholder="Ingrese su Whatsapp" type="text"
+            class="block w-full p-2 h-9 text-gray-900 border border-gray-300 rounded-md bg-gray-50 text-xs focus:ring-blue-500 focus:border-blue-500 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500" />
         </div>
 
         <div>
-          <label
-            for="telefono_fijo"
-            class="block mb-1 text-sm font-medium text-gray-900 dark:text-white"
-          >
+          <label for="telefono_fijo" class="block mb-1 text-sm font-medium text-gray-900 dark:text-white">
             Teléfono fijo (opcional)
 
             <!-- Para mostrar texto de error de las validaciones -->
@@ -152,22 +109,14 @@
             </span>
             }
           </label>
-          <input
-            formControlName="telefono_fijo"
-            id="telefono_fijo"
-            maxlength="9"
-            placeholder="Ingrese su teléfono fijo"
+          <input formControlName="telefono_fijo" id="telefono_fijo" maxlength="9" placeholder="Ingrese su teléfono fijo"
             type="text"
-            class="block w-full p-2 h-9 text-gray-900 border border-gray-300 rounded-md bg-gray-50 text-xs focus:ring-blue-500 focus:border-blue-500 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
-          />
+            class="block w-full p-2 h-9 text-gray-900 border border-gray-300 rounded-md bg-gray-50 text-xs focus:ring-blue-500 focus:border-blue-500 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500" />
         </div>
 
         <!-- Password -->
         <div>
-          <label
-            for="password"
-            class="block mb-1 text-sm font-medium text-gray-900 dark:text-white"
-          >
+          <label for="password" class="block mb-1 text-sm font-medium text-gray-900 dark:text-white">
             Contraseña @if (isValidField('password')) {
             <span class="text-red-600 text-xs">
               {{ getFieldError("password") }}*
@@ -175,53 +124,24 @@
             }
           </label>
           <div class="relative">
-            <input
-              formControlName="password"
-              id="password"
-              [type]="showPassword ? 'text' : 'password'"
+            <input formControlName="password" id="password" [type]="showPassword ? 'text' : 'password'"
               placeholder="Ingrese su contraseña"
-              class="block w-full p-2 h-9 text-gray-900 border border-gray-300 rounded-md bg-gray-50 text-xs focus:ring-blue-500 focus:border-blue-500 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
-            />
-            <button
-              type="button"
-              (click)="togglePasswordVisibility('password')"
-              class="absolute inset-y-0 right-0 flex items-center pr-3 text-gray-600 dark:text-gray-400"
-            >
-              <svg
-                class="w-4 h-4"
-                [class.hidden]="showPassword"
-                fill="none"
-                stroke="currentColor"
-                viewBox="0 0 24 24"
-                xmlns="http://www.w3.org/2000/svg"
-              >
-                <path
-                  stroke-linecap="round"
-                  stroke-linejoin="round"
-                  stroke-width="2"
-                  d="M15 12a3 3 0 11-6 0 3 3 0 016 0z"
-                ></path>
-                <path
-                  stroke-linecap="round"
-                  stroke-linejoin="round"
-                  stroke-width="2"
-                  d="M2.458 12C3.732 7.943 7.523 5 12 5c4.478 0 8.268 2.943 9.542 7-1.274 4.057-5.064 7-9.542 7-4.477 0-8.268-2.943-9.542-7z"
-                ></path>
+              class="block w-full p-2 h-9 text-gray-900 border border-gray-300 rounded-md bg-gray-50 text-xs focus:ring-blue-500 focus:border-blue-500 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500" />
+            <button type="button" (click)="togglePasswordVisibility('password')"
+              class="absolute inset-y-0 right-0 flex items-center pr-3 text-gray-600 dark:text-gray-400">
+              <svg class="w-4 h-4" [class.hidden]="showPassword" fill="none" stroke="currentColor" viewBox="0 0 24 24"
+                xmlns="http://www.w3.org/2000/svg">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                  d="M15 12a3 3 0 11-6 0 3 3 0 016 0z"></path>
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                  d="M2.458 12C3.732 7.943 7.523 5 12 5c4.478 0 8.268 2.943 9.542 7-1.274 4.057-5.064 7-9.542 7-4.477 0-8.268-2.943-9.542-7z">
+                </path>
               </svg>
-              <svg
-                class="w-4 h-4"
-                [class.hidden]="!showPassword"
-                fill="none"
-                stroke="currentColor"
-                viewBox="0 0 24 24"
-                xmlns="http://www.w3.org/2000/svg"
-              >
-                <path
-                  stroke-linecap="round"
-                  stroke-linejoin="round"
-                  stroke-width="2"
-                  d="M13.875 18.825A10.05 10.05 0 0112 19c-4.478 0-8.268-2.943-9.543-7a9.97 9.97 0 011.563-3.029m5.858.908a3 3 0 114.243 4.243M9.878 9.878l4.242 4.242M9.88 9.88l-3.29-3.29m7.532 7.532l3.29 3.29M3 3l3.59 3.59m0 0A9.953 9.953 0 0112 5c4.478 0 8.268 2.943 9.543 7a10.025 10.025 0 01-4.132 5.411m0 0L21 21"
-                ></path>
+              <svg class="w-4 h-4" [class.hidden]="!showPassword" fill="none" stroke="currentColor" viewBox="0 0 24 24"
+                xmlns="http://www.w3.org/2000/svg">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                  d="M13.875 18.825A10.05 10.05 0 0112 19c-4.478 0-8.268-2.943-9.543-7a9.97 9.97 0 011.563-3.029m5.858.908a3 3 0 114.243 4.243M9.878 9.878l4.242 4.242M9.88 9.88l-3.29-3.29m7.532 7.532l3.29 3.29M3 3l3.59 3.59m0 0A9.953 9.953 0 0112 5c4.478 0 8.268 2.943 9.543 7a10.025 10.025 0 01-4.132 5.411m0 0L21 21">
+                </path>
               </svg>
             </button>
           </div>
@@ -229,68 +149,36 @@
 
         <!-- Confirm Password -->
         <div>
-          <label
-            for="confirmPassword"
-            class="block mb-1 text-sm font-medium text-gray-900 dark:text-white"
-          >
+          <label for="confirmPassword" class="block mb-1 text-sm font-medium text-gray-900 dark:text-white">
             Confirmar Contraseña @if (isValidField('confirmPassword') ||
             registrationForm.errors?.['passwordMismatch']) {
             <span class="text-red-600 text-xs">
               {{
-                getFieldError("confirmPassword") ||
-                  "Las contraseñas no coinciden"
+              getFieldError("confirmPassword") ||
+              "Las contraseñas no coinciden"
               }}*
             </span>
             }
           </label>
           <div class="relative">
-            <input
-              formControlName="confirmPassword"
-              id="confirmPassword"
-              [type]="showConfirmPassword ? 'text' : 'password'"
-              placeholder="Confirme su contraseña"
-              class="block w-full p-2 h-9 text-gray-900 border border-gray-300 rounded-md bg-gray-50 text-xs focus:ring-blue-500 focus:border-blue-500 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
-            />
-            <button
-              type="button"
-              (click)="togglePasswordVisibility('confirmPassword')"
-              class="absolute inset-y-0 right-0 flex items-center pr-3 text-gray-600 dark:text-gray-400"
-            >
-              <svg
-                class="w-4 h-4"
-                [class.hidden]="showConfirmPassword"
-                fill="none"
-                stroke="currentColor"
-                viewBox="0 0 24 24"
-                xmlns="http://www.w3.org/2000/svg"
-              >
-                <path
-                  stroke-linecap="round"
-                  stroke-linejoin="round"
-                  stroke-width="2"
-                  d="M15 12a3 3 0 11-6 0 3 3 0 016 0z"
-                ></path>
-                <path
-                  stroke-linecap="round"
-                  stroke-linejoin="round"
-                  stroke-width="2"
-                  d="M2.458 12C3.732 7.943 7.523 5 12 5c4.478 0 8.268 2.943 9.542 7-1.274 4.057-5.064 7-9.542 7-4.477 0-8.268-2.943-9.542-7z"
-                ></path>
+            <input formControlName="confirmPassword" id="confirmPassword"
+              [type]="showConfirmPassword ? 'text' : 'password'" placeholder="Confirme su contraseña"
+              class="block w-full p-2 h-9 text-gray-900 border border-gray-300 rounded-md bg-gray-50 text-xs focus:ring-blue-500 focus:border-blue-500 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500" />
+            <button type="button" (click)="togglePasswordVisibility('confirmPassword')"
+              class="absolute inset-y-0 right-0 flex items-center pr-3 text-gray-600 dark:text-gray-400">
+              <svg class="w-4 h-4" [class.hidden]="showConfirmPassword" fill="none" stroke="currentColor"
+                viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                  d="M15 12a3 3 0 11-6 0 3 3 0 016 0z"></path>
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                  d="M2.458 12C3.732 7.943 7.523 5 12 5c4.478 0 8.268 2.943 9.542 7-1.274 4.057-5.064 7-9.542 7-4.477 0-8.268-2.943-9.542-7z">
+                </path>
               </svg>
-              <svg
-                class="w-4 h-4"
-                [class.hidden]="!showConfirmPassword"
-                fill="none"
-                stroke="currentColor"
-                viewBox="0 0 24 24"
-                xmlns="http://www.w3.org/2000/svg"
-              >
-                <path
-                  stroke-linecap="round"
-                  stroke-linejoin="round"
-                  stroke-width="2"
-                  d="M13.875 18.825A10.05 10.05 0 0112 19c-4.478 0-8.268-2.943-9.543-7a9.97 9.97 0 011.563-3.029m5.858.908a3 3 0 114.243 4.243M9.878 9.878l4.242 4.242M9.88 9.88l-3.29-3.29m7.532 7.532l3.29 3.29M3 3l3.59 3.59m0 0A9.953 9.953 0 0112 5c4.478 0 8.268 2.943 9.543 7a10.025 10.025 0 01-4.132 5.411m0 0L21 21"
-                ></path>
+              <svg class="w-4 h-4" [class.hidden]="!showConfirmPassword" fill="none" stroke="currentColor"
+                viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                  d="M13.875 18.825A10.05 10.05 0 0112 19c-4.478 0-8.268-2.943-9.543-7a9.97 9.97 0 011.563-3.029m5.858.908a3 3 0 114.243 4.243M9.878 9.878l4.242 4.242M9.88 9.88l-3.29-3.29m7.532 7.532l3.29 3.29M3 3l3.59 3.59m0 0A9.953 9.953 0 0112 5c4.478 0 8.268 2.943 9.543 7a10.025 10.025 0 01-4.132 5.411m0 0L21 21">
+                </path>
               </svg>
             </button>
           </div>
@@ -301,10 +189,7 @@
 
         @if (step === 2) {
         <div>
-          <label
-            for="direccion"
-            class="block mb-1 text-sm font-medium text-gray-900 dark:text-white"
-          >
+          <label for="direccion" class="block mb-1 text-sm font-medium text-gray-900 dark:text-white">
             Direccción de la empresa @if (isValidField('direccion')) {
             <span class="text-red-600 text-xs">
               {{ getFieldError("direccion") }}*
@@ -312,99 +197,70 @@
             }
           </label>
           <div class="relative">
-            <input
-              formControlName="direccion"
-              id="direccion"
-              placeholder="Ingrese direccción"
-              type="text"
-              readonly
-              class="block w-full p-2 h-9 text-gray-900 border border-gray-300 rounded-md bg-gray-50 text-xs focus:ring-blue-500 focus:border-blue-500 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
-            />
+            <input formControlName="direccion" id="direccion" placeholder="Ingrese direccción" type="text" readonly
+              class="block w-full p-2 h-9 text-gray-900 border border-gray-300 rounded-md bg-gray-50 text-xs focus:ring-blue-500 focus:border-blue-500 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500" />
 
-            <button
-              class="absolute inset-y-0 right-0 flex items-center pr-3 text-gray-600 dark:text-gray-400"
-              onclick="my_modal_1.showModal()"
-            >
-              <svg
-                xmlns="http://www.w3.org/2000/svg"
-                width="16"
-                height="16"
-                fill="currentColor"
-                class="bi bi-geo-alt"
-                viewBox="0 0 16 16"
-              >
+            <button class="absolute inset-y-0 right-0 flex items-center pr-3 text-gray-600 dark:text-gray-400"
+              onclick="my_modal_1.showModal()">
+              <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-geo-alt"
+                viewBox="0 0 16 16">
                 <path
-                  d="M12.166 8.94c-.524 1.062-1.234 2.12-1.96 3.07A32 32 0 0 1 8 14.58a32 32 0 0 1-2.206-2.57c-.726-.95-1.436-2.008-1.96-3.07C3.304 7.867 3 6.862 3 6a5 5 0 0 1 10 0c0 .862-.305 1.867-.834 2.94M8 16s6-5.686 6-10A6 6 0 0 0 2 6c0 4.314 6 10 6 10"
-                />
-                <path
-                  d="M8 8a2 2 0 1 1 0-4 2 2 0 0 1 0 4m0 1a3 3 0 1 0 0-6 3 3 0 0 0 0 6"
-                />
+                  d="M12.166 8.94c-.524 1.062-1.234 2.12-1.96 3.07A32 32 0 0 1 8 14.58a32 32 0 0 1-2.206-2.57c-.726-.95-1.436-2.008-1.96-3.07C3.304 7.867 3 6.862 3 6a5 5 0 0 1 10 0c0 .862-.305 1.867-.834 2.94M8 16s6-5.686 6-10A6 6 0 0 0 2 6c0 4.314 6 10 6 10" />
+                <path d="M8 8a2 2 0 1 1 0-4 2 2 0 0 1 0 4m0 1a3 3 0 1 0 0-6 3 3 0 0 0 0 6" />
               </svg>
             </button>
 
             <!-- Main modal -->
-            <dialog
-              id="my_modal_1"
-              class="border relative bg-white rounded-lg shadow dark:bg-gray-700"
-            >
-              <div class="modal-box">
-                <h3 class="text-lg font-bold">
-                  Seleccione la ubicación de su cancha
-                </h3>
-                <form method="dialog">
-                  <button class="bg-blue-300">Aceptar</button>
-                  <!-- if there is a button in form, it will close the modal -->
-                </form>
 
-                <div class="map-container rounded">
-                  <google-map
-                    height="400px"
-                    width="100%"
-                    [center]="center"
-                    [zoom]="zoom"
-                    [options]="mapOptions"
-                    (mapClick)="onMapClick($event)"
-                  >
-                    <map-marker
-                      *ngIf="selectedLocation"
-                      [position]="selectedLocation"
-                    ></map-marker>
-                  </google-map>
+            <dialog id="my_modal_1" class="relative">
+              <!-- Overlay with blur -->
+              <div class="fixed inset-0 bg-black/30 backdrop-blur-sm" aria-hidden="true"></div>
+
+              <!-- Modal content -->
+              <div class="fixed inset-0 flex items-center justify-center p-4 ">
+                <div class="border rounded-lg shadow dark:bg-gray-700 bg-forestGreen-50 max-w-md w-full">
+                  <div class="modal-box flex flex-col p-4 gap-2">
+                    <h3 class="text-lg font-bold text-center">
+                      Seleccione la ubicación de su cancha
+                    </h3>
+
+                    <div class="map-container">
+                      <google-map  height="400px" width="100%" [center]="center" [zoom]="zoom" [options]="mapOptions"
+                        (mapClick)="onMapClick($event)">
+                        <map-marker *ngIf="selectedLocation" [position]="selectedLocation"></map-marker>
+                      </google-map>
+                    </div>
+
+                    <div class="modal-action">
+                      <form method="dialog">
+                        <button
+                          class="w-full bg-chambray-700 text-white h-9 rounded-md font-semibold hover:scale-105 hover:duration-75">
+                          Aceptar
+                        </button>
+                      </form>
+                    </div>
+                  </div>
                 </div>
-
-                <div class="modal-action"></div>
               </div>
-                     
             </dialog>
           </div>
         </div>
 
         <div>
-          <label
-            for="referencia"
-            class="block mb-1 text-sm font-medium text-gray-900 dark:text-white"
-          >
+          <label for="referencia" class="block mb-1 text-sm font-medium text-gray-900 dark:text-white">
             Referencia @if (isValidField('referencia')) {
             <span class="text-red-600 text-xs">
               {{ getFieldError("referencia") }}*
             </span>
             }
           </label>
-          <input
-            formControlName="referencia"
-            id="referencia"
-            maxlength="9"
-            placeholder="Ingrese la Referencia"
+          <input formControlName="referencia" id="referencia" maxlength="9" placeholder="Ingrese la Referencia"
             type="text"
-            class="block w-full p-2 h-9 text-gray-900 border border-gray-300 rounded-md bg-gray-50 text-xs focus:ring-blue-500 focus:border-blue-500 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
-          />
+            class="block w-full p-2 h-9 text-gray-900 border border-gray-300 rounded-md bg-gray-50 text-xs focus:ring-blue-500 focus:border-blue-500 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500" />
         </div>
 
         <div>
-          <label
-            for="horario_inicio"
-            class="block mb-1 text-sm font-medium text-gray-900 dark:text-white"
-          >
+          <label for="horario_inicio" class="block mb-1 text-sm font-medium text-gray-900 dark:text-white">
             Horario de atencion @if (isValidField('horario_inicio')) {
             <span class="text-red-600 text-xs">
               {{ getFieldError("horario_inicio") }}*
@@ -413,28 +269,17 @@
             registrationForm.errors?.['invalidTimeRange']) {
             <span class="text-red-600 text-xs">
               {{
-                getFieldError("horario_fin") ||
-                  "La hora fin debe ser mayor a la hora de inicio"
+              getFieldError("horario_fin") ||
+              "La hora fin debe ser mayor a la hora de inicio"
               }}*
             </span>
             }
           </label>
-          <input
-            formControlName="horario_inicio"
-            id="horario_inicio"
-            maxlength="9"
-            placeholder="Hora de Inicio"
+          <input formControlName="horario_inicio" id="horario_inicio" maxlength="9" placeholder="Hora de Inicio"
             type="text"
-            class="block w-full p-2 h-9 text-gray-900 border border-gray-300 rounded-md bg-gray-50 text-xs focus:ring-blue-500 focus:border-blue-500 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
-          />
-          <input
-            formControlName="horario_fin"
-            id="horario_fin"
-            maxlength="9"
-            placeholder="Hora final"
-            type="text"
-            class="block w-full p-2 h-9 text-gray-900 border border-gray-300 rounded-md bg-gray-50 text-xs focus:ring-blue-500 focus:border-blue-500 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
-          />
+            class="block w-full p-2 h-9 text-gray-900 border border-gray-300 rounded-md bg-gray-50 text-xs focus:ring-blue-500 focus:border-blue-500 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500" />
+          <input formControlName="horario_fin" id="horario_fin" maxlength="9" placeholder="Hora final" type="text"
+            class="block w-full p-2 h-9 text-gray-900 border border-gray-300 rounded-md bg-gray-50 text-xs focus:ring-blue-500 focus:border-blue-500 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500" />
         </div>
 
         <p class="text-center text-xs text-pretty text-balance mt-3">
@@ -442,18 +287,11 @@
           Términos y condiciones, y Políticas de privacidad
         </p>
         } @if (step === 1) {
-        <button
-          type="button"
-          (click)="nextStep(2)"
-          class="w-full bg-blue-600 text-white h-9 rounded-md mt-3"
-        >
+        <button type="button" (click)="nextStep(2)" class="w-full bg-blue-600 text-white h-9 rounded-md mt-3">
           Siguiente
         </button>
         } @if (step === 2) {
-        <button
-          type="submit"
-          class="w-full bg-blue-600 text-white h-9 rounded-md mt-3"
-        >
+        <button type="submit" class="w-full bg-blue-600 text-white h-9 rounded-md mt-3">
           Crear Cuenta
         </button>
         }
@@ -461,9 +299,7 @@
         <div class="inline-flex items-center justify-center w-full font-medium">
           <hr class="w-full h-px my-8 bg-gray-200 border-0 dark:bg-gray-700" />
           <div class="flex justify-center absolute">
-            <p
-              class="px-3 text-[12px] text-gray-900 bg-white left-1/2 dark:text-white dark:bg-gray-900"
-            >
+            <p class="px-3 text-[12px] text-gray-900 bg-white left-1/2 dark:text-white dark:bg-gray-900">
               ¿Ya tienes cuenta?
               <span class="text-blue-400">
                 <a [routerLink]="['/auth']"> Inicia Sesión </a>

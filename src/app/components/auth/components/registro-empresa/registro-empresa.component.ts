@@ -120,7 +120,7 @@ export class RegistroEmpresaComponent implements OnInit {
   ];
 
   mapOptions: google.maps.MapOptions = {
-    mapTypeId: google.maps.MapTypeId.SATELLITE,
+    mapTypeId: google.maps.MapTypeId.ROADMAP,
     center: this.center,
     zoom: this.zoom
   };
