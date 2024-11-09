@@ -8,5 +8,6 @@ import { Component, Input } from '@angular/core';
 export class CardHorarioComponent {
 
   @Input() tipo!: string;
+  @Input() botonesHoras!: any [];
 
 }
