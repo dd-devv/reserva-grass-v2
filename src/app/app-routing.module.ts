@@ -5,6 +5,7 @@ import { ContactComponent } from './components/public/pages/contact/contact.comp
 import { authenticatedUserGuard } from './guards/authenticated-user.guard';
 import { authAdminGuard } from './guards/auth-admin.guard';
 import { authUserGuard } from './guards/auth-user.guard';
+import { authGrassGuard } from './guards/auth-grass.guard';
 
 const routes: Routes = [
 
@@ -34,6 +35,13 @@ const routes: Routes = [
     path: 'admin',
     loadChildren: () => import('./components/admin/admin.module').then(m => m.AdminModule),
     canActivate: [authAdminGuard]
+  },
+
+  // Lazy load para el módulo de grass
+  {
+    path: 'grass',
+    loadChildren: () => import('./components/grass/grass.module').then(m => m.GrassModule),
+    canActivate: [authGrassGuard]
   },
 
 ];
