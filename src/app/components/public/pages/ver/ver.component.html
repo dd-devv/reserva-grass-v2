@@ -1,5 +1,5 @@
 <div class=" flex flex-col lg:flex-row w-full self-center justify-center gap-4 p-4">
-    <div class="flex flex-col  mb-4 overflow-y-auto gap-8 h-96">
+    <div class="flex flex-col  mb-4 overflow-y-auto overflow-hidden gap-8 h-96">
         @for (cancha of canchas; track $index) {
         <app-card-sport-features [cancha]="cancha" (tipo_cancha)="handleIdcatalogos($event)"></app-card-sport-features>
         }
