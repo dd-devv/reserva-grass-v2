@@ -36,6 +36,8 @@ export class VerComponent implements OnInit {
   ahora: Date = new Date();
 
   public tipo_cancha = 'futbol';
+  public hora_inicio = 0;
+  public hora_fin = 0;
 
   constructor(
     private _router: Router,
@@ -63,19 +65,33 @@ export class VerComponent implements OnInit {
   private inicializarBotonesHoras() {
     this.botonesHoras = [];
     const ahora = new Date(this.fechaSeleccionada!);
-    const primerHora = ahora.getHours();
+    const primerHora = this.hora_inicio;
 
-    for (let j = primerHora; j < 24; j++) {
-      const inicio = j < 10 ? `0${j}` : `${j}`;
+    for (let j = primerHora; j < this.hora_fin; j++) {
+      let hora12 = j;
+      let periodo = 'Am';
+
+      if (j === 0) {
+        hora12 = 12;
+      } else if (j === 12) {
+        periodo = 'Pm';
+      } else if (j > 12) {
+        hora12 = j - 12;
+        periodo = 'Pm';
+      }
+
+      const inicio = hora12 < 10 ? `0${hora12}` : `${hora12}`;
+      const horaFormateada = `${inicio}:00 ${periodo}`;
+
       const fecha = new Date(ahora);
-      const hora = inicio;
+      const hora = horaFormateada;
 
       const esDiaActual = ahora.getDate() === this.ahora.getDate();
       const est: string =
         esDiaActual && ahora.getHours() >= j ? 'Pasado' : 'Libre';
       const disponible = esDiaActual ? ahora.getHours() < j : true;
 
-      const id = `00${j}`.slice(-4); // Asegurar que el ID tenga cuatro dígitos
+      const id = `00${j}`.slice(-4);
       const boton: BotonHora = { estado: est, fecha, hora, disponible, id };
       this.botonesHoras.push(boton);
     }
@@ -120,6 +136,8 @@ export class VerComponent implements OnInit {
         // Manejo de datos indefinidos
       } else {
         this.empresa = response.data;
+        this.hora_inicio = this.empresa.hora_inicio;
+        this.hora_fin = this.empresa.hora_fin;
 
         this._userService.obtener_canchas(this.empresa._id).subscribe((response) => {
           if (response.data == undefined) {

@@ -9,6 +9,7 @@ import { initFlowbite } from 'flowbite';
 export class CardHorarioComponent implements OnInit {
 
   @Input() tipo!: string;
+  @Input() botonesHoras!: any [];
 
   ngOnInit(): void {
     initFlowbite();
