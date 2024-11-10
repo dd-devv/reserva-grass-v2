@@ -38,6 +38,7 @@ export class VerComponent implements OnInit {
   public tipo_cancha = 'futbol';
   public hora_inicio = 0;
   public hora_fin = 0;
+  public fecha = '';
 
   constructor(
     private _router: Router,
@@ -62,10 +63,31 @@ export class VerComponent implements OnInit {
     this.tipo_cancha = tipo_cancha;
   }
 
+  handleFecha(fecha: any) {
+    this.fecha = fecha;
+    console.log(fecha);
+    this.fechaSeleccionada = fecha;
+    this.inicializarBotonesHoras();
+  }
+
   private inicializarBotonesHoras() {
     this.botonesHoras = [];
     const ahora = new Date(this.fechaSeleccionada!);
-    const primerHora = this.hora_inicio;
+    const horaActual = this.ahora.getHours();
+
+    let primerHora;
+
+    if (this.fechaSeleccionada!.toDateString() === this.ahora.toDateString()) {
+      primerHora = horaActual + 1;
+
+      if (primerHora >= this.hora_fin) {
+        return;
+      }
+    } else {
+      primerHora = this.hora_inicio;
+    }
+
+    primerHora = Math.max(primerHora, this.hora_inicio);
 
     for (let j = primerHora; j < this.hora_fin; j++) {
       let hora12 = j;
@@ -81,15 +103,14 @@ export class VerComponent implements OnInit {
       }
 
       const inicio = hora12 < 10 ? `0${hora12}` : `${hora12}`;
-      const horaFormateada = `${inicio}:00 ${periodo}`;
+      const horaFormateada = `${inicio} ${periodo}`;
 
       const fecha = new Date(ahora);
       const hora = horaFormateada;
 
-      const esDiaActual = ahora.getDate() === this.ahora.getDate();
-      const est: string =
-        esDiaActual && ahora.getHours() >= j ? 'Pasado' : 'Libre';
-      const disponible = esDiaActual ? ahora.getHours() < j : true;
+      const est: string = 'Libre';
+
+      const disponible = true;
 
       const id = `00${j}`.slice(-4);
       const boton: BotonHora = { estado: est, fecha, hora, disponible, id };

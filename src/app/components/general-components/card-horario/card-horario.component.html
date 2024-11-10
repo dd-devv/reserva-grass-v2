@@ -15,10 +15,9 @@
             d="M20 4a2 2 0 0 0-2-2h-2V1a1 1 0 0 0-2 0v1h-3V1a1 1 0 0 0-2 0v1H6V1a1 1 0 0 0-2 0v1H2a2 2 0 0 0-2 2v2h20V4ZM0 18a2 2 0 0 0 2 2h16a2 2 0 0 0 2-2V8H0v10Zm5-8h10a1 1 0 0 1 0 2H5a1 1 0 0 1 0-2Z" />
         </svg>
       </div>
-      <input autocomplete="off" id="datepicker-format"  datepicker
-        datepicker-min-date="11/09/2024" datepicker-max-date="05/05/2025" type="text"
-        [ngClass]="tipo === 'futbol' ? '' : 'voleyball-card'"
-        class="ring-forestGreen-300 ps-10 border border-forestGreen-500 rounded-lg h-8">
+      <input type="text" id="datepicker-format"
+        class="ring-forestGreen-300 ps-10 border border-forestGreen-500 rounded-lg h-8"
+        [ngClass]="tipo === 'futbol' ? '' : 'voleyball-card'" readonly>
       <!-- class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full ps-10 p-2.5  dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500" placeholder="Select date"> -->
     </div>
   </div>
@@ -29,23 +28,26 @@
 
     <!-- VARIANTES -->
     <button data-modal-target="default-modal" data-modal-toggle="default-modal"
-    class="bg-yellow-300                          w-full rounded-lg h-9 flex justify-center items-center hover:scale-105" type="button">
-    <p>1PM</p>
-  </button>
-
-  <button data-modal-target="default-modal" data-modal-toggle="default-modal"
-    class="bg-forestGreen-500 text-white                                w-full  rounded-lg h-9 flex justify-center items-center hover:scale-105" type="button">
-    <p>1PM</p>
-  </button>
-     <!-- VARIANTES -->
-
-    <!-- Modal toggle -->
-    <button data-modal-target="default-modal" data-modal-toggle="default-modal"
-      class="bg-white                        w-full rounded-lg h-9 flex justify-center items-center hover:scale-105" type="button">
+      class="bg-yellow-300                          w-full rounded-lg h-9 flex justify-center items-center hover:scale-105"
+      type="button">
       <p>1PM</p>
     </button>
 
-    
+    <button data-modal-target="default-modal" data-modal-toggle="default-modal"
+      class="bg-forestGreen-500 text-white                                w-full  rounded-lg h-9 flex justify-center items-center hover:scale-105"
+      type="button">
+      <p>1PM</p>
+    </button>
+    <!-- VARIANTES -->
+
+    <!-- Modal toggle -->
+    <button data-modal-target="default-modal" data-modal-toggle="default-modal"
+      class="bg-white                        w-full rounded-lg h-9 flex justify-center items-center hover:scale-105"
+      type="button">
+      <p>1PM</p>
+    </button>
+
+
 
     <!-- Main modal -->
     <div id="default-modal" tabindex="-1" aria-hidden="true"
@@ -76,7 +78,7 @@
             </div>
 
             <div class="flex gap-4 justify-center items-center">
-            <img class="stroke-green-500" src="../../../../assets/svg-icons/calendar.svg" alt="calendar">
+              <img class="stroke-green-500" src="../../../../assets/svg-icons/calendar.svg" alt="calendar">
 
               <p class="text-xs">
 
@@ -89,8 +91,7 @@
 
           </div>
           <!-- Modal footer -->
-          <div
-            class="font-semibold flex items-center pb-2 px-1.5 justify-between md:p-5 md:pt-0 pt-0 rounded-b">
+          <div class="font-semibold flex items-center pb-2 px-1.5 justify-between md:p-5 md:pt-0 pt-0 rounded-b">
             <button data-modal-hide="default-modal" type="button"
               class="py-2.5 px-5 ms-3 text-sm  text-gray-900 focus:outline-none bg-white rounded-lg border border-gray-200 hover:bg-gray-100 hover:text-forestGreen-700 focus:z-10 focus:ring-4 focus:ring-gray-100">
               Cancelar</button>
