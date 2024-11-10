@@ -1,5 +1,5 @@
 import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
-import { Datepicker } from 'flowbite';
+import { Datepicker, initFlowbite } from 'flowbite';
 import type { DatepickerOptions } from 'flowbite';
 
 @Component({
@@ -29,6 +29,7 @@ export class CardHorarioComponent implements OnInit {
     setTimeout(() => {
       this.inicializarDatepicker();
     }, 0);
+    initFlowbite();
   }
 
   private inicializarDatepicker(): void {

@@ -1,1 +1,477 @@
-<p>home works!</p>
+<div>
+
+    <div class="mb-4 border-b border-gray-200 dark:border-gray-700">
+        <ul class="items-center flex text-sm font-medium text-center" id="default-styled-tab1"
+            data-tabs-toggle="#default-styled-tab1-content"
+            data-tabs-active-classes="font-bold bg-forestGreen-50 text-forestGreen-500 hover:text-forestGreen-500 dark:text-forestGreen-500 dark:hover:text-forestGreen-500 border-forestGreen-600 dark:border-forestGreen-500"
+            data-tabs-inactive-classes="dark:border-transparent text-gray-500 hover:text-gray-600 dark:text-gray-400 border-gray-100 hover:border-gray-300 dark:border-gray-700 dark:hover:text-gray-300"
+            role="tablist">
+            <li class="w-full flex items-center flex-col justify-center align-middle text-center" role="presentation">
+                <button
+                    class="flex flex-col justify-center items-center align-middle p-4 border-b-2 rounded-t-lg w-full"
+                    id="profile-styled-tab" data-tabs-target="#styled-profile1" type="button" role="tab"
+                    aria-controls="profile" aria-selected="false">
+                    <svg width="25" height="24" viewBox="0 0 25 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                        <g clip-path="url(#clip0_1041_4491)">
+                            <path
+                                d="M13.5225 1.53045C13.2654 1.51147 13.0078 1.50197 12.75 1.50195V0.00195312C13.0448 0.00209687 13.3395 0.0131043 13.6335 0.0349531L13.5225 1.53045ZM16.5285 2.20545C16.0477 2.01991 15.5538 1.87001 15.051 1.75695L15.3795 0.292953C15.954 0.421953 16.5195 0.592953 17.0685 0.805953L16.5285 2.20545ZM18.5835 3.27045C18.369 3.12743 18.1494 2.99234 17.925 2.86545L18.6645 1.56045C19.1774 1.85106 19.6682 2.17894 20.133 2.54145L19.2105 3.72495C19.0071 3.5663 18.798 3.4152 18.5835 3.27195V3.27045ZM21.3345 5.95545C21.0378 5.53392 20.7104 5.13483 20.355 4.76145L21.441 3.72645C21.846 4.15395 22.221 4.61145 22.5615 5.09145L21.3345 5.95545ZM22.4505 7.98345C22.352 7.74564 22.245 7.51149 22.1295 7.28145L23.469 6.60645C23.7339 7.13308 23.9595 7.67857 24.144 8.23845L22.719 8.70795C22.6384 8.46325 22.5488 8.22159 22.4505 7.98345ZM23.2455 11.744C23.2334 11.2285 23.1832 10.7146 23.0955 10.2065L24.573 9.95145C24.6735 10.5305 24.732 11.1185 24.747 11.7065L23.247 11.744H23.2455ZM23.049 14.051C23.0985 13.796 23.139 13.5425 23.1705 13.286L24.66 13.4705C24.588 14.0557 24.4726 14.6348 24.315 15.203L22.869 14.8025C22.938 14.555 22.998 14.3045 23.049 14.051ZM21.621 17.6195C21.897 17.1845 22.14 16.7285 22.35 16.2575L23.721 16.865C23.481 17.405 23.2035 17.924 22.8885 18.422L21.621 17.6195ZM20.175 19.427C20.358 19.244 20.5335 19.055 20.7 18.86L21.837 19.8395C21.6445 20.0627 21.4438 20.2788 21.2355 20.4875L20.175 19.427Z"
+                                fill="#20C752" />
+                            <path
+                                d="M12.7498 1.50195C11.0231 1.50208 9.32312 1.92802 7.80037 2.74206C6.27762 3.5561 4.97912 4.73311 4.01989 6.16883C3.06066 7.60455 2.47029 9.25467 2.30109 10.973C2.13189 12.6914 2.38908 14.425 3.04987 16.0202C3.71066 17.6155 4.75466 19.0231 6.08939 20.1185C7.42413 21.2139 9.00841 21.9633 10.7019 22.3002C12.3954 22.637 14.1458 22.5511 15.7982 22.0499C17.4505 21.5488 18.9538 20.6478 20.1748 19.427L21.2353 20.4875C19.8399 21.8836 18.1217 22.9141 16.2329 23.4874C14.344 24.0608 12.343 24.1595 10.4069 23.7747C8.47084 23.3899 6.65959 22.5334 5.13363 21.2813C3.60766 20.0292 2.41411 18.42 1.6587 16.5963C0.903303 14.7726 0.609382 12.7908 0.802984 10.8264C0.996586 8.86194 1.67173 6.9756 2.7686 5.33448C3.86548 3.69336 5.35021 2.34812 7.09124 1.41796C8.83228 0.487796 10.7759 0.00143003 12.7498 0.00195355V1.50195Z"
+                                fill="#20C752" />
+                            <path
+                                d="M12 4.50195C12.1989 4.50195 12.3897 4.58097 12.5303 4.72162C12.671 4.86228 12.75 5.05304 12.75 5.25195V13.067L17.622 15.851C17.7897 15.9521 17.9112 16.1148 17.9604 16.3044C18.0097 16.4939 17.9829 16.6952 17.8858 16.8653C17.7886 17.0353 17.6288 17.1606 17.4405 17.2143C17.2522 17.2681 17.0503 17.2461 16.878 17.153L11.628 14.153C11.5132 14.0874 11.4178 13.9926 11.3514 13.8783C11.285 13.764 11.25 13.6342 11.25 13.502V5.25195C11.25 5.05304 11.329 4.86228 11.4697 4.72162C11.6103 4.58097 11.8011 4.50195 12 4.50195Z"
+                                fill="#20C752" />
+                        </g>
+                        <defs>
+                            <clipPath id="clip0_1041_4491">
+                                <rect width="24" height="24" fill="white" transform="translate(0.75 0.00195312)" />
+                            </clipPath>
+                        </defs>
+                    </svg>
+
+                    Horario
+                </button>
+            </li>
+            <li class="w-full flex items-center flex-col justify-center align-middle text-center" role="presentation">
+                <button
+                    class="flex flex-col justify-center items-center align-middle p-4 border-b-2 rounded-t-lg w-full hover:text-gray-600 hover:border-gray-300 dark:hover:text-gray-300"
+                    id="dashboard-styled-tab" data-tabs-target="#styled-dashboard1" type="button" role="tab"
+                    aria-controls="dashboard" aria-selected="false">
+                    <svg width="25" height="24" viewBox="0 0 25 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                        <path
+                            d="M18.2499 2.40186C20.2381 2.40186 21.8499 4.01363 21.8499 6.00186V18.002C21.8499 19.9902 20.2381 21.602 18.2499 21.602H6.2499C4.26168 21.602 2.6499 19.9902 2.6499 18.002L2.6499 6.00186C2.6499 4.01363 4.26168 2.40186 6.2499 2.40186L18.2499 2.40186Z"
+                            stroke="black" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" />
+                    </svg>
+
+
+                    Canchas
+                </button>
+            </li>
+            <li class="w-full flex items-center flex-col justify-center align-middle text-center" role="presentation">
+                <button
+                    class="flex flex-col justify-center items-center align-middle p-4 border-b-2 rounded-t-lg w-full hover:text-gray-600 hover:border-gray-300 dark:hover:text-gray-300"
+                    id="settings-styled-tab" data-tabs-target="#styled-settings1" type="button" role="tab"
+                    aria-controls="settings" aria-selected="false">
+                    <svg width="25" height="24" viewBox="0 0 25 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                        <g clip-path="url(#clip0_1041_3515)">
+                            <path
+                                d="M12.75 22.502C9.96523 22.502 7.29451 21.3957 5.32538 19.4266C3.35625 17.4574 2.25 14.7867 2.25 12.002C2.25 9.21718 3.35625 6.54646 5.32538 4.57733C7.29451 2.6082 9.96523 1.50195 12.75 1.50195C15.5348 1.50195 18.2055 2.6082 20.1746 4.57733C22.1438 6.54646 23.25 9.21718 23.25 12.002C23.25 14.7867 22.1438 17.4574 20.1746 19.4266C18.2055 21.3957 15.5348 22.502 12.75 22.502ZM12.75 24.002C15.9326 24.002 18.9848 22.7377 21.2353 20.4872C23.4857 18.2368 24.75 15.1846 24.75 12.002C24.75 8.81936 23.4857 5.76711 21.2353 3.51667C18.9848 1.26624 15.9326 0.00195313 12.75 0.00195312C9.5674 0.00195313 6.51516 1.26624 4.26472 3.51667C2.01428 5.76711 0.75 8.81936 0.75 12.002C0.75 15.1846 2.01428 18.2368 4.26472 20.4872C6.51516 22.7377 9.5674 24.002 12.75 24.002Z"
+                                fill="black" />
+                            <path
+                                d="M14.1449 9.88395L10.7099 10.3145L10.5869 10.8845L11.2619 11.009C11.7029 11.114 11.7899 11.273 11.6939 11.7125L10.5869 16.9145C10.2959 18.26 10.7444 18.893 11.7989 18.893C12.6164 18.893 13.5659 18.515 13.9964 17.996L14.1284 17.372C13.8284 17.636 13.3904 17.741 13.0994 17.741C12.6869 17.741 12.5369 17.4515 12.6434 16.9415L14.1449 9.88395ZM14.2499 6.75195C14.2499 7.14978 14.0919 7.53131 13.8106 7.81261C13.5293 8.09392 13.1478 8.25195 12.7499 8.25195C12.3521 8.25195 11.9706 8.09392 11.6893 7.81261C11.408 7.53131 11.2499 7.14978 11.2499 6.75195C11.2499 6.35413 11.408 5.9726 11.6893 5.69129C11.9706 5.40999 12.3521 5.25195 12.7499 5.25195C13.1478 5.25195 13.5293 5.40999 13.8106 5.69129C14.0919 5.9726 14.2499 6.35413 14.2499 6.75195Z"
+                                fill="black" />
+                        </g>
+                        <defs>
+                            <clipPath id="clip0_1041_3515">
+                                <rect width="24" height="24" fill="white" transform="translate(0.75 0.00195312)" />
+                            </clipPath>
+                        </defs>
+                    </svg>
+
+
+                    Datos
+                </button>
+            </li>
+            <li class="w-full flex items-center flex-col justify-center align-middle text-center" role="presentation">
+                <button
+                    class="flex flex-col justify-center items-center align-middle p-4 border-b-2 rounded-t-lg w-full hover:text-gray-600 hover:border-gray-300 dark:hover:text-gray-300"
+                    id="contacts-styled-tab" data-tabs-target="#styled-contacts1" type="button" role="tab"
+                    aria-controls="contacts" aria-selected="false">
+                    <svg width="25" height="24" viewBox="0 0 25 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                        <path
+                            d="M12.25 2.25195C11.0166 2.25195 10 3.26855 10 4.50195C10 5.3457 10.4746 6.08691 11.1719 6.4707L8.96875 10.877L5.52344 8.41602C5.97461 8.00293 6.25 7.40527 6.25 6.75195C6.25 5.51855 5.2334 4.50195 4 4.50195C2.7666 4.50195 1.75 5.51855 1.75 6.75195C1.75 7.7627 2.44434 8.60352 3.36719 8.88477L4.75 16.502V20.252H19.75V16.502L21.1328 8.88477C22.0557 8.60352 22.75 7.7627 22.75 6.75195C22.75 5.51855 21.7334 4.50195 20.5 4.50195C19.2666 4.50195 18.25 5.51855 18.25 6.75195C18.25 7.40527 18.5254 8.00293 18.9766 8.41602L15.5312 10.877L13.3281 6.4707C14.0254 6.08691 14.5 5.3457 14.5 4.50195C14.5 3.26855 13.4834 2.25195 12.25 2.25195ZM12.25 3.75195C12.6719 3.75195 13 4.08008 13 4.50195C13 4.92383 12.6719 5.25195 12.25 5.25195C11.8281 5.25195 11.5 4.92383 11.5 4.50195C11.5 4.08008 11.8281 3.75195 12.25 3.75195ZM4 6.00195C4.42188 6.00195 4.75 6.33008 4.75 6.75195C4.75 7.17383 4.42188 7.50195 4 7.50195C3.57812 7.50195 3.25 7.17383 3.25 6.75195C3.25 6.33008 3.57812 6.00195 4 6.00195ZM20.5 6.00195C20.9219 6.00195 21.25 6.33008 21.25 6.75195C21.25 7.17383 20.9219 7.50195 20.5 7.50195C20.0781 7.50195 19.75 7.17383 19.75 6.75195C19.75 6.33008 20.0781 6.00195 20.5 6.00195ZM12.25 7.68945L14.5703 12.3301L15.6953 12.6113L19.4453 9.93945L18.3906 15.752H6.10938L5.05469 9.93945L8.80469 12.6113L9.92969 12.3301L12.25 7.68945ZM6.25 17.252H18.25V18.752H6.25V17.252Z"
+                            fill="black" />
+                    </svg>
+                    Suscripción
+                </button>
+            </li>
+        </ul>
+    </div>
+    <div id="default-styled-tab1-content">
+        <div class=" p-4 space-y-4 rounded-lg bg-gray-50 dark:bg-gray-800" id="styled-profile1" role="tabpanel"
+            aria-labelledby="profile-tab">
+            <div>
+                <label class="text-xs" for="small-input"
+                    class="block mb-1 text-sm font-medium text-gray-900 dark:text-white">Nombres</label>
+                <input placeholder="Ingrese su nombre" type="text" id="small-input"
+                    class="block w-full p-2 h-9 text-gray-900 border border-gray-300 rounded-md bg-gray-50 text-xs focus:ring-blue-500 focus:border-blue-500 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500" />
+            </div>
+
+            <div>
+                <label class="text-xs" for="small-input"
+                    class="block mb-1 text-sm font-medium text-gray-900 dark:text-white">Whatsapp</label>
+                <input placeholder="Ingrese su nombre" type="text" id="small-input"
+                    class="block w-full p-2 h-9 text-gray-900 border border-gray-300 rounded-md bg-gray-50 text-xs focus:ring-blue-500 focus:border-blue-500 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500" />
+            </div>
+            <div>
+                <label class="text-xs" for="countries"
+                    class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Ingrese su
+                    ciudad</label>
+                <select id="countries"
+                    class="bg-gray-50 border h-9 border-gray-300 text-gray-900 text-xs rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500">
+                    <option selected>Seleccionar</option>
+                    <option value="US">United States</option>
+                    <option value="CA">Canada</option>
+                    <option value="FR">France</option>
+                    <option value="DE">Germany</option>
+                </select>
+            </div>
+
+            <div>
+                <label class="text-xs" for="small-input"
+                    class="block mb-1 text-sm font-medium text-gray-900 dark:text-white">Correo</label>
+                <input placeholder="Ingrese su correo" type="text" id="small-input"
+                    class="block w-full p-2 h-9 text-gray-900 border border-gray-300 rounded-md bg-gray-50 text-xs focus:ring-blue-500 focus:border-blue-500 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500" />
+            </div>
+
+            <button
+                class="w-full bg-chambray-700 text-white h-9 rounded-md font-semibold hover:scale-105  hover:duration-75 ">
+                Actualizar datos
+            </button>
+        </div>
+
+
+
+        <!-- CANCHAS -->
+        <div class="hidden p-4 space-y-4 rounded-lg " id="styled-dashboard1" role="tabpanel"
+            aria-labelledby="dashboard-tab" data-carousel="slide">
+
+            <div class="w-full rounded-lg border border-forestGreen-500 bg-forestGreen-50 p-2 space-y-2 lg:w-1/2">
+                <p class="text-center font-bold">Cancha 1 <span class="text-forestGreen-500"> (Futbol/Futsal)</span></p>
+                <p class="text-xs">Cancha con medidas reglamentarias Cancha mixta para voley y futbol</p>
+                <div class="w-full flex items-center">
+                    <div class="w-full space-y-2">
+                        <p class="text-xs font-semibold">Medidas: <span class="font-normal">40m x 20m</span> </p>
+                        <p class="text-xs font-semibold">Precio dia: <span class="font-normal"> S/. 30</span></p>
+                        <p class="text-xs font-semibold">Precio noche: <span class="font-normal"> S/. 40</span></p>
+                        <p class="text-xs font-semibold">Hora noche: <span class="font-normal">6:00 pm</span></p>
+                    </div>
+
+                    <!-- CAROUSEL -->
+
+                    <div class=" lg:object-contain w-full h-36 lg:h-72">
+
+
+                        <div id="indicators-carousel" class=" flex flex-col justify-center relative w-full h-32 lg:h-64"
+                            data-carousel="static">
+                            <!-- Carousel wrapper -->
+                            <div class="relative overflow-hidden rounded-lg h-32 lg:h-64">
+                                <!-- Item 1 -->
+                                <div class="hidden duration-700 ease-in-out" data-carousel-item="active">
+                                    <img src="https://images.pexels.com/photos/19282292/pexels-photo-19282292/free-photo-of-hombre-deporte-juego-partido.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1"
+                                        alt="...">
+                                </div>
+                                <!-- Item 2 -->
+                                <div class="hidden duration-700 ease-in-out" data-carousel-item>
+                                    <img src="https://images.pexels.com/photos/21637519/pexels-photo-21637519/free-photo-of-pueblo-jugando-hierba-cesped.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1"
+                                        alt="...">
+                                </div>
+                            </div>
+                            <!-- Slider indicators -->
+                            <div class=" z-30 flex space-x-3 -bottom-0.5 left-1/2 justify-center bg-forestGreen-300">
+                                <button type="button" class="w-3 h-3 rounded-full" aria-current="true"
+                                    aria-label="Slide 1" data-carousel-slide-to="0"></button>
+                                <button type="button" class="w-3 h-3 rounded-full " aria-current="false"
+                                    aria-label="Slide 2" data-carousel-slide-to="1"></button>
+                            </div>
+                        </div>
+
+
+                    </div>
+                </div>
+                <div class="flex w-full justify-between gap-4">
+                    <button
+                        class="border-forestGreen-500 w-full bg-slate-50 text-xs py-1 px-2 font-medium items-center border justify-between rounded-lg flex">
+                        Actualizar
+                        <svg width="16" height="16" viewBox="0 0 16 16" fill="none" xmlns="http://www.w3.org/2000/svg">
+                            <path
+                                d="M3.2001 10.4021L6.0001 12.8021M8.0001 14.8021H14.4001M2.8001 10.4021L10.6877 2.239C11.5369 1.38974 12.9139 1.38973 13.7631 2.239C14.6124 3.08827 14.6124 4.4652 13.7631 5.31447L5.6001 13.2021L1.6001 14.4021L2.8001 10.4021Z"
+                                stroke="black" stroke-linecap="round" stroke-linejoin="round" />
+                        </svg>
+
+                    </button>
+                    <button
+                        class="border-red-500 w-full bg-slate-50 text-xs py-1 px-2 font-medium items-center border justify-between rounded-lg flex">
+                        Eliminar
+                        <svg width="17" height="16" viewBox="0 0 17 16" fill="none" xmlns="http://www.w3.org/2000/svg">
+                            <path
+                                d="M3.1665 4.1196H13.8332M7.1665 11.1784V6.94313M9.83317 11.1784V6.94313M11.1665 14.002H5.83317C5.09679 14.002 4.49984 13.3699 4.49984 12.5902V4.82548C4.49984 4.43563 4.79831 4.1196 5.1665 4.1196H11.8332C12.2014 4.1196 12.4998 4.43563 12.4998 4.82548V12.5902C12.4998 13.3699 11.9029 14.002 11.1665 14.002ZM7.1665 4.1196H9.83317C10.2014 4.1196 10.4998 3.80357 10.4998 3.41372V2.70784C10.4998 2.31799 10.2014 2.00195 9.83317 2.00195H7.1665C6.79831 2.00195 6.49984 2.31799 6.49984 2.70784V3.41372C6.49984 3.80357 6.79831 4.1196 7.1665 4.1196Z"
+                                stroke="black" stroke-linecap="round" stroke-linejoin="round" />
+                        </svg>
+
+                    </button>
+                    <button
+                        class="border-seashell-700 w-full bg-slate-50 text-xs py-1 px-2 font-medium items-center border justify-between rounded-lg flex text-nowrap">
+                        Actualizar fotos
+                        <svg width="16" height="16" viewBox="0 0 16 16" fill="none" xmlns="http://www.w3.org/2000/svg">
+                            <path
+                                d="M8.00072 9.96362L8.00072 2.00195M8.00072 2.00195L4.71232 5.04407M8.00072 2.00195L11.2891 5.04407M2.66675 12.6462V13.5904C2.93655 13.8539 3.30249 14.002 3.68405 14.002H12.3161C12.6977 14.002 13.0636 13.8539 13.3334 13.5904V12.6462"
+                                stroke="black" stroke-linecap="round" stroke-linejoin="round" />
+                        </svg>
+
+                    </button>
+                </div>
+
+
+            </div>
+
+            <button
+                class="w-full bg-chambray-700 text-white h-9 rounded-md font-semibold hover:scale-105  hover:duration-75 ">
+                Ver anteriores
+            </button>
+        </div>
+
+        <!-- DATOS -->
+        <div class="hidden flex-col p-4 space-y-3 rounded-lg bg-gray-50 dark:bg-gray-800" id="styled-settings1"
+            role="tabpanel" aria-labelledby="settings-tab">
+            <p class="text-center font-semibold text-xl">Datos</p>
+
+            <div class="flex w-full gap-3">
+                <div class="flex flex-col gap-1 w-full">
+                    <label class="text-xs" for="nombreEmpresa">Nombre de la empresa</label>
+                    <input class=" rounded-lg h-9 border-gray-300 text-gray-900 text-xs" name="nombreEmpresa"
+                        id="nombreEmpresa" type="text">
+                </div>
+                <div class="flex flex-col gap-1 w-full">
+                    <label class="text-xs" for="correo">Correo </label>
+                    <input class="rounded-lg h-9 border-gray-300 text-gray-900 text-xs" name="correo" id="correo"
+                        type="email">
+                </div>
+            </div>
+            <div class="flex w-full gap-3">
+                <div class="flex flex-col gap-1 w-full">
+                    <label class="text-xs" for="whatsapp">WhatsApp</label>
+                    <input class="rounded-lg h-9 border-gray-300 text-gray-900 text-xs" name="whatsapp" id="whatsapp"
+                        type="text">
+                </div>
+                <div class="flex flex-col gap-1 w-full">
+                    <label class="text-xs" for="telefonoFijo">Teléfono fijo </label>
+                    <input class="rounded-lg h-9 border-gray-300 text-gray-900 text-xs" name="telefonoFijo"
+                        id="telefonoFijo" type="text">
+                </div>
+            </div>
+
+            <div class="flex flex-col gap-1 w-full">
+                <label class="text-xs" for="direccion">Dirección</label>
+                <input class="rounded-lg h-9 border-gray-300 text-gray-900 text-xs" name="direccion" id="direccion"
+                    type="text">
+            </div>
+
+            <div class="flex flex-col gap-1 w-full">
+                <label class="text-xs" for="referencia">Referencia</label>
+                <input class="rounded-lg h-9 border-gray-300 text-gray-900 text-xs" name="referencia" id="referencia"
+                    type="text">
+            </div>
+
+            <div class="flex flex-col w-full">
+                <label class="text-xs" for="horarioAtencion">Horario de atención</label>
+                <div class="flex w-full">
+                    <input
+                        class="text-xs w-full rounded-lg rounded-r-none border-r-inherit h-9 border-gray-300 text-gray-900"
+                        name="horarioAtencionInicio" id="horarioAtencionInicio" type="text">
+                    <input
+                        class="text-xs w-full rounded-lg rounded-l-none border-l-transparent h-9 border-gray-300 text-gray-900"
+                        name="horarioAtencionFin" id="horarioAtencionFin" type="text">
+                </div>
+            </div>
+
+            <div class="flex justify-between gap-4 py-4">
+                <button
+                    class="flex font-semibold items-center justify-center text-white bg-forestGreen-500 h-10 w-1/2  rounded-lg self-center">
+                    Actualizar datos
+                    <svg width="25" height="24" viewBox="0 0 25 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                        <path d="M13.5 6.00195L19.5 12.002M19.5 12.002L13.5 18.002M19.5 12.002H5.5" stroke="#F0FDF3"
+                            stroke-width="2" stroke-linecap="round" stroke-linejoin="round" />
+                    </svg>
+
+                </button>
+                <button
+                    class="flex font-semibold items-center justify-center  border border-forestGreen-500 h-10 w-1/2  rounded-lg self-center">
+                    Actualizar contraseña
+
+
+                </button>
+            </div>
+
+            <hr>
+            <p class="text-center font-semibold text-xl">Actualizar datos</p>
+
+            <div class="flex w-full gap-3">
+                <div class="flex flex-col gap-1 w-full">
+                    <label class="text-xs" for="nombreEmpresa">Nombre de la empresa</label>
+                    <input class=" rounded-lg h-9 border-gray-300 text-gray-900 text-xs" name="nombreEmpresa"
+                        id="nombreEmpresa" type="text">
+                </div>
+                <div class="flex flex-col gap-1 w-full">
+                    <label class="text-xs" for="correo">Correo </label>
+                    <input class="rounded-lg h-9 border-gray-300 text-gray-900 text-xs" name="correo" id="correo"
+                        type="email">
+                </div>
+            </div>
+            <div class="flex w-full gap-3">
+                <div class="flex flex-col gap-1 w-full">
+                    <label class="text-xs" for="whatsapp">WhatsApp</label>
+                    <input class="rounded-lg h-9 border-gray-300 text-gray-900 text-xs" name="whatsapp" id="whatsapp"
+                        type="text">
+                </div>
+                <div class="flex flex-col gap-1 w-full">
+                    <label class="text-xs" for="telefonoFijo">Teléfono fijo </label>
+                    <input class="rounded-lg h-9 border-gray-300 text-gray-900 text-xs" name="telefonoFijo"
+                        id="telefonoFijo" type="text">
+                </div>
+            </div>
+
+            <div class="flex flex-col gap-1 w-full">
+                <label class="text-xs" for="direccion">Dirección</label>
+                <input class="rounded-lg h-9 border-gray-300 text-gray-900 text-xs" name="direccion" id="direccion"
+                    type="text">
+            </div>
+
+            <div class="flex flex-col gap-1 w-full">
+                <label class="text-xs" for="referencia">Referencia</label>
+                <input class="rounded-lg h-9 border-gray-300 text-gray-900 text-xs" name="referencia" id="referencia"
+                    type="text">
+            </div>
+
+            <div class="flex flex-col w-full">
+                <label class="text-xs" for="horarioAtencion">Horario de atención</label>
+                <div class="flex w-full">
+                    <input
+                        class="text-xs w-full rounded-lg rounded-r-none border-r-inherit h-9 border-gray-300 text-gray-900"
+                        name="horarioAtencionInicio" id="horarioAtencionInicio" type="text">
+                    <input
+                        class="text-xs w-full rounded-lg rounded-l-none border-l-transparent h-9 border-gray-300 text-gray-900"
+                        name="horarioAtencionFin" id="horarioAtencionFin" type="text">
+                </div>
+            </div>
+
+            <div class="flex">
+                <div class="flex items-center me-4">
+                    <input id="iluminacion" type="checkbox" value="" class="size-4 text-forestGreen-500 bg-white-100 border-forestGreen-500 rounded ">
+                    <label for="iluminacion" class="ms-2 text-sm font-medium text-gray-900">Iluminación</label>
+                </div>
+                <div class="flex items-center me-4">
+                    <input id="techado" type="checkbox" value="" class="size-4 text-forestGreen-500 bg-white-100 border-forestGreen-500 rounded ">
+                    <label for="techado" class="ms-2 text-sm font-medium text-gray-900">Techado</label>
+                </div>
+                <div class="flex items-center me-4">
+                    <input checked id="garaje" type="checkbox" value="" class="size-4 text-forestGreen-500 bg-white-100 border-forestGreen-500 rounded ">
+                    <label for="garaje" class="ms-2 text-sm font-medium text-gray-900">Garaje</label>
+                </div>
+
+            </div>
+
+
+
+
+            <button
+                class="flex font-semibold items-center justify-center text-white bg-forestGreen-500 h-10 w-1/2  rounded-lg self-center">
+                Actualizar datos
+                <svg width="25" height="24" viewBox="0 0 25 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                    <path
+                        d="M21.5 12.002C21.5 16.9725 17.4706 21.002 12.5 21.002C7.52944 21.002 3.5 16.9725 3.5 12.002C3.5 7.03139 7.52944 3.00195 12.5 3.00195C13.9121 3.00195 15.2482 3.32714 16.4375 3.90672M19.8125 6.37695L11.9375 14.252L9.6875 12.002"
+                        stroke="#F0FDF3" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" />
+                </svg>
+            </button>
+
+
+
+
+
+
+
+        </div>
+        <div class="hidden p-4 rounded-lg bg-gray-50 dark:bg-gray-800" id="styled-contacts1" role="tabpanel"
+            aria-labelledby="contacts-tab">
+            <p class="text-sm text-gray-500 dark:text-gray-400">
+                This is some placeholder content the Contacts tab's associated content.
+                Clicking another tab will toggle the visibility of this one for the
+                next. The tab JavaScript swaps classes to control the content visibility
+                and styling.
+            </p>
+        </div>
+    </div>
+
+</div>
+
+
+<!-- REGISTRAR CANCHA -->
+
+<div class="w-full flex flex-col gap-3">
+    <p class="text-center font-semibold text-xl">Registrar cancha</p>
+    <div class="flex flex-col gap-1">
+        <label class="text-xs" for="descripcion">Descripción</label>
+        <textarea class="rounded-lg text-xs  border-gray-300 text-gray-900 w-full" name="descripcion" id="descripcion"
+            rows="3" placeholder="Escriba la descripción">a</textarea>
+    </div>
+    <div class="flex w-full gap-3">
+        <div class="flex flex-col gap-1 w-full">
+            <label class="text-xs" for="nombre">Nombre</label>
+            <input class="rounded-lg h-9 border-gray-300 text-gray-900 text-xs " name="nombre" id="nombre"
+                autocomplete="off" type="text" placeholder="Ingrese su nombre">
+        </div>
+        <div class="flex flex-col gap-1 w-full">
+            <label class="text-xs" for="tipoCancha">Tipo de cancha</label>
+            <select id="tipoCancha" class="rounded-lg h-9 border-gray-300 text-gray-900 text-xs">
+                <option value="US">United States</option>
+                <option value="CA">Canada</option>
+                <option value="FR">France</option>
+                <option value="DE">Germany</option>
+            </select>
+        </div>
+    </div>
+
+    <div class="flex w-full gap-3">
+        <div class="flex flex-col gap-1 w-full">
+            <label class="text-xs" for="precioReserva">Precio de reserva</label>
+            <input class="rounded-lg h-9 border-gray-300 text-gray-900 text-xs " name="precioReserva" id="precioReserva"
+                autocomplete="off" type="text" placeholder="Ingrese precio">
+        </div>
+        <div class="flex flex-col gap-1 w-full">
+            <label class="text-xs" for="horaInicioNoche">Hora de inicio noche</label>
+            <select id="horaInicioNoche" class="rounded-lg h-9 border-gray-300 text-gray-900 text-xs">
+                <option value="US">United States</option>
+                <option value="CA">Canada</option>
+                <option value="FR">France</option>
+                <option value="DE">Germany</option>
+            </select>
+        </div>
+    </div>
+
+    <div class="flex w-full gap-3">
+        <div class="flex flex-col gap-1 w-full">
+            <label class="text-xs" for="largo">Largo (m)</label>
+            <input class="rounded-lg h-9 border-gray-300 text-gray-900 text-xs " name="largo" id="largo" type="number"
+                placeholder="Ancho">
+        </div>
+        <div class="flex flex-col gap-1 w-full">
+            <label class="text-xs" for="ancho">Ancho (m)</label>
+            <input class="rounded-lg h-9 border-gray-300 text-gray-900 text-xs " name="ancho" id="ancho" type="number"
+                placeholder="Largo">
+        </div>
+    </div>
+
+    <div class="flex w-full gap-3">
+        <div class="flex flex-col gap-1 w-full">
+            <label class="text-xs" for="precioDia">Precio día (S/)</label>
+            <input class="rounded-lg h-9 border-gray-300 text-gray-900 text-xs " name="precioDia" id="precioDia"
+                type="number" placeholder="Ingrese precio">
+        </div>
+        <div class="flex flex-col gap-1 w-full">
+            <label class="text-xs" for="precioNoche">Precio noche (S/)</label>
+            <input class="rounded-lg h-9 border-gray-300 text-gray-900 text-xs " name="precioNoche" id="precioNoche"
+                type="number" placeholder="Ingrese precio">
+        </div>
+    </div>
+
+    <button class="flex items-center justify-center text-white bg-forestGreen-500 h-10 w-1/2  rounded-lg self-center">
+        Registrar
+        <svg width="25" height="24" viewBox="0 0 25 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+            <path d="M13.5 6.00195L19.5 12.002M19.5 12.002L13.5 18.002M19.5 12.002H5.5" stroke="#F0FDF3"
+                stroke-width="2" stroke-linecap="round" stroke-linejoin="round" />
+        </svg>
+
+    </button>
+
+</div>
