@@ -1,0 +1,9 @@
+.container-canchas{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+}
+
+.content-cancha{
+    display: inline-block;
+}
