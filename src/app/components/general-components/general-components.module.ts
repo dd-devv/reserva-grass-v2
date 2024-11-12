@@ -14,6 +14,7 @@ import { RouterModule } from '@angular/router';
 import { HeaderComponent } from './header/header.component';
 import { CardEmpresaSkeletonComponent } from './card-empresa-skeleton/card-empresa-skeleton.component';
 import { ButtonSearchComponent } from './button-search/button-search.component';
+import { Time24to12Pipe } from '../../pipes/time24to12.pipe';
 
 
 
@@ -31,7 +32,8 @@ import { ButtonSearchComponent } from './button-search/button-search.component';
     FooterComponent,
     HeaderComponent,
     CardEmpresaSkeletonComponent,
-    ButtonSearchComponent
+    ButtonSearchComponent,
+    Time24to12Pipe
   ],
   imports: [
     CommonModule,

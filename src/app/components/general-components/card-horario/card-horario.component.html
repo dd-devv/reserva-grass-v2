@@ -27,7 +27,7 @@
 
 
     <!-- VARIANTES -->
-    <button data-modal-target="default-modal" data-modal-toggle="default-modal"
+    <!-- <button data-modal-target="default-modal" data-modal-toggle="default-modal"
       class="bg-yellow-300                          w-full rounded-lg h-9 flex justify-center items-center hover:scale-105"
       type="button">
       <p>1PM</p>
@@ -38,131 +38,75 @@
       type="button">
       <p>1PM</p>
     </button>
-    <!-- VARIANTES -->
 
-    <!-- Modal toggle -->
-    <button data-modal-target="default-modal" data-modal-toggle="default-modal"
+    <button data-modal-target="default-modal1" data-modal-toggle="default-modal1"
       class="bg-white                        w-full rounded-lg h-9 flex justify-center items-center hover:scale-105"
       type="button">
-      <p>1PM</p>
-    </button>
+      <p>11PM</p>
+    </button> -->
 
 
+    @if (botonesHoras && botonesHoras.length > 0) {
+    @for (hora of botonesHoras; track hora.id) {
 
-    <!-- Main modal -->
-    <div id="default-modal" tabindex="-1" aria-hidden="true"
-      class="hidden overflow-y-auto overflow-x-hidden fixed top-0 right-0 left-0 z-50 justify-center items-center w-full md:inset-0 h-[calc(100%-1rem)] max-h-full">
-      <div class="relative p-4 w-full max-w-sm max-h-full">
-        <!-- Modal content -->
-        <div class="relative bg-white rounded-lg shadow dark:bg-gray-700">
-          <!-- Modal body -->
-          <div class="p-4 md:p-5 space-y-4">
-            <p class="font-bold">Reservar Cancha 1</p>
-            <div class="flex gap-8 justify-center">
-              <button
-                class="font-semibold text-forestGreen-500 flex justify-center size-12 rounded-full bg-forestGreen-100 items-center text-center self-center text-xl">―</button>
-              <div
-                class="font-bold text-seashell-900 flex justify-center size-24 rounded-full bg-seashell-100 items-center text-center self-center text-3xl">
-                3 <span class="text-sm -mb-3">h</span></div>
-              <button
-                class="font-semibold text-forestGreen-500 flex justify-center size-12 rounded-full bg-forestGreen-100 items-center text-center self-center text-3xl">+</button>
+    <div class="relative">
+      <!-- Modal toggle -->
+      <button [attr.data-modal-target]="'modal-' + hora.id" [attr.data-modal-toggle]="'modal-' + hora.id"
+        class="w-full bg-white rounded-lg h-9 flex justify-center items-center hover:scale-105" type="button">
+        {{hora.hora | time24to12}}
+      </button>
+
+      <!-- Main modal -->
+      <div id="modal-{{hora.id}}" tabindex="-1" aria-hidden="true"
+        class="hidden overflow-y-auto overflow-x-hidden fixed top-0 right-0 left-0 z-50 justify-center items-center w-full md:inset-0 h-[calc(100%-1rem)] max-h-full">
+        <div class="relative p-4 w-full max-w-sm max-h-full">
+          <!-- Modal content -->
+          <div class="relative bg-white rounded-lg shadow dark:bg-gray-700">
+            <!-- Modal body -->
+            <div class="p-4 md:p-5 space-y-4">
+              <p class="font-bold">Reservar {{cancha.nombre}}</p>
+              <div class="flex gap-8 justify-center">
+                <button (click)="changeHoras(hora.hora, -1)" [disabled]="cantidad_horas === 1"
+                  class="font-semibold text-forestGreen-500 flex justify-center size-12 rounded-full bg-forestGreen-100 items-center text-center self-center text-xl">
+                  ―
+                </button>
+                <div
+                  class="font-bold text-seashell-900 flex justify-center size-24 rounded-full bg-seashell-100 items-center text-center self-center text-3xl">
+                  {{cantidad_horas}} <span class="text-sm -mb-3">h</span></div>
+                <button (click)="changeHoras(hora.hora, 1)" [disabled]="cantidad_horas === 4"
+                  class="font-semibold text-forestGreen-500 flex justify-center size-12 rounded-full bg-forestGreen-100 items-center text-center self-center text-3xl">+</button>
+              </div>
+              <p class="font-bold">S/ {{precio_reservacion * cantidad_horas}}</p>
+
+              <div class="flex items-center h-2">
+                <p class="font-bold text-sm text-gray-500 dark:text-gray-400">{{hora.hora | time24to12}}</p>
+                <hr class="w-48 h-2 mx-auto bg-forestGreen-500 border-0 rounded md:my-10 dark:bg-gray-700">
+                <p class="font-bold text-sm text-gray-500 dark:text-gray-400">{{hora.hora + cantidad_horas | time24to12}}</p>
+              </div>
+
+              <div class="flex gap-4 justify-center items-center">
+                <img class="stroke-green-500" src="../../../../assets/svg-icons/calendar.svg" alt="calendar">
+                <p class="text-xs">
+                  {{hora.fecha | date:'longDate':'es'}}
+                </p>
+              </div>
             </div>
-            <p class="font-bold ">S/ 45</p>
 
-            <div class="flex items-center h-2">
-
-              <p class="font-bold text-sm text-gray-500 dark:text-gray-400">10:00</p>
-              <hr class="w-48 h-2 mx-auto bg-forestGreen-500 border-0 rounded md:my-10 dark:bg-gray-700">
-              <p class="font-bold text-sm text-gray-500 dark:text-gray-400">13:00</p>
-
+            <!-- Modal footer -->
+            <div class="font-semibold flex items-center pb-2 px-1.5 justify-between md:p-5 md:pt-0 pt-0 rounded-b">
+              <button [attr.data-modal-hide]="'modal-' + hora.id" type="button"
+                class="py-2.5 px-5 ms-3 text-sm text-gray-900 focus:outline-none bg-white rounded-lg border border-gray-200 hover:bg-gray-100 hover:text-forestGreen-700 focus:z-10 focus:ring-4 focus:ring-gray-100">
+                Cancelar</button>
+              <button [attr.data-modal-hide]="'modal-' + hora.id" type="button"
+                class="font-semibold text-white bg-forestGreen-500 hover:bg-forestGreen-600 focus:ring-4 focus:outline-none focus:ring-blue-300 rounded-lg text-sm px-5 py-2.5 text-center">
+                Registrar</button>
             </div>
-
-            <div class="flex gap-4 justify-center items-center">
-              <img class="stroke-green-500" src="../../../../assets/svg-icons/calendar.svg" alt="calendar">
-
-              <p class="text-xs">
-
-                Viernes, 13 de octubre del 2024
-              </p>
-
-
-            </div>
-
-
-          </div>
-          <!-- Modal footer -->
-          <div class="font-semibold flex items-center pb-2 px-1.5 justify-between md:p-5 md:pt-0 pt-0 rounded-b">
-            <button data-modal-hide="default-modal" type="button"
-              class="py-2.5 px-5 ms-3 text-sm  text-gray-900 focus:outline-none bg-white rounded-lg border border-gray-200 hover:bg-gray-100 hover:text-forestGreen-700 focus:z-10 focus:ring-4 focus:ring-gray-100">
-              Cancelar</button>
-            <button data-modal-hide="default-modal" type="button"
-              class="font-semibold text-white bg-forestGreen-500 hover:bg-forestGreen-600 focus:ring-4 focus:outline-none focus:ring-blue-300 rounded-lg text-sm px-5 py-2.5 text-center">
-              Registrar</button>
-
           </div>
         </div>
       </div>
     </div>
-
-    @for (hora of botonesHoras; track $index) {
-
-
-
-
-    <!-- Modal toggle -->
-    <button data-modal-target="default-modal" data-modal-toggle="default-modal"
-      class="w-full bg-white rounded-lg h-9 flex justify-center items-center hover:scale-105" type="button">
-      <p>{{hora.hora}}</p>
-    </button>
-
-    <!-- Main modal -->
-    <div id="default-modal" tabindex="-1" aria-hidden="true"
-      class="hidden overflow-y-auto overflow-x-hidden fixed top-0 right-0 left-0 z-50 justify-center items-center w-full md:inset-0 h-[calc(100%-1rem)] max-h-full">
-      <div class="relative p-4 w-full max-w-2xl max-h-full">
-        <!-- Modal content -->
-        <div class="relative bg-white rounded-lg shadow dark:bg-gray-700">
-          <!-- Modal header -->
-          <div class="flex items-center justify-between p-4 md:p-5 border-b rounded-t dark:border-gray-600">
-            <h3 class="text-xl font-semibold text-gray-900 dark:text-white">
-              Terms of Service
-            </h3>
-            <button type="button"
-              class="text-gray-400 bg-transparent hover:bg-gray-200 hover:text-gray-900 rounded-lg text-sm w-8 h-8 ms-auto inline-flex justify-center items-center dark:hover:bg-gray-600 dark:hover:text-white"
-              data-modal-hide="default-modal">
-              <svg class="w-3 h-3" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="none"
-                viewBox="0 0 14 14">
-                <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
-                  d="m1 1 6 6m0 0 6 6M7 7l6-6M7 7l-6 6" />
-              </svg>
-              <span class="sr-only">Close modal</span>
-            </button>
-          </div>
-          <!-- Modal body -->
-          <div class="p-4 md:p-5 space-y-4">
-            <p class="text-base leading-relaxed text-gray-500 dark:text-gray-400">
-              With less than a month to go before the European Union enacts new consumer privacy laws for its citizens,
-              companies around the world are updating their terms of service agreements to comply.
-            </p>
-            <p class="text-base leading-relaxed text-gray-500 dark:text-gray-400">
-              The European Union’s General Data Protection Regulation (G.D.P.R.) goes into effect on May 25 and is meant
-              to ensure a common set of data rights in the European Union. It requires organizations to notify users as
-              soon as possible of high-risk data breaches that could personally affect them.
-            </p>
-          </div>
-          <!-- Modal footer -->
-          <div class="flex items-center p-4 md:p-5 border-t border-gray-200 rounded-b dark:border-gray-600">
-            <button data-modal-hide="default-modal" type="button"
-              class="text-white bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-sm px-5 py-2.5 text-center dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800">I
-              accept</button>
-            <button data-modal-hide="default-modal" type="button"
-              class="py-2.5 px-5 ms-3 text-sm font-medium text-gray-900 focus:outline-none bg-white rounded-lg border border-gray-200 hover:bg-gray-100 hover:text-blue-700 focus:z-10 focus:ring-4 focus:ring-gray-100 dark:focus:ring-gray-700 dark:bg-gray-800 dark:text-gray-400 dark:border-gray-600 dark:hover:text-white dark:hover:bg-gray-700">Decline</button>
-          </div>
-        </div>
-      </div>
-    </div>
-
     }
-
+    }
   </div>
 
   <div class="flex gap-2 justify-center items-center">

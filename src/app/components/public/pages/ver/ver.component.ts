@@ -8,7 +8,7 @@ import { ToastrService } from 'ngx-toastr';
 interface BotonHora {
   estado: string;
   fecha: Date;
-  hora: string;
+  hora: number;
   disponible: boolean;
   id: string;
 }
@@ -49,13 +49,13 @@ export class VerComponent implements OnInit {
     this.url = GLOBAL.url;
     const ruta = _router.url.split('/');
     this.path = ruta[ruta.length - 1];
-    this.init_data();
   }
 
   ngOnInit(): void {
     this._title.setTitle('Ver Canchas');
     this.horasReserva = 1;
     this.fechaSeleccionada = new Date();
+    this.init_data();
     this.inicializarBotonesHoras();
   }
 
@@ -65,7 +65,6 @@ export class VerComponent implements OnInit {
 
   handleFecha(fecha: any) {
     this.fecha = fecha;
-    console.log(fecha);
     this.fechaSeleccionada = fecha;
     this.inicializarBotonesHoras();
   }
@@ -79,7 +78,6 @@ export class VerComponent implements OnInit {
 
     if (this.fechaSeleccionada!.toDateString() === this.ahora.toDateString()) {
       primerHora = horaActual + 1;
-
       if (primerHora >= this.hora_fin) {
         return;
       }
@@ -90,29 +88,15 @@ export class VerComponent implements OnInit {
     primerHora = Math.max(primerHora, this.hora_inicio);
 
     for (let j = primerHora; j < this.hora_fin; j++) {
-      let hora12 = j;
-      let periodo = 'Am';
-
-      if (j === 0) {
-        hora12 = 12;
-      } else if (j === 12) {
-        periodo = 'Pm';
-      } else if (j > 12) {
-        hora12 = j - 12;
-        periodo = 'Pm';
-      }
-
-      const inicio = hora12 < 10 ? `0${hora12}` : `${hora12}`;
-      const horaFormateada = `${inicio} ${periodo}`;
+      // Formato 24 horas
+      const horaFormateada = j < 10 ? `0${j}` : `${j}`;
 
       const fecha = new Date(ahora);
-      const hora = horaFormateada;
-
+      const hora = parseInt(horaFormateada);
       const est: string = 'Libre';
-
       const disponible = true;
-
       const id = `00${j}`.slice(-4);
+
       const boton: BotonHora = { estado: est, fecha, hora, disponible, id };
       this.botonesHoras.push(boton);
     }
@@ -129,8 +113,8 @@ export class VerComponent implements OnInit {
     if (boton.disponible) {
       boton.estado = boton.estado === 'Libre' ? 'Reservado' : 'Libre';
       localStorage.setItem('fecha_reserva', boton.fecha.toDateString());
-      localStorage.setItem('hora_inicio', boton.hora);
-      localStorage.setItem('hora_fin', this.botonesHoras[index + this.horasReserva - 1]?.hora ?? boton.hora);
+      localStorage.setItem('hora_inicio', boton.hora.toString());
+      localStorage.setItem('hora_fin', this.botonesHoras[index + this.horasReserva - 1]?.hora.toString() ?? boton.hora);
       localStorage.setItem('afuera', 'Y');
       this._router.navigate(['/login']);
     }
@@ -160,11 +144,10 @@ export class VerComponent implements OnInit {
         this.hora_inicio = this.empresa.hora_inicio;
         this.hora_fin = this.empresa.hora_fin;
 
-        this._userService.obtener_canchas(this.empresa._id).subscribe((response) => {
-          if (response.data == undefined) {
-            this.load_data = false;
-          } else if (response.data != undefined) {
-            this.canchas = response.data;
+        this._userService.obtener_canchas(this.empresa._id).subscribe({
+          next: (res) => {
+
+            this.canchas = res.data;
 
             if (this.canchas[0].tipo === 'Fútbol/Futsal' || this.canchas[0].tipo === 'Mixto') {
               this.tipo_cancha = 'futbol';
@@ -172,8 +155,12 @@ export class VerComponent implements OnInit {
               this.tipo_cancha = 'voley';
             }
 
+            this.click_ver(res.data[0]._id);
+
             this.load_data = false;
-            this.click_ver(response.data[0]._id);
+          },
+          error: (err) => {
+            this.canchas = [];
           }
         });
       }
@@ -184,13 +171,9 @@ export class VerComponent implements OnInit {
     this.botonesHoras = [];
     this.load_btn_ver = true;
     this.ver_caracteristicas = !this.ver_caracteristicas;
-
-    this._userService.obtener_cancha_publico(id).subscribe((response) => {
-      if (response === undefined) {
-        this.cancha_ver = undefined;
-        this.load_btn_ver = false;
-      } else {
-        this.cancha_ver = response.data;
+    this._userService.obtener_cancha_publico(id).subscribe({
+      next: (res) => {
+        this.cancha_ver = res.data;
 
         this._userService
           .obtener_reservaciones_public(this.cancha_ver._id)
@@ -200,13 +183,11 @@ export class VerComponent implements OnInit {
           });
 
         this.load_btn_ver = false;
+      },
+      error: (err) => {
+        this.cancha_ver = {};
       }
     });
-    localStorage.clear();
-    localStorage.setItem('id_cancha', id);
-  }
-
-  click_ver_movil(id: any) {
     localStorage.clear();
     localStorage.setItem('id_cancha', id);
   }

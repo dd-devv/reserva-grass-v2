@@ -4,8 +4,11 @@
         <app-card-sport-features [cancha]="cancha" (tipo_cancha)="handleIdcatalogos($event)"></app-card-sport-features>
         }
     </div>
-    <div >
-        <app-card-horario [tipo]="tipo_cancha" [botonesHoras]="botonesHoras" (fechaSeleccionada)="handleFecha($event)"></app-card-horario>
+    <div>
+        @if (!load_btn_ver) {
+            <app-card-horario [tipo]="tipo_cancha" [botonesHoras]="botonesHoras" [cancha]="cancha_ver" [hora_fin]="hora_fin"
+                (fechaSeleccionada)="handleFecha($event)"></app-card-horario>
+        }
     </div>
-   
+
 </div>
