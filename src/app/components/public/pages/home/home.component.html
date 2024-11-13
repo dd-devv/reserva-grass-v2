@@ -1,197 +1,60 @@
+<div class="wrapper">
 
-  <div class="wrapper">
+  <app-button-search class="mb-3" (option)="handleSearch($event)"></app-button-search>
 
-    <app-button-search class="mb-3"></app-button-search>
-    <input type="text" placeholder="HOLA"   class="bg-slate-500 w-max">
-
-
-
-    <div *ngIf="searchOption === 'name'">
-      <div class="row d-flex justify-content-center px-2 px-md-1 mb-4">
-        <div class="col-12 col-md-10 col-xl-6">
-          <div class="input-group">
-            <input type="text" class="form-control" placeholder="Escibe el nombre del grass aquí" aria-label="buscar"
-              aria-describedby="button-addon2" name="busqueda"  (keyup)="buscarName()" />
-            <button class="btn btn-outline-dark btn-1" type="button" id="button-addon2" (click)="buscarName()">
-              <i class="bi bi-search buscar"></i>
-            </button>
-          </div>
-
-          <!-- <div class="mb-3 mt-4">
-                        <label for="fecha" class="form-label">Buscar por fecha y hora</label>
-                        <input type="datetime-local" class="form-control" id="fecha" [(ngModel)]="fecha"
-                            (change)="buscarPorFechaHora()">
-                    </div> -->
-        </div>
-
-        <div class="text-center" *ngIf="load_search">
-          <div class="spinner-border" style="width: 3rem; height: 3rem" role="status"></div>
-          <h5 class="text-black-50"><small>Cargando...</small></h5>
-        </div>
-
-        <div class="rounded mt-4" *ngIf="show_alert_void" style="background-color: rgb(255, 223, 223)">
-          <p class="text-center p-2 text-danger">
-            ERROR: No se encontró un grass con el nombre '{{ busqueda }}'
-          </p>
-        </div>
-
-        <div class="rounded mt-4" *ngIf="show_alert_fecha" style="background-color: rgb(255, 223, 223)">
-          <p class="text-center p-2 text-danger">
-            ERROR: No se encontró una cancha para la fecha '{{ fecha }}'
-          </p>
-        </div>
-
-        <!-- Resultado por busqueda nombre -->
-        <div *ngIf="show_card_empresas" class="row d-flex justify-content-center mt-4">
-          <div class="col-12 col-md-6 col-lg-4 pb-4 pt-2" *ngFor="let item of caracBuscada">
-            <div class="card shadow" style="border-color: #aaf0c9">
-              <div class="images-grass">
-                <ng-container *ngIf="
-                    item.empresa.portada == undefined ||
-                    item.empresa.portada.length < 1
-                  ">
-                  <img class class="rounded" [src]="url + 'obtener_imagen_portada/' + 'defaultt'"
-                    alt="{{ item.empresa.nombre }}" />
-                </ng-container>
-
-                <ng-container *ngIf="item.empresa.portada != undefined">
-                  <img *ngIf="item.empresa.portada.length >= 1" class class="rounded" [src]="
-                      url +
-                      'obtener_imagen_portada/' +
-                      item.empresa.portada[0].imagen
-                    " alt="{{ item.empresa.nombre }}" />
-                </ng-container>
-
-                <div class="nombre">
-                  <h5 class="card-title fw-bold text-center">
-                    {{ item.empresa.nombre | titlecase }}
-                  </h5>
-                </div>
-
-                <div class="provinciaa" style="display: flex; position: absolute; right: 10px">
-                  <span id="name-provincia">
-                    {{ item.empresa.distrito }}
-                  </span>
-                </div>
-              </div>
-
-              <div class="card-body">
-                <p class="text-center">
-                  <a href="{{ item.empresa.ubicacion }}" target="_blank" style="
-                      text-decoration: none;
-                      color: #095c3d;
-                      font-style: italic;
-                    ">
-                    {{ item.empresa.direccion }}
-                  </a>
-                  &nbsp;
-                  <a href="{{ item.empresa.ubicacion }}" target="_blank">
-                    <i class="bi bi-arrow-up-right-circle" style="color: #095c3d"></i>
-                  </a>
-                </p>
-
-                <p class="text-center" *ngIf="item.empresa.referencia">
-                  <small> ({{ item.empresa.referencia }}) </small>
-                </p>
-                <p class="text-center" *ngIf="!item.empresa.referencia">
-                  <small> (Sin referencia) </small>
-                </p>
-
-                <div class="grass-caracteristicas">
-                  <!-- Más de una cancha -->
-                  <p *ngIf="item.canchas_futsal > 1">
-                    <i class="bi-1 bi-pentagon-fill"></i> &nbsp;
-                    <a> {{ item.canchas_futsal }} Canchas de futsal</a>
-                  </p>
-
-                  <!-- Una sola cancha -->
-                  <p *ngIf="item.canchas_futsal == 1">
-                    <i class="bi-1 bi-pentagon-fill"></i> &nbsp;
-                    <a> Una cancha de futsal</a>
-                  </p>
-
-                  <!-- Sin cancha -->
-                  <p *ngIf="item.canchas_futsal < 1" class="text-secondary">
-                    <i class="bi-2 bi-pentagon"></i> &nbsp;
-                    <a> Sin canchas de futsal</a>
-                  </p>
-
-                  <!-- Más de una cancha de voley -->
-                  <p *ngIf="item.canchas_voley > 1">
-                    <i class="bi-1 bi-dribbble"></i> &nbsp;
-                    <a> {{ item.canchas_voley }} canchas de vóley</a>
-                  </p>
-
-                  <!-- Una sola cancha -->
-                  <p *ngIf="item.canchas_voley == 1">
-                    <i class="bi-1 bi-dribbble"></i> &nbsp;
-                    <a> Una cancha de vóley</a>
-                  </p>
-
-                  <!-- Sin canchas de vóley -->
-                  <p *ngIf="item.canchas_voley < 1" class="text-secondary">
-                    <i class="bi-2 bi-dribbble"></i> &nbsp;
-                    <a>Sin canchas de vóley</a>
-                  </p>
-
-                  <p *ngIf="item.iluminacion">
-                    <i class="bi-1 bi-lightning-charge-fill"></i> &nbsp;
-                    <a>Iluminación LED</a>
-                  </p>
-
-                  <p *ngIf="!item.iluminacion" class="text-secondary">
-                    <i class="bi-2 bi-lightning-charge"> </i> &nbsp;
-                    <a>Sin iluminación LED</a>
-                  </p>
-                  <p *ngIf="item.techado">
-                    <i class="bi-1 bi-cloud-lightning-rain-fill"></i> &nbsp;
-                    <a>Techado</a>
-                  </p>
-
-                  <p *ngIf="!item.techado" class="text-secondary">
-                    <i class="bi-2 bi-cloud-lightning-rain"> </i> &nbsp;
-                    <a>Sin techo</a>
-                  </p>
-                  <p *ngIf="item.garaje">
-                    <i class="bi-1 bi-car-front-fill"></i> &nbsp; <a>Garaje</a>
-                  </p>
-
-                  <p *ngIf="!item.garaje" class="text-secondary">
-                    <i class="bi-2 bi-car-front"> </i> &nbsp; <a>Sin garaje</a>
-                  </p>
-                </div>
-
-                <div class="text-center" style="padding: 10px 0px">
-                  <a [routerLink]="['/ver', item.empresa._id]" class="btn btn-reserve"
-                    style="width: 180px; border-radius: 30px">
-                    Reservar &nbsp; <i class="bi-greater bi-chevron-right"></i>
-                  </a>
-                </div>
-              </div>
-            </div>
-          </div>
-        </div>
-      </div>
+  @if (searchOption === 'name') {
+  <div class="row d-flex justify-content-center px-2 px-md-1 mb-4">
+    <div class="input-group">
+      <input type="text" class="form-control" placeholder="Escibe el nombre del grass aquí" aria-label="buscar"
+        autocomplete="off" aria-describedby="button-addon2" [(ngModel)]="busqueda" name="busqueda"
+        (keyup)="buscarName()" />
     </div>
   </div>
+  }
 
-  <div class="wrapper">
+  @if (searchOption === 'location') {
+  <select id="region" class="form-select" name="region" [(ngModel)]="empresa.region" (change)="select_region()"
+    required>
+    <option value="" selected disabled>Departamento</option>
+    <option value="{{ item.id }}" *ngFor="let item of regiones">
+      {{ item.name }}
+    </option>
+  </select>
 
-    <div class="mirko">
-      @if(load_data) {
-        @for (item of [1,2,3,4,5,6,7,8]; track $index) {
-          <app-card-empresa-skeleton class="flex justify-center"></app-card-empresa-skeleton>
-        }
-      }
-      @else {
-        @for (cancha of primerosBuscado; track $index) {
-        <app-card-empresa
-          [caracteristicas]="cancha"
-          [urlInput]="''"
-          class="flex justify-center"
-        />
-        }
-      }
-    
-    </div>
+  <select id="provincia" class="form-select" name="provincia" (change)="select_provincia()"
+    [(ngModel)]="empresa.provincia" required>
+    <option value="" selected disabled>Provincia</option>
+    <option value="{{ item.id }}" *ngFor="let item of provincias">
+      {{ item.name }}
+    </option>
+  </select>
+
+  <!-- <select id="distrito" class="form-select" name="distrito" [(ngModel)]="empresa.distrito" (change)="select_distrito()"
+    required>
+    <option value="" selected disabled>Distrito</option>
+    <option value="{{ item.name }}" *ngFor="let item of distritos">
+      {{ item.name }}
+    </option>
+  </select> -->
+  }
+</div>
+
+<div class="wrapper">
+
+  <div class="mirko">
+    @if(load_data) {
+    @for (item of [1,2,3,4,5,6,7,8]; track $index) {
+    <app-card-empresa-skeleton class="flex justify-center"></app-card-empresa-skeleton>
+    }
+    }
+    @else {
+    @if (caracBuscada.length >= 1) {}
+    @for (cancha of caracBuscada; track $index) {
+    <app-card-empresa [caracteristicas]="cancha" [urlInput]="''" class="flex justify-center" />
+    }
+    @if (caracBuscada.length < 1) {
+      <p class="text-xl">NO se econtro :V</p>
+    }
+  }
+</div>
   </div>

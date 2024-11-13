@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { Component, EventEmitter, Output } from '@angular/core';
 
 @Component({
   selector: 'app-button-search',
@@ -7,4 +7,13 @@ import { Component } from '@angular/core';
 })
 export class ButtonSearchComponent {
 
+  @Output() option = new EventEmitter<string>();
+
+  public searchOption: string = 'name';
+
+  searChange(opt: string) {
+    this.searchOption = opt;
+    this.option.emit(opt);
+  }
+  
 }

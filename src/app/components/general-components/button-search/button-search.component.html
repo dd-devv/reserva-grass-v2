@@ -1,8 +1,12 @@
 <div class="w-full flex justify-between gap-4 h-11">
-    <button type="button" class="w-full bg-forestGreen-300 text-forestGreen-800 rounded-lg font-semibold">
+
+    <button type="button" class="w-full border border-forestGreen-400 text-forestGreen-600 rounded-lg font-semibold"
+        [ngClass]="{'bg-forestGreen-300 text-forestGreen-800': searchOption === 'name'}" (click)="searChange('name')">
         Buscar por nombre
     </button>
-    <button type="button" class="w-full border border-forestGreen-400 text-forestGreen-600 rounded-lg font-semibold">
+    <button type="button" class="w-full border border-forestGreen-400 text-forestGreen-600 rounded-lg font-semibold"
+    [ngClass]="{'bg-forestGreen-300 text-forestGreen-800': searchOption === 'location'}" (click)="searChange('location')"
+    >
         Buscar por ubicación
     </button>
 </div>

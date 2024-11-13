@@ -8,6 +8,7 @@ import { GeneralComponentsModule } from '../general-components/general-component
 import { ContainerComponent } from './container/container.component';
 import { VerComponent } from './pages/ver/ver.component';
 import { NosotrosComponent } from './pages/nosotros/nosotros.component';
+import { FormsModule } from '@angular/forms';
 
 
 @NgModule({
@@ -17,12 +18,12 @@ import { NosotrosComponent } from './pages/nosotros/nosotros.component';
     ContainerComponent,
     VerComponent,
     NosotrosComponent
-    
   ],
   imports: [
     CommonModule,
     PublicRoutingModule,
-    GeneralComponentsModule
+    GeneralComponentsModule,
+    FormsModule
   ]
 })
 export class PublicModule { }

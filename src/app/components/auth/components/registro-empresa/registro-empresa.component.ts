@@ -406,9 +406,7 @@ export class RegistroEmpresaComponent implements OnInit {
 
     try {
       const companyData: Company = {
-        ...this.registrationForm.value,
-        region: this.namereg,
-        provincia: this.nameprov
+        ...this.registrationForm.value
       };
 
       const response = await this.userService.registro_empresa(companyData).toPromise();

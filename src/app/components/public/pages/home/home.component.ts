@@ -19,19 +19,8 @@ import { Caracteristica, Empresa, Region } from '../../../general-components/int
   styleUrls: ['./home.component.css'],
 })
 export class HomeComponent implements OnInit {
-  //___
-  @ViewChild('masPopular', { static: true }) masPopularRef!: ElementRef;
 
-  scrollToMasPopular(): void {
-    this.masPopularRef.nativeElement.scrollIntoView({
-      behavior: 'smooth',
-      block: 'start',
-    });
-  }
-
-  //------------- se aumento
   public searchOption: string = 'name';
-  //-----------
 
   public empresa: any = {
     region: '',
@@ -80,29 +69,18 @@ export class HomeComponent implements OnInit {
   isDisabledDistrito = true;
   public reviews: Array<any> = [];
   public reviewsDestacados: Array<any> = [];
-  screenWidth: number = 0;
-  screenHeight: number = 0;
 
   p: number = 1;
 
   public imagen_fondo: String = '';
-  @ViewChild('textoAnimado') textoAnimado: any;
+
   texto: string = '';
 
-  @HostListener('window:resize', ['$event'])
-  onResize(event: any) {
-    this.screenWidth = window.innerWidth;
-    this.screenHeight = window.innerHeight;
-  }
-
   constructor(
-    private _router: Router,
     private _title: Title,
     private _guestService: GuestService,
     private _userService: UserService
   ) {
-    this.screenWidth = window.innerWidth;
-    this.screenHeight = window.innerHeight;
 
     this.url = GLOBAL.url;
     this.user_lc = undefined;
@@ -138,7 +116,7 @@ export class HomeComponent implements OnInit {
           this.regiones = regiones;
           this.primeras_empresas = empresas;
 
-          this.primerosBuscado = empresas.map(
+          this.caracBuscada = empresas.map(
             (empresa: { _id: any; }) =>
               caracteristicas.find(
                 (carac: { empresa: { _id: any; }; }) => carac.empresa._id === empresa._id
@@ -148,9 +126,15 @@ export class HomeComponent implements OnInit {
         error: (err) => console.error('Error al cargar datos', err),
       });
 
-      setTimeout(() => {
-        this.load_data = false;
-      }, 1000);
+    setTimeout(() => {
+      this.load_data = false;
+    }, 1000);
+  }
+
+  handleSearch(opt: string) {
+    this.searchOption = opt;
+    this.busqueda = '';
+    this.ngOnInit();
   }
 
   init_data() {
@@ -160,7 +144,7 @@ export class HomeComponent implements OnInit {
 
   buscarName(): void {
     if (!this.busqueda) {
-      this.init_data();
+      this.ngOnInit();
       return;
     }
 
@@ -176,6 +160,8 @@ export class HomeComponent implements OnInit {
           return of(null);
         }
         this.empresas = response.data;
+        console.log(this.empresas);
+
         this.load_data = false;
         return this._userService.obtener_caracteristicas_empresa_publico();
       }),
@@ -240,58 +226,132 @@ export class HomeComponent implements OnInit {
   }
 
   private asignarCaracteristicas(caracteristicas: any): void {
-    this.caracBuscada = this.empresas.map(empresa => 
+    this.caracBuscada = this.empresas.map(empresa =>
       caracteristicas.find((carac: { empresa: { _id: any; }; }) => carac.empresa._id === empresa._id) || null
     );
+
+    this.primerosBuscado = this.caracBuscada;
   }
 
   select_region() {
-    this.resetState();
-    
-    forkJoin({
-      provincias: this._guestService.obtener_provincias(),
-      empresas: this._userService.listar_empresas_region(this.namereg),
-      caracteristicas: this._userService.obtener_caracteristicas_empresa_publico()
-    }).subscribe({
-      next: ({ provincias, empresas, caracteristicas }) => {
-        this.provincias = provincias.filter((p: { department_id: any; }) => p.department_id === this.empresa.region);
-        this.processEmpresasData(empresas.data, caracteristicas.data);
-      },
-      error: (error) => this.handleError(error),
-      complete: () => this.load_search_ubication = false
+    // Reset initial state
+    this.resetInitialState();
+
+    // Get provinces for selected region
+    this._guestService.obtener_provincias().subscribe(response => {
+      this.provincias = response.filter((element: { department_id: any; }) =>
+        element.department_id === this.empresa.region
+      );
+
+      const regionFound = this.regiones.find(
+        objeto => objeto.id === this.empresa.region
+      );
+
+      if (!regionFound) return;
+      this.namereg = regionFound.name;
+
+      // Get companies for region
+      this._userService.listar_empresas_region(this.namereg)
+        .subscribe(response => {
+          this.handleCompaniesResponse(response);
+        });
     });
   }
 
   select_provincia() {
-    this.resetProvinciaState();
-    
-    forkJoin({
-      distritos: this._guestService.obtener_distritos(),
-      empresas: this._userService.listar_empresas_prov(this.namereg, this.nameprov),
-      caracteristicas: this._userService.obtener_caracteristicas_empresa_publico()
-    }).subscribe({
-      next: ({ distritos, empresas, caracteristicas }) => {
-        this.distritos = distritos.filter((d: { province_id: any; }) => d.province_id === this.empresa.provincia);
-        this.processEmpresasData(empresas.data, caracteristicas.data);
-      },
-      error: (error) => this.handleError(error),
-      complete: () => this.load_search_ubication = false
+    // Reset district related state
+    this.resetDistrictState();
+
+    // Get districts for selected province
+    this._guestService.obtener_distritos().subscribe(response => {
+      this.distritos = response.filter((element: { province_id: any; }) =>
+        element.province_id === this.empresa.provincia
+      );
+
+      const provinceFound = this.provincias.find(
+        objeto => objeto.id === this.empresa.provincia
+      );
+
+      if (!provinceFound) return;
+      this.nameprov = provinceFound.name;
+
+      // Get companies for province
+      this._userService.listar_empresas_prov(this.namereg, this.nameprov)
+        .subscribe(response => {
+          this.handleCompaniesResponse(response);
+        });
     });
   }
 
   select_distrito() {
-    this.resetDistritoState();
-
-    forkJoin({
-      empresas: this._userService.listar_empresas_dist(this.namereg, this.nameprov, this.empresa.distrito),
-      caracteristicas: this._userService.obtener_caracteristicas_empresa_publico()
-    }).subscribe({
-      next: ({ empresas, caracteristicas }) => {
-        this.processEmpresasData(empresas.data, caracteristicas.data);
-      },
-      error: (error) => this.handleError(error),
-      complete: () => this.load_search_ubication = false
+    // Get companies for district
+    this._userService.listar_empresas_dist(
+      this.namereg,
+      this.nameprov,
+      this.empresa.distrito
+    ).subscribe(response => {
+      this.handleCompaniesResponse(response);
     });
+  }
+
+  private resetInitialState() {
+    this.provincias = [];
+    this.distritos = [];
+    this.caracBuscada = [];
+    this.isDisabledProvincia = false;
+    this.isDisabledDistrito = true;
+    this.empresa.provincia = '';
+    this.nameprov = '';
+    this.empresa.distrito = '';
+    this.load_search_ubication = true;
+    this.busqueda = '';
+    this.init_data();
+  }
+
+  private resetDistrictState() {
+    this.distritos = [];
+    this.caracBuscada = [];
+    this.isDisabledDistrito = false;
+    this.empresa.distrito = '';
+  }
+
+  private handleCompaniesResponse(response: any) {
+    if (!response?.data) {
+      this.showEmptyState();
+      return;
+    }
+
+    this.showCompaniesData(response.data);
+    this.updateCompanyCharacteristics();
+  }
+
+  private showEmptyState() {
+    this.show_alert_void_ubication = true;
+    this.show_card_empresas_ubication = false;
+    this.load_search_ubication = false;
+  }
+
+  private showCompaniesData(companies: any[]) {
+    this.empresas_ubication = companies;
+    this.show_card_empresas_ubication = true;
+    this.load_data_ubication = false;
+    this.show_alert_void_ubication = false;
+  }
+
+  private updateCompanyCharacteristics() {
+    this._userService.obtener_caracteristicas_empresa_publico()
+      .subscribe(response => {
+        if (!response?.data) return;
+
+        this.caracteristicas = response.data;
+        this.caracBuscada = this.empresas_ubication.map(empresa => {
+          return this.caracteristicas.find(
+            caracteristica => caracteristica.empresa._id === empresa._id
+          ) || null;
+        });
+
+        this.load_search_ubication = false;
+      });
   }
 
   private resetState() {
@@ -323,11 +383,13 @@ export class HomeComponent implements OnInit {
   private processEmpresasData(empresas: Empresa[] | undefined, caracteristicas: Caracteristica[] | undefined) {
     if (empresas && caracteristicas) {
       this.empresas_ubication = empresas;
+      console.log(this.empresas_ubication);
+
       this.show_card_empresas_ubication = true;
       this.load_data_ubication = false;
       this.show_alert_void_ubication = false;
 
-      this.caracBuscada = this.empresas_ubication.map(empresa => 
+      this.caracBuscada = this.empresas_ubication.map(empresa =>
         caracteristicas.find(c => c.empresa._id === empresa._id) || null
       );
     } else {
@@ -345,7 +407,6 @@ export class HomeComponent implements OnInit {
     // Implementar manejo de errores apropiado
   }
 
-  //------------se aumento
   changeSearchOption(option: string) {
     this.searchOption = option;
     this.busqueda = '';
