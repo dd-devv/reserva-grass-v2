@@ -9,6 +9,9 @@
     background-image: url("port.jpg");
     background-position: center;
 }
+.portada{
+    background-image: url("port.jpg");
+}
 
 /* Estilos para los íconos */
 .icon-container {
