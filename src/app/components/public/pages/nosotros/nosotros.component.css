@@ -1,0 +1,32 @@
+.img-form {
+    border-radius: 16px;
+    display: flex; /* Asegura que el contenedor de íconos se muestre */
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    width: 100%;
+    height: 100%; /* Ajusta la altura del contenedor */
+    background-image: url("port.jpg");
+    background-position: center;
+}
+
+/* Estilos para los íconos */
+.icon-container {
+    position: absolute;
+    bottom: 4px;
+    left: 4px;
+    display: flex;
+    gap: 8px;
+}
+
+.icon {
+    background-color: white;
+    padding: 8px;
+    border-radius: 50%;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    transition: background-color 0.3s ease;
+}
+
+.icon:hover {
+    background-color: #f3f4f6;
+}
