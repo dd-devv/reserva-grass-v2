@@ -2,6 +2,7 @@ import { Component, EventEmitter, Input, OnInit, Output, AfterViewInit, ChangeDe
 import { Router } from '@angular/router';
 import { Datepicker, initFlowbite } from 'flowbite';
 import type { DatepickerOptions } from 'flowbite';
+import { ToastService } from '../../../services/toast.service';
 
 @Component({
   selector: 'app-card-horario',
@@ -9,6 +10,12 @@ import type { DatepickerOptions } from 'flowbite';
   styleUrls: ['./card-horario.component.css']
 })
 export class CardHorarioComponent implements OnInit, AfterViewInit {
+
+
+
+
+
+
   @Input() tipo!: string;
   @Input() botonesHoras!: any[];
   @Input() cancha!: any;
@@ -25,7 +32,7 @@ export class CardHorarioComponent implements OnInit, AfterViewInit {
 
   constructor(
     private _router: Router
-  ) {
+  ,private toastService: ToastService) {
     const hoy = new Date();
     this.fechaMinima = this.formatearFecha(hoy);
 
@@ -33,6 +40,8 @@ export class CardHorarioComponent implements OnInit, AfterViewInit {
     unMesDespues.setMonth(unMesDespues.getMonth() + 1);
     this.fechaMaxima = this.formatearFecha(unMesDespues);
   }
+
+ 
 
   ngOnInit(): void {
     this.precio_reservacion = this.cancha.precio_reservacion;
@@ -71,6 +80,9 @@ export class CardHorarioComponent implements OnInit, AfterViewInit {
       });
     }
   }
+  mostrarToast() {
+    this.toastService.showToast('No se pueden agregar más horas. Excede el horario de cierre.');
+  }
 
   changeHoras(hora: number, cant: number) {
     const nuevaHoraFinal = hora + this.cantidad_horas + cant;
@@ -78,6 +90,7 @@ export class CardHorarioComponent implements OnInit, AfterViewInit {
       this.hora_inicio = hora;
       this.cantidad_horas += cant;
     } else {
+      this.mostrarToast();
       console.log('No se pueden agregar más horas. Excede el horario de cierre.');
     }
   }

@@ -88,14 +88,14 @@
               <p class="font-bold">Reservar {{cancha.nombre}}</p>
               <div class="flex gap-8 justify-center">
                 <button (click)="changeHoras(hora.hora, -1)" [disabled]="cantidad_horas === 1"
-                  class="font-semibold text-forestGreen-500 flex justify-center size-12 rounded-full bg-forestGreen-100 items-center text-center self-center text-xl">
+                  class="disabled:bg-gray-200 disabled:cursor-not-allowed disabled:text-black disabled:scale-100 font-semibold text-forestGreen-500 flex justify-center size-12 rounded-full bg-forestGreen-100 items-center text-center self-center text-xl hover:scale-110 hover:transition-colors">
                   ―
                 </button>
                 <div
-                  class="font-bold text-seashell-900 flex justify-center size-24 rounded-full bg-seashell-100 items-center text-center self-center text-3xl">
+                  class="border border-slate-300 font-bold text-seashell-900 flex justify-center size-24 rounded-full bg-seashell-100 items-center text-center self-center text-3xl  ">
                   {{cantidad_horas}} <span class="text-sm -mb-3">h</span></div>
                 <button (click)="changeHoras(hora.hora, 1)" [disabled]="cantidad_horas === 4"
-                  class="font-semibold text-forestGreen-500 flex justify-center size-12 rounded-full bg-forestGreen-100 items-center text-center self-center text-3xl">+</button>
+                  class=" disabled:bg-gray-200 disabled:cursor-not-allowed disabled:text-black disabled:scale-100 font-semibold text-forestGreen-500 flex justify-center size-12 rounded-full bg-forestGreen-100 items-center text-center self-center text-3xl hover:scale-110">+</button>
               </div>
               <p class="font-bold">S/ {{precio_reservacion * cantidad_horas}}</p>
 
@@ -106,7 +106,7 @@
                   time24to12}}</p>
               </div>
 
-              <div class="flex gap-4 justify-center items-center">
+              <div class="flex gap-4 justify-center items-center ">
                 <img class="stroke-green-500" src="../../../../assets/svg-icons/calendar.svg" alt="calendar">
                 <p class="text-xs">
                   {{hora.fecha | date:'longDate':'es'}}
@@ -201,3 +201,5 @@
     </button>
   </div>
 </div>
+
+
