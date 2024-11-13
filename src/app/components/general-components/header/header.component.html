@@ -1,4 +1,58 @@
 <nav class="border-gray-200 dark:bg-gray-900 items-center w-full border-b text-lg">
+  <div class="max-w-screen-xl w-full flex flex-col md:flex-row flex-nowrap items-center justify-between mx-auto px-4 py-2 gap-y-2">
+    <div class="md:w-2/6 flex md:self-start w-full justify-between">
+      <a href="/" class="flex flex-nowrap items-center space-x-3">
+        <img src="../../../../assets/svg/logo.svg" class="h-10" alt="Reserva Tu Grass Logo" />
+        <p class="text-lg font-semibold logo-nombre">
+          Reserva <br />
+          <span>tu </span> grass
+        </p>
+      </a>
+      <button (click)="toggleMenu()" class="md:hidden p-2 text-gray-600 hover:text-gray-800 focus:outline-none">
+        <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+          <path d="M4 7H20M4 12H20M4 17H20" stroke="#3D3D3D" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+          </svg>
+          
+      </button>
+    </div>
+
+    <!-- Menú de navegación -->
+    <div [class.hidden]="isMenuHidden"
+      class="md:w-4/6 text-xs gap-3 md:text-base flex items-center w-full md:space-x-4 justify-between">
+      <ul class="flex gap-3 md:gap-6 justify-between">
+        <li [routerLink]="['/']" class="flex flex-row gap-3 cursor-pointer items-center">
+          Inicio
+        </li>
+
+        <li [routerLink]="['/nosotros']" class="flex flex-row-reverse gap-3 cursor-pointer items-center">
+          <p class="md:block">Nosotros</p>
+        </li>
+
+        <li [routerLink]="['/contacto']" class="flex flex-row-reverse gap-3 cursor-pointer items-center">
+          <p class="md:block">Contacto</p>
+        </li>
+      </ul>
+
+      <div class="*text-xs *md:text-base flex gap-2 md:gap-4">
+        <button type="button" [routerLink]="['/auth']"
+          class="text-nowrap text-white bg-chambray-400 hover:bg-chambray-800 focus:ring-4 focus:outline-none focus:ring-chambray-300 font-medium rounded-lg px-2 py-1 md:px-4 md:py-2 text-center">
+          Crear cuenta
+        </button>
+
+        <button type="button" [routerLink]="['/auth/registro']"
+          class="text-nowrap bg-white border border-chambray-400 hover:bg-chambray-50 focus:ring-4 focus:outline-none focus:ring-chambray-50 font-medium rounded-lg px-2 py-1 md:px-4 md:py-2 text-center">
+          Iniciar Sesión
+        </button>
+      </div>
+    </div>
+  </div>
+</nav>
+
+
+
+
+
+<!-- <nav class="border-gray-200 dark:bg-gray-900 items-center w-full border-b text-lg">
   <div class="max-w-screen-xl flex flex-nowrap items-center justify-between mx-auto px-4 py-2">
     <a href="/" class="flex flex-nowrap items-center space-x-3">
       <img src="../../../../assets/svg/logo.svg" class="h-10" alt="Reserva Tu Grass Logo" />
@@ -95,4 +149,4 @@
 
     </div>
   </div>
-</nav>
+</nav> -->
