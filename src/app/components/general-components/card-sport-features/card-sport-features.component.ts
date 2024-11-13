@@ -8,6 +8,7 @@ import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
 export class CardSportFeaturesComponent implements OnInit {
   @Input() cancha: any;
   @Output() tipo_cancha = new EventEmitter<string>();
+  @Output() id_cancha = new EventEmitter<string>();
 
   public tipo = '';
 
@@ -19,8 +20,9 @@ export class CardSportFeaturesComponent implements OnInit {
 
   }
 
-  onSelect(tipo: string): void {
+  onSelect(tipo: string, id: string): void {
     this.tipo = tipo;
     this.tipo_cancha.emit(this.tipo);
+    this.id_cancha.emit(id);
   }
 }

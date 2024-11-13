@@ -59,8 +59,12 @@ export class VerComponent implements OnInit {
     this.inicializarBotonesHoras();
   }
 
-  handleIdcatalogos(tipo_cancha: string) {
+  handleCancha(tipo_cancha: string) {
     this.tipo_cancha = tipo_cancha;
+  }
+
+  handleIdCancha(id: string) {
+    this.click_ver(id);
   }
 
   handleFecha(fecha: any) {
@@ -76,6 +80,7 @@ export class VerComponent implements OnInit {
 
     let primerHora;
 
+    // Determinar la hora inicial
     if (this.fechaSeleccionada!.toDateString() === this.ahora.toDateString()) {
       primerHora = horaActual + 1;
       if (primerHora >= this.hora_fin) {
@@ -87,19 +92,60 @@ export class VerComponent implements OnInit {
 
     primerHora = Math.max(primerHora, this.hora_inicio);
 
+    // Crear botones para cada hora
     for (let j = primerHora; j < this.hora_fin; j++) {
-      // Formato 24 horas
       const horaFormateada = j < 10 ? `0${j}` : `${j}`;
-
       const fecha = new Date(ahora);
       const hora = parseInt(horaFormateada);
-      const est: string = 'Libre';
-      const disponible = true;
-      const id = `00${j}`.slice(-4);
+      let estadoBoton = 'Libre';
+      let disponibleBtn = true;
 
-      const boton: BotonHora = { estado: est, fecha, hora, disponible, id };
+      // Verificar si hay reservaciones que afecten esta hora
+      if (this.reservaciones && this.reservaciones.length > 0) {
+        for (const reservacion of this.reservaciones) {
+          const reservacionFecha = new Date(reservacion.fecha);
+
+          // Verificar si la reservación corresponde al día seleccionado
+          if (
+            fecha.getDate() === reservacionFecha.getDate() &&
+            fecha.getMonth() === reservacionFecha.getMonth() &&
+            fecha.getFullYear() === reservacionFecha.getFullYear()
+          ) {
+            // Verificar si la hora actual está dentro del rango de la reservación
+            if (
+              hora >= parseInt(reservacion.hora_inicio) &&
+              hora < parseInt(reservacion.hora_fin)
+            ) {
+              estadoBoton = reservacion.estado;
+              disponibleBtn = false;
+              break;
+            }
+          }
+        }
+      }
+
+      // Verificar si es hora pasada para el día actual
+      if (this.fechaSeleccionada!.toDateString() === this.ahora.toDateString()) {
+        if (hora <= horaActual) {
+          estadoBoton = 'Pasado';
+          disponibleBtn = false;
+        }
+      }
+
+      const id = `00${j}`.slice(-4);
+      const boton: BotonHora = {
+        estado: estadoBoton,
+        fecha,
+        hora: parseInt(horaFormateada),
+        disponible: disponibleBtn,
+        id
+      };
+
       this.botonesHoras.push(boton);
     }
+
+    console.log(this.botonesHoras);
+    
   }
 
   onHoraSeleccionada(index: number) {

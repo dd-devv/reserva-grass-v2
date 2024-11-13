@@ -3,6 +3,8 @@
   class="flex flex-col w-full gap-4 bg-forestGreen-100 border border-forestGreen-400 justify-center px-4 py-5 rounded-lg">
   <div class="flex justify-center items-center">
 
+    <p class="mx-5 font-bold">{{cancha.nombre}}</p>
+
     <!-- SELECT FECHA -->
 
     <!-- formato fecha: MM/DD/YYY -->
@@ -51,10 +53,29 @@
 
     <div class="relative">
       <!-- Modal toggle -->
+      @if (hora.estado === 'Ocupado') {
+      <button disabled [attr.data-modal-target]="'modal-' + hora.id" [attr.data-modal-toggle]="'modal-' + hora.id"
+      class="bg-yellow-300 w-full rounded-lg h-9 flex justify-center items-center hover:scale-105"
+        type="button">
+        <p>1PM</p>
+      </button>
+      }
+
+      @if (hora.estado === 'Reservado') {
+      <button disabled [attr.data-modal-target]="'modal-' + hora.id" [attr.data-modal-toggle]="'modal-' + hora.id"
+        class="bg-forestGreen-500 text-white w-full  rounded-lg h-9 flex justify-center items-center hover:scale-105"
+        type="button">
+        <p>1PM</p>
+      </button>
+      }
+
+      @if (hora.estado === 'Libre') {
       <button [attr.data-modal-target]="'modal-' + hora.id" [attr.data-modal-toggle]="'modal-' + hora.id"
         class="w-full bg-white rounded-lg h-9 flex justify-center items-center hover:scale-105" type="button">
         {{hora.hora | time24to12}}
       </button>
+      }
+
 
       <!-- Main modal -->
       <div id="modal-{{hora.id}}" tabindex="-1" aria-hidden="true"
@@ -81,7 +102,8 @@
               <div class="flex items-center h-2">
                 <p class="font-bold text-sm text-gray-500 dark:text-gray-400">{{hora.hora | time24to12}}</p>
                 <hr class="w-48 h-2 mx-auto bg-forestGreen-500 border-0 rounded md:my-10 dark:bg-gray-700">
-                <p class="font-bold text-sm text-gray-500 dark:text-gray-400">{{hora.hora + cantidad_horas | time24to12}}</p>
+                <p class="font-bold text-sm text-gray-500 dark:text-gray-400">{{hora.hora + cantidad_horas |
+                  time24to12}}</p>
               </div>
 
               <div class="flex gap-4 justify-center items-center">
@@ -97,7 +119,7 @@
               <button [attr.data-modal-hide]="'modal-' + hora.id" type="button"
                 class="py-2.5 px-5 ms-3 text-sm text-gray-900 focus:outline-none bg-white rounded-lg border border-gray-200 hover:bg-gray-100 hover:text-forestGreen-700 focus:z-10 focus:ring-4 focus:ring-gray-100">
                 Cancelar</button>
-              <button [attr.data-modal-hide]="'modal-' + hora.id" type="button"
+              <button [attr.data-modal-hide]="'modal-' + hora.id" type="button" (click)="onHoraSeleccionada(hora)"
                 class="font-semibold text-white bg-forestGreen-500 hover:bg-forestGreen-600 focus:ring-4 focus:outline-none focus:ring-blue-300 rounded-lg text-sm px-5 py-2.5 text-center">
                 Registrar</button>
             </div>

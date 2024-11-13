@@ -1,4 +1,5 @@
 import { Component, EventEmitter, Input, OnInit, Output, AfterViewInit, ChangeDetectorRef, SimpleChanges } from '@angular/core';
+import { Router } from '@angular/router';
 import { Datepicker, initFlowbite } from 'flowbite';
 import type { DatepickerOptions } from 'flowbite';
 
@@ -22,7 +23,9 @@ export class CardHorarioComponent implements OnInit, AfterViewInit {
   public cantidad_horas = 1;
   public precio_reservacion = 10;
 
-  constructor(private cdr: ChangeDetectorRef) {
+  constructor(
+    private _router: Router
+  ) {
     const hoy = new Date();
     this.fechaMinima = this.formatearFecha(hoy);
 
@@ -77,6 +80,15 @@ export class CardHorarioComponent implements OnInit, AfterViewInit {
     } else {
       console.log('No se pueden agregar más horas. Excede el horario de cierre.');
     }
+  }
+
+  onHoraSeleccionada(hora: any) {
+    hora.estado === 'Libre' ? 'Reservado' : 'Libre';
+    localStorage.setItem('fecha_reserva', hora.fecha.toDateString());
+    localStorage.setItem('hora_inicio', hora.hora.toString());
+    localStorage.setItem('hora_fin', (hora.hora + this.cantidad_horas).toString());
+    localStorage.setItem('afuera', 'Y');
+    this._router.navigate(['/auth']);
   }
 
   private formatearFecha(fecha: Date): string {
