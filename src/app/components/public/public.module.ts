@@ -17,6 +17,7 @@ import { NosotrosComponent } from './pages/nosotros/nosotros.component';
     ContainerComponent,
     VerComponent,
     NosotrosComponent
+    
   ],
   imports: [
     CommonModule,

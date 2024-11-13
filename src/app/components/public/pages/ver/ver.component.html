@@ -1,5 +1,7 @@
 <div class="wrapper">
-
+    <div>
+        <app-card-sport-features-skeleton></app-card-sport-features-skeleton>
+    </div>
     <div class=" flex flex-col lg:flex-row  self-center justify-center gap-4 p-4">
         <div class="flex flex-row  lg:flex-col mb-4 overflow-y-auto overflow-x-auto overflow-hidden gap-8 lg:h-[730px]">
             @for (cancha of canchas; track $index) {
@@ -13,6 +15,6 @@
                 (fechaSeleccionada)="handleFecha($event)"></app-card-horario>
             }
         </div>
-        
-</div>
+
     </div>
+</div>
