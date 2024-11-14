@@ -1,27 +1,28 @@
 <!-- agregar de forma dinamica la clase voleyball-card -->
-<div  class="bg-blue-400" 
-  class="flex flex-col w-full gap-4 bg-forestGreen-100 border border-forestGreen-400 justify-center px-4 py-5 rounded-lg">
+<div  
+  class="flex flex-col w-full gap-4 bg-white border border-gray-200 justify-center px-4 py-5 rounded-lg">
   <div class="flex justify-center items-center flex-col">
 
     <div class="h-6 w-full max-w-44 rounded-lg bg-white title-cancha-skeleton mb-4"></div>
 
     <!-- SELECT FECHA -->
-
-    <!-- formato fecha: MM/DD/YYY -->
-
-    <!-- <div class="relative flex gap-4 ">
-      <div class="absolute inset-y-0 start-0 flex items-center ps-3 pointer-events-none w-7">
-        <svg class="w-4 h-4 text-gray-500 dark:text-gray-400" aria-hidden="true" xmlns="http://www.w3.org/2000/svg"
-          fill="currentColor" viewBox="0 0 20 20">
-          <path
-            d="M20 4a2 2 0 0 0-2-2h-2V1a1 1 0 0 0-2 0v1h-3V1a1 1 0 0 0-2 0v1H6V1a1 1 0 0 0-2 0v1H2a2 2 0 0 0-2 2v2h20V4ZM0 18a2 2 0 0 0 2 2h16a2 2 0 0 0 2-2V8H0v10Zm5-8h10a1 1 0 0 1 0 2H5a1 1 0 0 1 0-2Z" />
-        </svg>
-      </div>
-      <input type="text" id="datepicker-format"
-        class="ring-forestGreen-300 ps-10 border border-forestGreen-500 rounded-lg h-8 w-[160px]"
-        [ngClass]="tipo === 'futbol' ? '' : 'voleyball-card'" readonly>
-    </div> -->
     <div class="h-8 w-[160px] rounded-lg bg-white input-skeleton"></div>
+    <div class="flex flex-row gap-6 mt-2">
+        <div class="flex flex-row justify-center items-center gap-0">
+          <div class="w-4 h-4 rounded-full bg-white  point "></div>
+          <div class="h-5 w-12 bg-white rounded-lg text-skeleton"></div>
+        </div>
+        <div class="flex flex-row justify-center items-center gap-0">
+          <div class="w-4 h-4 rounded-full bg-white  point "></div>
+
+          <div class="h-5 w-20 bg-white rounded-lg text-skeleton"></div>
+        </div>
+        <div class="flex flex-row justify-center items-center gap-0">
+          <div class="w-4 h-4 rounded-full bg-white  point "></div>
+          <div class="h-5 w-24 bg-white rounded-lg text-skeleton"></div>
+
+        </div>
+      </div>
   </div>
 
   <div class="grid grid-cols-4 grid-rows-4 gap-4 w-full text-center">
@@ -97,12 +98,7 @@
 
   <div class="flex gap-2 justify-center items-center">
     <!-- no se por que no toma la img -->
-    <img src="../../../../assets/svg-icons/info-circle.svg" alt="info-circle" />
-    <p class="text-pretty text-xs">
-      El <span class="font-bold">límite</span> máximo por reservación son
-      <span class="font-bold">4 horas</span>, si buscas para realizar algún
-      evento comunícate con <span class="font-bold">993722663</span>.
-    </p>
+    <div class=" bg-white w-3/4 h-6 rounded-md text-skeleton"></div>
   </div>
 
   <div id="indicators-carousel" class="relative w-full " data-carousel="static">

@@ -1,9 +1,9 @@
 <!-- agregar de forma dinamica la clase voleyball-card -->
 <div [ngClass]="tipo === 'futbol' ? 'bg-blue-400' : 'voleyball-card'"
   class="flex flex-col w-full gap-4 bg-forestGreen-100 border border-forestGreen-400 justify-center px-4 py-5 rounded-lg">
-  <div class="flex justify-center items-center">
+  <div class="flex justify-center items-center flex-col">
 
-    <p class="mx-5 font-bold">{{cancha.nombre}}</p>
+    <p class="mx-5 font-bold mb-3">{{cancha.nombre}}</p>
 
     <!-- SELECT FECHA -->
 
@@ -18,23 +18,23 @@
         </svg>
       </div>
       <input type="text" id="datepicker-format"
-        class="ring-forestGreen-300 ps-10 border border-forestGreen-500 rounded-lg h-8"
+        class="ring-forestGreen-300 ps-10 border border-forestGreen-500 rounded-lg h-8 w-[160px]"
         [ngClass]="tipo === 'futbol' ? '' : 'voleyball-card'" readonly>
       <!-- class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full ps-10 p-2.5  dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500" placeholder="Select date"> -->
     </div>
 
-    <div class="flex flex-row gap-7 mt-2">
+    <div class="flex flex-row gap-6 mt-2">
       <div class="flex flex-row justify-center items-center gap-1">
         <div class="w-4 h-4 rounded-full bg-white border border-gray-600 point "></div>
-        <p>Libre</p>
+        <p class="text-gray-800">Libre</p>
       </div>
       <div class="flex flex-row justify-center items-center gap-1">
         <div class="w-4 h-4 rounded-full bg-yellow-300 point "></div>
-        <p>Pendiente</p>
+        <p class="text-gray-800">Pendiente</p>
       </div>
       <div class="flex flex-row justify-center items-center gap-1">
         <div class="w-4 h-4 rounded-full bg-forestGreen-500 "></div>
-        <p>Reservado</p>
+        <p class="text-gray-800">Reservado</p>
       </div>
     </div>
   </div>
