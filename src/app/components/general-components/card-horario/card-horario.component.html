@@ -22,31 +22,24 @@
         [ngClass]="tipo === 'futbol' ? '' : 'voleyball-card'" readonly>
       <!-- class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full ps-10 p-2.5  dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500" placeholder="Select date"> -->
     </div>
+
+    <div class="flex flex-row gap-7 mt-2">
+      <div class="flex flex-row justify-center items-center gap-1">
+        <div class="w-4 h-4 rounded-full bg-white border border-gray-600 point "></div>
+        <p>Libre</p>
+      </div>
+      <div class="flex flex-row justify-center items-center gap-1">
+        <div class="w-4 h-4 rounded-full bg-yellow-300 point "></div>
+        <p>Pendiente</p>
+      </div>
+      <div class="flex flex-row justify-center items-center gap-1">
+        <div class="w-4 h-4 rounded-full bg-forestGreen-500 "></div>
+        <p>Reservado</p>
+      </div>
+    </div>
   </div>
 
   <div class="grid grid-cols-4 grid-rows-4 gap-4 w-full text-center">
-
-
-
-    <!-- VARIANTES -->
-    <!-- <button data-modal-target="default-modal" data-modal-toggle="default-modal"
-      class="bg-yellow-300                          w-full rounded-lg h-9 flex justify-center items-center hover:scale-105"
-      type="button">
-      <p>1PM</p>
-    </button>
-
-    <button data-modal-target="default-modal" data-modal-toggle="default-modal"
-      class="bg-forestGreen-500 text-white                                w-full  rounded-lg h-9 flex justify-center items-center hover:scale-105"
-      type="button">
-      <p>1PM</p>
-    </button>
-
-    <button data-modal-target="default-modal1" data-modal-toggle="default-modal1"
-      class="bg-white                        w-full rounded-lg h-9 flex justify-center items-center hover:scale-105"
-      type="button">
-      <p>11PM</p>
-    </button> -->
-
 
     @if (botonesHoras && botonesHoras.length > 0) {
     @for (hora of botonesHoras; track hora.id) {
@@ -57,7 +50,7 @@
       <button disabled [attr.data-modal-target]="'modal-' + hora.id" [attr.data-modal-toggle]="'modal-' + hora.id"
       class="bg-yellow-300 w-full rounded-lg h-9 flex justify-center items-center hover:scale-105"
         type="button">
-        <p>{{hora.hora | time24to12}}</p>
+        <p>1PM</p>
       </button>
       }
 
@@ -75,6 +68,7 @@
         {{hora.hora | time24to12}}
       </button>
       }
+
 
 
       <!-- Main modal -->
@@ -128,7 +122,15 @@
       </div>
     </div>
     }
-    }
+
+    }@else {
+      <!-- Placeholders cuando no hay botonesHoras -->
+      @for (i of [1,2,3,4,5,6,7,8,9,10,11,12,13,14,15,16]; track i) {
+          <div class="relative">
+              <div class="w-full h-9"></div>
+          </div>
+      }
+  }
   </div>
 
   <div class="flex gap-2 justify-center items-center">
@@ -201,5 +203,3 @@
     </button>
   </div>
 </div>
-
-

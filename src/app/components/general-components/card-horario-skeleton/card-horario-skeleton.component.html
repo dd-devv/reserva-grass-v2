@@ -3,7 +3,7 @@
   class="flex flex-col w-full gap-4 bg-forestGreen-100 border border-forestGreen-400 justify-center px-4 py-5 rounded-lg">
   <div class="flex justify-center items-center flex-col">
 
-    <p class="mx-5 font-bold  mb-4">NOMBRE CANCHA</p>
+    <div class="h-6 w-full max-w-44 rounded-lg bg-white title-cancha-skeleton mb-4"></div>
 
     <!-- SELECT FECHA -->
 
@@ -21,43 +21,78 @@
         class="ring-forestGreen-300 ps-10 border border-forestGreen-500 rounded-lg h-8 w-[160px]"
         [ngClass]="tipo === 'futbol' ? '' : 'voleyball-card'" readonly>
     </div> -->
-    <div>INPUT</div>
+    <div class="h-8 w-[160px] rounded-lg bg-white input-skeleton"></div>
   </div>
 
   <div class="grid grid-cols-4 grid-rows-4 gap-4 w-full text-center">
 
-
-
-    <!-- VARIANTES -->
-    <!-- <button data-modal-target="default-modal" data-modal-toggle="default-modal"
-      class="bg-yellow-300                          w-full rounded-lg h-9 flex justify-center items-center hover:scale-105"
-      type="button">
-      <p>1PM</p>
-    </button>
-
-    <button data-modal-target="default-modal" data-modal-toggle="default-modal"
-      class="bg-forestGreen-500 text-white                                w-full  rounded-lg h-9 flex justify-center items-center hover:scale-105"
-      type="button">
-      <p>1PM</p>
-    </button>
-
-    <button data-modal-target="default-modal1" data-modal-toggle="default-modal1"
-      class="bg-white                        w-full rounded-lg h-9 flex justify-center items-center hover:scale-105"
-      type="button">
-      <p>11PM</p>
-    </button> -->
-
-
-
     <div class="relative">
       <!-- Modal toggle -->
       <button 
-      class="bg-yellow-300 w-full rounded-lg h-9 flex justify-center items-center hover:scale-105"
+      class=" w-full rounded-lg h-9 flex justify-center items-center bg-white button-skeleton"
         type="button">
-        <p>1PM</p>
       </button>
-      
     </div>
+    <button 
+    class=" w-full rounded-lg h-9 flex justify-center items-center bg-white button-skeleton"
+      type="button">
+    </button>
+    <button 
+    class=" w-full rounded-lg h-9 flex justify-center items-center bg-white button-skeleton"
+      type="button">
+    </button>
+    <button 
+    class=" w-full rounded-lg h-9 flex justify-center items-center bg-white button-skeleton"
+      type="button">
+    </button>
+    <button 
+    class=" w-full rounded-lg h-9 flex justify-center items-center bg-white button-skeleton"
+      type="button">
+    </button>
+    <button 
+    class=" w-full rounded-lg h-9 flex justify-center items-center bg-white button-skeleton"
+      type="button">
+    </button>
+    <button 
+    class=" w-full rounded-lg h-9 flex justify-center items-center bg-white button-skeleton"
+      type="button">
+    </button>
+    <button 
+    class=" w-full rounded-lg h-9 flex justify-center items-center bg-white button-skeleton"
+      type="button">
+    </button>
+    <button 
+    class=" w-full rounded-lg h-9 flex justify-center items-center bg-white button-skeleton"
+      type="button">
+    </button>
+    <button 
+    class=" w-full rounded-lg h-9 flex justify-center items-center bg-white button-skeleton"
+      type="button">
+    </button>
+    <button 
+    class=" w-full rounded-lg h-9 flex justify-center items-center bg-white button-skeleton"
+      type="button">
+    </button>
+    <button 
+    class=" w-full rounded-lg h-9 flex justify-center items-center bg-white button-skeleton"
+      type="button">
+    </button>
+    <button 
+    class=" w-full rounded-lg h-9 flex justify-center items-center bg-white button-skeleton"
+      type="button">
+    </button>
+    <button 
+    class=" w-full rounded-lg h-9 flex justify-center items-center bg-white button-skeleton"
+      type="button">
+    </button>
+    <button 
+    class=" w-full rounded-lg h-9 flex justify-center items-center bg-white button-skeleton"
+      type="button">
+    </button>
+    <button 
+    class=" w-full rounded-lg h-9 flex justify-center items-center bg-white button-skeleton"
+      type="button">
+    </button>
   </div>
 
   <div class="flex gap-2 justify-center items-center">
@@ -70,27 +105,10 @@
     </p>
   </div>
 
-  <div id="indicators-carousel" class="relative w-full" data-carousel="static">
+  <div id="indicators-carousel" class="relative w-full " data-carousel="static">
     <!-- Carousel wrapper -->
-    <div class="relative h-56 overflow-hidden rounded-lg md:h-96">
-      <!-- Item 1 -->
-      <div class="hidden duration-700 ease-in-out" data-carousel-item="active">
-        <img
-          src="https://images.pexels.com/photos/413195/pexels-photo-413195.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1"
-          class="absolute block w-full -translate-x-1/2 -translate-y-1/2 top-1/2 left-1/2" alt="..." />
-      </div>
-      <!-- Item 2 -->
-      <div class="hidden duration-700 ease-in-out" data-carousel-item>
-        <img
-          src="https://images.pexels.com/photos/56011/rush-meadow-ornamental-grass-spring-56011.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1"
-          class="absolute block w-full -translate-x-1/2 -translate-y-1/2 top-1/2 left-1/2" alt="..." />
-      </div>
-      <!-- Item 3 -->
-      <div class="hidden duration-700 ease-in-out" data-carousel-item>
-        <img
-          src="https://images.pexels.com/photos/139315/pexels-photo-139315.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1"
-          class="absolute block w-full -translate-x-1/2 -translate-y-1/2 top-1/2 left-1/2" alt="..." />
-      </div>
+    <div class="relative h-56 overflow-hidden rounded-lg md:h-96 bg-white img-skeleton">
+
     </div>
     <!-- Slider indicators -->
     <div class="absolute z-30 flex -translate-x-1/2 space-x-3 rtl:space-x-reverse bottom-5 left-1/2">
@@ -102,32 +120,7 @@
         data-carousel-slide-to="2"></button>
     </div>
     <!-- Slider controls -->
-    <button type="button"
-      class="absolute top-0 start-0 z-30 flex items-center justify-center h-full px-4 cursor-pointer group focus:outline-none"
-      data-carousel-prev>
-      <span
-        class="inline-flex items-center justify-center w-10 h-10 rounded-full bg-white/30 dark:bg-gray-800/30 group-hover:bg-white/50 dark:group-hover:bg-gray-800/60 group-focus:ring-4 group-focus:ring-white dark:group-focus:ring-gray-800/70 group-focus:outline-none">
-        <svg class="w-4 h-4 text-white dark:text-gray-800 rtl:rotate-180" aria-hidden="true"
-          xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 6 10">
-          <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
-            d="M5 1 1 5l4 4" />
-        </svg>
-        <span class="sr-only">Anterior</span>
-      </span>
-    </button>
-    <button type="button"
-      class="absolute top-0 end-0 z-30 flex items-center justify-center h-full px-4 cursor-pointer group focus:outline-none"
-      data-carousel-next>
-      <span
-        class="inline-flex items-center justify-center w-10 h-10 rounded-full bg-white/30 dark:bg-gray-800/30 group-hover:bg-white/50 dark:group-hover:bg-gray-800/60 group-focus:ring-4 group-focus:ring-white dark:group-focus:ring-gray-800/70 group-focus:outline-none">
-        <svg class="w-4 h-4 text-white dark:text-gray-800 rtl:rotate-180" aria-hidden="true"
-          xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 6 10">
-          <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
-            d="m1 9 4-4-4-4" />
-        </svg>
-        <span class="sr-only">Siguiente</span>
-      </span>
-    </button>
+
   </div>
 </div>
 
