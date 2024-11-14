@@ -7,4 +7,11 @@ import { Component } from '@angular/core';
 })
 export class HeaderUserComponent {
 
+  isMenuHidden = false;  // El menú comienza oculto
+
+  // Alterna la visibilidad del menú
+  toggleMenu() {
+    this.isMenuHidden = !this.isMenuHidden;
+  }
+
 }
