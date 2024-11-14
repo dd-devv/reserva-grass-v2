@@ -7,7 +7,7 @@ export const authenticatedUserGuard: CanActivateFn = (route, state) => {
   const router = inject(Router);
 
   if (authService.isAuthenticatedUser()) {
-    router.navigate(['/user']);
+    router.navigate(['/usuario']);
     return false;
   }
 

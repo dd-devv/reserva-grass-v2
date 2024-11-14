@@ -16,6 +16,7 @@ import { CardEmpresaSkeletonComponent } from './card-empresa-skeleton/card-empre
 import { ButtonSearchComponent } from './button-search/button-search.component';
 import { Time24to12Pipe } from '../../pipes/time24to12.pipe';
 import { CardSportFeaturesSkeletonComponent } from './card-sport-features-skeleton/card-sport-features-skeleton.component';
+import { HeaderUserComponent } from './header-user/header-user.component';
 
 
 
@@ -35,7 +36,8 @@ import { CardSportFeaturesSkeletonComponent } from './card-sport-features-skelet
     CardEmpresaSkeletonComponent,
     ButtonSearchComponent,
     Time24to12Pipe,
-    CardSportFeaturesSkeletonComponent
+    CardSportFeaturesSkeletonComponent,
+    HeaderUserComponent
   ],
   imports: [
     CommonModule,
@@ -55,7 +57,8 @@ import { CardSportFeaturesSkeletonComponent } from './card-sport-features-skelet
     CardRegistroEmpresaComponent,
     CardPerfilComponent,
     FooterComponent,
-    HeaderComponent
+    HeaderComponent,
+    HeaderUserComponent
   ]
 })
 export class GeneralComponentsModule { }
