@@ -20,15 +20,15 @@
     <div [class.hidden]="isMenuHidden"
       class="md:w-4/6 text-xs gap-3 md:text-base flex items-center w-full md:space-x-4 justify-between">
       <ul class="flex gap-3 md:gap-6 justify-between">
-        <li [routerLink]="['/']" class="flex flex-row gap-3 cursor-pointer items-center">
+        <li [routerLink]="['/']" routerLinkActive="text-chambray-500 font-bold" [routerLinkActiveOptions]="{ exact: true }" class="flex flex-row gap-3 cursor-pointer items-center">
           Inicio
         </li>
 
-        <li [routerLink]="['/nosotros']" class="flex flex-row-reverse gap-3 cursor-pointer items-center">
+        <li [routerLink]="['/nosotros']" routerLinkActive="text-chambray-500 font-bold" class="flex flex-row-reverse gap-3 cursor-pointer items-center">
           <p class="md:block">Nosotros</p>
         </li>
 
-        <li [routerLink]="['/contacto']" class="flex flex-row-reverse gap-3 cursor-pointer items-center">
+        <li [routerLink]="['/contacto']" routerLinkActive="text-chambray-500 font-bold" class="flex flex-row-reverse gap-3 cursor-pointer items-center">
           <p class="md:block">Contacto</p>
         </li>
       </ul>
