@@ -48,12 +48,14 @@
     <app-card-empresa-skeleton class="flex justify-center"></app-card-empresa-skeleton>
     }
     }
-    @else {
-    @if (caracBuscada.length >= 1) {}
-    @for (cancha of caracBuscada; track $index) {
-    <app-card-empresa [caracteristicas]="cancha" [urlInput]="''" class="flex justify-center" />
+    @if(!load_data) {
+    @if (caracBuscada.length >= 1) {
+      @for (cancha of caracBuscada; track $index) {
+      <app-card-empresa [caracteristicas]="cancha" [urlInput]="''" class="flex justify-center" />
+      }
     }
-    @if (caracBuscada.length < 1) { <p class="text-xl">NO se econtro :V</p>
+    @if (caracBuscada.length < 1) { 
+      <p class="text-xl">NO se econtro :V</p>
       }
       }
   </div>
