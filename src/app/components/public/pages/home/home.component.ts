@@ -128,7 +128,7 @@ export class HomeComponent implements OnInit {
 
     setTimeout(() => {
       this.load_data = false;
-    }, 1000);
+    }, 500);
   }
 
   handleSearch(opt: string) {
@@ -149,7 +149,7 @@ export class HomeComponent implements OnInit {
     }
 
     this.resetearEstado();
-    this.load_search = true;
+    this.load_data = true;
     this.show_card_empresas = true;
 
     this._userService.listar_empresas_filtro(this.busqueda).pipe(
@@ -160,23 +160,18 @@ export class HomeComponent implements OnInit {
           return of(null);
         }
         this.empresas = response.data;
-        console.log(this.empresas);
 
-        this.load_data = false;
         return this._userService.obtener_caracteristicas_empresa_publico();
       }),
       map((caracteristicasResponse) => {
         if (!caracteristicasResponse) return;
         const caracteristicas = caracteristicasResponse.data || [];
         this.asignarCaracteristicas(caracteristicas);
-      }),
-      catchError((error) => {
-        console.error('Error en la búsqueda:', error);
-        this.show_alert_void = true;
-        return of(null);
-      }),
-      finalize(() => this.load_search = false)
-    ).subscribe();
+
+        setTimeout(() => {
+          this.load_data = false;
+        }, 500);
+      })).subscribe();
   }
 
   buscarPorFechaHora(): void {
@@ -236,6 +231,7 @@ export class HomeComponent implements OnInit {
   select_region() {
     // Reset initial state
     this.resetInitialState();
+    this.load_data = true;
 
     // Get provinces for selected region
     this._guestService.obtener_provincias().subscribe(response => {
@@ -254,6 +250,10 @@ export class HomeComponent implements OnInit {
       this._userService.listar_empresas_region(this.namereg)
         .subscribe(response => {
           this.handleCompaniesResponse(response);
+
+          setTimeout(() => {
+            this.load_data = false;
+          }, 500);
         });
     });
   }
@@ -261,6 +261,7 @@ export class HomeComponent implements OnInit {
   select_provincia() {
     // Reset district related state
     this.resetDistrictState();
+    this.load_data = true;
 
     // Get districts for selected province
     this._guestService.obtener_distritos().subscribe(response => {
@@ -279,6 +280,10 @@ export class HomeComponent implements OnInit {
       this._userService.listar_empresas_prov(this.namereg, this.nameprov)
         .subscribe(response => {
           this.handleCompaniesResponse(response);
+
+          setTimeout(() => {
+            this.load_data = false;
+          }, 500);
         });
     });
   }
