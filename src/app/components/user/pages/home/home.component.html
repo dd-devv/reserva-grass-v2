@@ -1,0 +1,62 @@
+<div class="wrapper">
+
+    <!-- <app-button-search class="mb-3" (option)="handleSearch($event)"></app-button-search> -->
+  
+    <div class=" rounded-b-xl flex  justify-center h-24  md:h-96 bg-cover w-full py-8 bg-no-repeat bg-center bg-[url('https://images.pexels.com/photos/47730/the-ball-stadion-football-the-pitch-47730.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1')]">
+  
+      <div class="bg-white/70 md:flex-row rounded-full w-full md:w-9/12 p-4 justify-center gap-0.5 flex h-20">
+        <select id="region" class="w-full border-none rounded-l-full" name="region" [(ngModel)]="empresa.region"
+          (change)="select_region()" required>
+          <option value="" selected disabled>Departamento</option>
+          <option value="{{ item.id }}" *ngFor="let item of regiones">
+            {{ item.name }}
+          </option>
+        </select>
+  
+        <select id="provincia" class="w-full border-none" name="provincia" (change)="select_provincia()"
+          [(ngModel)]="empresa.provincia" required>
+          <option value="" selected disabled>Provincia</option>
+          <option value="{{ item.id }}" *ngFor="let item of provincias">
+            {{ item.name }}
+          </option>
+        </select>
+  
+  
+        <input type="text" class="w-full border-none rounded-r-full" placeholder="Escribe el nombre del grass aquí"
+          aria-label="buscar" autocomplete="off" aria-describedby="button-addon2" [(ngModel)]="busqueda" name="busqueda"
+          (keyup)="buscarName()" />
+  
+      </div>
+  
+  
+      <!-- <select id="distrito" class="form-select" name="distrito" [(ngModel)]="empresa.distrito" (change)="select_distrito()"
+        required>
+        <option value="" selected disabled>Distrito</option>
+        <option value="{{ item.name }}" *ngFor="let item of distritos">
+          {{ item.name }}
+        </option>
+      </select> -->
+  
+    </div>
+  </div>
+  
+  <div class="wrapper">
+  
+    <div class="mirko">
+      @if(load_data) {
+      @for (item of [1,2,3,4,5,6,7,8]; track $index) {
+      <app-card-empresa-skeleton class="flex justify-center"></app-card-empresa-skeleton>
+      }
+      }
+      @if(!load_data) {
+      @if (caracBuscada.length >= 1) {
+        @for (cancha of caracBuscada; track $index) {
+        <app-card-empresa [caracteristicas]="cancha" [urlInput]="''" class="flex justify-center" />
+        }
+      }
+      @if (caracBuscada.length < 1) { 
+        <p class="text-xl">NO se econtro :V</p>
+        }
+        }
+    </div>
+  </div>

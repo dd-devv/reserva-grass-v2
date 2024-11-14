@@ -274,7 +274,7 @@
     <div class="mt-auto flex justify-center">
       <button
         class="text-sm px-7 flex gap-2 justify-center items-center w-fit p-4 self-center bg-forestGreen-400 rounded-3xl py-1.5 hover:scale-105 hover:bg-forestGreen-500 text-green-900 mb-1"
-        [routerLink]="['/ver', caracteristicas.empresa.path]"
+        (click)="redirect(caracteristicas.empresa.path)"
       >
         Reservar
         <svg

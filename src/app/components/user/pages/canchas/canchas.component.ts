@@ -1,9 +1,9 @@
 import { Component, OnInit } from '@angular/core';
-import { GLOBAL } from '../../../../services/global';
 import { Router } from '@angular/router';
 import { UserService } from '../../../../services/user.service';
 import { Title } from '@angular/platform-browser';
 import { ToastrService } from 'ngx-toastr';
+import { GLOBAL } from '../../../../services/global';
 
 interface BotonHora {
   estado: string;
@@ -14,11 +14,11 @@ interface BotonHora {
 }
 
 @Component({
-  selector: 'app-ver',
-  templateUrl: './ver.component.html',
-  styleUrl: './ver.component.css'
+  selector: 'app-canchas',
+  templateUrl: './canchas.component.html',
+  styleUrl: './canchas.component.css'
 })
-export class VerComponent implements OnInit {
+export class CanchasComponent implements OnInit {
   public path: string = '';
   public id_cancha: any;
   public url: any;
