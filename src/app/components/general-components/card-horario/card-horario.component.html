@@ -1,16 +1,16 @@
 <!-- agregar de forma dinamica la clase voleyball-card -->
 <div [ngClass]="tipo === 'futbol' ? 'bg-blue-400' : 'voleyball-card'"
   class="flex flex-col w-full gap-4 bg-forestGreen-100 border border-forestGreen-400 justify-center px-4 py-5 rounded-lg">
-  <div class="flex justify-center items-center flex-col">
+  <div class="flex justify-center items-center">
 
-    <p class="mx-5 font-bold  mb-4">{{cancha.nombre}}</p>
+    <p class="mx-5 font-bold">{{cancha.nombre}}</p>
 
     <!-- SELECT FECHA -->
 
     <!-- formato fecha: MM/DD/YYY -->
 
-    <div class="relative flex gap-4 ">
-      <div class="absolute inset-y-0 start-0 flex items-center ps-3 pointer-events-none w-7">
+    <div class="relative flex gap-4">
+      <div class="absolute inset-y-0 start-0 flex items-center ps-3 pointer-events-none">
         <svg class="w-4 h-4 text-gray-500 dark:text-gray-400" aria-hidden="true" xmlns="http://www.w3.org/2000/svg"
           fill="currentColor" viewBox="0 0 20 20">
           <path
@@ -18,7 +18,7 @@
         </svg>
       </div>
       <input type="text" id="datepicker-format"
-        class="ring-forestGreen-300 ps-10 border border-forestGreen-500 rounded-lg h-8 w-[160px]"
+        class="ring-forestGreen-300 ps-10 border border-forestGreen-500 rounded-lg h-8"
         [ngClass]="tipo === 'futbol' ? '' : 'voleyball-card'" readonly>
       <!-- class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full ps-10 p-2.5  dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500" placeholder="Select date"> -->
     </div>
@@ -57,7 +57,7 @@
       <button disabled [attr.data-modal-target]="'modal-' + hora.id" [attr.data-modal-toggle]="'modal-' + hora.id"
       class="bg-yellow-300 w-full rounded-lg h-9 flex justify-center items-center hover:scale-105"
         type="button">
-        <p>1PM</p>
+        <p>{{hora.hora | time24to12}}</p>
       </button>
       }
 
@@ -65,7 +65,7 @@
       <button disabled [attr.data-modal-target]="'modal-' + hora.id" [attr.data-modal-toggle]="'modal-' + hora.id"
         class="bg-forestGreen-500 text-white w-full  rounded-lg h-9 flex justify-center items-center hover:scale-105"
         type="button">
-        <p>1PM</p>
+        <p>{{hora.hora | time24to12}}</p>
       </button>
       }
 

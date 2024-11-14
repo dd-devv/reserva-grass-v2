@@ -145,24 +145,6 @@ export class CanchasComponent implements OnInit {
     }
   }
 
-  onHoraSeleccionada(index: number) {
-    const boton = this.botonesHoras[index];
-    if (this.horasReserva > 4 || this.horasReserva < 1) {
-      this._toastrService.error('Se permite como máximo 4 horas!', 'ERROR');
-      this.horasReserva = 1;
-      return;
-    }
-
-    if (boton.disponible) {
-      boton.estado = boton.estado === 'Libre' ? 'Reservado' : 'Libre';
-      localStorage.setItem('fecha_reserva', boton.fecha.toDateString());
-      localStorage.setItem('hora_inicio', boton.hora.toString());
-      localStorage.setItem('hora_fin', this.botonesHoras[index + this.horasReserva - 1]?.hora.toString() ?? boton.hora);
-      localStorage.setItem('afuera', 'Y');
-      this._router.navigate(['/login']);
-    }
-  }
-
   isHoraPasada(fecha: Date, hora: string): boolean {
     const ahora = new Date();
     const horaSeleccionada = new Date(fecha);
@@ -231,7 +213,5 @@ export class CanchasComponent implements OnInit {
         this.cancha_ver = {};
       }
     });
-    localStorage.clear();
-    localStorage.setItem('id_cancha', id);
   }
 }
