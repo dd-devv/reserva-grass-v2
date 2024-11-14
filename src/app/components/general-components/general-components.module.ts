@@ -17,6 +17,7 @@ import { ButtonSearchComponent } from './button-search/button-search.component';
 import { Time24to12Pipe } from '../../pipes/time24to12.pipe';
 import { CardSportFeaturesSkeletonComponent } from './card-sport-features-skeleton/card-sport-features-skeleton.component';
 import { HeaderUserComponent } from './header-user/header-user.component';
+import { CardHorarioSkeletonComponent } from './card-horario-skeleton/card-horario-skeleton.component';
 
 
 
@@ -37,13 +38,15 @@ import { HeaderUserComponent } from './header-user/header-user.component';
     ButtonSearchComponent,
     Time24to12Pipe,
     CardSportFeaturesSkeletonComponent,
-    HeaderUserComponent
+    HeaderUserComponent,
+    CardHorarioSkeletonComponent
   ],
   imports: [
     CommonModule,
     RouterModule
   ],
   exports: [
+    CardHorarioSkeletonComponent,
     CardSportFeaturesSkeletonComponent,
     ButtonSearchComponent,
     CardEmpresaSkeletonComponent,
