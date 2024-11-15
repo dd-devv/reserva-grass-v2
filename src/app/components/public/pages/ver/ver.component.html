@@ -2,7 +2,8 @@
     <!-- <app-card-sport-features-skeleton></app-card-sport-features-skeleton> -->
 
     <div class=" flex flex-col lg:flex-row  self-center justify-center gap-4">
-        <div class="flex flex-row justify-center lg:flex-col lg:justify-start mb-4 overflow-y-auto overflow-x-auto overflow-hidden gap-8 lg:h-[730px]">
+        <div
+            class="flex flex-row justify-center lg:flex-col lg:justify-start mb-4 overflow-y-auto overflow-x-auto overflow-hidden gap-8 lg:h-[730px]">
             @if (load_data) {
             <app-card-sport-features-skeleton></app-card-sport-features-skeleton>
             }
@@ -15,11 +16,13 @@
             }
         </div>
         <div class="flex-1">
-            <!-- @if (!load_btn_ver) {
+            @if (!load_btn_ver) {
             <app-card-horario [tipo]="tipo_cancha" [botonesHoras]="botonesHoras" [cancha]="cancha_ver"
                 [hora_fin]="hora_fin" (fechaSeleccionada)="handleFecha($event)"></app-card-horario>
-            } -->
-                <app-card-horario-skeleton></app-card-horario-skeleton>
+            }
+            @if (load_btn_ver) {
+            <app-card-horario-skeleton></app-card-horario-skeleton>
+            }
         </div>
 
     </div>

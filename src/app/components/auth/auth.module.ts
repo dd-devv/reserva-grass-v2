@@ -9,6 +9,8 @@ import { RegistroEmpresaComponent } from './components/registro-empresa/registro
 import { GeneralComponentsModule } from "../general-components/general-components.module";
 import { ReactiveFormsModule } from '@angular/forms';
 import { GoogleMapsModule } from '@angular/google-maps';
+import { WaitComponent } from './components/wait/wait.component';
+import { VerifyComponent } from './components/verify/verify.component';
 
 
 @NgModule({
@@ -16,7 +18,9 @@ import { GoogleMapsModule } from '@angular/google-maps';
     LoginComponent,
     RegistroComponent,
     RegistroEmpresaComponent,
-    ContainerComponent
+    ContainerComponent,
+    WaitComponent,
+    VerifyComponent
   ],
   imports: [
     CommonModule,

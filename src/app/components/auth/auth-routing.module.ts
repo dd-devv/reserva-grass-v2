@@ -4,6 +4,8 @@ import { LoginComponent } from './components/login/login.component';
 import { RegistroComponent } from './components/registro/registro.component';
 import { RegistroEmpresaComponent } from './components/registro-empresa/registro-empresa.component';
 import { ContainerComponent } from './container/container.component';
+import { WaitComponent } from './components/wait/wait.component';
+import { VerifyComponent } from './components/verify/verify.component';
 
 const routes: Routes = [
   {
@@ -12,7 +14,9 @@ const routes: Routes = [
     children: [
       { path: '', component: LoginComponent },
       { path: 'registro', component: RegistroComponent },
+      { path: 'verificar', component: VerifyComponent },
       { path: 'registro-empresa', component: RegistroEmpresaComponent },
+      { path: 'wait', component: WaitComponent }
     ]
   }
 ];

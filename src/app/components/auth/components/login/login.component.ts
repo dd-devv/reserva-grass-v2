@@ -2,9 +2,9 @@ import { Component, OnInit } from '@angular/core';
 import { AbstractControl, FormBuilder, FormGroup, ValidationErrors, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
 import { Title } from '@angular/platform-browser';
-import { ToastrService } from 'ngx-toastr';
 import { UserService } from '../../../../services/user.service';
 import { finalize } from 'rxjs/operators';
+import { ToastService } from '../../../../services/toast.service';
 
 interface LoginData {
   email: string;
@@ -39,7 +39,7 @@ export class LoginComponent implements OnInit {
     private userService: UserService,
     private router: Router,
     private titleService: Title,
-    private toastr: ToastrService
+    private toastr: ToastService
   ) {
     this.token =
       localStorage.getItem('token') || sessionStorage.getItem('token') || '';
@@ -100,7 +100,6 @@ export class LoginComponent implements OnInit {
 
     this.isLoading = true;
     const loginData: LoginData = this.loginForm.value;
-    console.log(loginData);
 
     // this.userService.login_user(loginData).subscribe({
     //   next: (res) => {
@@ -120,12 +119,9 @@ export class LoginComponent implements OnInit {
           } else {
             this.handleUserLogin(response);
           }
-
-          console.log(response);
-
         },
         error: (error) => {
-          this.toastr.error('Error al iniciar sesión', 'ERROR');
+          this.toastr.showToast('Error al iniciar sesión');
           console.error('Login error:', error);
         },
       });
@@ -138,12 +134,12 @@ export class LoginComponent implements OnInit {
       .subscribe({
         next: (response) => {
           if (!response.data) {
-            this.toastr.error(response.message, 'ERROR');
+            this.toastr.showToast(response.message);
             return;
           }
 
           if (!response.data.verificado) {
-            this.toastr.error('Empresa aún no verificada', 'ERROR!');
+            this.toastr.showToast('Empresa aún no verificada');
             this.router.navigate(['/wait']);
             return;
           }
@@ -152,7 +148,7 @@ export class LoginComponent implements OnInit {
           this.redirectBasedOnRole(response.data);
         },
         error: (error) => {
-          this.toastr.error('Error al iniciar sesión como empresa', 'ERROR');
+          this.toastr.showToast('Error al iniciar sesión como empresa');
           console.error('Company login error:', error);
         },
       });
@@ -160,7 +156,7 @@ export class LoginComponent implements OnInit {
 
   private handleUserLogin(response: any): void {
     if (!response.data.verificado) {
-      this.toastr.error('Correo aún no verificado', 'ERROR!');
+      this.toastr.showToast('Correo aún no verificado');
       this.router.navigate(['/verificar']);
       return;
     }

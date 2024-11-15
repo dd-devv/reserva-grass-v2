@@ -3,10 +3,10 @@ import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators, AbstractControl, ValidationErrors } from '@angular/forms';
 import { Router } from '@angular/router';
 import { Title } from '@angular/platform-browser';
-import { ToastrService } from 'ngx-toastr';
 import { UserService } from '../../../../services/user.service';
 import { GuestService } from '../../../../services/guest.service';
 import { finalize } from 'rxjs/operators';
+import { ToastService } from '../../../../services/toast.service';
 
 interface Region {
   id: string;
@@ -17,7 +17,7 @@ interface RegisterData {
   nombres: string;
   email: string;
   ciudad: string;
-  whatsapp: string;
+  telefono: string;
   password: string;
 }
 
@@ -40,7 +40,7 @@ export class RegistroComponent implements OnInit {
     private guestService: GuestService,
     private router: Router,
     private titleService: Title,
-    private toastr: ToastrService
+    private toastr: ToastService
   ) {
     this.registerForm = this.fb.group({
       nombres: ['', [Validators.required, Validators.minLength(3)]],
@@ -50,13 +50,16 @@ export class RegistroComponent implements OnInit {
       password: ['', [Validators.required, Validators.minLength(6)]],
       confirmPassword: ['', [Validators.required]]
     }, { validator: this.passwordMatchValidator });
-
-    this.loadRegions();
-    this.checkExistingSession();
   }
 
   ngOnInit(): void {
     this.titleService.setTitle('Registro de usuario');
+
+    this.guestService.obtener_regiones().subscribe({
+      next: (res) => {
+        this.regiones = res.map((item: Region) => item.name);
+      }
+    });
   }
 
   togglePasswordVisibility(field: 'password' | 'confirmPassword'): void {
@@ -115,21 +118,6 @@ export class RegistroComponent implements OnInit {
     return errorMessages[firstError] || 'Error de validación';
   }
 
-  private loadRegions(): void {
-    this.guestService.obtener_regiones().subscribe({
-      next: (response: any[]) => {
-        this.regiones = response.map(element => ({
-          id: element.id,
-          name: element.name,
-        }));
-      },
-      error: (error) => {
-        this.toastr.error('Error al cargar las regiones', 'ERROR');
-        console.error('Error loading regions:', error);
-      },
-    });
-  }
-
   private checkExistingSession(): void {
     const token = localStorage.getItem('token') || sessionStorage.getItem('token');
     const userId = localStorage.getItem('_id') || sessionStorage.getItem('_id');
@@ -142,7 +130,7 @@ export class RegistroComponent implements OnInit {
   onSubmit(): void {
     if (this.registerForm.invalid || this.isLoading) {
       this.registerForm.markAllAsTouched();
-      this.toastr.error('Por favor, complete todos los campos correctamente', 'ERROR');
+      this.toastr.showToast('Por favor, complete todos los campos correctamente');
       return;
     }
 
@@ -152,11 +140,11 @@ export class RegistroComponent implements OnInit {
     const registerData: RegisterData = {
       nombres: formData.nombres,
       email: formData.email,
-      ciudad: this.selectedRegion?.name || '',
-      whatsapp: formData.whatsapp,
+      ciudad: formData.region,
+      telefono: formData.whatsapp,
       password: formData.password,
     };
-
+    
     this.userService
       .registro_user(registerData)
       .pipe(finalize(() => this.isLoading = false))
@@ -165,7 +153,9 @@ export class RegistroComponent implements OnInit {
           this.handleSuccessfulRegistration(response);
         },
         error: (error) => {
-          this.toastr.error(error.error.message || 'Error en el registro', 'ERROR');
+          console.log(error);
+          
+          this.toastr.showToast(error.error.message || 'Error en el registro');
         },
       });
   }
@@ -173,7 +163,7 @@ export class RegistroComponent implements OnInit {
   private handleSuccessfulRegistration(response: any): void {
     localStorage.setItem('_id', response.data._id);
     localStorage.setItem('user_email', this.registerForm.get('email')?.value);
-    this.toastr.success('Se registró con éxito', 'REGISTRADO!');
+    this.toastr.showToast('Se registró con éxito');
     this.sendConfirmationEmail(response.data._id);
   }
 
@@ -181,12 +171,12 @@ export class RegistroComponent implements OnInit {
     this.userService.enviar_correo_confirmacion(userId).subscribe({
       next: (response) => {
         if (response.data) {
-          this.toastr.success('Se envió el código de verificación', 'ENVIADO!');
-          this.router.navigate(['/verificar']);
+          this.toastr.showToast('Se envió el código de verificación');
+          this.router.navigate(['/auth/verificar']);
         }
       },
       error: (error) => {
-        this.toastr.error('Error al enviar el correo de confirmación', 'ERROR');
+        this.toastr.showToast('Error al enviar el correo de confirmación');
         console.error('Error sending confirmation email:', error);
       },
     });

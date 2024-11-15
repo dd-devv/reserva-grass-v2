@@ -23,7 +23,7 @@ export class VerComponent implements OnInit {
   public id_cancha: any;
   public url: any;
   public load_data = false;
-  public load_btn_ver = false;
+  public load_btn_ver = true;
   public ver_caracteristicas = false;
   public canchas: any = [];
   public reservaciones: any = [];

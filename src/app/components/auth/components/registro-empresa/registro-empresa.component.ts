@@ -428,7 +428,7 @@ export class RegistroEmpresaComponent implements OnInit {
       ).toPromise();
 
       this.toastr.success('Se registró con éxito', 'REGISTRADO!');
-      this.router.navigate(['/wait']);
+      this.router.navigate(['/auth/wait']);
     } catch (error: any) {
       this.toastr.error(error.error?.message || 'Error en el registro');
     } finally {
