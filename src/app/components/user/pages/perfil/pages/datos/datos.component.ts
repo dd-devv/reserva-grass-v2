@@ -8,6 +8,6 @@ import { initFlowbite } from 'flowbite';
 })
 export class DatosComponent implements OnInit{
   ngOnInit(): void {
-    initFlowbite();
+    
   }
 }
