@@ -7,19 +7,7 @@ import { UserService } from '../../../../services/user.service';
 import { GuestService } from '../../../../services/guest.service';
 import { finalize } from 'rxjs/operators';
 import { ToastService } from '../../../../services/toast.service';
-
-interface Region {
-  id: string;
-  name: string;
-}
-
-interface RegisterData {
-  nombres: string;
-  email: string;
-  ciudad: string;
-  telefono: string;
-  password: string;
-}
+import { Region, RegisterData } from '../../core/core';
 
 @Component({
   selector: 'app-registro',

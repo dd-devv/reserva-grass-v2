@@ -11,7 +11,7 @@ import { DatosComponent } from './pages/perfil/pages/datos/datos.component';
 import { ReservasComponent } from './pages/perfil/pages/reservas/reservas.component';
 import { AccesoComponent } from './pages/perfil/pages/acceso/acceso.component';
 import { GeneralComponentsModule } from '../general-components/general-components.module';
-import { FormsModule } from '@angular/forms';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { CanchasComponent } from './pages/canchas/canchas.component';
 
 
@@ -31,7 +31,8 @@ import { CanchasComponent } from './pages/canchas/canchas.component';
     CommonModule,
     UserRoutingModule,
     GeneralComponentsModule,
-    FormsModule
+    FormsModule,
+    ReactiveFormsModule
   ]
 })
 export class UserModule { }
