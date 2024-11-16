@@ -1,1 +1,79 @@
-<p>verify works!</p>
+<div class="flex flex-col justify-center min-w-72 w-full max-w-96 m-auto">
+    <section class="text-center mt-5">
+        <h2 class="mb-4 text-2xl font-bold text-gray-900">
+            Ingresa el código que enviamos
+        </h2>
+        <p class="mb-4 text-balance">Por whatsapp al número que registraste al contratar el servicio</p>
+        <h4 class="mb-6 text-3xl font-semibold text-gray-600">922 565 ***</h4>
+    </section>
+    <form #verificarForm="ngForm" (ngSubmit)="verificar(verificarForm)">
+        <div class="code-container mb-8">
+          <input 
+            type="number" 
+            class="input-code" 
+            #input1
+            [(ngModel)]="codigo1"
+            name="codigo1"
+            (input)="onInput($event, 0, input2)"
+            maxlength="1"
+            required>
+          
+          <input 
+            type="number" 
+            class="input-code"
+            #input2
+            [(ngModel)]="codigo2"
+            name="codigo2"
+            (input)="onInput($event, 1, input3)"
+            (keydown.backspace)="onBackspace($event, input1, 1)"
+            maxlength="1"
+            required>
+      
+          <input 
+            type="number" 
+            class="input-code"
+            #input3
+            [(ngModel)]="codigo3"
+            name="codigo3"
+            (input)="onInput($event, 2, input4)"
+            (keydown.backspace)="onBackspace($event, input2, 2)"
+            maxlength="1"
+            required>
+      
+          <input 
+            type="number" 
+            class="input-code"
+            #input4
+            [(ngModel)]="codigo4"
+            name="codigo4"
+            (input)="onInput($event, 3, input5)"
+            (keydown.backspace)="onBackspace($event, input3, 3)"
+            maxlength="1"
+            required>
+      
+          <input 
+            type="number" 
+            class="input-code"
+            #input5
+            [(ngModel)]="codigo5"
+            name="codigo5"
+            (input)="onInput($event, 4, input6)"
+            (keydown.backspace)="onBackspace($event, input4, 4)"
+            maxlength="1"
+            required>
+      
+          <input 
+            type="number" 
+            class="input-code"
+            #input6
+            [(ngModel)]="codigo6"
+            name="codigo6"
+            (input)="onInput($event, 5)"
+            (keydown.backspace)="onBackspace($event, input5, 5)"
+            maxlength="1"
+            required>
+        </div>
+      
+        <button type="submit" class="bg-forestGreen-500 text-gray-100 w-full py-3 rounded-full font-semibold mb-40">Verificar</button>
+      </form>
+</div>

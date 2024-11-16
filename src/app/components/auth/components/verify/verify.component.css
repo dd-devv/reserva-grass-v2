@@ -1,0 +1,33 @@
+/* .input-code{
+    width: 45px;
+    height: 50px;
+    border-radius: 5px;
+    font-size: 1.7rem;
+    text-align: center;
+} */
+
+.input-code {
+    width: 45px;
+    height: 50px;
+    border-radius: 5px;
+    font-size: 1.7rem;
+    text-align: center;
+}
+
+/* Agregar estos estilos adicionales */
+.code-container {
+    display: flex;
+    gap: 10px;
+    justify-content: center;
+}
+
+/* Eliminar flechas de input number */
+.input-code::-webkit-outer-spin-button,
+.input-code::-webkit-inner-spin-button {
+    -webkit-appearance: none;
+    margin: 0;
+}
+
+.input-code[type=number] {
+    -moz-appearance: textfield;
+}

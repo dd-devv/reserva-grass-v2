@@ -11,6 +11,7 @@ import { ReactiveFormsModule } from '@angular/forms';
 import { GoogleMapsModule } from '@angular/google-maps';
 import { WaitComponent } from './components/wait/wait.component';
 import { VerifyComponent } from './components/verify/verify.component';
+import { FormsModule } from '@angular/forms';
 
 
 @NgModule({
@@ -27,7 +28,8 @@ import { VerifyComponent } from './components/verify/verify.component';
     AuthRoutingModule,
     GeneralComponentsModule,
     ReactiveFormsModule,
-    GoogleMapsModule
+    GoogleMapsModule,
+    FormsModule
   ]
 })
 export class AuthModule { }
