@@ -9,6 +9,6 @@ import { initFlowbite } from 'flowbite';
 export class ReservasComponent implements OnInit {
   
   ngOnInit(): void {
-    
+    initFlowbite();
   }
 }
