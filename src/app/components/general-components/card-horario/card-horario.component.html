@@ -50,7 +50,7 @@
       <button disabled [attr.data-modal-target]="'modal-' + hora.id" [attr.data-modal-toggle]="'modal-' + hora.id"
       class="bg-yellow-300 w-full rounded-lg h-9 flex justify-center items-center hover:scale-105"
         type="button">
-        <p>1PM</p>
+        <p>{{hora.hora | time24to12}}</p>
       </button>
       }
 

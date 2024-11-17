@@ -91,25 +91,46 @@
 
     <!-- MODAL -->
 
+    <div>
+      <!-- Modal toggle -->
+      <button 
+        data-modal-target="default-modal" 
+        data-modal-toggle="default-modal"
+        class="flex justify-center items-center gap-2 self-center text-orange-500 text-xs font-medium" 
+        type="button"
+        #modalButton>
+        Ver instrucciones
+        <img src="../../../../../../../assets/svg-icons/view.svg" alt="">
+      </button>
 
-    <!-- Modal toggle -->
-    <button data-modal-target="default-modal" data-modal-toggle="default-modal"
-      class="flex justify-center items-center gap-2 self-center text-orange-500 text-xs font-medium " type="button">
-      Ver instrucciones
+      <!-- Backdrop -->
+      <div 
+        *ngIf="isOpen"
+        class="fixed inset-0 bg-black bg-opacity-50 transition-opacity"
+        (click)="closeModal()">
+      </div>
 
-      <img src="../../../../../../../assets/svg-icons/view.svg" alt="">
+      <!-- Main modal -->
+      <div 
+        id="default-modal" 
+        [ngClass]="{'hidden': !isOpen}"
+        class="overflow-y-auto overflow-x-hidden fixed top-0 right-0 left-0 z-50 flex justify-center items-center w-full md:inset-0 h-[calc(100%-1rem)] max-h-full">
+        <div class="relative p-4 w-full max-w-2xl max-h-full">
+          <!-- Modal content -->
+          <div 
+            class="flex justify-center py-4 px-8 bg-white rounded-lg shadow dark:bg-gray-700"
+            (click)="$event.stopPropagation()">  <!-- Evita que el click se propague al backdrop -->
+            <!-- Tu contenido actual del modal aquí -->
+            <div class="flex justify-end w-full absolute top-2 right-2">
+              <button 
+                type="button" 
+                class="text-gray-500 hover:text-gray-700 p-2"
+                (click)="closeModal()">
+                ✕
+              </button>
+            </div>
 
-
-    </button>
-
-    <!-- Main modal -->
-    <div id="default-modal" tabindex="-1" aria-hidden="true"
-      class="hidden overflow-y-auto overflow-x-hidden fixed top-0 right-0 left-0 z-50 justify-center items-center w-full md:inset-0 h-[calc(100%-1rem)] max-h-full">
-      <div class="relative p-4 w-full max-w-2xl max-h-full">
-        <!-- Modal content -->
-        <div class="flex w-11/12 justify-center py-4 px-8 bg-white rounded-lg shadow dark:bg-gray-700">
-
-          <!-- Modal body -->
+             <!-- Modal body -->
 
           <ol class="w-full relative text-gray-500 border-s-2  border-forestGreen-500 ">
 
@@ -124,39 +145,24 @@
 
                 <!-- MEDIOS PAGO -->
                 <div class="flex w-full gap-1 md:gap-4 justify-center  ">
-                  <div class="flex w-full flex-col items-center align-middle bg-forestGreen-200 rounded-lg p-1 md:p-4">
-                    <img class="w-16 h-12" src="../../../../../../../assets/img/yape.png" alt="">
-
-                    <div class="flex items-center gap-4">
-                      <p class="font-semibold text-nowrap">
-                        900 535 740
-                      </p>
-
-                      <button>
-                        <img src="../../../../../../../assets/svg-icons/copy.svg" alt="">
-                      </button>
-                    </div>
-                    <p class="text-xs">Dino Emerson roca</p>
-
-
-                  </div>
-
-                  <div class="flex w-full flex-col items-center align-middle bg-forestGreen-200 rounded-lg p-1 md:p-4">
-                    <img class="w-16 h-12" src="../../../../../../../assets/img/yape.png" alt="">
-
-                    <div class="flex items-center gap-4">
-                      <p class="font-semibold text-nowrap">
-                        900 535 740
-                      </p>
-
-                      <button>
-                        <img src="../../../../../../../assets/svg-icons/copy.svg" alt="">
-                      </button>
-                    </div>
-                    <p class="text-xs">Dino Emerson roca</p>
-
-
-                  </div>
+                  @if (cuentas.length >= 1) {
+                    @for (cuenta of cuentas; track $index) {
+                      <div class="flex w-full flex-col items-center align-middle bg-forestGreen-200 rounded-lg p-1 md:p-4">
+                        <img class="w-16 h-12" src="../../../../../../../assets/img/yape.png" alt="">
+    
+                        <div class="flex items-center gap-4">
+                          <p class="font-semibold text-nowrap">
+                            {{cuenta.cuenta}}
+                          </p>
+    
+                          <button title="Copiar código" (click)="copiar_portapapeles(cuenta.cuenta)">
+                            <img src="../../../../../../../assets/svg-icons/copy.svg" alt="">
+                          </button>
+                        </div>
+                        <p class="text-xs"> {{cuenta.titular | titlecase}} </p>
+                      </div>
+                    }
+                  }
 
                 </div>
 
@@ -175,7 +181,7 @@
               </span>
               <div class="p-4 w-full bg-forestGreen-50 border border-forestGreen-500 rounded-lg">
                 Enviar el voucher de la operación mediante <span class="text-forestGreen-500"> WhatsApp</span> al numero
-                <span class="text-forestGreen-500"> 900535740</span>.
+                <span class="text-forestGreen-500"> {{telefono_empresa}}</span>.
               </div>
             </li>
 
@@ -185,7 +191,7 @@
                 3
               </span>
               <div class="p-4 w-full bg-forestGreen-50 border border-forestGreen-500 rounded-lg">
-                Enviar el código <span class="text-forestGreen-500"> ABC-123</span> al mismo numero.
+                Enviar el código <span class="text-forestGreen-500"> {{codigo_reserva}} </span> al mismo numero.
               </div>
             </li>
 
@@ -195,13 +201,12 @@
                 4
               </span>
               <div class="p-4 w-full bg-forestGreen-50 border border-forestGreen-500 rounded-lg">
-                Comunícate con <span class="text-forestGreen-500">900535740</span> para verificar la confirmación de su
+                Comunícate con <span class="text-forestGreen-500"> {{telefono_empresa}} </span> para verificar la confirmación de su
                 reserva.
               </div>
             </li>
           </ol>
-
-
+          </div>
         </div>
       </div>
     </div>
