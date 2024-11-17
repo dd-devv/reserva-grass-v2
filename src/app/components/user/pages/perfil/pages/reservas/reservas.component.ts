@@ -19,6 +19,9 @@ export class ReservasComponent implements OnInit {
   public pagos: Array<any> = [];
   public cuentas: Array<any> = [];
   public reservaciones: Array<any> = [];
+  public reservaciones_pendientes: Array<any> = [];
+  public reservaciones_activas: Array<any> = [];
+  public reservaciones_finalizadas: Array<any> = [];
 
   public load_data: boolean = true;
   public load_reservas: boolean = true;
@@ -79,8 +82,6 @@ export class ReservasComponent implements OnInit {
   }
 
   ngOnInit() {
-    initFlowbite();
-
     if (this.shouldOpen) {
       this.openModal();
     }
@@ -105,6 +106,17 @@ export class ReservasComponent implements OnInit {
     } else {
       this.existReservas = false;
     }
+  }
+
+  ngAfterViewInit(): void {
+    // Esperamos a que el DOM esté listo y los datos cargados
+    setTimeout(() => {
+      this.inicializarFlowbite();
+    }, 100);
+  }
+
+  private inicializarFlowbite(): void {
+    initFlowbite();
   }
 
   openModal() {
@@ -159,21 +171,38 @@ export class ReservasComponent implements OnInit {
     this._userService.obtener_reservaciones_user(this.cliente, this.token).subscribe({
       next: (res) => {
         this.reservaciones = res.data;
-        if (this.reservaciones[0].estado === 'Ocupado') {
-          this.obtener_cuentas_grass(this.reservaciones[0].empresa._id);
-          this.telefono_empresa = this.reservaciones[0].empresa.telefono;
-          this.codigo_reserva = this.reservaciones[0].codigo;
-          this.isOpen = true;
-        }
-        
+        this.reservaciones_pendientes = [];
+        this.reservaciones_activas = [];
+        this.reservaciones_finalizadas = [];
+
+        this.reservaciones.forEach(reserva => {
+          switch (reserva.estado) {
+            case 'Ocupado':
+              this.reservaciones_pendientes.push(reserva);
+              this.obtener_cuentas_grass(this.reservaciones[0].empresa._id);
+              this.telefono_empresa = this.reservaciones[0].empresa.telefono;
+              this.codigo_reserva = this.reservaciones[0].codigo;
+              this.isOpen = true;
+              break;
+            case 'Reservado':
+              this.reservaciones_activas.push(reserva);
+              break;
+            case 'Finalizado':
+              this.reservaciones_finalizadas.push(reserva);
+              break;
+          }
+        });
+
         this.load_reservas = false;
       },
       error: (err) => {
         this.reservaciones = [];
+        this.reservaciones_pendientes = [];
+        this.reservaciones_activas = [];
+        this.reservaciones_finalizadas = [];
         this.load_reservas = false;
       }
-    }
-    );
+    });
   }
 
   crear_reservacion() {
