@@ -18,6 +18,7 @@ import { Time24to12Pipe } from '../../pipes/time24to12.pipe';
 import { CardSportFeaturesSkeletonComponent } from './card-sport-features-skeleton/card-sport-features-skeleton.component';
 import { HeaderUserComponent } from './header-user/header-user.component';
 import { CardHorarioSkeletonComponent } from './card-horario-skeleton/card-horario-skeleton.component';
+import { CountdownTimerComponent } from './countdown-timer/countdown-timer.component';
 
 
 
@@ -39,7 +40,8 @@ import { CardHorarioSkeletonComponent } from './card-horario-skeleton/card-horar
     Time24to12Pipe,
     CardSportFeaturesSkeletonComponent,
     HeaderUserComponent,
-    CardHorarioSkeletonComponent
+    CardHorarioSkeletonComponent,
+    CountdownTimerComponent
   ],
   imports: [
     CommonModule,
@@ -62,7 +64,8 @@ import { CardHorarioSkeletonComponent } from './card-horario-skeleton/card-horar
     FooterComponent,
     HeaderComponent,
     HeaderUserComponent,
-    Time24to12Pipe
+    Time24to12Pipe,
+    CountdownTimerComponent
   ]
 })
 export class GeneralComponentsModule { }

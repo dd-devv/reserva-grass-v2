@@ -14,6 +14,7 @@ import { GeneralComponentsModule } from '../general-components/general-component
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { CanchasComponent } from './pages/canchas/canchas.component';
 import { QRCodeModule } from 'angularx-qrcode';
+import { PortraitComponent } from './pages/perfil/portrait/portrait.component';
 
 
 @NgModule({
@@ -26,7 +27,8 @@ import { QRCodeModule } from 'angularx-qrcode';
     DatosComponent,
     ReservasComponent,
     AccesoComponent,
-    CanchasComponent
+    CanchasComponent,
+    PortraitComponent
   ],
   imports: [
     CommonModule,

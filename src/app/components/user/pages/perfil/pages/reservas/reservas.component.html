@@ -12,6 +12,10 @@
   @for (reserva of reservaciones_pendientes; track $index) {
   <!-- PENDIENTE -->
   <div class="flex flex-col  gap-1 rounded-lg  dark:bg-gray-800 h-fit max-w-md md:max-w-xl ">
+    <p class="text-orange-400">
+      Pendiente de confirmación, quedan <app-countdown-timer [startDate]="reserva.createdAt"></app-countdown-timer>
+      para su eliminación automatica
+    </p>
     <div
       class="grid grid-cols-[32px_repeat(2,1fr)] auto-cols-min grid-rows-5 rounded-lg border border-orange-400 w-full max-w-md md:max-w-xl h-[175px] md:h-[190px]">
 
@@ -46,7 +50,7 @@
               </p>
               <div class="flex gap-4">
                 <p class="text-[12px]">{{reserva.empresa.direccion }}</p>
-                <button>
+                <button title="Copiar dirección" (click)="copiar_ubicacion_portapapeles(reserva.empresa.ubicacion)">
                   <img src="../../../../../../../assets/svg-icons/copy.svg" alt="">
                 </button>
 
@@ -149,7 +153,7 @@
                   @if (cuentas.length >= 1) {
                   @for (cuenta of cuentas; track $index) {
                   <div class="flex w-full flex-col items-center align-middle bg-forestGreen-200 rounded-lg p-1 md:p-4">
-                    <img class="w-16 h-12" src="../../../../../../../assets/img/yape.png" alt="">
+                    <img class="w-16 h-12" src="../../../../../../../assets/svg/{{cuenta.banco | lowercase}}.svg" alt="{{cuenta.banco}}">
 
                     <div class="flex items-center gap-4">
                       <p class="font-semibold text-nowrap">
