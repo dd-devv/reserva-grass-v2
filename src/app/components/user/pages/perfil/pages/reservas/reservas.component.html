@@ -261,7 +261,7 @@
               </p>
               <div class="flex gap-4">
                 <p class="text-[12px]">{{reserva.empresa.direccion}}</p>
-                <button>
+                <button title="Copiar dirección" (click)="copiar_ubicacion_portapapeles(reserva.empresa.ubicacion)">
                   <img src="../../../../../../../assets/svg-icons/copy.svg" alt="">
                 </button>
 
