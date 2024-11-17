@@ -36,6 +36,7 @@ export class ReservasComponent implements OnInit {
   public codigo_reserva = '';
   public token: any;
   public cancha: any = {};
+  public user_lc: any = {};
   public afuera: any = {};
   public idCancha: any;
   public cliente: any;
@@ -65,6 +66,7 @@ export class ReservasComponent implements OnInit {
     this.afuera = localStorage.getItem('afuera');
     this.cliente = localStorage.getItem('_id') || sessionStorage.getItem('_id');
     this.token = localStorage.getItem('token') || sessionStorage.getItem('token');
+    this.user_lc = JSON.parse(localStorage.getItem('user_data')!);
 
     this.myAngularxQrCode = 'Esto ';
 
@@ -237,7 +239,7 @@ export class ReservasComponent implements OnInit {
     );
   }
 
-  captureAndSaveView(id: any) {
+  captureAndSaveView(id: any, codigo: string) {
     this.descargando = true;
 
     const container = document.getElementById(id);
@@ -261,7 +263,7 @@ export class ReservasComponent implements OnInit {
         // Crear un elemento a para la descarga
         const downloadLink = document.createElement('a');
         downloadLink.href = combinedImage;
-        downloadLink.download = 'reservacion_grass.png'; // Puedes cambiar el nombre del archivo si lo deseas
+        downloadLink.download = `${codigo}.png`;
 
         // Simular el clic en el enlace
         const clickEvent = new MouseEvent('click', { bubbles: true, cancelable: true, view: window });

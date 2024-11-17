@@ -81,7 +81,7 @@
                   <p class="text-orange-400 text-[10px] font-bold">
                     Cliente
                   </p>
-                  <p class="text-base font-bold">Dino</p>
+                  <p class="text-base font-bold">{{user_lc.nombres | titlecase}}</p>
                 </div>
               </div>
               <div class="flex items-center justify-center ">
@@ -230,7 +230,7 @@
     @for (reserva of reservaciones_activas; track $index) {
       <!-- ACTIVO -->
       <div class="flex flex-col  gap-1 rounded-lg  dark:bg-gray-800 h-fit max-w-md md:max-w-xl ">
-        <div
+        <div id="{{reserva._id}}"
           class="grid grid-cols-[32px_repeat(4,1fr)] auto-cols-min grid-rows-5 rounded-lg border w-full max-w-md md:max-w-xl h-[175px] md:h-[190px]">
           <div class="bg-forestGreen-600 text-white w-8 rounded-l-lg row-span-5">
             <p class="w-full -rotate-90 flex justify-center items-center text-center h-full text-nowrap font-semibold">
@@ -303,7 +303,7 @@
                   <p class="text-forestGreen-600 text-[10px] font-bold">
                     Cliente
                   </p>
-                  <p class="text-base font-bold">Dino</p>
+                  <p class="text-base font-bold">{{user_lc.nombres | titlecase}}</p>
                 </div>
               </div>
               <div class="flex items-center justify-center ">
@@ -322,7 +322,7 @@
           </div>
         </div>
     
-        <button class="flex justify-center items-center gap-2 self-center text-forestGreen-500 text-xs " type="button">
+        <button (click)="captureAndSaveView(reserva._id, reserva.codigo)" class="flex justify-center items-center gap-2 self-center text-forestGreen-500 text-xs " type="button">
           Descargar ticket {{reserva.codigo}}
     
           <img src="../../../../../../../assets/svg-icons/download.svg" alt="">
