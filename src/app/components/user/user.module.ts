@@ -13,6 +13,7 @@ import { AccesoComponent } from './pages/perfil/pages/acceso/acceso.component';
 import { GeneralComponentsModule } from '../general-components/general-components.module';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { CanchasComponent } from './pages/canchas/canchas.component';
+import { QRCodeModule } from 'angularx-qrcode';
 
 
 @NgModule({
@@ -32,6 +33,7 @@ import { CanchasComponent } from './pages/canchas/canchas.component';
     UserRoutingModule,
     GeneralComponentsModule,
     FormsModule,
+    QRCodeModule,
     ReactiveFormsModule
   ]
 })

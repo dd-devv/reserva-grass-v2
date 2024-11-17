@@ -200,5 +200,8 @@ export class VerifyComponent implements OnInit {
         this.codigo = '';
       }
     }
+    else {
+      this._toastrService.showToast('Completa todos los campos');
+    }
   }
 }

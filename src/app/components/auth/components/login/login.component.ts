@@ -155,6 +155,7 @@ export class LoginComponent implements OnInit {
   }
 
   private handleUserLogin(response: any): void {
+    localStorage.setItem('user_data', JSON.stringify(response.data));
     if (!response.data.verificado) {
       this.toastr.showToast('Correo aún no verificado');
       this.router.navigate(['/verificar']);

@@ -61,7 +61,8 @@ import { CardHorarioSkeletonComponent } from './card-horario-skeleton/card-horar
     CardPerfilComponent,
     FooterComponent,
     HeaderComponent,
-    HeaderUserComponent
+    HeaderUserComponent,
+    Time24to12Pipe
   ]
 })
 export class GeneralComponentsModule { }
