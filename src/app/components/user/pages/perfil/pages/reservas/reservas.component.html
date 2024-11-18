@@ -9,56 +9,57 @@
 
   }
 
-    @if (fromOut && !load_data) {
-      <!-- Inicio de preservacion -->
-      <div class="card" style="border-color: #FFC107;">
-        <div class="card-body">
-          <div class="text-center">
-            <span class="badge rounded-pill text-bg-warning px-3">Reservación pendiente &nbsp;
-              <a class="" type="" disabled>
-                <span class="spinner-grow spinner-grow-sm fs-6" aria-hidden="true"></span>
-              </a>
-            </span>
-            <h4> {{cancha.nombre}} <span class="fw-light fs-5">del</span> {{cancha.empresa.nombre}} </h4>
-            <span class="fw-light"> {{cancha.empresa.direccion}} </span>
-  
-            <h4> </h4>
-  
-          </div>
-  
-          <div class="row py-2">
-            <div class="col-12 col-sm-4"> <i class="bi bi-person fs-4" style="color:rgb(0, 192, 86);"></i>
-              &nbsp; {{user_lc.nombres}}
-            </div>
-            <div class="col-12 col-sm-4"><i class="bi bi-calendar-event fs-4" style="color:rgb(0, 192, 86);"></i>
-              &nbsp; {{ fecha | date: 'medium' }}
-            </div>
-            <div class="col-12 col-sm-4"> <i class="bi bi-clock fs-4" style="color:rgb(0, 192, 86);"></i>
-              &nbsp; {{horaInicio}}:00 a {{horaFin}}:00
-            </div>
-          </div>
-  
-          <div class="text-center my-1">
-            <p class="fw-light m-0"> Subtotal </p>
-            <span style="color:rgb(0, 192, 86); font-size: 3rem;" class="fw-light"> S/. {{subtotal}} </span>
-          </div>
-  
-          <div class="text-center">
-            <button type="button" class="btn btn-sm px-4" (click)="crear_reservacion()"
-              style="background-color:rgb(0, 192, 86); color: #fff; border-radius: 15px;">
-              Confirmar
-            </button> &nbsp;
-  
-            <button type="button" class="btn btn-sm px-4" (click)="eliminar_pre_reserva()"
-              style="background-color:rgb(255, 102, 102); color: #fff; border-radius: 15px;">
-              <i class="bi bi-trash"></i>
-            </button>
-          </div>
-  
+  @if (fromOut && !load_data) {
+  <!-- Inicio de preservacion -->
+  <div class="card" style="border-color: #FFC107;">
+    <div class="card-body">
+      <div class="text-center">
+        <span class="badge rounded-pill text-bg-warning px-3">Reservación pendiente &nbsp;
+          <a class="" type="" disabled>
+            <span class="spinner-grow spinner-grow-sm fs-6" aria-hidden="true"></span>
+          </a>
+        </span>
+        <h4> {{cancha.nombre}} <span class="fw-light fs-5">del</span> {{cancha.empresa.nombre}} </h4>
+        <span class="fw-light"> {{cancha.empresa.direccion}} </span>
+
+        <h4> </h4>
+
+      </div>
+
+      <div class="row py-2">
+        <div class="col-12 col-sm-4"> <i class="bi bi-person fs-4" style="color:rgb(0, 192, 86);"></i>
+          &nbsp; {{user_lc.nombres}}
+        </div>
+        <div class="col-12 col-sm-4"><i class="bi bi-calendar-event fs-4" style="color:rgb(0, 192, 86);"></i>
+          &nbsp; {{ fecha | date: 'medium' }}
+        </div>
+        <div class="col-12 col-sm-4"> <i class="bi bi-clock fs-4" style="color:rgb(0, 192, 86);"></i>
+          &nbsp; {{horaInicio}}:00 a {{horaFin}}:00
         </div>
       </div>
-      <!-- Fin de prereservacion -->
-    }
+
+      <div class="text-center my-1">
+        <p class="fw-light m-0"> Subtotal </p>
+        <span style="color:rgb(0, 192, 86); font-size: 3rem;" class="fw-light"> S/. {{subtotal}} </span>
+      </div>
+
+      <div class="text-center">
+        <button type="button" class="btn btn-sm px-4" (click)="crear_reservacion()"
+          style="background-color:rgb(0, 192, 86); color: #fff; border-radius: 15px;">
+          Confirmar
+        </button> &nbsp;
+
+        <button type="button" class="btn btn-sm px-4" (click)="eliminar_pre_reserva()"
+          style="background-color:rgb(255, 102, 102); color: #fff; border-radius: 15px;">
+          <i class="bi bi-trash"></i>
+        </button>
+      </div>
+
+    </div>
+  </div>
+  <!-- Fin de prereservacion -->
+  }
+
 
   @for (reserva of reservaciones_pendientes; track $index) {
   <!-- PENDIENTE -->
@@ -151,120 +152,123 @@
     </div>
 
     @if (reservaciones_pendientes.length >= 1) {
-      <!-- MODAL -->
-    
-      <div class="flex justify-center">
-        <!-- Modal toggle -->
-        <button (click)="openModal()" data-modal-target="default-modal" data-modal-toggle="default-modal"
-          class="flex justify-center items-center gap-2 self-center text-orange-500 text-xs font-medium text-center" type="button"
-          #modalButton>
-          Ver instrucciones
-          <img src="../../../../../../../assets/svg-icons/view.svg" alt="">
-        </button>
-    
-        <!-- Backdrop -->
-        <div *ngIf="isOpen" class="fixed inset-0 bg-black bg-opacity-50 transition-opacity" (click)="closeModal()">
-        </div>
-    
-        <!-- Main modal -->
-        <div id="default-modal" [ngClass]="{'hidden': !isOpen}"
-          class="overflow-y-auto overflow-x-hidden fixed top-0 right-0 left-0 z-50 flex justify-center items-center w-full md:inset-0 h-[calc(100%-1rem)] max-h-full">
-          <div class="relative p-4 w-full max-w-2xl max-h-full">
-            <!-- Modal content -->
-            <div class="flex justify-center py-4 px-8 bg-white rounded-lg shadow dark:bg-gray-700"
-              (click)="$event.stopPropagation()"> <!-- Evita que el click se propague al backdrop -->
-              <!-- Tu contenido actual del modal aquí -->
-              <div class="flex justify-end w-full absolute top-2 right-2">
-                <button type="button" class="text-gray-500 hover:text-gray-700 p-2" (click)="closeModal()">
-                  ✕
-                </button>
-              </div>
-    
-              <!-- Modal body -->
-    
-              <ol class="w-full relative text-gray-500 border-s-2  border-forestGreen-500 ">
-    
-                <li class=" mb-10 ms-6 flex items-center">
-                  <span
-                    class="absolute flex items-center justify-center size-8 bg-forestGreen-500 text-white rounded-full -start-4  ring-4 ring-white">
-                    1
-                  </span>
-                  <div class="p-4 w-full bg-forestGreen-50 border border-forestGreen-500 rounded-lg">
-                    Realizar un pago de <span class="text-forestGreen-500">S/. 30 </span> a una de las siguientes cuentas.
-    
-    
-                    <!-- MEDIOS PAGO -->
-                    <div class="flex w-full gap-1 md:gap-4 justify-center  ">
-                      @if (cuentas.length >= 1) {
-                      @for (cuenta of cuentas; track $index) {
-                      <div class="flex w-full flex-col items-center align-middle bg-forestGreen-200 rounded-lg p-1 md:p-4">
-                        <img class="w-16 h-12" src="../../../../../../../assets/svg/{{cuenta.banco | lowercase}}.svg" alt="{{cuenta.banco}}">
-    
-                        <div class="flex items-center gap-4">
-                          <p class="font-semibold text-nowrap">
-                            {{cuenta.cuenta}}
-                          </p>
-    
-                          <button title="Copiar código" (click)="copiar_portapapeles(cuenta.cuenta)">
-                            <img src="../../../../../../../assets/svg-icons/copy.svg" alt="">
-                          </button>
-                        </div>
-                        <p class="text-xs"> {{cuenta.titular | titlecase}} </p>
-                      </div>
-                      }
-                      }
-    
-                    </div>
-    
-                    <!-- MEDIOS PAGO -->
-    
-    
-                  </div>
-    
-                </li>
-    
-    
-                <li class=" mb-10 ms-6 flex items-center">
-                  <span
-                    class="absolute flex items-center justify-center size-8 bg-forestGreen-500 text-white rounded-full -start-4  ring-4 ring-white">
-                    2
-                  </span>
-                  <div class="p-4 w-full bg-forestGreen-50 border border-forestGreen-500 rounded-lg">
-                    Enviar el voucher de la operación mediante <span class="text-forestGreen-500"> WhatsApp</span> al numero
-                    <span class="text-forestGreen-500"> {{telefono_empresa}}</span>.
-                  </div>
-                </li>
-    
-                <li class=" mb-10 ms-6 flex items-center">
-                  <span
-                    class="absolute flex items-center justify-center size-8 bg-forestGreen-500 text-white rounded-full -start-4  ring-4 ring-white">
-                    3
-                  </span>
-                  <div class="p-4 w-full bg-forestGreen-50 border border-forestGreen-500 rounded-lg">
-                    Enviar el código <span class="text-forestGreen-500"> {{codigo_reserva}} </span> al mismo numero.
-                  </div>
-                </li>
-    
-                <li class=" mb-10 ms-6 flex items-center">
-                  <span
-                    class="absolute flex items-center justify-center size-8 bg-forestGreen-500 text-white rounded-full -start-4  ring-4 ring-white">
-                    4
-                  </span>
-                  <div class="p-4 w-full bg-forestGreen-50 border border-forestGreen-500 rounded-lg">
-                    Comunícate con <span class="text-forestGreen-500"> {{telefono_empresa}} </span> para verificar la
-                    confirmación de su
-                    reserva.
-                  </div>
-                </li>
-              </ol>
+    <!-- MODAL -->
+
+    <div class="flex justify-center">
+      <!-- Modal toggle -->
+      <button (click)="openModal()" data-modal-target="default-modal" data-modal-toggle="default-modal"
+        class="flex justify-center items-center gap-2 self-center text-orange-500 text-xs font-medium text-center"
+        type="button" #modalButton>
+        Ver instrucciones
+        <img src="../../../../../../../assets/svg-icons/view.svg" alt="">
+      </button>
+
+      <!-- Backdrop -->
+      <div *ngIf="isOpen" class="fixed inset-0 bg-black bg-opacity-50 transition-opacity" (click)="closeModal()">
+      </div>
+
+      <!-- Main modal -->
+      <div id="default-modal" [ngClass]="{'hidden': !isOpen}"
+        class="overflow-y-auto overflow-x-hidden fixed top-0 right-0 left-0 z-50 flex justify-center items-center w-full md:inset-0 h-[calc(100%-1rem)] max-h-full">
+        <div class="relative p-4 w-full max-w-2xl max-h-full">
+          <!-- Modal content -->
+          <div class="flex justify-center py-4 px-8 bg-white rounded-lg shadow dark:bg-gray-700"
+            (click)="$event.stopPropagation()"> <!-- Evita que el click se propague al backdrop -->
+            <!-- Tu contenido actual del modal aquí -->
+            <div class="flex justify-end w-full absolute top-2 right-2">
+              <button type="button" class="text-gray-500 hover:text-gray-700 p-2" (click)="closeModal()">
+                ✕
+              </button>
             </div>
+
+            <!-- Modal body -->
+
+            <ol class="w-full relative text-gray-500 border-s-2  border-forestGreen-500 ">
+
+              <li class=" mb-10 ms-6 flex items-center">
+                <span
+                  class="absolute flex items-center justify-center size-8 bg-forestGreen-500 text-white rounded-full -start-4  ring-4 ring-white">
+                  1
+                </span>
+                <div class="p-4 w-full bg-forestGreen-50 border border-forestGreen-500 rounded-lg">
+                  Realizar un pago de <span class="text-forestGreen-500">S/. 30 </span> a una de las siguientes cuentas.
+
+
+                  <!-- MEDIOS PAGO -->
+                  <div class="flex w-full gap-1 md:gap-4 justify-center  ">
+                    @if (cuentas.length >= 1) {
+                    @for (cuenta of cuentas; track $index) {
+                    <div
+                      class="flex w-full flex-col items-center align-middle bg-forestGreen-200 rounded-lg p-1 md:p-4">
+                      <img class="w-16 h-12" src="../../../../../../../assets/svg/{{cuenta.banco | lowercase}}.svg"
+                        alt="{{cuenta.banco}}">
+
+                      <div class="flex items-center gap-4">
+                        <p class="font-semibold text-nowrap">
+                          {{cuenta.cuenta}}
+                        </p>
+
+                        <button title="Copiar código" (click)="copiar_portapapeles(cuenta.cuenta)">
+                          <img src="../../../../../../../assets/svg-icons/copy.svg" alt="">
+                        </button>
+                      </div>
+                      <p class="text-xs"> {{cuenta.titular | titlecase}} </p>
+                    </div>
+                    }
+                    }
+
+                  </div>
+
+                  <!-- MEDIOS PAGO -->
+
+
+                </div>
+
+              </li>
+
+
+              <li class=" mb-10 ms-6 flex items-center">
+                <span
+                  class="absolute flex items-center justify-center size-8 bg-forestGreen-500 text-white rounded-full -start-4  ring-4 ring-white">
+                  2
+                </span>
+                <div class="p-4 w-full bg-forestGreen-50 border border-forestGreen-500 rounded-lg">
+                  Enviar el voucher de la operación mediante <span class="text-forestGreen-500"> WhatsApp</span> al
+                  numero
+                  <span class="text-forestGreen-500"> {{telefono_empresa}}</span>.
+                </div>
+              </li>
+
+              <li class=" mb-10 ms-6 flex items-center">
+                <span
+                  class="absolute flex items-center justify-center size-8 bg-forestGreen-500 text-white rounded-full -start-4  ring-4 ring-white">
+                  3
+                </span>
+                <div class="p-4 w-full bg-forestGreen-50 border border-forestGreen-500 rounded-lg">
+                  Enviar el código <span class="text-forestGreen-500"> {{codigo_reserva}} </span> al mismo numero.
+                </div>
+              </li>
+
+              <li class=" mb-10 ms-6 flex items-center">
+                <span
+                  class="absolute flex items-center justify-center size-8 bg-forestGreen-500 text-white rounded-full -start-4  ring-4 ring-white">
+                  4
+                </span>
+                <div class="p-4 w-full bg-forestGreen-50 border border-forestGreen-500 rounded-lg">
+                  Comunícate con <span class="text-forestGreen-500"> {{telefono_empresa}} </span> para verificar la
+                  confirmación de su
+                  reserva.
+                </div>
+              </li>
+            </ol>
           </div>
         </div>
       </div>
-    
-      <!-- MODAL -->
-      }
-    
+    </div>
+
+    <!-- MODAL -->
+    }
+
 
   </div>
   <!-- PENDIENTE -->
@@ -361,7 +365,7 @@
 
       <div
         class=" w-12 md:w-20 justify-center flex rounded-br-lg row-span-4 col-start-6 row-start-2 border-l-2 border-forestGreen-600 border-dotted my-3 items-center">
-        <qrcode  [qrdata]="reserva._id" elementType="img" [errorCorrectionLevel]="'M'">
+        <qrcode [qrdata]="reserva._id" elementType="img" [errorCorrectionLevel]="'M'">
         </qrcode>
       </div>
     </div>
@@ -475,4 +479,93 @@
 
   </div>
   <!-- VENCIDO -->
+
+
+
+  <!-- PRERESERVA -->
+  <div class="flex flex-col  gap-4 rounded-lg  h-fit max-w-md md:max-w-xl ">
+    <div
+      class="grid grid-cols-[32px_repeat(3,1fr)] auto-cols-min grid-rows-5 rounded-lg border border-red-400 w-full max-w-md md:max-w-xl h-[175px] md:h-[190px]">
+
+      <div class="flex bg-red-100 border-b-2 border-dotted border-red-400  flex-col rounded-t-lg col-span-5 w-full h-11  px-2 py-1 ">
+        <div class="flex rounded-t-lg ">
+          <div class="w-7/12">
+            <div class="flex flex-col align-middle">
+              <label class="text-xs font-semibold text-red-500">
+                Empresa
+              </label>
+              <p class="font-bold capitalize">Tres cruces la gradería</p>
+            </div>
+          </div>
+          <div class="w-5/12">
+            <div class="flex flex-col">
+              <label class="text-xs font-semibold text-red-500">
+                Cancha
+              </label>
+              <p class="font-bold">Cancha 1</p>
+            </div>
+          </div>
+        </div>
+
+        <!-- <div class="w-full border-b-2 border-dotted border-red-500 bg-red-100"></div> -->
+        <!-- INICIO PARTE BOLETA -->
+
+        <div class="flex flex-col md:gap-1.5">
+          <div class="flex w-full">
+            <div class="items-start flex flex-col justify-start">
+              <p class="text-red-500 text-[10px] font-bold">
+                Dirección
+              </p>
+              <div class="flex gap-4">
+                <p class="text-[12px]">Av. Américas 123 San juan Bautista</p>
+                <button>
+                  <img src="../../../../../../../assets/svg-icons/copy.svg" alt="">
+                </button>
+
+
+              </div>
+
+
+            </div>
+          </div>
+          <div class="flex w-full">
+            <div class="w-7/12 items-start flex flex-col justify-start">
+              <p class="text-red-500 text-[10px] font-bold">Fecha</p>
+              <p class="text-[12px]">Domingo, 20 de agosto del 2024</p>
+            </div>
+
+            <div class="items-start flex flex-col justify-start">
+              <p class="text-red-500 text-[10px] font-bold">
+                Horario
+              </p>
+              <p class="text-[12px]">5:00 pm - 8:00 pm</p>
+            </div>
+          </div>
+          <div class="flex w-full">
+            <div class="w-7/12 items-start flex flex-col justify-start">
+              <p class="text-red-500 text-[10px] font-bold">
+                Monto de reservación
+              </p>
+              <p class="text-base font-bold">S/ 30</p>
+            </div>
+
+            <div class="items-start flex flex-col justify-start">
+              <p class="text-red-500 text-[10px] font-bold">
+                Cliente
+              </p>
+              <p class="text-base font-bold">Dino</p>
+            </div>
+          </div>
+          <div class="flex items-center justify-center ">
+            <p class="font-jetBrainsMono text-[12px]">Creación: 3 oct 2024, 21:39:19</p>
+            <div class="invisible w-12 md:w20">
+            </div>
+          </div>
+        </div>
+
+      </div>
+    </div>
+
+  </div>
+  <!-- PRERESERVA -->
 </div>
