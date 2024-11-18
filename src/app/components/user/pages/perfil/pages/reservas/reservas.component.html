@@ -308,9 +308,15 @@
 
       </div>
 
-      <div
+      <!-- <div
         class="w-12 md:w-20 justify-center flex rounded-br-lg row-span-4 col-start-6 row-start-2 border-l-2 border-forestGreen-600 border-dotted my-3 items-center">
         <qrcode style="width: 100vw;" [qrdata]="reserva._id" [width]="100" [errorCorrectionLevel]="'M'">
+        </qrcode>
+      </div> -->
+
+      <div
+        class="w-12 md:w-20 justify-center flex rounded-br-lg row-span-4 col-start-6 row-start-2 border-l-2 border-forestGreen-600 border-dotted my-3 items-center">
+        <qrcode class="size-16" [qrdata]="reserva._id"  [errorCorrectionLevel]="'M'">
         </qrcode>
       </div>
     </div>
