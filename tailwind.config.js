@@ -4,6 +4,9 @@ module.exports = {
   content: ["./src/**/*.{html,ts}", "./node_modules/flowbite/**/*.js"],
   theme: {
     extend: {
+      backgroundImage: {
+        'user-pattern': "url('/assets/img/default_user.png')",
+      },
       /* colors: {
         forestGreen:{
           50: '#f0fdf3',
