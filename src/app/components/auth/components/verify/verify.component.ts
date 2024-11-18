@@ -83,6 +83,8 @@ export class VerifyComponent implements OnInit {
   public id: any;
   public email: any;
 
+  rememberMe = true;
+
   constructor(
     private _title: Title,
     private _userService: UserService,
@@ -108,7 +110,7 @@ export class VerifyComponent implements OnInit {
     }
 
     // Actualizar el valor correspondiente usando un switch
-    switch(position) {
+    switch (position) {
       case 0:
         this.codigo1 = value;
         break;
@@ -140,12 +142,12 @@ export class VerifyComponent implements OnInit {
 
   onBackspace(event: any, prevInput: any, position: number) {
     const input = event.target as HTMLInputElement;
-    
+
     // Si el input está vacío y hay input anterior, regresar
     if (!input.value && prevInput) {
       prevInput.focus();
       // Actualizar el valor correspondiente usando un switch
-      switch(position) {
+      switch (position) {
         case 1:
           this.codigo1 = '';
           break;
@@ -170,8 +172,8 @@ export class VerifyComponent implements OnInit {
   }
 
   actualizarCodigo() {
-    this.codigo = this.codigo1 + this.codigo2 + this.codigo3 + 
-                  this.codigo4 + this.codigo5 + this.codigo6;
+    this.codigo = this.codigo1 + this.codigo2 + this.codigo3 +
+      this.codigo4 + this.codigo5 + this.codigo6;
   }
 
   verificar(verificarForm: any) {
@@ -179,9 +181,28 @@ export class VerifyComponent implements OnInit {
       if (this.id) {
         this._userService.actualizar_user_verificado(this.id, this.codigo).subscribe({
           next: (res) => {
-            this._toastrService.showToast('Se verificó correctamente');
-            this._router.navigate(['/login']);
-            localStorage.removeItem('user_email');
+            let loginData = {
+              email: this.email,
+              password: sessionStorage.getItem('password'),
+            }
+            this._userService
+            .login_user(loginData).subscribe({
+              next: (response) => {
+                this._toastrService.showToast('Se verificó correctamente');
+                const storage = this.rememberMe ? localStorage : sessionStorage;
+                storage.setItem('token', response.token);
+                storage.setItem('_id', response.data._id);
+                  this._router
+                    .navigate(['/usuario'])
+                    .then(() => setTimeout(() => location.reload(), 500));
+                  localStorage.removeItem('user_email');
+                  sessionStorage.removeItem('password');
+                },
+                error: (error) => {
+                  this._toastrService.showToast('Error al iniciar sesión');
+                  console.error('Login error:', error);
+                },
+              });
           },
           error: (err) => {
             this._toastrService.showToast('Código incorrecto, vuelve a intentarlo');

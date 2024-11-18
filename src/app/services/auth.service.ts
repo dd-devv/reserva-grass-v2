@@ -64,10 +64,9 @@ export class AuthService {
   public clearStorage(): void {
     localStorage.removeItem('token');
     sessionStorage.removeItem('token');
-    localStorage.removeItem('id_persona');
-    sessionStorage.removeItem('id_persona');
-    localStorage.removeItem('id_usuario');
-    sessionStorage.removeItem('id_usuario');
+    localStorage.removeItem('user_data');
+    localStorage.removeItem('_id');
+    sessionStorage.removeItem('_id');
     localStorage.removeItem('celular');
     localStorage.removeItem('empresa');
     sessionStorage.removeItem('empresa');

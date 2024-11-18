@@ -151,6 +151,7 @@ export class RegistroComponent implements OnInit {
   private handleSuccessfulRegistration(response: any): void {
     localStorage.setItem('_id', response.data._id);
     localStorage.setItem('user_email', this.registerForm.get('email')?.value);
+    sessionStorage.setItem('password', this.registerForm.get('password')?.value);
     this.toastr.showToast('Se registró con éxito');
     this.sendConfirmationEmail(response.data._id);
   }
