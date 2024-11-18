@@ -1,5 +1,5 @@
 <div class="px-2 space-y-6">
-  <p class="text-sm text-pretty">Los <span class="text-forestGreen-500">tickets</span> con los comprobantes de su
+  <p class="text-sm text-pretty">Los <span class="text-forestGreen-500">tickets</span> son los comprobantes de su
     reservación, el cual debes mostrar a la empresa al momento de completar el pago.</p>
 
   @if (load_reservas) {
@@ -8,6 +8,57 @@
   @if (!load_reservas) {
 
   }
+
+    @if (fromOut && !load_data) {
+      <!-- Inicio de preservacion -->
+      <div class="card" style="border-color: #FFC107;">
+        <div class="card-body">
+          <div class="text-center">
+            <span class="badge rounded-pill text-bg-warning px-3">Reservación pendiente &nbsp;
+              <a class="" type="" disabled>
+                <span class="spinner-grow spinner-grow-sm fs-6" aria-hidden="true"></span>
+              </a>
+            </span>
+            <h4> {{cancha.nombre}} <span class="fw-light fs-5">del</span> {{cancha.empresa.nombre}} </h4>
+            <span class="fw-light"> {{cancha.empresa.direccion}} </span>
+  
+            <h4> </h4>
+  
+          </div>
+  
+          <div class="row py-2">
+            <div class="col-12 col-sm-4"> <i class="bi bi-person fs-4" style="color:rgb(0, 192, 86);"></i>
+              &nbsp; {{user_lc.nombres}}
+            </div>
+            <div class="col-12 col-sm-4"><i class="bi bi-calendar-event fs-4" style="color:rgb(0, 192, 86);"></i>
+              &nbsp; {{ fecha | date: 'medium' }}
+            </div>
+            <div class="col-12 col-sm-4"> <i class="bi bi-clock fs-4" style="color:rgb(0, 192, 86);"></i>
+              &nbsp; {{horaInicio}}:00 a {{horaFin}}:00
+            </div>
+          </div>
+  
+          <div class="text-center my-1">
+            <p class="fw-light m-0"> Subtotal </p>
+            <span style="color:rgb(0, 192, 86); font-size: 3rem;" class="fw-light"> S/. {{subtotal}} </span>
+          </div>
+  
+          <div class="text-center">
+            <button type="button" class="btn btn-sm px-4" (click)="crear_reservacion()"
+              style="background-color:rgb(0, 192, 86); color: #fff; border-radius: 15px;">
+              Confirmar
+            </button> &nbsp;
+  
+            <button type="button" class="btn btn-sm px-4" (click)="eliminar_pre_reserva()"
+              style="background-color:rgb(255, 102, 102); color: #fff; border-radius: 15px;">
+              <i class="bi bi-trash"></i>
+            </button>
+          </div>
+  
+        </div>
+      </div>
+      <!-- Fin de prereservacion -->
+    }
 
   @for (reserva of reservaciones_pendientes; track $index) {
   <!-- PENDIENTE -->

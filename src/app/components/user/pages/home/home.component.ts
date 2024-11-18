@@ -73,6 +73,8 @@ export class HomeComponent implements OnInit {
     this.token =
       localStorage.getItem('token') || sessionStorage.getItem('token');
     this.id = localStorage.getItem('_id') || sessionStorage.getItem('_id');
+    localStorage.removeItem('id_cancha');
+    localStorage.removeItem('afuera');
   }
 
   ngOnInit(): void {
