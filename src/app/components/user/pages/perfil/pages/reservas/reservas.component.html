@@ -222,17 +222,17 @@
 
   @for (reserva of reservaciones_activas; track $index) {
   <!-- ACTIVO -->
-  <div class="flex flex-col  gap-1 rounded-lg  dark:bg-gray-800 h-fit max-w-md md:max-w-xl  ">
+  <div class="flex flex-col  gap-1 rounded-lg  dark:bg-gray-800 h-fit max-w-md md:max-w-xl print:bg-transparent ">
     <div id="{{reserva._id}}"
-      class="grid grid-cols-[32px_repeat(4,1fr)] auto-cols-min grid-rows-5 rounded-lg border border-forestGreen-500 w-full max-w-md md:max-w-xl h-[175px] md:h-[190px]">
-      <div class="bg-forestGreen-600 text-white w-8 rounded-l-lg row-span-5">
+      class="grid grid-cols-[40px_repeat(4,1fr)] auto-cols-min grid-rows-5 rounded-lg border border-forestGreen-600 w-full max-w-md md:max-w-xl h-[175px] md:h-[190px]">
+      <div class="bg-forestGreen-600 text-white w-8 rounded-l-md row-span-5 ">
         <p class="w-full -rotate-90 flex justify-center items-center text-center h-full text-nowrap font-semibold">
           {{reserva.codigo}}
         </p>
       </div>
       <div class="flex flex-col rounded-tr-lg col-span-5 w-full h-10  px-2 pt-1 ">
         <div class="flex ">
-          <div class="w-7/12">
+          <div class="w-6/12">
             <div class="flex flex-col align-middle">
               <label class="text-xs font-semibold text-forestGreen-600">
                 Empresa
@@ -272,9 +272,9 @@
             </div>
           </div>
           <div class="flex w-full">
-            <div class="w-7/12 items-start flex flex-col justify-start">
+            <div class="w-6/12 items-start flex flex-col justify-start">
               <p class="text-forestGreen-600 text-[10px] font-bold">Fecha</p>
-              <p class="text-[12px]">{{reserva.fecha | date: 'EEEE, MMMM d, y' | titlecase}}</p>
+              <p class="text-[12px]">{{reserva.fecha | date: 'EEEE, MMMM d ' | titlecase}}</p>
             </div>
 
             <div class="items-start flex flex-col justify-start">
@@ -285,7 +285,7 @@
             </div>
           </div>
           <div class="flex w-full">
-            <div class="w-7/12 items-start flex flex-col justify-start">
+            <div class="w-6/12 items-start flex flex-col justify-start">
               <p class="text-forestGreen-600 text-[10px] font-bold">
                 Monto de reservación
               </p>
@@ -321,8 +321,8 @@
       </div>
 
       <div
-        class=" w-12 md:w-20 justify-center flex md:hidden rounded-br-lg row-span-4 col-start-6 row-start-2 border-l-2 border-forestGreen-600 border-dotted my-3 items-center">
-        <qrcode  [qrdata]="reserva._id"  [width]="45" [errorCorrectionLevel]="'M'">
+        class=" w-16 md:w-20 justify-center flex md:hidden rounded-br-lg row-span-4 col-start-6 row-start-2 border-l-2 border-forestGreen-600 border-dotted my-3 items-center">
+        <qrcode  [qrdata]="reserva._id"  [width]="55" [errorCorrectionLevel]="'M'">
         </qrcode>
       </div>
     </div>
