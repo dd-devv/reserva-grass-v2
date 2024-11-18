@@ -359,21 +359,9 @@
 
       </div>
 
-      <!-- <div
-        class="  md:hidden w-12 md:w-20 justify-center flex rounded-br-lg row-span-4 col-start-6 row-start-2 border-l-2 border-forestGreen-600 border-dotted my-3 items-center">
-        <qrcode  class="bg-red-300 box-content" [qrdata]="reserva._id" [width]="70" [errorCorrectionLevel]="'M'">
-        </qrcode>
-      </div> -->
-
       <div
-        class="hidden w-12 md:w-20 justify-center md:flex rounded-br-lg row-span-4 col-start-6 row-start-2 border-l-2 border-forestGreen-600 border-dotted my-3 items-center">
-        <qrcode  class="bg-red-300" [qrdata]="reserva._id" [width]="70" [errorCorrectionLevel]="'M'">
-        </qrcode>
-      </div>
-
-      <div
-        class=" w-16 md:w-20 justify-center flex md:hidden rounded-br-lg row-span-4 col-start-6 row-start-2 border-l-2 border-forestGreen-600 border-dotted my-3 items-center">
-        <qrcode  [qrdata]="reserva._id"  [width]="55" [errorCorrectionLevel]="'M'">
+        class=" w-12 md:w-20 justify-center flex rounded-br-lg row-span-4 col-start-6 row-start-2 border-l-2 border-forestGreen-600 border-dotted my-3 items-center">
+        <qrcode  [qrdata]="reserva._id" elementType="img" [errorCorrectionLevel]="'M'">
         </qrcode>
       </div>
     </div>
