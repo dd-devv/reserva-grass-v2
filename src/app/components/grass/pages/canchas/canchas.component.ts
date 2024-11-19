@@ -67,8 +67,8 @@ export class CanchasComponent implements AfterViewInit, OnDestroy {
         defaultPosition: 0,
         interval: 3000,
         indicators: {
-          activeClasses: 'bg-red-800 w-6 dark:bg-gray-800',
-          inactiveClasses: 'bg-gray-400/50 dark:bg-gray-800/50 hover:bg-gray-400',
+          activeClasses: 'bg-red-800 w-6 dark:bg-red-800',
+          inactiveClasses: 'bg-red-400/50 dark:bg-red-800/50 hover:bg-gray-400',
           items: this.images.map(img => ({
             position: img.id - 1,
             el: document.getElementById(`carousel-indicator-${img.id}`) as HTMLElement
