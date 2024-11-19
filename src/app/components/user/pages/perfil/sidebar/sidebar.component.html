@@ -5,16 +5,17 @@
       data-tabs-inactive-classes="dark:border-transparent text-gray-500 hover:text-gray-600 dark:text-gray-400 border-gray-100 hover:border-gray-300 dark:border-gray-700 dark:hover:text-gray-300"
       role="tablist">
       <li class="w-full flex items-center flex-col justify-center align-middle text-center" role="presentation">
-        <button [routerLink]="['/usuario/perfil']" routerLinkActive="text-forestGreen-500"
+        <button [routerLink]="['/usuario/perfil']" routerLinkActive="text-forestGreen-500 bg-forestGreen-50"
           [routerLinkActiveOptions]="{ exact: true }"
           class="flex flex-col justify-center items-center align-middle p-4 border-b-2 rounded-t-lg w-full"
           type="button">
-          <img src="../../../../../../assets/svg-icons/user.svg" alt="">
+          <img class="stroke-2 fill-red-400 stroke-red-400" src="../../../../../../assets/svg-icons/user.svg" alt="">
+          
           Datos
         </button>
       </li>
       <li class="w-full flex items-center flex-col justify-center align-middle text-center" role="presentation">
-        <button [routerLink]="['/usuario/perfil/reservas']" routerLinkActive="text-forestGreen-500"
+        <button [routerLink]="['/usuario/perfil/reservas']" routerLinkActive="text-forestGreen-500 bg-forestGreen-50"
           class="flex flex-col justify-center items-center align-middle p-4 border-b-2 rounded-t-lg w-full hover:text-gray-600 hover:border-gray-300 dark:hover:text-gray-300"
           type="button">
           <img src="../../../../../../assets/svg-icons/soccer-ball.svg" alt="">
@@ -22,7 +23,7 @@
         </button>
       </li>
       <li class="w-full flex items-center flex-col justify-center align-middle text-center" role="presentation">
-        <button [routerLink]="['/usuario/perfil/acceso']" routerLinkActive="text-forestGreen-500"
+        <button [routerLink]="['/usuario/perfil/acceso']" routerLinkActive="text-forestGreen-500 bg-forestGreen-50"
           class="flex flex-col justify-center items-center align-middle p-4 border-b-2 rounded-t-lg w-full hover:text-gray-600 hover:border-gray-300 dark:hover:text-gray-300"
           id="settings-styled-tab" type="button">
           <img src="../../../../../../assets/svg-icons/access.svg" alt="">

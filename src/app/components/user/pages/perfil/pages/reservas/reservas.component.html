@@ -1,4 +1,4 @@
-<div class="px-2 space-y-6">
+<div class="flex flex-col w-full  px-2 space-y-6">
   <p class="text-sm text-pretty">Los <span class="text-forestGreen-500">tickets</span> son los comprobantes de su
     reservación, el cual debes mostrar a la empresa al momento de completar el pago.</p>
 
@@ -11,7 +11,7 @@
 
   @if (fromOut && !load_data) {
   <!-- Inicio de preservacion -->
-  <div class="flex flex-col  gap-4 rounded-lg  h-fit max-w-md md:max-w-xl ">
+  <div class="flex flex-col  gap-3 rounded-lg  h-fit max-w-md md:max-w-xl ">
     <span class="font-semibold text-red-500">Reservación pendiente
     </span>
     <div
@@ -86,19 +86,19 @@
         </div>
 
       </div>
+      
     </div>
-
-    <div class="text-center">
+    <div class="flex w-full justify-center gap-4 text-xs items-center text-slate-50">
       <button type="button" (click)="crear_reservacion()"
-        style="background-color:rgb(0, 192, 86); color: #fff; border-radius: 15px;">
+        class="bg-forestGreen-500 rounded-lg  py-1  w-20">
         Confirmar
-      </button> &nbsp;
+      </button>
 
-      <button type="button" (click)="eliminar_pre_reserva()" style="background-color:rgb(255, 102, 102);">
+      <button type="button" (click)="eliminar_pre_reserva()"  class="bg-red-500 rounded-lg  py-1 w-20" >
         Eliminar
-        <i class="bi bi-trash"></i>
       </button>
     </div>
+   
 
   </div>
   <!-- Fin de prereservacion -->
@@ -115,8 +115,9 @@
     <div
       class="grid grid-cols-[32px_repeat(2,1fr)] auto-cols-min grid-rows-5 rounded-lg border border-orange-400 w-full max-w-md md:max-w-xl h-[175px] md:h-[190px]">
 
-      <div class="flex flex-col rounded-tr-lg col-span-5 w-full h-10  px-2 pt-1 ">
-        <div class="flex bg-orange-100 rounded-t-lg">
+      <div
+        class="flex bg-orange-100 border-b-2 border-dotted border-orange-400  flex-col rounded-t-lg col-span-5 w-full h-11  px-2 py-1 ">
+        <div class="flex rounded-t-lg">
           <div class="w-7/12">
             <div class="flex flex-col align-middle">
               <label class="text-xs font-semibold text-orange-400">
@@ -135,7 +136,6 @@
           </div>
         </div>
 
-        <div class="w-full border-b-2 border-dotted border-orange-400"></div>
         <!-- INICIO PARTE BOLETA -->
 
         <div class="flex flex-col md:gap-1.5">
@@ -321,136 +321,145 @@
 
   @for (reserva of reservaciones_activas; track $index) {
   <!-- ACTIVO -->
-  <div class="flex flex-col  gap-1 rounded-lg  dark:bg-gray-800 h-fit max-w-md md:max-w-xl print:bg-transparent ">
-    <div id="{{reserva._id}}"
-      class="grid grid-cols-[40px_repeat(4,1fr)] auto-cols-min grid-rows-5 rounded-lg border border-forestGreen-600 w-full max-w-md md:max-w-xl h-[175px] md:h-[190px]">
-      <div class="bg-forestGreen-600 text-white w-8 rounded-l-md row-span-5 ">
-        <p class="w-full -rotate-90 flex justify-center items-center text-center h-full text-nowrap font-semibold">
-          {{reserva.codigo}}
-        </p>
-      </div>
-      <div class="flex flex-col rounded-tr-lg col-span-5 w-full h-10  px-2 pt-1 ">
-        <div class="flex ">
-          <div class="w-6/12">
-            <div class="flex flex-col align-middle">
-              <label class="text-xs font-semibold text-forestGreen-600">
-                Empresa
-              </label>
-              <p class="font-bold capitalize">{{reserva.empresa.nombre | titlecase}}</p>
-            </div>
-          </div>
-          <div class="w-5/12">
-            <div class="flex flex-col">
-              <label class="text-xs font-semibold text-forestGreen-600">
-                Cancha
-              </label>
-              <p class="font-bold">{{reserva.cancha.nombre | titlecase}}</p>
-            </div>
-          </div>
+   <div class="flex justify-center w-full">
+    <div class="flex flex-col  gap-1 rounded-lg  dark:bg-gray-800 h-fit max-w-md md:max-w-xl print:bg-transparent ">
+      <div id="{{reserva._id}}"
+        class="grid grid-cols-[40px_repeat(4,1fr)] auto-cols-min grid-rows-5 rounded-lg border border-forestGreen-600 w-full max-w-md md:max-w-xl h-[175px] md:h-[190px]">
+        <div class="bg-forestGreen-600 text-white w-8 rounded-l-md row-span-5 ">
+          <p class="w-full -rotate-90 flex justify-center items-center text-center h-full text-nowrap font-semibold">
+            {{reserva.codigo}}
+          </p>
         </div>
-
-        <div class="w-full border-b-2 border-dotted border-forestGreen-600"></div>
-        <!-- INICIO PARTE BOLETA -->
-
-        <div class="flex flex-col md:gap-1.5">
-          <div class="flex w-full">
-            <div class="items-start flex flex-col justify-start">
-              <p class="text-forestGreen-600 text-[10px] font-bold">
-                Dirección
-              </p>
-              <div class="flex gap-4">
-                <p class="text-[12px]">{{reserva.empresa.direccion}}</p>
-                <button title="Copiar dirección" (click)="copiar_ubicacion_portapapeles(reserva.empresa.ubicacion)">
-                  <img src="../../../../../../../assets/svg-icons/copy.svg" alt="">
-                </button>
-
-
+        <div class="flex flex-col rounded-tr-lg col-span-5 w-full h-10  px-2 pt-1 ">
+          <div class="flex ">
+            <div class="w-6/12">
+              <div class="flex flex-col align-middle">
+                <label class="text-xs font-semibold text-forestGreen-600">
+                  Empresa
+                </label>
+                <p class="font-bold capitalize">{{reserva.empresa.nombre | titlecase}}</p>
               </div>
-
-
+            </div>
+            <div class="w-5/12">
+              <div class="flex flex-col">
+                <label class="text-xs font-semibold text-forestGreen-600">
+                  Cancha
+                </label>
+                <p class="font-bold">{{reserva.cancha.nombre | titlecase}}</p>
+              </div>
             </div>
           </div>
-          <div class="flex w-full">
-            <div class="w-6/12 items-start flex flex-col justify-start">
-              <p class="text-forestGreen-600 text-[10px] font-bold">Fecha</p>
-              <p class="text-[12px]">{{reserva.fecha | date: 'EEEE, MMMM d ' | titlecase}}</p>
+  
+          <div class="w-full border-b-2 border-dotted border-forestGreen-600"></div>
+          <!-- INICIO PARTE BOLETA -->
+  
+          <div class="flex flex-col md:gap-1.5">
+            <div class="flex w-full">
+              <div class="items-start flex flex-col justify-start">
+                <p class="text-forestGreen-600 text-[10px] font-bold">
+                  Dirección
+                </p>
+                <div class="flex gap-4">
+                  <p class="text-[12px]">{{reserva.empresa.direccion}}</p>
+                  <button title="Copiar dirección" (click)="copiar_ubicacion_portapapeles(reserva.empresa.ubicacion)">
+                    <img src="../../../../../../../assets/svg-icons/copy.svg" alt="">
+                  </button>
+  
+  
+                </div>
+  
+  
+              </div>
             </div>
-
-            <div class="items-start flex flex-col justify-start">
-              <p class="text-forestGreen-600 text-[10px] font-bold">
-                Horario
-              </p>
-              <p class="text-[12px]">{{reserva.hora_inicio | time24to12}} - {{reserva.hora_fin | time24to12}}</p>
+            <div class="flex w-full">
+              <div class="w-6/12 items-start flex flex-col justify-start">
+                <p class="text-forestGreen-600 text-[10px] font-bold">Fecha</p>
+                <p class="text-[12px]">{{reserva.fecha | date: 'EEEE, MMMM d ' | titlecase}}</p>
+              </div>
+  
+              <div class="items-start flex flex-col justify-start">
+                <p class="text-forestGreen-600 text-[10px] font-bold">
+                  Horario
+                </p>
+                <p class="text-[12px]">{{reserva.hora_inicio | time24to12}} - {{reserva.hora_fin | time24to12}}</p>
+              </div>
+            </div>
+            <div class="flex w-full">
+              <div class="w-6/12 items-start flex flex-col justify-start">
+                <p class="text-forestGreen-600 text-[10px] font-bold">
+                  Monto de reservación
+                </p>
+                <p class="text-base font-bold">S/ {{reserva.subtotal}}</p>
+              </div>
+  
+              <div class="items-start flex flex-col justify-start">
+                <p class="text-forestGreen-600 text-[10px] font-bold">
+                  Cliente
+                </p>
+                <p class="text-base font-bold">{{user_lc.nombres | titlecase}}</p>
+              </div>
+            </div>
+            <div class="flex items-center justify-center ">
+              <p class="font-jetBrainsMono text-[12px]">Creación: {{reserva.createdAt | date: 'medium'}}</p>
+              <div class="invisible w-12 md:w20">
+              </div>
             </div>
           </div>
-          <div class="flex w-full">
-            <div class="w-6/12 items-start flex flex-col justify-start">
-              <p class="text-forestGreen-600 text-[10px] font-bold">
-                Monto de reservación
-              </p>
-              <p class="text-base font-bold">S/ {{reserva.subtotal}}</p>
-            </div>
-
-            <div class="items-start flex flex-col justify-start">
-              <p class="text-forestGreen-600 text-[10px] font-bold">
-                Cliente
-              </p>
-              <p class="text-base font-bold">{{user_lc.nombres | titlecase}}</p>
-            </div>
-          </div>
-          <div class="flex items-center justify-center ">
-            <p class="font-jetBrainsMono text-[12px]">Creación: {{reserva.createdAt | date: 'medium'}}</p>
-            <div class="invisible w-12 md:w20">
-            </div>
-          </div>
+  
         </div>
-
+  
+        <div
+          class=" w-12 md:w-20 justify-center flex rounded-br-lg row-span-4 col-start-6 row-start-2 border-l-2 border-forestGreen-600 border-dotted my-3 items-center">
+          <qrcode [qrdata]="reserva._id" elementType="img" [errorCorrectionLevel]="'M'">
+          </qrcode>
+        </div>
       </div>
-
-      <div
-        class=" w-12 md:w-20 justify-center flex rounded-br-lg row-span-4 col-start-6 row-start-2 border-l-2 border-forestGreen-600 border-dotted my-3 items-center">
-        <qrcode [qrdata]="reserva._id" elementType="img" [errorCorrectionLevel]="'M'">
-        </qrcode>
-      </div>
+  
+      <button (click)="captureAndSaveView(reserva._id, reserva.codigo)"
+        class="flex justify-center items-center gap-2 self-center text-forestGreen-500 text-xs " type="button">
+        Descargar ticket {{reserva.codigo}}
+  
+        <img src="../../../../../../../assets/svg-icons/download.svg" alt="">
+  
+  
+      </button>
+  
     </div>
+   </div>
 
-    <button (click)="captureAndSaveView(reserva._id, reserva.codigo)"
-      class="flex justify-center items-center gap-2 self-center text-forestGreen-500 text-xs " type="button">
-      Descargar ticket {{reserva.codigo}}
-
-      <img src="../../../../../../../assets/svg-icons/download.svg" alt="">
-
-
-    </button>
-
-  </div>
   <!-- ACTIVO -->
   }
 
   @if (reservaciones_finalizadas.length >= 1) {
-  <button type="button" style="background-color:rgb(255, 102, 102);" (click)="verFinalizadas()">
-    @if(!ver_finalizadas) {
-    Ver reservaciones finalizadas
-    }
-    @if(ver_finalizadas) {
-    Ocultar finalizadas
-    }
-  </button>
+    <div class="flex w-full justify-center">
+
+      <button type="button" class="h-9 bg-chambray-800 text-chambray-50 rounded text-center w-full text-sm md:w-1/2"
+      (click)="verFinalizadas()">
+      @if(!ver_finalizadas) {
+      Ver reservaciones finalizadas
+      }
+      @if(ver_finalizadas) {
+      Ocultar finalizadas
+      }
+    </button>
+    </div>
+
   }
 
-@if (ver_finalizadas) {
+  @if (ver_finalizadas) {
   @for (reserva of reservaciones_finalizadas; track $index) {
   <!-- VENCIDO -->
   <div class="flex flex-col  gap-4 rounded-lg  dark:bg-gray-800 h-fit max-w-md md:max-w-xl ">
     <div
       class="grid grid-cols-[32px_repeat(4,1fr)] auto-cols-min grid-rows-5 rounded-lg border border-seashell-500 w-full max-w-md md:max-w-xl h-[175px] md:h-[190px]">
-      <div class="bg-seashell-500 text-white w-8 rounded-l-lg row-span-5">
+      <div class="bg-seashell-500 text-white w-8 rounded-l-md row-span-5">
         <p class="w-full -rotate-90 flex justify-center items-center text-center h-full text-nowrap font-semibold">
           {{reserva.codigo}}
         </p>
       </div>
-      <div class="flex flex-col rounded-tr-lg col-span-5 w-full h-10  px-2 pt-1 ">
-        <div class="flex ">
+      <div
+        class="flex  border-b-2 border-dotted border-seashell-400  flex-col rounded-t-lg col-span-5 w-full h-11  px-2 py-1 ">
+        <div class="flex">
           <div class="w-7/12">
             <div class="flex flex-col align-middle">
               <label class="text-xs font-semibold text-seashell-500">
@@ -468,10 +477,10 @@
             </div>
           </div>
         </div>
-  
-        <div class="w-full border-b-2 border-dotted border-seashell-500"></div>
+
+
         <!-- INICIO PARTE BOLETA -->
-  
+
         <div class="flex flex-col md:gap-1.5">
           <div class="flex w-full">
             <div class="items-start flex flex-col justify-start">
@@ -481,8 +490,8 @@
               <div class="flex gap-4">
                 <p class="text-[12px]">{{reserva.empresa.direccion}}</p>
               </div>
-  
-  
+
+
             </div>
           </div>
           <div class="flex w-full">
@@ -490,7 +499,7 @@
               <p class="text-seashell-500 text-[10px] font-bold">Fecha</p>
               <p class="text-[12px]">{{reserva.fecha | date: 'EEEE, MMMM d ' | titlecase}}</p>
             </div>
-  
+
             <div class="items-start flex flex-col justify-start">
               <p class="text-seashell-500 text-[10px] font-bold">
                 Horario
@@ -505,7 +514,7 @@
               </p>
               <p class="text-base font-bold">S/ {{reserva.subtotal}}</p>
             </div>
-  
+
             <div class="items-start flex flex-col justify-start">
               <p class="text-seashell-500 text-[10px] font-bold">
                 Cliente
@@ -519,20 +528,20 @@
             </div>
           </div>
         </div>
-  
+
       </div>
-  
+
       <div
         class="w-12 md:w-20 justify-center flex rounded-br-lg row-span-4 col-start-6 row-start-2 border-l-2 border-seashell-500 border-dotted my-3 items-center">
         <qrcode [qrdata]="reserva._id" elementType="img" [errorCorrectionLevel]="'M'">
         </qrcode>
       </div>
     </div>
-  
+
   </div>
   <!-- VENCIDO -->
   }
-}
+  }
 
 
 </div>
