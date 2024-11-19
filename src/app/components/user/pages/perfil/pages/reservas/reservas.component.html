@@ -220,14 +220,14 @@
             (click)="$event.stopPropagation()"> <!-- Evita que el click se propague al backdrop -->
             <!-- Tu contenido actual del modal aquí -->
             <div class="flex justify-end w-full absolute top-2 right-2">
-              <button type="button" class="text-gray-500 hover:text-gray-700 p-2" (click)="closeModal()">
+              <button type="button" class="text-gray-500 hover:text-gray-700 p-2 mr-2 mt-1" (click)="closeModal()">
                 ✕
               </button>
             </div>
 
             <!-- Modal body -->
 
-            <ol class="w-full relative text-gray-500 border-s-2  border-forestGreen-500 ">
+            <ol class="w-full relative text-gray-500 border-s-2  border-forestGreen-500 border-red-600 ">
 
               <li class=" mb-10 ms-6 flex items-center">
                 <span
