@@ -3,131 +3,93 @@
 <!-- DINO AQUÍ LE METES LA CONDICIONAL PARA QUE CUANDO SOLO HAYA UNA CANCHA, LA CLASE SEA grid-cols-1 -->
 
 <!-- CANCHAS -->
-    <div class="w-full  grid grid-cols-1 md:grid-cols-2 justify-center items-center place-content-center place-items-center gap-4 py-2">
-         <!-- INICIO FUTBOL -->
-        <div class="p-2 space-y-2 w-full lg:min-w-lg max-w-lg rounded-lg border border-forestGreen-500 bg-forestGreen-50 ">
-            <p class="font-bold text-center">Cancha 1 <span class="text-forestGreen-500"> (Futbol/Futsal)</span></p>
-            <p class="text-xs">Cancha con medidas reglamentarias Cancha mixta para voley y futbol</p>
-            <div class="flex items-center w-full">
-                <div class="space-y-2 w-full">
-                    <p class="text-xs font-semibold">Medidas: <span class="font-normal">40m x 20m</span> </p>
-                    <p class="text-xs font-semibold">Precio dia: <span class="font-normal"> S/. 30</span></p>
-                    <p class="text-xs font-semibold">Precio noche: <span class="font-normal"> S/. 40</span></p>
-                    <p class="text-xs font-semibold">Hora noche: <span class="font-normal">6:00 pm</span></p>
-                </div>
-                <!-- canchas.component.html -->
-                <div class="p-4 mx-auto w-full max-w-md">
-                    <div #carouselExample class="relative space-y-1.5 h-24 md:h-32">
-                        <!-- Carousel wrapper -->
-                        <div class="overflow-hidden relative h-full rounded-lg">
-                            @for (image of images; track image.id) {
-                            <div [id]="'carousel-item-' + image.id"
-                                class="hidden absolute inset-0 duration-700 ease-in-out">
-                                <img [src]="image.src" [alt]="image.alt" class="block object-cover absolute w-full h-full">
-                            </div>
-                            }
-                        </div>
-    
-                        <!-- Slider indicators -->
-                        <div class="flex z-30 justify-center space-x-3">
-                            @for (image of images; track image.id) {
-                            <button [id]="'carousel-indicator-' + image.id" type="button"
-                                class="rounded-full size-2.5 bg-forestGreen-500/50 hover:bg-forestGreen-500"
-                                [attr.aria-label]="'Slide ' + image.id">
-                            </button>
-                            }
-                        </div>
-    
+ @if (!load_data) {
+    @for (item of canchas; track $index) {
+        <div class="w-full  grid grid-cols-1 md:grid-cols-2 justify-center items-center place-content-center place-items-center gap-4 py-2">
+             <!-- INICIO FUTBOL -->
+            <div class="p-2 space-y-2 w-full lg:min-w-lg max-w-lg rounded-lg border border-forestGreen-500 bg-forestGreen-50 ">
+                <p class="font-bold text-center"> {{item.nombre}} <span class="text-forestGreen-500"> {{item.tipo}}</span></p>
+                <p class="text-xs">{{item.descripcion}}</p>
+                <div class="flex items-center w-full">
+                    <div class="space-y-2 w-full">
+                        <p class="text-xs font-semibold">Medidas: <span class="font-normal">{{item.largo}}m x {{item.ancho}}m</span> </p>
+                        <p class="text-xs font-semibold">Precio dia: <span class="font-normal"> S/. {{item.precio_dia}}</span></p>
+                        <p class="text-xs font-semibold">Precio noche: <span class="font-normal"> S/. {{item.precio_noche}}</span></p>
+                        <p class="text-xs font-semibold">Hora noche: <span class="font-normal">{{item.hora_noche | time24to12 }}</span></p>
+                    </div>
+                    <!-- canchas.component.html -->
+                    <div class="p-4 mx-auto w-full max-w-md">
+                        <app-carousel-image [galeria]="item?.galeria"></app-carousel-image>
                     </div>
                 </div>
-            </div>
-            <div class="flex gap-2 md:gap-4 justify-between w-full">
-                <button
-                    class="flex justify-between items-center px-2 py-1 w-full text-xs font-medium rounded-lg border border-forestGreen-500 bg-slate-50">
-                    Actualizar
-                    <img src="../../../../../assets/svg-icons/pencil.svg" alt="">
-    
-                </button>
-                <button
-                    class="flex justify-between items-center px-2 py-1 w-full text-xs font-medium rounded-lg border border-red-500 bg-slate-50">
-                    Eliminar
-                    <img src="../../../../../assets/svg-icons/trash.svg" alt="">
-    
-                </button>
-                <button
-                    class="flex justify-between items-center px-2 py-1 w-full text-xs font-medium rounded-lg border border-seashell-700 bg-slate-50 text-nowrap">
-                    Actualizar fotos
-                    <img src="../../../../../assets/svg-icons/upload.svg" alt="">
-                </button>
-            </div>
-    
-    
-        </div>
-         <!-- FIN FUTBOL -->
-
-          <!-- INICIO VOLEY -->
-    
-          <div class="p-2 space-y-2 w-full max-w-lg rounded-lg border border-pink-500 bg-pink-50 ">
-            <p class="font-bold text-center">Cancha 1 <span class="text-pink-500"> (Futbol/Futsal)</span></p>
-            <p class="text-xs">Cancha con medidas reglamentarias Cancha mixta para voley y futbol</p>
-            <div class="flex items-center w-full">
-                <div class="space-y-2 w-full">
-                    <p class="text-xs font-semibold">Medidas: <span class="font-normal">40m x 20m</span> </p>
-                    <p class="text-xs font-semibold">Precio dia: <span class="font-normal"> S/. 30</span></p>
-                    <p class="text-xs font-semibold">Precio noche: <span class="font-normal"> S/. 40</span></p>
-                    <p class="text-xs font-semibold">Hora noche: <span class="font-normal">6:00 pm</span></p>
-                </div>
-                <!-- canchas.component.html -->
-                <div class="p-4 mx-auto w-full max-w-md">
-                    <div #carouselExample class="relative space-y-1.5 h-24 md:h-32">
-                        <!-- Carousel wrapper -->
-                        <div class="overflow-hidden relative h-full rounded-lg">
-                            @for (image of images; track image.id) {
-                            <div [id]="'carousel-item-' + image.id"
-                                class="hidden absolute inset-0 duration-700 ease-in-out">
-                                <img [src]="image.src" [alt]="image.alt" class="block object-cover absolute w-full h-full">
-                            </div>
-                            }
-                        </div>
-    
-                        <!-- Slider indicators -->
-                        <div class="flex z-30 justify-center space-x-3">
-                            @for (image of images; track image.id) {
-                            <button [id]="'carousel-indicator-' + image.id" type="button"
-                                class="rounded-full size-2.5 bg-pink-500/50 hover:bg-pink-500"
-                                [attr.aria-label]="'Slide ' + image.id">
-                            </button>
-                            }
-                        </div>
-    
-                    </div>
-                </div>
-            </div>
-            <div class="flex gap-2 md:gap-4 justify-between w-full">
-                <button
-                    class="flex justify-between items-center px-2 py-1 w-full text-xs font-medium rounded-lg border border-forestGreen-500 bg-slate-50">
-                    Actualizar
-                    <img src="../../../../../assets/svg-icons/pencil.svg" alt="">
-    
-                </button>
-                <button
-                    class="flex justify-between items-center px-2 py-1 w-full text-xs font-medium rounded-lg border border-red-500 bg-slate-50">
-                    Eliminar
-                    <img src="../../../../../assets/svg-icons/trash.svg" alt="">
-    
-                </button>
-                <button
-                    class="flex justify-between items-center px-2 py-1 w-full text-xs font-medium rounded-lg border border-seashell-700 bg-slate-50 text-nowrap">
-                    Actualizar fotos
-                    <img src="../../../../../assets/svg-icons/upload.svg" alt="">
-                </button>
-            </div>
-    
-    
-        </div>
-        <!-- FIN VOLEY -->
+                <div class="flex gap-2 md:gap-4 justify-between w-full">
+                    <button
+                        class="flex justify-between items-center px-2 py-1 w-full text-xs font-medium rounded-lg border border-forestGreen-500 bg-slate-50">
+                        Actualizar
+                        <img src="../../../../../assets/svg-icons/pencil.svg" alt="">
         
-    </div>
+                    </button>
+                    <button
+                        class="flex justify-between items-center px-2 py-1 w-full text-xs font-medium rounded-lg border border-red-500 bg-slate-50">
+                        Eliminar
+                        <img src="../../../../../assets/svg-icons/trash.svg" alt="">
+        
+                    </button>
+                    <button
+                        class="flex justify-between items-center px-2 py-1 w-full text-xs font-medium rounded-lg border border-seashell-700 bg-slate-50 text-nowrap">
+                        Actualizar fotos
+                        <img src="../../../../../assets/svg-icons/upload.svg" alt="">
+                    </button>
+                </div>
+        
+        
+            </div>
+             <!-- FIN FUTBOL -->
+    
+              <!-- INICIO VOLEY -->
+        
+              <div class="p-2 space-y-2 w-full max-w-lg rounded-lg border border-pink-500 bg-pink-50 ">
+                <p class="font-bold text-center">Cancha 1 <span class="text-pink-500"> (Futbol/Futsal)</span></p>
+                <p class="text-xs">Cancha con medidas reglamentarias Cancha mixta para voley y futbol</p>
+                <div class="flex items-center w-full">
+                    <div class="space-y-2 w-full">
+                        <p class="text-xs font-semibold">Medidas: <span class="font-normal">40m x 20m</span> </p>
+                        <p class="text-xs font-semibold">Precio dia: <span class="font-normal"> S/. 30</span></p>
+                        <p class="text-xs font-semibold">Precio noche: <span class="font-normal"> S/. 40</span></p>
+                        <p class="text-xs font-semibold">Hora noche: <span class="font-normal">6:00 pm</span></p>
+                    </div>
+                    <!-- canchas.component.html -->
+                    <div class="p-4 mx-auto w-full max-w-md">
+                        
+                    </div>
+                </div>
+                <div class="flex gap-2 md:gap-4 justify-between w-full">
+                    <button
+                        class="flex justify-between items-center px-2 py-1 w-full text-xs font-medium rounded-lg border border-forestGreen-500 bg-slate-50">
+                        Actualizar
+                        <img src="../../../../../assets/svg-icons/pencil.svg" alt="">
+        
+                    </button>
+                    <button
+                        class="flex justify-between items-center px-2 py-1 w-full text-xs font-medium rounded-lg border border-red-500 bg-slate-50">
+                        Eliminar
+                        <img src="../../../../../assets/svg-icons/trash.svg" alt="">
+        
+                    </button>
+                    <button
+                        class="flex justify-between items-center px-2 py-1 w-full text-xs font-medium rounded-lg border border-seashell-700 bg-slate-50 text-nowrap">
+                        Actualizar fotos
+                        <img src="../../../../../assets/svg-icons/upload.svg" alt="">
+                    </button>
+                </div>
+        
+        
+            </div>
+            <!-- FIN VOLEY -->
+            
+        </div>
+    }
+ }
    
 <div class="w-full flex justify-center mt-8">
     <button class="w-full max-w-lg self-center place-self-center place-content-center h-9 font-semibold text-white rounded-md bg-chambray-700 hover:scale-105 hover:duration-75">

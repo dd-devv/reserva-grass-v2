@@ -1,94 +1,68 @@
 // canchas.component.ts
-import { Component, AfterViewInit, ViewChild, ElementRef, OnDestroy } from '@angular/core';
+import { Component, AfterViewInit, ViewChild, ElementRef, OnDestroy, OnInit } from '@angular/core';
 import { initFlowbite } from 'flowbite';
-import type { CarouselItem, CarouselOptions } from 'flowbite';
+import { UserService } from '../../../../services/user.service';
+import { Title } from '@angular/platform-browser';
+import { ToastrService } from 'ngx-toastr';
+import { GLOBAL } from '../../../../services/global';
 
-interface ImageItem {
-  id: number;
-  src: string;
-  alt: string;
-}
 
 @Component({
   selector: 'app-canchas',
   templateUrl: './canchas.component.html',
   styleUrl: './canchas.component.css'
 })
-export class CanchasComponent implements AfterViewInit, OnDestroy {
+export class CanchasComponent implements OnInit, AfterViewInit, OnDestroy {
 
   public galeria: Array<any> = [];
+  public url;
+  public token;
+  public id;
+  public load_data = false;
+  public load_btn = false;
+  public load_btn_crear = false;
+  public btn_crear = false;
+  public canchas : any = [];
 
 
   @ViewChild('carouselExample') carouselElement!: ElementRef;
 
   private carousel: any;
 
-  images: ImageItem[] = [
-    {
-      id: 1,
-      src: "https://images.pexels.com/photos/9517939/pexels-photo-9517939.jpeg",
-      alt: "Cancha 1"
-    },
-    {
-      id: 2,
-      src: "https://images.pexels.com/photos/13920037/pexels-photo-13920037.jpeg",
-      alt: "Cancha 2"
-    },
-    {
-      id: 3,
-      src: "https://images.pexels.com/photos/16384666/pexels-photo-16384666/free-photo-of-hombres-jugando-un-partido-de-futbol.jpeg",
-      alt: "Cancha 3"
-    },
-    {
-      id: 4,
-      src: "https://images.pexels.com/photos/13633979/pexels-photo-13633979.jpeg",
-      alt: "Cancha 4"
+  
+  constructor(
+    private _userService: UserService,
+    private _title: Title,
+    private _toastrService: ToastrService
+  ){
+
+    this.token = localStorage.getItem('token') || sessionStorage.getItem('token');
+    this.id = localStorage.getItem('_id') || sessionStorage.getItem('_id');
+    this.url = GLOBAL.url;
+  }
+
+  ngOnInit(): void {
+    this._userService.obtener_canchas_empresa(this.id, this.token).subscribe({
+      next: (res) => {
+        this.canchas = res.data;
+        console.log(this.canchas);
+        
+        this.btn_crear = false;
+        this.load_data = false;
+      },
+      error: (err) => {
+        this.load_data = false;
+        this.btn_crear = true;
+      }
     }
-  ];
+    );
+  }
 
   ngAfterViewInit(): void {
     // Initialize Flowbite
     initFlowbite();
-
-    // Wait for DOM to be ready
-    setTimeout(() => {
-      this.initializeCarousel();
-    }, 0);
   }
 
-  private initializeCarousel(): void {
-    if (this.carouselElement) {
-      const items: CarouselItem[] = this.images.map(img => ({
-        position: img.id - 1,
-        el: document.getElementById(`carousel-item-${img.id}`) as HTMLElement
-      }));
-
-      const options: CarouselOptions = {
-        defaultPosition: 0,
-        interval: 3000,
-        indicators: {
-          activeClasses: 'bg-red-800 w-6 dark:bg-red-800',
-          inactiveClasses: 'bg-red-400/50 dark:bg-red-800/50 hover:bg-gray-400',
-          items: this.images.map(img => ({
-            position: img.id - 1,
-            el: document.getElementById(`carousel-indicator-${img.id}`) as HTMLElement
-          }))
-        }
-      };
-
-      // Initialize the carousel
-      this.carousel = new (window as any).Carousel(
-        this.carouselElement.nativeElement,
-        items,
-        options
-      );
-
-      // Start the carousel
-      this.carousel.cycle();
-    }
-  }
-
- 
   ngOnDestroy(): void {
     if (this.carousel) {
       this.carousel.pause();

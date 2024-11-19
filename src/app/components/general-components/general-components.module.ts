@@ -68,7 +68,8 @@ import { HeaderEmpresaComponent } from './header-empresa/header-empresa.componen
     HeaderUserComponent,
     Time24to12Pipe,
     CountdownTimerComponent,
-    HeaderEmpresaComponent
+    HeaderEmpresaComponent,
+    CarouselImageComponent
   ]
 })
 export class GeneralComponentsModule { }
