@@ -1,89 +1,155 @@
- <!-- CANCHAS -->
- <div class="p-4 space-y-4 rounded-lg">
+<!-- CANCHAS -->
+<div class=" p-4 space-y-4 rounded-lg">
 
- <div class="w-full rounded-lg border border-forestGreen-500 bg-forestGreen-50 p-2 space-y-2 lg:w-1/2">
-     <p class="text-center font-bold">Cancha 1 <span class="text-forestGreen-500"> (Futbol/Futsal)</span></p>
-     <p class="text-xs">Cancha con medidas reglamentarias Cancha mixta para voley y futbol</p>
-     <div class="w-full flex items-center">
-         <div class="w-full space-y-2">
-             <p class="text-xs font-semibold">Medidas: <span class="font-normal">40m x 20m</span> </p>
-             <p class="text-xs font-semibold">Precio dia: <span class="font-normal"> S/. 30</span></p>
-             <p class="text-xs font-semibold">Precio noche: <span class="font-normal"> S/. 40</span></p>
-             <p class="text-xs font-semibold">Hora noche: <span class="font-normal">6:00 pm</span></p>
-         </div>
-
-         <!-- CAROUSEL -->
-
-         <div class=" lg:object-contain w-full h-36 lg:h-72">
+    <div class=" w-full rounded-lg border border-forestGreen-500 bg-forestGreen-50 p-2 space-y-2 lg:w-1/2">
+        <p class="text-center font-bold">Cancha 1 <span class="text-forestGreen-500"> (Futbol/Futsal)</span></p>
+        <p class="text-xs">Cancha con medidas reglamentarias Cancha mixta para voley y futbol</p>
+        <div class="w-full flex items-center">
+            <div class="w-full space-y-2">
+                <p class="text-xs font-semibold">Medidas: <span class="font-normal">40m x 20m</span> </p>
+                <p class="text-xs font-semibold">Precio dia: <span class="font-normal"> S/. 30</span></p>
+                <p class="text-xs font-semibold">Precio noche: <span class="font-normal"> S/. 40</span></p>
+                <p class="text-xs font-semibold">Hora noche: <span class="font-normal">6:00 pm</span></p>
+            </div>
 
 
-             <div id="indicators-carousel" class=" flex flex-col justify-center relative w-full h-32 lg:h-64"
-                 data-carousel="static">
-                 <!-- Carousel wrapper -->
-                 <div class="relative overflow-hidden rounded-lg h-32 lg:h-64">
-                     <!-- Item 1 -->
-                     <div class="hidden duration-700 ease-in-out" data-carousel-item="active">
-                         <img src="https://images.pexels.com/photos/19282292/pexels-photo-19282292/free-photo-of-hombre-deporte-juego-partido.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1"
-                             alt="...">
-                     </div>
-                     <!-- Item 2 -->
-                     <div class="hidden duration-700 ease-in-out" data-carousel-item>
-                         <img src="https://images.pexels.com/photos/21637519/pexels-photo-21637519/free-photo-of-pueblo-jugando-hierba-cesped.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1"
-                             alt="...">
-                     </div>
-                 </div>
-                 <!-- Slider indicators -->
-                 <div class=" z-30 flex space-x-3 -bottom-0.5 left-1/2 justify-center bg-forestGreen-300">
-                     <button type="button" class="w-3 h-3 rounded-full" aria-current="true"
-                         aria-label="Slide 1" data-carousel-slide-to="0"></button>
-                     <button type="button" class="w-3 h-3 rounded-full " aria-current="false"
-                         aria-label="Slide 2" data-carousel-slide-to="1"></button>
-                 </div>
-             </div>
+
+            <!-- <div #carouselExample id="carousel-example" class="relative w-full" data-carousel="slide">
+       
+                <div class="relative h-56 overflow-hidden rounded-lg md:h-96">
+                    
+                    <div class="hidden duration-700 ease-in-out" data-carousel-item>
+                        <img src="https://images.pexels.com/photos/9517939/pexels-photo-9517939.jpeg"
+                            class="absolute block w-full -translate-x-1/2 -translate-y-1/2 top-1/2 left-1/2" alt="...">
+                    </div>
+                    
+                    <div class="hidden duration-700 ease-in-out" data-carousel-item>
+                        <img src="https://images.pexels.com/photos/13920037/pexels-photo-13920037.jpeg"
+                            class="absolute block w-full -translate-x-1/2 -translate-y-1/2 top-1/2 left-1/2" alt="...">
+                    </div>
+                    
+                    <div class="hidden duration-700 ease-in-out" data-carousel-item>
+                        <img src="https://images.pexels.com/photos/16384666/pexels-photo-16384666/free-photo-of-hombres-jugando-un-partido-de-futbol.jpeg"
+                            class="absolute block w-full -translate-x-1/2 -translate-y-1/2 top-1/2 left-1/2" alt="...">
+                    </div>
+                    
+                    <div class="hidden duration-700 ease-in-out" data-carousel-item>
+                        <img src="https://images.pexels.com/photos/13633979/pexels-photo-13633979.jpeg"
+                            class="absolute block w-full -translate-x-1/2 -translate-y-1/2 top-1/2 left-1/2" alt="...">
+                    </div>
+                </div>
+              
+                <div class="absolute z-30 flex -translate-x-1/2 bottom-5 left-1/2 space-x-3">
+                    <button type="button" class="w-3 h-3 rounded-full" aria-current="true" aria-label="Slide 1"
+                        data-carousel-slide-to="0"></button>
+                    <button type="button" class="w-3 h-3 rounded-full" aria-current="false" aria-label="Slide 2"
+                        data-carousel-slide-to="1"></button>
+                    <button type="button" class="w-3 h-3 rounded-full" aria-current="false" aria-label="Slide 3"
+                        data-carousel-slide-to="2"></button>
+                    <button type="button" class="w-3 h-3 rounded-full" aria-current="false" aria-label="Slide 4"
+                        data-carousel-slide-to="3"></button>
+                </div>
+            </div> -->
 
 
-         </div>
-     </div>
-     <div class="flex w-full justify-between gap-4">
-         <button
-             class="border-forestGreen-500 w-full bg-slate-50 text-xs py-1 px-2 font-medium items-center border justify-between rounded-lg flex">
-             Actualizar
-             <svg width="16" height="16" viewBox="0 0 16 16" fill="none" xmlns="http://www.w3.org/2000/svg">
-                 <path
-                     d="M3.2001 10.4021L6.0001 12.8021M8.0001 14.8021H14.4001M2.8001 10.4021L10.6877 2.239C11.5369 1.38974 12.9139 1.38973 13.7631 2.239C14.6124 3.08827 14.6124 4.4652 13.7631 5.31447L5.6001 13.2021L1.6001 14.4021L2.8001 10.4021Z"
-                     stroke="black" stroke-linecap="round" stroke-linejoin="round" />
-             </svg>
+            <!-- CAROUSEL -->
 
-         </button>
-         <button
-             class="border-red-500 w-full bg-slate-50 text-xs py-1 px-2 font-medium items-center border justify-between rounded-lg flex">
-             Eliminar
-             <svg width="17" height="16" viewBox="0 0 17 16" fill="none" xmlns="http://www.w3.org/2000/svg">
-                 <path
-                     d="M3.1665 4.1196H13.8332M7.1665 11.1784V6.94313M9.83317 11.1784V6.94313M11.1665 14.002H5.83317C5.09679 14.002 4.49984 13.3699 4.49984 12.5902V4.82548C4.49984 4.43563 4.79831 4.1196 5.1665 4.1196H11.8332C12.2014 4.1196 12.4998 4.43563 12.4998 4.82548V12.5902C12.4998 13.3699 11.9029 14.002 11.1665 14.002ZM7.1665 4.1196H9.83317C10.2014 4.1196 10.4998 3.80357 10.4998 3.41372V2.70784C10.4998 2.31799 10.2014 2.00195 9.83317 2.00195H7.1665C6.79831 2.00195 6.49984 2.31799 6.49984 2.70784V3.41372C6.49984 3.80357 6.79831 4.1196 7.1665 4.1196Z"
-                     stroke="black" stroke-linecap="round" stroke-linejoin="round" />
-             </svg>
+            <!-- <div class="w-36 h-36 object-contain bg-red-300">
+                <div #carouselExample id="carousel-example" class="relative flex flex-col w-full ">
+                    <div class="flex object-cover overflow-hidden h-24 rounded-lg ">
+                        <div id="carousel-item-1" class="absolute hidden duration-700 ease-in-out  ">
+                            <img src="https://images.pexels.com/photos/9517939/pexels-photo-9517939.jpeg"
+                                class=" rounded-lg  aspect-video   h-24" alt="...">
+                        </div>
+                        <div id="carousel-item-2" class="absolute hidden duration-700 ease-in-out ">
+                            <img src="https://images.pexels.com/photos/13920037/pexels-photo-13920037.jpeg"
+                                class=" rounded-lg aspect-video  h-24" alt="...">
+                        </div>
+                        <div id="carousel-item-3" class="absolute hidden duration-700 ease-in-out ">
+                            <img src="https://images.pexels.com/photos/16384666/pexels-photo-16384666/free-photo-of-hombres-jugando-un-partido-de-futbol.jpeg"
+                                class=" rounded-lg aspect-video  h-24" alt="...">
+                        </div>
+                        <div id="carousel-item-4" class="absolute hidden duration-700 ease-in-out ">
+                            <img src="https://images.pexels.com/photos/13633979/pexels-photo-13633979.jpeg"
+                                class=" rounded-lg aspect-video  h-24" alt="...">
+                        </div>
+                    </div>
 
-         </button>
-         <button
-             class="border-seashell-700 w-full bg-slate-50 text-xs py-1 px-2 font-medium items-center border justify-between rounded-lg flex text-nowrap">
-             Actualizar fotos
-             <svg width="16" height="16" viewBox="0 0 16 16" fill="none" xmlns="http://www.w3.org/2000/svg">
-                 <path
-                     d="M8.00072 9.96362L8.00072 2.00195M8.00072 2.00195L4.71232 5.04407M8.00072 2.00195L11.2891 5.04407M2.66675 12.6462V13.5904C2.93655 13.8539 3.30249 14.002 3.68405 14.002H12.3161C12.6977 14.002 13.0636 13.8539 13.3334 13.5904V12.6462"
-                     stroke="black" stroke-linecap="round" stroke-linejoin="round" />
-             </svg>
-
-         </button>
-     </div>
+                    <div class="flex  z-30 space-x-3 ">
+                        <button id="carousel-indicator-1" type="button" class="w-3 h-3 rounded-full"></button>
+                        <button id="carousel-indicator-2" type="button" class="w-3 h-3 rounded-full"></button>
+                        <button id="carousel-indicator-3" type="button" class="w-3 h-3 rounded-full"></button>
+                        <button id="carousel-indicator-4" type="button" class="w-3 h-3 rounded-full"></button>
+                    </div>
+                </div>
+            </div> -->
 
 
- </div>
+            <!-- canchas.component.html -->
+            <div class="w-full max-w-md mx-auto p-4">
+                <div #carouselExample class="relative h-64">
+                    <!-- Carousel wrapper -->
+                    <div class="relative h-full overflow-hidden rounded-lg">
+                        @for (image of images; track image.id) {
+                        <div [id]="'carousel-item-' + image.id"
+                            class="hidden duration-700 ease-in-out absolute inset-0">
+                            <img [src]="image.src" [alt]="image.alt" class="absolute block w-full h-full object-cover">
+                        </div>
+                        }
+                    </div>
 
- <button
-     class="w-full bg-chambray-700 text-white h-9 rounded-md font-semibold hover:scale-105  hover:duration-75 ">
-     Ver anteriores
- </button>
+                    <!-- Slider indicators -->
+                    <div class="absolute z-30 flex space-x-3 -translate-x-1/2 bottom-5 left-1/2">
+                        @for (image of images; track image.id) {
+                        <button [id]="'carousel-indicator-' + image.id" type="button"
+                            class="w-3 h-3 rounded-full bg-white/50 hover:bg-white"
+                            [attr.aria-label]="'Slide ' + image.id">
+                        </button>
+                        }
+                    </div>
+
+                </div>
+            </div>
+        </div>
+        <div class="flex w-full justify-between gap-4">
+            <button
+                class="border-forestGreen-500 w-full bg-slate-50 text-xs py-1 px-2 font-medium items-center border justify-between rounded-lg flex">
+                Actualizar
+                <svg width="16" height="16" viewBox="0 0 16 16" fill="none" xmlns="http://www.w3.org/2000/svg">
+                    <path
+                        d="M3.2001 10.4021L6.0001 12.8021M8.0001 14.8021H14.4001M2.8001 10.4021L10.6877 2.239C11.5369 1.38974 12.9139 1.38973 13.7631 2.239C14.6124 3.08827 14.6124 4.4652 13.7631 5.31447L5.6001 13.2021L1.6001 14.4021L2.8001 10.4021Z"
+                        stroke="black" stroke-linecap="round" stroke-linejoin="round" />
+                </svg>
+
+            </button>
+            <button
+                class="border-red-500 w-full bg-slate-50 text-xs py-1 px-2 font-medium items-center border justify-between rounded-lg flex">
+                Eliminar
+                <svg width="17" height="16" viewBox="0 0 17 16" fill="none" xmlns="http://www.w3.org/2000/svg">
+                    <path
+                        d="M3.1665 4.1196H13.8332M7.1665 11.1784V6.94313M9.83317 11.1784V6.94313M11.1665 14.002H5.83317C5.09679 14.002 4.49984 13.3699 4.49984 12.5902V4.82548C4.49984 4.43563 4.79831 4.1196 5.1665 4.1196H11.8332C12.2014 4.1196 12.4998 4.43563 12.4998 4.82548V12.5902C12.4998 13.3699 11.9029 14.002 11.1665 14.002ZM7.1665 4.1196H9.83317C10.2014 4.1196 10.4998 3.80357 10.4998 3.41372V2.70784C10.4998 2.31799 10.2014 2.00195 9.83317 2.00195H7.1665C6.79831 2.00195 6.49984 2.31799 6.49984 2.70784V3.41372C6.49984 3.80357 6.79831 4.1196 7.1665 4.1196Z"
+                        stroke="black" stroke-linecap="round" stroke-linejoin="round" />
+                </svg>
+
+            </button>
+            <button
+                class="border-seashell-700 w-full bg-slate-50 text-xs py-1 px-2 font-medium items-center border justify-between rounded-lg flex text-nowrap">
+                Actualizar fotos
+                <svg width="16" height="16" viewBox="0 0 16 16" fill="none" xmlns="http://www.w3.org/2000/svg">
+                    <path
+                        d="M8.00072 9.96362L8.00072 2.00195M8.00072 2.00195L4.71232 5.04407M8.00072 2.00195L11.2891 5.04407M2.66675 12.6462V13.5904C2.93655 13.8539 3.30249 14.002 3.68405 14.002H12.3161C12.6977 14.002 13.0636 13.8539 13.3334 13.5904V12.6462"
+                        stroke="black" stroke-linecap="round" stroke-linejoin="round" />
+                </svg>
+
+            </button>
+        </div>
+
+
+    </div>
+
+    <button class="w-full bg-chambray-700 text-white h-9 rounded-md font-semibold hover:scale-105  hover:duration-75 ">
+        Ver anteriores
+    </button>
 </div>
 
 <!-- REGISTRAR CANCHA -->
