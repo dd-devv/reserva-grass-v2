@@ -53,6 +53,8 @@ export class ReservasComponent implements OnInit {
   public url_socket = GLOBAL.url_socket;
   private socket: Socket;
 
+  public ver_finalizadas = false;
+
   constructor(
     private _userService: UserService,
     private _title: Title,
@@ -61,8 +63,8 @@ export class ReservasComponent implements OnInit {
 
     this.idCancha = localStorage.getItem('id_cancha');
     this.fecha = localStorage.getItem('fecha_reserva');
-    this.horaInicio = localStorage.getItem('hora_inicio');
-    this.horaFin = localStorage.getItem('hora_fin');
+    this.horaInicio = parseInt(localStorage.getItem('hora_inicio')!);
+    this.horaFin = parseInt(localStorage.getItem('hora_fin')!);
     this.afuera = localStorage.getItem('afuera');
     this.cliente = localStorage.getItem('_id') || sessionStorage.getItem('_id');
     this.token = localStorage.getItem('token') || sessionStorage.getItem('token');
@@ -132,7 +134,11 @@ export class ReservasComponent implements OnInit {
   }
 
   calcular_subtotal() {
-    this.subtotal = (parseInt(this.horaFin!) - parseInt(this.horaInicio!)) * this.cancha.precio_reservacion;
+    this.subtotal = (this.horaFin! - this.horaInicio!) * this.cancha.precio_reservacion;
+  }
+
+  verFinalizadas(){
+    this.ver_finalizadas = !this.ver_finalizadas;
   }
 
   async copiar_portapapeles(id: string) {

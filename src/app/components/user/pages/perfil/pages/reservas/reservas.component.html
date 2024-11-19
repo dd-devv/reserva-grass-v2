@@ -11,51 +11,95 @@
 
   @if (fromOut && !load_data) {
   <!-- Inicio de preservacion -->
-  <div class="card" style="border-color: #FFC107;">
-    <div class="card-body">
-      <div class="text-center">
-        <span class="badge rounded-pill text-bg-warning px-3">Reservación pendiente &nbsp;
-          <a class="" type="" disabled>
-            <span class="spinner-grow spinner-grow-sm fs-6" aria-hidden="true"></span>
-          </a>
-        </span>
-        <h4> {{cancha.nombre}} <span class="fw-light fs-5">del</span> {{cancha.empresa.nombre}} </h4>
-        <span class="fw-light"> {{cancha.empresa.direccion}} </span>
+  <div class="flex flex-col  gap-4 rounded-lg  h-fit max-w-md md:max-w-xl ">
+    <span class="font-semibold text-red-500">Reservación pendiente
+    </span>
+    <div
+      class="grid grid-cols-[32px_repeat(3,1fr)] auto-cols-min grid-rows-5 rounded-lg border border-red-400 w-full max-w-md md:max-w-xl h-[175px] md:h-[190px]">
 
-        <h4> </h4>
-
-      </div>
-
-      <div class="row py-2">
-        <div class="col-12 col-sm-4"> <i class="bi bi-person fs-4" style="color:rgb(0, 192, 86);"></i>
-          &nbsp; {{user_lc.nombres}}
+      <div
+        class="flex bg-red-100 border-b-2 border-dotted border-red-400  flex-col rounded-t-lg col-span-5 w-full h-11  px-2 py-1 ">
+        <div class="flex rounded-t-lg ">
+          <div class="w-7/12">
+            <div class="flex flex-col align-middle">
+              <label class="text-xs font-semibold text-red-500">
+                Empresa
+              </label>
+              <p class="font-bold capitalize">{{cancha.empresa.nombre}}</p>
+            </div>
+          </div>
+          <div class="w-5/12">
+            <div class="flex flex-col">
+              <label class="text-xs font-semibold text-red-500">
+                Cancha
+              </label>
+              <p class="font-bold">{{cancha.nombre}}</p>
+            </div>
+          </div>
         </div>
-        <div class="col-12 col-sm-4"><i class="bi bi-calendar-event fs-4" style="color:rgb(0, 192, 86);"></i>
-          &nbsp; {{ fecha | date: 'medium' }}
+
+        <!-- <div class="w-full border-b-2 border-dotted border-red-500 bg-red-100"></div> -->
+        <!-- INICIO PARTE BOLETA -->
+
+        <div class="flex flex-col md:gap-1.5">
+          <div class="flex w-full">
+            <div class="items-start flex flex-col justify-start">
+              <p class="text-red-500 text-[10px] font-bold">
+                Dirección
+              </p>
+              <div class="flex gap-4">
+                <p class="text-[12px]">{{cancha.empresa.direccion}}</p>
+
+              </div>
+
+
+            </div>
+          </div>
+          <div class="flex w-full">
+            <div class="w-7/12 items-start flex flex-col justify-start">
+              <p class="text-red-500 text-[10px] font-bold">Fecha</p>
+              <p class="text-[12px]">{{ fecha | date: 'EEEE, MMMM d ' | titlecase }}</p>
+            </div>
+
+            <div class="items-start flex flex-col justify-start">
+              <p class="text-red-500 text-[10px] font-bold">
+                Horario
+              </p>
+              <p class="text-[12px]">{{horaInicio | time24to12}} - {{horaFin | time24to12}}</p>
+            </div>
+          </div>
+          <div class="flex w-full">
+            <div class="w-7/12 items-start flex flex-col justify-start">
+              <p class="text-red-500 text-[10px] font-bold">
+                Monto de reservación
+              </p>
+              <p class="text-base font-bold">S/. {{subtotal}} </p>
+            </div>
+
+            <div class="items-start flex flex-col justify-start">
+              <p class="text-red-500 text-[10px] font-bold">
+                Cliente
+              </p>
+              <p class="text-base font-bold">{{user_lc.nombres}}</p>
+            </div>
+          </div>
         </div>
-        <div class="col-12 col-sm-4"> <i class="bi bi-clock fs-4" style="color:rgb(0, 192, 86);"></i>
-          &nbsp; {{horaInicio}}:00 a {{horaFin}}:00
-        </div>
+
       </div>
-
-      <div class="text-center my-1">
-        <p class="fw-light m-0"> Subtotal </p>
-        <span style="color:rgb(0, 192, 86); font-size: 3rem;" class="fw-light"> S/. {{subtotal}} </span>
-      </div>
-
-      <div class="text-center">
-        <button type="button" class="btn btn-sm px-4" (click)="crear_reservacion()"
-          style="background-color:rgb(0, 192, 86); color: #fff; border-radius: 15px;">
-          Confirmar
-        </button> &nbsp;
-
-        <button type="button" class="btn btn-sm px-4" (click)="eliminar_pre_reserva()"
-          style="background-color:rgb(255, 102, 102); color: #fff; border-radius: 15px;">
-          <i class="bi bi-trash"></i>
-        </button>
-      </div>
-
     </div>
+
+    <div class="text-center">
+      <button type="button" (click)="crear_reservacion()"
+        style="background-color:rgb(0, 192, 86); color: #fff; border-radius: 15px;">
+        Confirmar
+      </button> &nbsp;
+
+      <button type="button" (click)="eliminar_pre_reserva()" style="background-color:rgb(255, 102, 102);">
+        Eliminar
+        <i class="bi bi-trash"></i>
+      </button>
+    </div>
+
   </div>
   <!-- Fin de prereservacion -->
   }
@@ -115,7 +159,7 @@
           <div class="flex w-full">
             <div class="w-7/12 items-start flex flex-col justify-start">
               <p class="text-orange-400 text-[10px] font-bold">Fecha</p>
-              <p class="text-[12px]"> {{reserva.fecha | date: 'EEEE, MMMM d, y' | titlecase}} </p>
+              <p class="text-[12px]"> {{reserva.fecha | date: 'EEEE, MMMM d ' | titlecase}} </p>
             </div>
 
             <div class="items-start flex flex-col justify-start">
@@ -383,14 +427,26 @@
   <!-- ACTIVO -->
   }
 
+  @if (reservaciones_finalizadas.length >= 1) {
+  <button type="button" style="background-color:rgb(255, 102, 102);" (click)="verFinalizadas()">
+    @if(!ver_finalizadas) {
+    Ver reservaciones finalizadas
+    }
+    @if(ver_finalizadas) {
+    Ocultar finalizadas
+    }
+  </button>
+  }
 
+@if (ver_finalizadas) {
+  @for (reserva of reservaciones_finalizadas; track $index) {
   <!-- VENCIDO -->
   <div class="flex flex-col  gap-4 rounded-lg  dark:bg-gray-800 h-fit max-w-md md:max-w-xl ">
     <div
       class="grid grid-cols-[32px_repeat(4,1fr)] auto-cols-min grid-rows-5 rounded-lg border border-seashell-500 w-full max-w-md md:max-w-xl h-[175px] md:h-[190px]">
       <div class="bg-seashell-500 text-white w-8 rounded-l-lg row-span-5">
         <p class="w-full -rotate-90 flex justify-center items-center text-center h-full text-nowrap font-semibold">
-          ABCD-1234
+          {{reserva.codigo}}
         </p>
       </div>
       <div class="flex flex-col rounded-tr-lg col-span-5 w-full h-10  px-2 pt-1 ">
@@ -400,7 +456,7 @@
               <label class="text-xs font-semibold text-seashell-500">
                 Empresa
               </label>
-              <p class="font-bold capitalize">Tres cruces la gradería</p>
+              <p class="font-bold capitalize">{{reserva.empresa.nombre | titlecase}}</p>
             </div>
           </div>
           <div class="w-5/12">
@@ -408,14 +464,14 @@
               <label class="text-xs font-semibold text-seashell-500">
                 Cancha
               </label>
-              <p class="font-bold">Cancha 1</p>
+              <p class="font-bold">{{reserva.cancha.nombre | titlecase}}</p>
             </div>
           </div>
         </div>
-
+  
         <div class="w-full border-b-2 border-dotted border-seashell-500"></div>
         <!-- INICIO PARTE BOLETA -->
-
+  
         <div class="flex flex-col md:gap-1.5">
           <div class="flex w-full">
             <div class="items-start flex flex-col justify-start">
@@ -423,28 +479,23 @@
                 Dirección
               </p>
               <div class="flex gap-4">
-                <p class="text-[12px]">Av. Américas 123 San juan Bautista</p>
-                <button>
-                  <img src="../../../../../../../assets/svg-icons/copy.svg" alt="">
-                </button>
-
-
+                <p class="text-[12px]">{{reserva.empresa.direccion}}</p>
               </div>
-
-
+  
+  
             </div>
           </div>
           <div class="flex w-full">
             <div class="w-7/12 items-start flex flex-col justify-start">
               <p class="text-seashell-500 text-[10px] font-bold">Fecha</p>
-              <p class="text-[12px]">Domingo, 20 de agosto del 2024</p>
+              <p class="text-[12px]">{{reserva.fecha | date: 'EEEE, MMMM d ' | titlecase}}</p>
             </div>
-
+  
             <div class="items-start flex flex-col justify-start">
               <p class="text-seashell-500 text-[10px] font-bold">
                 Horario
               </p>
-              <p class="text-[12px]">5:00 pm - 8:00 pm</p>
+              <p class="text-[12px]">{{reserva.hora_inicio | time24to12}} - {{reserva.hora_fin | time24to12}}</p>
             </div>
           </div>
           <div class="flex w-full">
@@ -452,9 +503,9 @@
               <p class="text-seashell-500 text-[10px] font-bold">
                 Monto de reservación
               </p>
-              <p class="text-base font-bold">S/ 30</p>
+              <p class="text-base font-bold">S/ {{reserva.subtotal}}</p>
             </div>
-
+  
             <div class="items-start flex flex-col justify-start">
               <p class="text-seashell-500 text-[10px] font-bold">
                 Cliente
@@ -463,109 +514,25 @@
             </div>
           </div>
           <div class="flex items-center justify-center ">
-            <p class="font-jetBrainsMono text-[12px]">Creación: 3 oct 2024, 21:39:19</p>
+            <p class="font-jetBrainsMono text-[12px]">Creado: {{reserva.createdAt | date: 'medium'}}</p>
             <div class="invisible w-12 md:w20">
             </div>
           </div>
         </div>
-
+  
       </div>
-
+  
       <div
         class="w-12 md:w-20 justify-center flex rounded-br-lg row-span-4 col-start-6 row-start-2 border-l-2 border-seashell-500 border-dotted my-3 items-center">
-        <img class="size-10" src="../../../../assets/img/qr_prueba.png" alt="qr " />
+        <qrcode [qrdata]="reserva._id" elementType="img" [errorCorrectionLevel]="'M'">
+        </qrcode>
       </div>
     </div>
-
+  
   </div>
   <!-- VENCIDO -->
+  }
+}
 
 
-
-  <!-- PRERESERVA -->
-  <div class="flex flex-col  gap-4 rounded-lg  h-fit max-w-md md:max-w-xl ">
-    <div
-      class="grid grid-cols-[32px_repeat(3,1fr)] auto-cols-min grid-rows-5 rounded-lg border border-red-400 w-full max-w-md md:max-w-xl h-[175px] md:h-[190px]">
-
-      <div class="flex bg-red-100 border-b-2 border-dotted border-red-400  flex-col rounded-t-lg col-span-5 w-full h-11  px-2 py-1 ">
-        <div class="flex rounded-t-lg ">
-          <div class="w-7/12">
-            <div class="flex flex-col align-middle">
-              <label class="text-xs font-semibold text-red-500">
-                Empresa
-              </label>
-              <p class="font-bold capitalize">Tres cruces la gradería</p>
-            </div>
-          </div>
-          <div class="w-5/12">
-            <div class="flex flex-col">
-              <label class="text-xs font-semibold text-red-500">
-                Cancha
-              </label>
-              <p class="font-bold">Cancha 1</p>
-            </div>
-          </div>
-        </div>
-
-        <!-- <div class="w-full border-b-2 border-dotted border-red-500 bg-red-100"></div> -->
-        <!-- INICIO PARTE BOLETA -->
-
-        <div class="flex flex-col md:gap-1.5">
-          <div class="flex w-full">
-            <div class="items-start flex flex-col justify-start">
-              <p class="text-red-500 text-[10px] font-bold">
-                Dirección
-              </p>
-              <div class="flex gap-4">
-                <p class="text-[12px]">Av. Américas 123 San juan Bautista</p>
-                <button>
-                  <img src="../../../../../../../assets/svg-icons/copy.svg" alt="">
-                </button>
-
-
-              </div>
-
-
-            </div>
-          </div>
-          <div class="flex w-full">
-            <div class="w-7/12 items-start flex flex-col justify-start">
-              <p class="text-red-500 text-[10px] font-bold">Fecha</p>
-              <p class="text-[12px]">Domingo, 20 de agosto del 2024</p>
-            </div>
-
-            <div class="items-start flex flex-col justify-start">
-              <p class="text-red-500 text-[10px] font-bold">
-                Horario
-              </p>
-              <p class="text-[12px]">5:00 pm - 8:00 pm</p>
-            </div>
-          </div>
-          <div class="flex w-full">
-            <div class="w-7/12 items-start flex flex-col justify-start">
-              <p class="text-red-500 text-[10px] font-bold">
-                Monto de reservación
-              </p>
-              <p class="text-base font-bold">S/ 30</p>
-            </div>
-
-            <div class="items-start flex flex-col justify-start">
-              <p class="text-red-500 text-[10px] font-bold">
-                Cliente
-              </p>
-              <p class="text-base font-bold">Dino</p>
-            </div>
-          </div>
-          <div class="flex items-center justify-center ">
-            <p class="font-jetBrainsMono text-[12px]">Creación: 3 oct 2024, 21:39:19</p>
-            <div class="invisible w-12 md:w20">
-            </div>
-          </div>
-        </div>
-
-      </div>
-    </div>
-
-  </div>
-  <!-- PRERESERVA -->
 </div>
