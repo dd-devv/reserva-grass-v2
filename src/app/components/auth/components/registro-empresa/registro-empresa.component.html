@@ -1,23 +1,16 @@
-<!-- Modal toggle -->
-<!-- <button data-modal-target="default-modal" data-modal-toggle="default-modal"
-  class="block text-white bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-sm px-5 py-2.5 text-center dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800"
-  type="button">
-  Toggle modal
-</button> -->
 
-<div class="flex flex-col w-full p-2 bg-white gap-2 gap-y-4" id="registro-empresa-component">
-  <div class="img-form">
-    <p class="font-semibold text-2xl text-center">Registra tu Empresa</p>
-    <p class="text-center text-pretty text-sm text-slate-700 mb-5 mt-3">
+<div class="flex md:flex-row flex-col w-full px-2 h-full bg-white gap-2 md:gap-x-6 gap-y-4">
+  <div class=" hidden md:flex md:flex-col py-8 w-full items-center  align-middle rounded-lg md:bg-no-repeat md:bg-cover md:bg-blend-multiply  md:bg-[url('https://images.pexels.com/photos/399187/pexels-photo-399187.jpeg')]">
+    <p class="font-bold text-2xl text-center text-white">Registra tu Empresa</p>
+    <p class="text-center text-pretty text-sm text-white mb-5 mt-3">
       Para los brindar el espacio para cada jugada
     </p>
   </div>
   <!-- form paso 1 -->
-  <div class="form-content">
-    <div class="flex flex-col rounded-lg gap-1 p-5">
-      <div class="title-header">
+  <div class="w-full h-full">
+    <div class="flex flex-col rounded-lg gap-1 p-5 md:py-1">
+      <div class="block md:hidden">
         <p class="font-semibold text-2xl text-center">Registra tu Empresa</p>
-        <!-- cambiar ese lorem esta hasta el chompi -->
         <p class="text-center text-pretty text-sm text-slate-700 mb-5 mt-3">
           Para los brindar el espacio para cada jugada
         </p>
@@ -50,7 +43,7 @@
 
     <div>
       <form (ngSubmit)="onSubmit()" [formGroup]="registrationForm" autocomplete="off"
-        class="flex flex-col justify-between rounded-l rounded-2xl border border-slate-400 px-2.5 py-8 gap-2.5">
+        class="flex flex-col justify-between rounded-l rounded-2xl border border-slate-400 md:border-none md:shadow-lg md:shadow-slate-300 md:rounded-lg px-2.5 py-8 md:py-0 md:px-4 md:gap-4 gap-2.5">
         <!-- Paso 1 -->
         @if (step === 1) {
         <div>

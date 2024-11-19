@@ -1,0 +1,8 @@
+.logo-nombre {
+    line-height: 0.8;
+    margin-left: 5px !important;
+  
+    span {
+      font-weight: lighter;
+    }
+  }

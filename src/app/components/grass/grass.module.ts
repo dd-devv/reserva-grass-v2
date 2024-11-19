@@ -5,8 +5,6 @@ import { GrassRoutingModule } from './grass-routing.module';
 import { ContainerComponent } from './container/container.component';
 import { HomeComponent } from './pages/home/home.component';
 import { CanchasComponent } from './pages/canchas/canchas.component';
-import { HeaderComponent } from './shared/header/header.component';
-import { FooterComponent } from './shared/footer/footer.component';
 import { SidebarComponent } from './shared/sidebar/sidebar.component';
 import { PortraitComponent } from './shared/portrait/portrait.component';
 import { DatosComponent } from './pages/datos/datos.component';
@@ -17,6 +15,8 @@ import { ClientesComponent } from './pages/clientes/clientes.component';
 import { ContactoComponent } from './pages/contacto/contacto.component';
 import { AyudaComponent } from './pages/ayuda/ayuda.component';
 import { ImageCropperModule } from 'ngx-image-cropper';
+import { GeneralComponentsModule } from "../general-components/general-components.module";
+import { HomeContainerComponent } from './pages/home-container/home-container.component';
 
 
 @NgModule({
@@ -24,8 +24,6 @@ import { ImageCropperModule } from 'ngx-image-cropper';
     ContainerComponent,
     HomeComponent,
     CanchasComponent,
-    HeaderComponent,
-    FooterComponent,
     SidebarComponent,
     PortraitComponent,
     DatosComponent,
@@ -34,12 +32,14 @@ import { ImageCropperModule } from 'ngx-image-cropper';
     ReservacionesComponent,
     ClientesComponent,
     ContactoComponent,
-    AyudaComponent
+    AyudaComponent,
+    HomeContainerComponent
   ],
   imports: [
     CommonModule,
     GrassRoutingModule,
-    ImageCropperModule
-  ]
+    ImageCropperModule,
+    GeneralComponentsModule
+]
 })
 export class GrassModule { }

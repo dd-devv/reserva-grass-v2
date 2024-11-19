@@ -45,8 +45,6 @@ export class PortraitComponent implements OnInit {
       .subscribe({
         next: (res) => {
           this.empresa = res.data;
-          console.log(this.empresa);
-          
           if (this.empresa.portada) {
             if (this.empresa.portada.length >= 1) {
               this.isImagePort = true;

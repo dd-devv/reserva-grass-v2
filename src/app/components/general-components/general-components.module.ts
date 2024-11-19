@@ -19,6 +19,7 @@ import { CardSportFeaturesSkeletonComponent } from './card-sport-features-skelet
 import { HeaderUserComponent } from './header-user/header-user.component';
 import { CardHorarioSkeletonComponent } from './card-horario-skeleton/card-horario-skeleton.component';
 import { CountdownTimerComponent } from './countdown-timer/countdown-timer.component';
+import { HeaderEmpresaComponent } from './header-empresa/header-empresa.component';
 
 
 
@@ -41,7 +42,8 @@ import { CountdownTimerComponent } from './countdown-timer/countdown-timer.compo
     CardSportFeaturesSkeletonComponent,
     HeaderUserComponent,
     CardHorarioSkeletonComponent,
-    CountdownTimerComponent
+    CountdownTimerComponent,
+    HeaderEmpresaComponent
   ],
   imports: [
     CommonModule,
@@ -65,7 +67,8 @@ import { CountdownTimerComponent } from './countdown-timer/countdown-timer.compo
     HeaderComponent,
     HeaderUserComponent,
     Time24to12Pipe,
-    CountdownTimerComponent
+    CountdownTimerComponent,
+    HeaderEmpresaComponent
   ]
 })
 export class GeneralComponentsModule { }
