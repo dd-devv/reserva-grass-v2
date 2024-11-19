@@ -1,10 +1,11 @@
-<!-- CANCHAS -->
-<div class="p-4 space-y-4 rounded-lg">
 
-   
-    <div class="flex gap-4">
+
+<!-- DINO AQUÍ LE METES LA CONDICIONAL PARA QUE CUANDO SOLO HAYA UNA CANCHA, LA CLASE SEA grid-cols-1 -->
+
+<!-- CANCHAS -->
+    <div class="w-full  grid grid-cols-1 md:grid-cols-2 justify-center items-center place-content-center place-items-center gap-4 py-2">
          <!-- INICIO FUTBOL -->
-        <div class="p-2 space-y-2 w-full max-w-lg rounded-lg border border-forestGreen-500 bg-forestGreen-50 lg:w-1/2">
+        <div class="p-2 space-y-2 w-full lg:min-w-lg max-w-lg rounded-lg border border-forestGreen-500 bg-forestGreen-50 ">
             <p class="font-bold text-center">Cancha 1 <span class="text-forestGreen-500"> (Futbol/Futsal)</span></p>
             <p class="text-xs">Cancha con medidas reglamentarias Cancha mixta para voley y futbol</p>
             <div class="flex items-center w-full">
@@ -16,7 +17,7 @@
                 </div>
                 <!-- canchas.component.html -->
                 <div class="p-4 mx-auto w-full max-w-md">
-                    <div #carouselExample class="relative space-y-1.5 h-32">
+                    <div #carouselExample class="relative space-y-1.5 h-24 md:h-32">
                         <!-- Carousel wrapper -->
                         <div class="overflow-hidden relative h-full rounded-lg">
                             @for (image of images; track image.id) {
@@ -40,7 +41,7 @@
                     </div>
                 </div>
             </div>
-            <div class="flex gap-4 justify-between w-full">
+            <div class="flex gap-2 md:gap-4 justify-between w-full">
                 <button
                     class="flex justify-between items-center px-2 py-1 w-full text-xs font-medium rounded-lg border border-forestGreen-500 bg-slate-50">
                     Actualizar
@@ -66,7 +67,7 @@
 
           <!-- INICIO VOLEY -->
     
-        <div class="p-2 space-y-2 w-full max-w-lg bg-pink-50 rounded-lg border border-pink-500 lg:w-1/2">
+          <div class="p-2 space-y-2 w-full max-w-lg rounded-lg border border-pink-500 bg-pink-50 ">
             <p class="font-bold text-center">Cancha 1 <span class="text-pink-500"> (Futbol/Futsal)</span></p>
             <p class="text-xs">Cancha con medidas reglamentarias Cancha mixta para voley y futbol</p>
             <div class="flex items-center w-full">
@@ -78,7 +79,7 @@
                 </div>
                 <!-- canchas.component.html -->
                 <div class="p-4 mx-auto w-full max-w-md">
-                    <div #carouselExample class="relative space-y-1.5 h-32">
+                    <div #carouselExample class="relative space-y-1.5 h-24 md:h-32">
                         <!-- Carousel wrapper -->
                         <div class="overflow-hidden relative h-full rounded-lg">
                             @for (image of images; track image.id) {
@@ -102,7 +103,7 @@
                     </div>
                 </div>
             </div>
-            <div class="flex gap-4 justify-between w-full">
+            <div class="flex gap-2 md:gap-4 justify-between w-full">
                 <button
                     class="flex justify-between items-center px-2 py-1 w-full text-xs font-medium rounded-lg border border-forestGreen-500 bg-slate-50">
                     Actualizar
@@ -125,16 +126,19 @@
     
         </div>
         <!-- FIN VOLEY -->
+        
     </div>
    
-
-    <button class="w-full h-9 font-semibold text-white rounded-md bg-chambray-700 hover:scale-105 hover:duration-75">
+<div class="w-full flex justify-center mt-8">
+    <button class="w-full max-w-lg self-center place-self-center place-content-center h-9 font-semibold text-white rounded-md bg-chambray-700 hover:scale-105 hover:duration-75">
         Ver anteriores
     </button>
 </div>
+  
+
 
 <!-- REGISTRAR CANCHA -->
-
+<!-- 
 <div class="flex flex-col gap-3 w-full">
     <p class="text-xl font-semibold text-center">Registrar cancha</p>
     <div class="flex flex-col gap-1">
@@ -211,4 +215,4 @@
 
     </button>
 
-</div>
+</div> -->
