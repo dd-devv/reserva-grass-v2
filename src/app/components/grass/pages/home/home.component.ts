@@ -26,9 +26,6 @@ export class HomeComponent implements OnInit {
   public id: any;
   public token: any;
   public load_btn = false;
-  public isImagePort = false;
-  public addImage = true;
-  public isImage = false;
   public url: any;
   public load_btn_eliminar = false;
   public file: File | any = undefined;
@@ -39,14 +36,6 @@ export class HomeComponent implements OnInit {
   public viewButton: boolean = false;
   public activePagos: boolean = false;
   public suscripciones: Array<any> = [];
-
-  imagePreview: string | ArrayBuffer | null = null;
-
-  croppedImageFile: File | null = null;
-  
-  imageChangedEvent: any = '';
-  croppedImage: SafeUrl = '';
-  public show_image = false;
 
   constructor(
     private _userService: UserService,
@@ -61,12 +50,7 @@ export class HomeComponent implements OnInit {
   }
 
   init_data() {
-    this.imageChangedEvent = null;
-    this.croppedImageFile = null;
     this.file = null;
-    this.show_image = false;
-    this.load_data = true;
-    this.isImage = false;
     this._userService
       .obtener_empresa(this.id, this.token)
       .subscribe((response) => {
@@ -75,19 +59,6 @@ export class HomeComponent implements OnInit {
           this.load_data = false;
         } else {
           this.empresa = response.data;
-
-          if (this.empresa.portada) {
-            if (this.empresa.portada.length >= 1) {
-              this.isImagePort = true;
-              this.addImage = false;
-            } else {
-              this.isImagePort = false;
-              this.addImage = true;
-            }
-          } else {
-            this.isImagePort = false;
-            this.addImage = true;
-          }
 
           this._userService.obtener_suscripciones_empresa(this.empresa._id, this.token).subscribe(
             response => {
