@@ -1,0 +1,276 @@
+<!-- agregar de forma dinamica la clase voleyball-card -->
+<div
+  [ngClass]="tipo === 'futbol' ? 'bg-blue-400' : 'voleyball-card'"
+  class="flex flex-col w-full gap-4 bg-forestGreen-100 border border-forestGreen-400 justify-center px-4 py-5 rounded-lg"
+>
+  <div class="flex justify-center items-center flex-col">
+    <p class="mx-5 font-bold mb-3">{{ cancha.nombre }}</p>
+
+    <!-- SELECT FECHA -->
+
+    <!-- formato fecha: MM/DD/YYY -->
+
+    <div class="relative flex gap-4">
+      <div
+        class="absolute inset-y-0 start-0 flex items-center ps-3 pointer-events-none"
+      >
+        <svg
+          class="w-4 h-4 text-gray-500 dark:text-gray-400"
+          aria-hidden="true"
+          xmlns="http://www.w3.org/2000/svg"
+          fill="currentColor"
+          viewBox="0 0 20 20"
+        >
+          <path
+            d="M20 4a2 2 0 0 0-2-2h-2V1a1 1 0 0 0-2 0v1h-3V1a1 1 0 0 0-2 0v1H6V1a1 1 0 0 0-2 0v1H2a2 2 0 0 0-2 2v2h20V4ZM0 18a2 2 0 0 0 2 2h16a2 2 0 0 0 2-2V8H0v10Zm5-8h10a1 1 0 0 1 0 2H5a1 1 0 0 1 0-2Z"
+          />
+        </svg>
+      </div>
+      <input
+        type="text"
+        id="datepicker-format"
+        class="ring-forestGreen-300 ps-10 border border-forestGreen-500 rounded-lg h-8 w-[160px]"
+        [ngClass]="tipo === 'futbol' ? '' : 'voleyball-card'"
+        readonly
+      />
+      <!-- class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full ps-10 p-2.5  dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500" placeholder="Select date"> -->
+    </div>
+
+    <div class="flex flex-row gap-6 mt-2">
+      <div class="flex flex-row justify-center items-center gap-1">
+        <div
+          class="w-4 h-4 rounded-full bg-white border border-gray-600 point"
+        ></div>
+        <p class="text-gray-800">Libre</p>
+      </div>
+      <div class="flex flex-row justify-center items-center gap-1">
+        <div class="w-4 h-4 rounded-full bg-yellow-300 point"></div>
+        <p class="text-gray-800">Pendiente</p>
+      </div>
+      <div class="flex flex-row justify-center items-center gap-1">
+        <div class="w-4 h-4 rounded-full bg-forestGreen-500"></div>
+        <p class="text-gray-800">Reservado</p>
+      </div>
+    </div>
+  </div>
+
+  <div class="grid grid-cols-4 grid-rows-4 gap-4 w-full text-center">
+    @if (botonesHoras && botonesHoras.length > 0) { @for (hora of botonesHoras;
+    track hora.id) {
+
+    <div class="relative">
+      <!-- Modal toggle -->
+      @if (hora.estado === 'Ocupado') {
+      <button
+      (click)="obtener_reservacion(hora.id_reserva)"
+        [attr.data-modal-target]="'modal-' + hora.id"
+        [attr.data-modal-toggle]="'modal-' + hora.id"
+        class="bg-yellow-300 w-full rounded-lg h-9 flex justify-center items-center hover:scale-105"
+        type="button"
+      >
+        <p>{{ hora.hora | time24to12 }}</p>
+      </button>
+      } @if (hora.estado === 'Reservado') {
+      <button
+        [routerLink]="['/grass/reservaciones']"
+        class="bg-forestGreen-500 text-white w-full rounded-lg h-9 flex justify-center items-center hover:scale-105"
+        type="button"
+      >
+        <p>{{ hora.hora | time24to12 }}</p>
+      </button>
+      } @if (hora.estado === 'Libre') {
+      <button
+        [attr.data-modal-target]="'modal-' + hora.id"
+        [attr.data-modal-toggle]="'modal-' + hora.id"
+        class="w-full bg-white rounded-lg h-9 flex justify-center items-center hover:scale-105"
+        type="button"
+      >
+        {{ hora.hora | time24to12 }}
+      </button>
+      }
+
+      <!-- Main modal -->
+      <div
+        id="modal-{{ hora.id }}"
+        tabindex="-1"
+        aria-hidden="true"
+        class="hidden overflow-y-auto overflow-x-hidden fixed top-0 right-0 left-0 z-50 justify-center items-center w-full md:inset-0 h-[calc(100%-1rem)] max-h-full"
+      >
+        <div class="relative p-4 w-full max-w-sm max-h-full">
+          <!-- Modal content -->
+          <div class="relative bg-white rounded-lg shadow dark:bg-gray-700">
+            @if (hora.estado === 'Libre') {
+                <!-- Modal body -->
+                <div class="p-4 md:p-5 space-y-4">
+                  <p class="font-bold">Reservar {{ cancha.nombre }}</p>
+                  <div class="flex gap-8 justify-center">
+                    <button
+                      (click)="changeHoras(hora.hora, -1)"
+                      [disabled]="cantidad_horas === 1"
+                      class="disabled:bg-gray-200 disabled:cursor-not-allowed disabled:text-black disabled:scale-100 font-semibold text-forestGreen-500 flex justify-center size-12 rounded-full bg-forestGreen-100 items-center text-center self-center text-xl hover:scale-110 hover:transition-colors"
+                    >
+                      ―
+                    </button>
+                    <div
+                      class="border border-slate-300 font-bold text-seashell-900 flex justify-center size-24 rounded-full bg-seashell-100 items-center text-center self-center text-3xl"
+                    >
+                      {{ cantidad_horas }} <span class="text-sm -mb-3">h</span>
+                    </div>
+                    <button
+                      (click)="changeHoras(hora.hora, 1)"
+                      class="disabled:bg-gray-200 disabled:cursor-not-allowed disabled:text-black disabled:scale-100 font-semibold text-forestGreen-500 flex justify-center size-12 rounded-full bg-forestGreen-100 items-center text-center self-center text-3xl hover:scale-110"
+                    >
+                      +
+                    </button>
+                  </div>
+                  <!-- <p class="font-bold">S/ {{precio_reservacion * cantidad_horas}}</p> -->
+    
+                  <div class="flex items-center h-2">
+                    <p class="font-bold text-sm text-gray-500 dark:text-gray-400">
+                      {{ hora.hora | time24to12 }}
+                    </p>
+                    <hr
+                      class="w-48 h-2 mx-auto bg-forestGreen-500 border-0 rounded md:my-10 dark:bg-gray-700"
+                    />
+                    <p class="font-bold text-sm text-gray-500 dark:text-gray-400">
+                      {{ hora.hora + cantidad_horas | time24to12 }}
+                    </p>
+                  </div>
+    
+                  <div class="flex gap-4 justify-center items-center">
+                    <img
+                      class="stroke-green-500"
+                      src="../../../../assets/svg-icons/calendar.svg"
+                      alt="calendar"
+                    />
+                    <p class="text-xs">
+                      {{ hora.fecha | date : "longDate" : "es" }}
+                    </p>
+                  </div>
+    
+                  <div class="input-group">
+                    <div class="input-group mt-3">
+                      <span class="input-group-text" id="nombre_cliente"
+                        >Cliente</span
+                      >
+                      <input
+                        type="text"
+                        [(ngModel)]="nombre_cliente"
+                        name="nombre_cliente"
+                        id="nombre_cliente"
+                        class="form-control"
+                        placeholder="Nombre del cliente"
+                        aria-label="Nombre del cliente"
+                        aria-describedby="nombre_cliente"
+                        autocomplete="off"
+                        required
+                      />
+                    </div>
+                    <div class="input-group mt-3">
+                      <span class="input-group-text" id="telefono_cliente"
+                        >Teléfono</span
+                      >
+                      <input
+                        type="text"
+                        [(ngModel)]="telefono_cliente"
+                        name="telefono_cliente"
+                        id="telefono_cliente"
+                        class="form-control"
+                        placeholder="Número de celular"
+                        aria-label="Número de celular"
+                        aria-describedby="telefono_cliente"
+                        maxlength="9"
+                        minlength="9"
+                        autocomplete="off"
+                        required
+                      />
+                    </div>
+                    <div class="input-group mt-3">
+                      <span class="input-group-text" id="precio_reservacion"
+                        >Precio</span
+                      >
+                      <input
+                        type="number"
+                        [(ngModel)]="precio_reservacion"
+                        name="precio_reservacion"
+                        id="precio_reservacion"
+                        min="0"
+                        class="form-control"
+                        autocomplete="off"
+                        required
+                      />
+                    </div>
+                  </div>
+                </div>
+    
+                <!-- Modal footer -->
+                <div
+                  class="font-semibold flex items-center pb-2 px-1.5 justify-between md:p-5 md:pt-0 pt-0 rounded-b"
+                >
+                  <button
+                    [attr.data-modal-hide]="'modal-' + hora.id"
+                    type="button"
+                    class="py-2.5 px-5 ms-3 text-sm text-gray-900 focus:outline-none bg-white rounded-lg border border-gray-200 hover:bg-gray-100 hover:text-forestGreen-700 focus:z-10 focus:ring-4 focus:ring-gray-100"
+                  >
+                    Cancelar
+                  </button>
+                  <button
+                    [attr.data-modal-hide]="'modal-' + hora.id"
+                    type="button"
+                    (click)="onHoraSeleccionada(hora)"
+                    class="font-semibold text-white bg-forestGreen-500 hover:bg-forestGreen-600 focus:ring-4 focus:outline-none focus:ring-blue-300 rounded-lg text-sm px-5 py-2.5 text-center"
+                  >
+                    Registrar
+                  </button>
+                </div>
+            }
+            @if (hora.estado === 'Ocupado') {
+                <!-- Modal body -->
+                <div class="p-4 md:p-5 space-y-4">
+                  <p class="font-bold">Confirmar reservacion</p>
+                  
+                  Data de reservacion
+                  <!-- TODO: TODO: TODO: -->
+                  <!-- CARD de reser aquuiiiiiii -->
+
+                  <!-- {{reservacion | json}} -->
+                </div>
+    
+                <!-- Modal footer -->
+                <div
+                  class="font-semibold flex items-center pb-2 px-1.5 justify-between md:p-5 md:pt-0 pt-0 rounded-b"
+                >
+                  <button
+                    [attr.data-modal-hide]="'modal-' + hora.id"
+                    type="button"
+                    class="py-2.5 px-5 ms-3 text-sm text-gray-900 focus:outline-none bg-white rounded-lg border border-gray-200 hover:bg-gray-100 hover:text-forestGreen-700 focus:z-10 focus:ring-4 focus:ring-gray-100"
+                  >
+                    Cancelar
+                  </button>
+                  <button
+                    [attr.data-modal-hide]="'modal-' + hora.id"
+                    type="button"
+                    (click)="confirmar_reservacion(hora.id_reserva)"
+                    class="font-semibold text-white bg-forestGreen-500 hover:bg-forestGreen-600 focus:ring-4 focus:outline-none focus:ring-blue-300 rounded-lg text-sm px-5 py-2.5 text-center"
+                  >
+                    Confirmar reservacion
+                  </button>
+                </div>
+            }
+          </div>
+        </div>
+      </div>
+    </div>
+    } }@else {
+    <!-- Placeholders cuando no hay botonesHoras -->
+    @for (i of [1,2,3,4,5,6,7,8,9,10,11,12,13,14,15,16]; track i) {
+    <div class="relative">
+      <div class="w-full h-9"></div>
+    </div>
+    } }
+  </div>
+
+  <div class="p-4 mx-auto w-full max-w-md">
+    <app-carousel-image [galeria]="cancha?.galeria"></app-carousel-image>
+  </div>
+</div>

@@ -20,6 +20,8 @@ import { HeaderUserComponent } from './header-user/header-user.component';
 import { CardHorarioSkeletonComponent } from './card-horario-skeleton/card-horario-skeleton.component';
 import { CountdownTimerComponent } from './countdown-timer/countdown-timer.component';
 import { HeaderEmpresaComponent } from './header-empresa/header-empresa.component';
+import { CardHorarioEmpresaComponent } from './card-horario-empresa/card-horario-empresa.component';
+import { FormsModule } from '@angular/forms';
 
 
 
@@ -43,11 +45,13 @@ import { HeaderEmpresaComponent } from './header-empresa/header-empresa.componen
     HeaderUserComponent,
     CardHorarioSkeletonComponent,
     CountdownTimerComponent,
-    HeaderEmpresaComponent
+    HeaderEmpresaComponent,
+    CardHorarioEmpresaComponent
   ],
   imports: [
     CommonModule,
-    RouterModule
+    RouterModule,
+    FormsModule
   ],
   exports: [
     CardHorarioSkeletonComponent,
@@ -69,7 +73,8 @@ import { HeaderEmpresaComponent } from './header-empresa/header-empresa.componen
     Time24to12Pipe,
     CountdownTimerComponent,
     HeaderEmpresaComponent,
-    CarouselImageComponent
+    CarouselImageComponent,
+    CardHorarioEmpresaComponent
   ]
 })
 export class GeneralComponentsModule { }

@@ -1,10 +1,19 @@
 import { Component, OnInit } from '@angular/core';
-import { initFlowbite } from 'flowbite';
 import { UserService } from '../../../../services/user.service';
-import { SafeUrl, Title } from '@angular/platform-browser';
+import { Title } from '@angular/platform-browser';
 import { ToastService } from '../../../../services/toast.service';
 import { GLOBAL } from '../../../../services/global';
 import Chart from 'chart.js/auto';
+import { io, Socket } from 'socket.io-client';
+
+interface BotonHora {
+  estado: string;
+  fecha: Date;
+  hora: number;
+  disponible: boolean;
+  id: string;
+  id_reserva?: string;
+}
 
 @Component({
   selector: 'app-home',
@@ -37,6 +46,20 @@ export class HomeComponent implements OnInit {
   public activePagos: boolean = false;
   public suscripciones: Array<any> = [];
 
+  public tipo_cancha = 'futbol';
+  public hora_inicio = 0;
+  public hora_fin = 0;
+  public fecha = '';
+  public id_cancha = '';
+  public load_btn_ver = true;
+  public reservaciones: any = [];
+  public cancha_ver: any = {};
+  public horasReserva: number = 1;
+  botonesHoras: BotonHora[] = [];
+  fechaSeleccionada: Date | null = null;
+
+  ahora: Date = new Date();
+
   constructor(
     private _userService: UserService,
     private _title: Title,
@@ -46,29 +69,31 @@ export class HomeComponent implements OnInit {
     this.id = localStorage.getItem('_id') || sessionStorage.getItem('_id');
     this.url = GLOBAL.url;
 
+  }
+
+  ngOnInit(): void {
+    this._title.setTitle('GRASS | Galería de canchas');
+    this.init_chart();
     this.init_data();
+    this.inicializarBotonesHoras();
   }
 
   init_data() {
     this.file = null;
+    this.fechaSeleccionada = new Date();
     this._userService
       .obtener_empresa(this.id, this.token)
-      .subscribe((response) => {
-        if (response.data == undefined) {
-          this.empresa = undefined;
-          this.load_data = false;
-        } else {
-          this.empresa = response.data;
+      .subscribe({
+        next: (res) => {
+          this.empresa = res.data;
+          this.hora_inicio = this.empresa.hora_inicio;
+          this.hora_fin = this.empresa.hora_fin;
 
           this._userService.obtener_suscripciones_empresa(this.empresa._id, this.token).subscribe(
-            response => {
-              if (response.data == undefined) {
-                this.exist_susc = false;
-                this.viewButton = true;
-                this.activePagos = false;
-              } else {
+            {
+              next: (resp) => {
                 this.exist_susc = true;
-                this.suscripciones = response.data;
+                this.suscripciones = resp.data;
 
                 for (let i = 0; i < this.suscripciones.length; i++) {
                   if (this.suscripciones[i].estado == 'Confirmado') {
@@ -84,10 +109,39 @@ export class HomeComponent implements OnInit {
                   this.viewButton = true;
                   this.activePagos = false;
                 }
+              },
+              error: (errr) => {
+                this.exist_susc = false;
+                this.viewButton = true;
+                this.activePagos = false;
               }
-            }
-          );
+            });
 
+          this._userService.obtener_canchas_empresa(this.id, this.token).subscribe({
+            next: (res) => {
+
+              this.canchas = res.data;
+              this.id_cancha = this.canchas[0]._id;
+
+              if (this.canchas[0].tipo === 'Fútbol/Futsal' || this.canchas[0].tipo === 'Mixto') {
+                this.tipo_cancha = 'futbol';
+              } else {
+                this.tipo_cancha = 'voley';
+              }
+
+              this.click_ver(this.id_cancha);
+
+              this.load_data = false;
+            },
+            error: (err) => {
+              this.canchas = [];
+            }
+          });
+
+          this.load_data = false;
+        },
+        error: (err) => {
+          this.empresa = undefined;
           this.load_data = false;
         }
       });
@@ -97,17 +151,17 @@ export class HomeComponent implements OnInit {
     this._userService.obtener_canchas_empresa(this.id, this.token).subscribe(
       canchasResponse => {
         this.canchas = canchasResponse.data;
-  
+
         // Objeto para almacenar datos de todas las canchas
         const datasets: any = [];
-  
+
         // Iterar sobre cada cancha
         this.canchas.forEach((cancha, index) => {
           this._userService.kpi_ganancias_mensuales_grass(cancha._id, this.token).subscribe(
             response => {
               // Obtener color dinámicamente del arreglo de colores
               const color = this.colores[index % this.colores.length];
-  
+
               // Almacenar resultados de cada cancha con el color correspondiente
               const canchaData = {
                 label: cancha.nombre,
@@ -118,9 +172,9 @@ export class HomeComponent implements OnInit {
               };
 
               this.count_ventas += response.count_ventas;
-  
+
               datasets.push(canchaData);
-  
+
               // Crear el gráfico después de obtener todos los datos
               if (datasets.length === this.canchas.length) {
                 this.createChart(datasets);
@@ -131,7 +185,7 @@ export class HomeComponent implements OnInit {
       }
     );
   }
-  
+
   createChart(datasets: any) {
     // Crear el gráfico con todos los datos de las canchas
     this.chart = new Chart("MyChart", {
@@ -144,29 +198,142 @@ export class HomeComponent implements OnInit {
         aspectRatio: 2
       }
     });
-  
+
     this.load_data = false;
   }
-  
 
-  ngOnInit(): void {
-    this._title.setTitle('GRASS | Galería de canchas');
-    initFlowbite();
-    this.init_chart();
+  handleFecha(fecha: any) {
+    this.fecha = fecha;
+    this.fechaSeleccionada = fecha;
+
+    this.inicializarBotonesHoras();
   }
 
-  eliminar(id: any) {
-    this.load_btn_eliminar = true;
-    this._userService
-      .eliminar_imagen_portada(this.id, { _id: id }, this.token)
-      .subscribe((response) => {
-        this._toastrService.showToast('Se eliminó con éxito');
-        this.load_btn_eliminar = false;
-        this.init_data();
-      });
+  handleReservado(creado: boolean) {
+    if (creado) {
+      this.inicializarBotonesHoras();
+      this.init_data();
+    }
   }
 
-  private showErrorMessage(message: string) {
-    this._toastrService.showToast(message);
+  onRadioChange(tipo: string, id: string) {
+    if (tipo === 'Fútbol/Futsal' || tipo === 'Mixto') {
+      this.tipo_cancha = 'futbol';
+    } else {
+      this.tipo_cancha = 'voley';
+    }
+
+    this.click_ver(id);
+  }
+
+
+  private inicializarBotonesHoras() {
+    this.botonesHoras = [];
+    const ahora = new Date(this.fechaSeleccionada!);
+    const horaActual = this.ahora.getHours();
+
+    let primerHora;
+
+    // Determinar la hora inicial
+    if (this.fechaSeleccionada!.toDateString() === this.ahora.toDateString()) {
+      primerHora = horaActual + 1;
+      if (primerHora >= this.hora_fin) {
+        return;
+      }
+    } else {
+      primerHora = this.hora_inicio;
+    }
+
+    primerHora = Math.max(primerHora, this.hora_inicio);
+
+    // Crear botones para cada hora
+    for (let j = primerHora; j < this.hora_fin; j++) {
+      const horaFormateada = j < 10 ? `0${j}` : `${j}`;
+      const fecha = new Date(ahora);
+      const hora = parseInt(horaFormateada);
+      let estadoBoton = 'Libre';
+      let idReserva = '';
+      let disponibleBtn = true;
+
+      // Verificar si hay reservaciones que afecten esta hora
+      if (this.reservaciones && this.reservaciones.length > 0) {
+        for (const reservacion of this.reservaciones) {
+          const reservacionFecha = new Date(reservacion.fecha);
+
+          // Verificar si la reservación corresponde al día seleccionado
+          if (
+            fecha.getDate() === reservacionFecha.getDate() &&
+            fecha.getMonth() === reservacionFecha.getMonth() &&
+            fecha.getFullYear() === reservacionFecha.getFullYear()
+          ) {
+            // Verificar si la hora actual está dentro del rango de la reservación
+            if (
+              hora >= parseInt(reservacion.hora_inicio) &&
+              hora < parseInt(reservacion.hora_fin)
+            ) {
+              estadoBoton = reservacion.estado;
+              idReserva = reservacion._id;
+              disponibleBtn = false;
+              break;
+            }
+          }
+        }
+      }
+
+      // Verificar si es hora pasada para el día actual
+      if (this.fechaSeleccionada!.toDateString() === this.ahora.toDateString()) {
+        if (hora <= horaActual) {
+          estadoBoton = 'Pasado';
+          disponibleBtn = false;
+        }
+      }
+
+      const id = `00${j}`.slice(-4);
+      const boton: BotonHora = {
+        estado: estadoBoton,
+        fecha,
+        id_reserva: idReserva,
+        hora: parseInt(horaFormateada),
+        disponible: disponibleBtn,
+        id
+      };
+
+      this.botonesHoras.push(boton);
+    }
+  }
+
+  isHoraPasada(fecha: Date, hora: string): boolean {
+    const ahora = new Date();
+    const horaSeleccionada = new Date(fecha);
+    horaSeleccionada.setHours(parseInt(hora.split(':')[0], 10), 0);
+
+    return ahora > horaSeleccionada;
+  }
+
+  onDateChange(event: any) {
+    this.fechaSeleccionada = new Date(event.target.value);
+    this.inicializarBotonesHoras();
+  }
+
+  click_ver(id: any) {
+    this.botonesHoras = [];
+    this.load_btn_ver = true;
+    this._userService.obtener_cancha_publico(id).subscribe({
+      next: (res) => {
+        this.cancha_ver = res.data;
+        this._userService
+          .obtener_reservaciones_public(this.cancha_ver._id)
+          .subscribe((response) => {
+            this.reservaciones = response.data;
+
+            this.inicializarBotonesHoras();
+          });
+
+        this.load_btn_ver = false;
+      },
+      error: (err) => {
+        this.cancha_ver = {};
+      }
+    });
   }
 }

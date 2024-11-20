@@ -1,5 +1,22 @@
 
-Horariooo
+<div>
+    @if (!load_data) {}
+    @for (cancha of canchas; track $index) {
+    <input type="radio" [id]="cancha._id" name="contact" [value]="cancha._id" [checked]="cancha._id === id_cancha"
+    (change)="onRadioChange(cancha.tipo, cancha._id)" />
+    <label [for]="cancha._id"> {{cancha.nombre}} </label>
+    }
+</div>
+
+<div class="flex-1">
+    @if (!load_btn_ver) {
+    <app-card-horario-empresa [tipo]="tipo_cancha" [botonesHoras]="botonesHoras" [cancha]="cancha_ver"
+        [hora_fin]="hora_fin" (fechaSeleccionada)="handleFecha($event)" (reservacionCreada)="handleReservado($event)"></app-card-horario-empresa>
+    }
+    @if (load_btn_ver) {
+    <app-card-horario-skeleton></app-card-horario-skeleton>
+    }
+</div>
 
 <div>
     <div>
