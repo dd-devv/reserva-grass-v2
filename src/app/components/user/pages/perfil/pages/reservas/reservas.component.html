@@ -510,13 +510,13 @@
                   class="absolute  flex items-center justify-center size-8 bg-forestGreen-500 text-white rounded-full -start-4  ">
                   1
                 </span>
-                <div class="flex flex-col p-4 w-full bg-forestGreen-50 border border-forestGreen-500 rounded-lg leading-5">
+                <div class="flex flex-col items-center p-4 w-full bg-forestGreen-50 border border-forestGreen-500 rounded-lg leading-5">
                  
                   <p> Realizar un pago de <span class="text-forestGreen-500">S/. 30 </span> a una de las siguientes cuentas.</p>
 
 
                   <!-- MEDIOS PAGO -->
-                  <div class="flex  gap-1 md:gap-4 justify-center  bg-red-300 px-4">
+                  <div class="flex  gap-1 md:gap-4 justify-center  bg-red-300 px-4 w-24 overflow-x-auto">
                     @if (cuentas.length >= 1) {
                     @for (cuenta of cuentas; track $index) {
                     <div

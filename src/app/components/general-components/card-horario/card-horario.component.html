@@ -39,9 +39,10 @@
     </div>
   </div>
 
-  <div class="grid grid-cols-4 grid-rows-4 gap-4 w-full text-center">
+  <div class="grid grid-cols-4 grid-row-1 grid-flow-col  h-fit gap-4 w-full text-center justify-center items-center">
 
     @if (botonesHoras && botonesHoras.length > 0) {
+      
     @for (hora of botonesHoras; track hora.id) {
 
     <div class="relative">
@@ -125,11 +126,19 @@
 
     }@else {
       <!-- Placeholders cuando no hay botonesHoras -->
-      @for (i of [1,2,3,4,5,6,7,8,9,10,11,12,13,14,15,16]; track i) {
-          <div class="relative">
-              <div class="w-full h-9"></div>
-          </div>
-      }
+     <div class="col-span-4 w-full flex justify-center">
+      <div class="flex flex-col items-center rounded-lg space-y-4 bg-orange-100 border border-dashed border-orange-500 p-6 max-w-lg">
+        <p class="text-pretty"> No hay horarios disponibles para hoy, recuerda que el horario de atención de este grass es de <span class="font-bold">X AM</span> a <span class="font-bold">Y PM</span>
+        </p>
+        <button class="bg-orange-500 text-gray-50 rounded-md w-fit px-4 py-2 flex gap-2 items-center">
+          <p>
+            Ver siguiente día
+          </p>
+          <img src="../../../../assets/svg-icons/arrow-right.svg" alt="">
+          
+        </button>
+      </div>
+     </div>
   }
   </div>
 
