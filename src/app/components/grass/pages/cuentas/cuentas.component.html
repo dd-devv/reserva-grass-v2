@@ -2,17 +2,17 @@
 
   <div class="flex w-full gap-3">
     <div class="flex flex-col gap-1 w-full">
-        <label class="text-xs" for="banco">Banco</label>
-        <input class=" rounded-lg h-9 border-gray-300 text-gray-900 text-xs" name="banco" id="banco"
-            type="text">
+      <label class="text-xs" for="banco">Banco</label>
+      <input class=" rounded-lg h-9 border-gray-300 text-gray-900 text-xs" name="banco" id="banco" type="text">
     </div>
     <div class="flex flex-col gap-1 w-full">
-        <label class="text-xs" for="numeroCuenta">Número de cuenta </label>
-        <input class="rounded-lg h-9 border-gray-300 text-gray-900 text-xs" name="numeroCuenta" id="numeroCuenta" type="text">
+      <label class="text-xs" for="numeroCuenta">Número de cuenta </label>
+      <input class="rounded-lg h-9 border-gray-300 text-gray-900 text-xs" name="numeroCuenta" id="numeroCuenta"
+        type="text">
     </div>
   </div>
 
-  
+
   <div class="flex flex-col gap-1 w-full">
     <label class="text-xs" for="cci">CCI</label>
     <input class="rounded-lg h-9 border-gray-300 text-gray-900 text-xs" name="cci" id="cci" type="text">
@@ -27,37 +27,39 @@
 
 
 <!-- Cuentas de pago -->
-<div class="w-full  grid grid-cols-1 md:grid-cols-2 justify-center items-center place-content-center place-items-center gap-4 py-2">
-    <!-- Primer cuadrado -->
-    <div
-      class="w-full p-6 bg-purple-50 text-forestGreen-500 shadow-lg rounded-lg border-2 border-purple-500 hover:shadow-xl hover:scale-105 transition-transform duration-300">
-      <h2 class="flex justify-center text-xl font-bold text-center mb-2">
-        <img src="../../../../../assets/img/yape.png" alt="">
+<div
+  class="w-full  grid grid-cols-1 md:grid-cols-2 justify-center items-center place-content-center place-items-center gap-4 py-2">
+  <!-- INICIO YAPE -->
+  <div
+    class="flex md:flex-col flex-row-reverse items-center  w-full gap-4 p-3 md:p-6 bg-purple-50/30 text-forestGreen-500 shadow-lg rounded-lg border border-purple-500 hover:shadow-xl">
+    <div class=" flex justify-center items-center object-contain w-16 h-12">
+      <img  src="../../../../../assets/img/yape.png" alt="">
+    </div>
 
-      </h2>
+    <div class="w-full">
       <p class="text-black text-sm mb-2">
         <span class="font-bold">Cuenta:</span> 15615644
       </p>
       <p class="text-black text-sm mb-2">
         <span class="font-bold">Titular:</span> Pepito Perez Cuellar
       </p>
-  
+
       <!-- Botones con íconos -->
-      <div class="flex justify-around mt-4">
+      <div class="flex md:justify-between gap-2 justify-start h-6">
         <!-- Botón de Actualizar -->
-        <button
-          class="flex items-center gap-2 bg-white text-black text-xs py-2 px-4 rounded-lg border-2 border-blue-500 hover:bg-blue-600 transition">
+        <button class="flex items-center gap-2 bg-white text-black text-xs px-4 rounded-lg border border-purple-500">
           Actualizar
-          <svg width="14" height="15" viewBox="0 0 14 15" fill="none" xmlns="http://www.w3.org/2000/svg">
+          <svg width="16" height="16" viewBox="0 0 16 16" fill="none" xmlns="http://www.w3.org/2000/svg">
             <path
-              d="M2.19998 9.40205L4.99997 11.8021M6.99997 13.8021H13.4M1.79998 9.40205L9.68755 1.239C10.5368 0.389735 11.9138 0.389733 12.763 1.239C13.6123 2.08827 13.6123 3.4652 12.763 4.31447L4.59997 12.2021L0.599976 13.4021L1.79998 9.40205Z"
+              d="M3.19998 10.4001L5.99997 12.8001M7.99997 14.8001H14.4M2.79998 10.4001L10.6876 2.23705C11.5368 1.38778 12.9138 1.38778 13.763 2.23705C14.6123 3.08631 14.6123 4.46325 13.763 5.31252L5.59997 13.2001L1.59998 14.4001L2.79998 10.4001Z"
               stroke="black" stroke-linecap="round" stroke-linejoin="round" />
           </svg>
+
         </button>
-  
+
         <!-- Botón de Eliminar -->
         <button
-          class="flex items-center gap-2 bg-white text-black text-xs py-2 px-4 rounded-lg border-2 border-red-500 hover:bg-red-600 transition">
+          class="flex items-center gap-2 bg-white text-black text-xs py-2 px-4 rounded-lg border border-red-500">
           Eliminar
           <svg width="16" height="16" viewBox="0 0 16 16" fill="none" xmlns="http://www.w3.org/2000/svg">
             <path
@@ -67,37 +69,41 @@
         </button>
       </div>
     </div>
-  
-    <!-- Segundo cuadrado -->
-    <div
-      class="w-full p-6 bg-orange-50 text-forestGreen-500 shadow-lg rounded-lg border-2 border-orange-500 hover:shadow-xl hover:scale-105 transition-transform duration-300">
-      <h2 class="flex justify-center text-xl font-bold text-center mb-2">
-        <img src="../../../../../assets/img/yape.png" alt="">
 
-      </h2>
+  </div>
+<!--FIN YAPE -->
+  
+<!-- INICIO INTERBANK -->
+  <div
+    class="flex md:flex-col flex-row-reverse items-center  w-full gap-4 p-3 md:p-6 bg-green-50 text-forestGreen-500 shadow-lg rounded-lg border border-green-500 hover:shadow-xl">
+    <div class=" flex justify-center items-center object-contain w-16 h-12">
+      <img  src="../../../../../assets/img/yape.png" alt="">
+    </div>
+
+    <div class="w-full">
       <p class="text-black text-sm mb-2">
         <span class="font-bold">Cuenta:</span> 15615644
       </p>
       <p class="text-black text-sm mb-2">
         <span class="font-bold">Titular:</span> Pepito Perez Cuellar
       </p>
-  
+
       <!-- Botones con íconos -->
-      <div class="flex justify-around mt-4">
+      <div class="flex md:justify-between gap-2 justify-start h-6">
         <!-- Botón de Actualizar -->
-        <button
-          class="flex items-center gap-2 bg-white text-black text-xs py-2 px-4 rounded-lg border-2 border-blue-500 hover:bg-blue-600 transition">
+        <button class="flex items-center gap-2 bg-white text-black text-xs px-4 rounded-lg border border-green-500">
           Actualizar
-          <svg width="14" height="15" viewBox="0 0 14 15" fill="none" xmlns="http://www.w3.org/2000/svg">
+          <svg width="16" height="16" viewBox="0 0 16 16" fill="none" xmlns="http://www.w3.org/2000/svg">
             <path
-              d="M2.19998 9.40205L4.99997 11.8021M6.99997 13.8021H13.4M1.79998 9.40205L9.68755 1.239C10.5368 0.389735 11.9138 0.389733 12.763 1.239C13.6123 2.08827 13.6123 3.4652 12.763 4.31447L4.59997 12.2021L0.599976 13.4021L1.79998 9.40205Z"
+              d="M3.19998 10.4001L5.99997 12.8001M7.99997 14.8001H14.4M2.79998 10.4001L10.6876 2.23705C11.5368 1.38778 12.9138 1.38778 13.763 2.23705C14.6123 3.08631 14.6123 4.46325 13.763 5.31252L5.59997 13.2001L1.59998 14.4001L2.79998 10.4001Z"
               stroke="black" stroke-linecap="round" stroke-linejoin="round" />
           </svg>
+
         </button>
-  
+
         <!-- Botón de Eliminar -->
         <button
-          class="flex items-center gap-2 bg-white text-black text-xs py-2 px-4 rounded-lg border-2 border-red-500 hover:bg-red-600 transition">
+          class="flex items-center gap-2 bg-white text-black text-xs py-2 px-4 rounded-lg border border-red-500">
           Eliminar
           <svg width="16" height="16" viewBox="0 0 16 16" fill="none" xmlns="http://www.w3.org/2000/svg">
             <path
@@ -107,3 +113,50 @@
         </button>
       </div>
     </div>
+
+  </div>
+<!-- FIN INTERBANK -->
+
+<!-- INICIO BCP -->
+<div
+class="flex md:flex-col flex-row-reverse items-center  w-full gap-4 p-3 md:p-6 bg-orange-50/10 text-forestGreen-500 shadow-lg rounded-lg border border-orange-500 hover:shadow-xl">
+<div class=" flex justify-center items-center object-contain w-16 h-12">
+  <img  src="../../../../../assets/img/yape.png" alt="">
+</div>
+
+<div class="w-full">
+  <p class="text-black text-sm mb-2">
+    <span class="font-bold">Cuenta:</span> 15615644
+  </p>
+  <p class="text-black text-sm mb-2">
+    <span class="font-bold">Titular:</span> Pepito Perez Cuellar
+  </p>
+
+  <!-- Botones con íconos -->
+  <div class="flex md:justify-between gap-2 justify-start h-6">
+    <!-- Botón de Actualizar -->
+    <button class="flex items-center gap-2 bg-white text-black text-xs px-4 rounded-lg border border-orange-500">
+      Actualizar
+      <svg width="16" height="16" viewBox="0 0 16 16" fill="none" xmlns="http://www.w3.org/2000/svg">
+        <path
+          d="M3.19998 10.4001L5.99997 12.8001M7.99997 14.8001H14.4M2.79998 10.4001L10.6876 2.23705C11.5368 1.38778 12.9138 1.38778 13.763 2.23705C14.6123 3.08631 14.6123 4.46325 13.763 5.31252L5.59997 13.2001L1.59998 14.4001L2.79998 10.4001Z"
+          stroke="black" stroke-linecap="round" stroke-linejoin="round" />
+      </svg>
+
+    </button>
+
+    <!-- Botón de Eliminar -->
+    <button
+      class="flex items-center gap-2 bg-white text-black text-xs py-2 px-4 rounded-lg border border-red-500">
+      Eliminar
+      <svg width="16" height="16" viewBox="0 0 16 16" fill="none" xmlns="http://www.w3.org/2000/svg">
+        <path
+          d="M2.66663 4.1196H13.3333M6.66663 11.1784V6.94313M9.33329 11.1784V6.94313M10.6666 14.002H5.33329C4.59691 14.002 3.99996 13.3699 3.99996 12.5902V4.82548C3.99996 4.43563 4.29844 4.1196 4.66663 4.1196H11.3333C11.7015 4.1196 12 4.43563 12 4.82548V12.5902C12 13.3699 11.403 14.002 10.6666 14.002ZM6.66663 4.1196H9.33329C9.70148 4.1196 9.99996 3.80357 9.99996 3.41372V2.70784C9.99996 2.31799 9.70148 2.00195 9.33329 2.00195H6.66663C6.29844 2.00195 5.99996 2.31799 5.99996 2.70784V3.41372C5.99996 3.80357 6.29844 4.1196 6.66663 4.1196Z"
+          stroke="black" stroke-linecap="round" stroke-linejoin="round" />
+      </svg>
+    </button>
+  </div>
+</div>
+
+</div>
+<!-- FIN BCP -->
