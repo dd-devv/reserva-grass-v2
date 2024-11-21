@@ -3,7 +3,7 @@
 <!-- DINO AQUÍ LE METES LA CONDICIONAL PARA QUE CUANDO SOLO HAYA UNA CANCHA, LA CLASE SEA grid-cols-1 -->
 
 <!-- CANCHAS -->
- @if (!load_data) {
+ @if (load_data) {
     <div class="w-full  grid grid-cols-1 md:grid-cols-2 justify-center items-center place-content-center place-items-center gap-4 py-2">
         <!-- INICIO FUTBOL -->
        <div class="p-2 space-y-2 w-full lg:min-w-lg max-w-lg rounded-lg border border-gray-200 bg-white ">
@@ -81,7 +81,8 @@
        <!-- FIN VOLEY -->
        
    </div>
-   
+ }
+ @if (!load_data) {
     @for (item of canchas; track $index) {
         <div class="w-full  grid grid-cols-1 md:grid-cols-2 justify-center items-center place-content-center place-items-center gap-4 py-2">
              <!-- INICIO FUTBOL -->
