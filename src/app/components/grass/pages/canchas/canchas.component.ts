@@ -45,8 +45,6 @@ export class CanchasComponent implements OnInit, AfterViewInit, OnDestroy {
     this._userService.obtener_canchas_empresa(this.id, this.token).subscribe({
       next: (res) => {
         this.canchas = res.data;
-        console.log(this.canchas);
-        
         this.btn_crear = false;
         this.load_data = false;
       },
