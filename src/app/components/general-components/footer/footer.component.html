@@ -1,14 +1,18 @@
 
 <!--antigua bg-gray-800 text-white py-8-->
-<footer class="bg-gray-800 text-white dark:bg-gray-900 mt-10 ">
+<footer class="bg-gray-800 text-white dark:bg-gray-900 mt-10">
   <div class="container mx-auto flex flex-col sm:flex-row justify-between items-center md: p-8">
     
     <!-- Columna lateral izquierda (vacía para espaciado) -->
-    <div class="w-1/4 text-center md:order-1 order-2">
-        <h2 class="mb-2 text-sm font-semibold text-gray-900 dark:text-white">
-          Información
+    <div class="w-1/4 text-center md:order-1 order-2 ">
+      
+        <h2 class=" text-sm font-semibold text-gray-900 dark:text-white md:mb-2 mb-0 ">
+          <button (click)="toggleSection('info')" class="text-white hover:underline text-sm font-semibold text-gray-900 dark:text-white">
+            {{ isInfoOpen ? 'Información' : 'Información' }}
+          </button>
         </h2>
-        <ul
+        
+        <ul *ngIf="isInfoOpen"
           class="flex flex-col text-xs text-gray-500 dark:text-gray-400 font-light gap-1"
         >
           <li>
@@ -131,9 +135,12 @@
     <!-- Columna lateral derecha (vacía para espaciado) -->
     <div class="w-1/4 text-center md:order-3">
         <h2 class="md:mb-4 mb-2 text-sm font-semibold text-gray-900 dark:text-white">
-          Contacto
+          
+          <button (click)="toggleSection('info')" class="text-white hover:underline text-sm font-semibold text-gray-900 dark:text-white">
+            {{ isInfoOpen ? 'Contacto' : 'Contacto' }}
+          </button>
         </h2>
-        <ul class="text-gray-500 text-xs dark:text-gray-400 font-light">
+        <ul *ngIf="isInfoOpen" class="text-gray-500 text-xs dark:text-gray-400 font-light">
           <li class="md:mb-4 mb-2 text-center items-center flex justify-center">
             <p>reservatugrass&#64;gmail.com</p>
           </li>
