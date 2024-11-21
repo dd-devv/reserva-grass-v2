@@ -12,8 +12,7 @@ import { ToastService } from '../../../../services/toast.service';
 })
 export class DatosComponent implements OnInit {
 
-  public empresa: any = {
-  };
+  public empresa: any = {};
 
   public regiones: Array<any> = [];
   public namereg = '';
@@ -29,13 +28,11 @@ export class DatosComponent implements OnInit {
   public load_btn = false;
   public load_data = false;
 
-  public token: any;
-  public id: any;
+  public token;
+  public id;
   public user_lc: any = {};
   public caracteristicas: any = {};
-
-  isDisabledProvincia = true;
-  isDisabledDistrito = true;
+  public showUpdatePass = false;
 
   constructor(
     //private _userService: UserService,
@@ -57,15 +54,11 @@ export class DatosComponent implements OnInit {
     this._userService.obtener_empresa(this.id, this.token).subscribe({
       next: (res) => {
         this.empresa = res.data;
-        console.log(this.empresa);
-        
         this.load_data = false;
 
         this._userService.obtener_caracteristicas_empresa(this.id, this.token).subscribe({
           next: (resp) => {
             this.caracteristicas = resp.data[0];
-            console.log(this.caracteristicas);
-            
             this.load_data = false;
           },
           error: (errr) => {
@@ -85,7 +78,6 @@ export class DatosComponent implements OnInit {
         this.load_data = false;
       }
     });
-
   }
 
   actualizar_caracteristicas() {
@@ -130,6 +122,10 @@ export class DatosComponent implements OnInit {
         this._toastrService.showToast(err.message);
       }
     });
+  }
+
+  changeUpdatepass() {
+    this.showUpdatePass = !this.showUpdatePass;
   }
 
 }

@@ -1,19 +1,19 @@
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
-import { initFlowbite } from 'flowbite';
-import { ToastService } from '../../../../../../services/toast.service';
-import { UserService } from '../../../../../../services/user.service';
+import { UserService } from '../../../../../services/user.service';
 import { Title } from '@angular/platform-browser';
+import { ToastService } from '../../../../../services/toast.service';
 
 @Component({
-  selector: 'app-acceso',
-  templateUrl: './acceso.component.html',
-  styleUrl: './acceso.component.css'
+  selector: 'app-password',
+  templateUrl: './password.component.html',
+  styleUrl: './password.component.css'
 })
-export class AccesoComponent implements OnInit {
+export class PasswordComponent implements OnInit {
 
   public user: any;
   public token;
+  public id;
   public pass: any;
   public passtext: any;
   public password = '';
@@ -21,6 +21,7 @@ export class AccesoComponent implements OnInit {
   public show = false;
   public alert_pass = false;
   public valid = false;
+  public empresa: any = {};
 
   public verificado: boolean = false;
 
@@ -32,16 +33,23 @@ export class AccesoComponent implements OnInit {
   ) {
     this.user = JSON.parse(localStorage.getItem('user_data')!);
     this.token = localStorage.getItem('token') || sessionStorage.getItem('token');
+    this.id = localStorage.getItem('_id') || sessionStorage.getItem('_id');
   }
 
   ngOnInit(): void {
     this._title.setTitle('Perfil | Actualizar contraseña');
     this.passtext = 'password';
+
+    this._userService.obtener_empresa(this.id, this.token).subscribe({
+      next: (res) => {
+        this.empresa = res.data;
+      }
+    });
   }
 
   comparar_password() {
     let data = {
-      email: this.user.email,
+      email: this.empresa.email,
       password: this.pass
     }
 
@@ -49,15 +57,15 @@ export class AccesoComponent implements OnInit {
       next: (res) => {
         if (res.data) {
           this._toastrService.showToast('Se verificó con éxito');
-
+  
           this.verificado = true;
           this.pass = '';
         } else {
           this._toastrService.showToast('Contraseña incorrecta, intenta de nuevo!');
-
+  
           this.verificado = false;
         }
-
+        
       },
       error: (err) => {
         this._toastrService.showToast(err.message);
@@ -91,7 +99,7 @@ export class AccesoComponent implements OnInit {
     let data = {
       password: this.password
     }
-    this._userService.actualizar_password_user(this.user._id, data, this.token).subscribe({
+    this._userService.actualizar_password_user(this.empresa._id, data, this.token).subscribe({
       next: (res) => {
         this._toastrService.showToast('Se actualizó la contraseña');
 
@@ -101,7 +109,7 @@ export class AccesoComponent implements OnInit {
         this.pass = '';
         this.show = false;
         this.valid = false;
-        this._router.navigate(['/usuario/perfil']);
+        this._router.navigate(['/grass']);
 
       },
       error: (err) => {
@@ -109,6 +117,5 @@ export class AccesoComponent implements OnInit {
       }
     }
     );
-
   }
 }

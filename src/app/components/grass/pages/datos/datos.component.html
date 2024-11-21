@@ -13,31 +13,32 @@ Mirkooooo, el skeleon :v
     <div class="flex w-full gap-3">
         <div class="flex flex-col gap-1 w-full">
             <label class="text-xs" for="nombre">Nombre de la empresa</label>
-            <input class=" rounded-lg h-9 border-gray-300 text-gray-900 text-xs" 
-            name="nombre" id="nombre" [(ngModel)]="empresa.nombre" type="text" readonly>
+            <input class=" rounded-lg h-9 border-gray-300 text-gray-900 text-xs" name="nombre" id="nombre"
+                [(ngModel)]="empresa.nombre" type="text" readonly>
         </div>
         <div class="flex flex-col gap-1 w-full">
             <label class="text-xs" for="email">Correo </label>
-            <input class="rounded-lg h-9 border-gray-300 text-gray-900 text-xs" name="email" id="email" [(ngModel)]="empresa.email" type="text" readonly>
+            <input class="rounded-lg h-9 border-gray-300 text-gray-900 text-xs" name="email" id="email"
+                [(ngModel)]="empresa.email" type="text" readonly>
         </div>
     </div>
     <div class="flex w-full gap-3">
         <div class="flex flex-col gap-1 w-full">
             <label class="text-xs" for="telefono">WhatsApp</label>
-            <input class="rounded-lg h-9 border-gray-300 text-gray-900 text-xs" name="telefono" id="telefono" [(ngModel)]="empresa.telefono"
-                type="text">
+            <input class="rounded-lg h-9 border-gray-300 text-gray-900 text-xs" name="telefono" id="telefono"
+                [(ngModel)]="empresa.telefono" type="text">
         </div>
         <div class="flex flex-col gap-1 w-full">
             <label class="text-xs" for="telefono_fijo">Teléfono fijo </label>
-            <input class="rounded-lg h-9 border-gray-300 text-gray-900 text-xs" name="telefono_fijo" id="telefono_fijo" [(ngModel)]="empresa.telefono_fijo"
-                type="text">
+            <input class="rounded-lg h-9 border-gray-300 text-gray-900 text-xs" name="telefono_fijo" id="telefono_fijo"
+                [(ngModel)]="empresa.telefono_fijo" type="text">
         </div>
     </div>
 
     <div class="flex flex-col gap-1 w-full">
         <label class="text-xs" for="referencia">Referencia</label>
-        <input class="rounded-lg h-9 border-gray-300 text-gray-900 text-xs" name="referencia" id="referencia" [(ngModel)]="empresa.referencia"
-            type="text">
+        <input class="rounded-lg h-9 border-gray-300 text-gray-900 text-xs" name="referencia" id="referencia"
+            [(ngModel)]="empresa.referencia" type="text">
     </div>
 
     <div class="flex flex-col w-full">
@@ -52,16 +53,16 @@ Mirkooooo, el skeleon :v
                 <option value="8">8 am</option>
                 <option value="9">9 am</option>
                 <option value="10">10 am</option>
-              </select>
+            </select>
 
-              <select name="hora_fin" id="hora_fin" [(ngModel)]="empresa.hora_fin">
+            <select name="hora_fin" id="hora_fin" [(ngModel)]="empresa.hora_fin">
                 <option value="19">7 pm</option>
                 <option value="20">8 pm</option>
                 <option value="21">9 pm</option>
                 <option value="22">10 pm</option>
                 <option value="23">11 pm</option>
                 <option value="24">00 am</option>
-              </select>
+            </select>
 
             <!-- <input
                 class="text-xs w-full rounded-lg rounded-l-none border-l-transparent h-9 border-gray-300 text-gray-900"
@@ -71,28 +72,33 @@ Mirkooooo, el skeleon :v
 
     <div class="flex">
         <div class="flex items-center me-4">
-            <input type="checkbox" value="" id="iluminacion" [(ngModel)]="caracteristicas.iluminacion" name="iluminacion"
-                class="size-4 text-forestGreen-500 bg-white-100 border-forestGreen-500 rounded" (change)="actualizar_caracteristicas()">
+            <input type="checkbox" value="" id="iluminacion" [(ngModel)]="caracteristicas.iluminacion"
+                name="iluminacion" class="size-4 text-forestGreen-500 bg-white-100 border-forestGreen-500 rounded"
+                (change)="actualizar_caracteristicas()">
             <label for="iluminacion" class="ms-2 text-sm font-medium text-gray-900">Iluminación</label>
         </div>
         <div class="flex items-center me-4">
             <input type="checkbox" value="" id="techado" [(ngModel)]="caracteristicas.techado" name="techado"
-                class="size-4 text-forestGreen-500 bg-white-100 border-forestGreen-500 rounded" (change)="actualizar_caracteristicas()">
+                class="size-4 text-forestGreen-500 bg-white-100 border-forestGreen-500 rounded"
+                (change)="actualizar_caracteristicas()">
             <label for="techado" class="ms-2 text-sm font-medium text-gray-900">Techado</label>
         </div>
         <div class="flex items-center me-4">
             <input type="checkbox" value="" id="garaje" [(ngModel)]="caracteristicas.garaje" name="garaje"
-                class="size-4 text-forestGreen-500 bg-white-100 border-forestGreen-500 rounded" (change)="actualizar_caracteristicas()">
+                class="size-4 text-forestGreen-500 bg-white-100 border-forestGreen-500 rounded"
+                (change)="actualizar_caracteristicas()">
             <label for="garaje" class="ms-2 text-sm font-medium text-gray-900">Garaje</label>
         </div>
         <div class="flex items-center me-4">
-            <input type="checkbox" value="" id="canchas_futsal" [(ngModel)]="caracteristicas.canchas_futsal" name="canchas_futsal"
-                class="size-4 text-forestGreen-500 bg-white-100 border-forestGreen-500 rounded" (change)="actualizar_caracteristicas()">
+            <input type="checkbox" value="" id="canchas_futsal" [(ngModel)]="caracteristicas.canchas_futsal"
+                name="canchas_futsal" class="size-4 text-forestGreen-500 bg-white-100 border-forestGreen-500 rounded"
+                (change)="actualizar_caracteristicas()">
             <label for="canchas_futsal" class="ms-2 text-sm font-medium text-gray-900">Canchas de futbol</label>
         </div>
         <div class="flex items-center me-4">
-            <input type="checkbox" value="" id="canchas_voley" [(ngModel)]="caracteristicas.canchas_voley" name="canchas_voley"
-                class="size-4 text-forestGreen-500 bg-white-100 border-forestGreen-500 rounded" (change)="actualizar_caracteristicas()">
+            <input type="checkbox" value="" id="canchas_voley" [(ngModel)]="caracteristicas.canchas_voley"
+                name="canchas_voley" class="size-4 text-forestGreen-500 bg-white-100 border-forestGreen-500 rounded"
+                (change)="actualizar_caracteristicas()">
             <label for="canchas_voley" class="ms-2 text-sm font-medium text-gray-900">Canchas de voley</label>
         </div>
 
@@ -111,16 +117,15 @@ Mirkooooo, el skeleon :v
         </svg>
     </button>
 
-    <button
+    <button (click)="changeUpdatepass()"
         class="flex font-semibold items-center justify-center  border border-forestGreen-500 h-10 w-1/2  rounded-lg self-center">
-        Actualizar contraseña
+        @if (!showUpdatePass) {
+            Actualizar contraseña
+        }
+        @if (showUpdatePass) {
+            Ocultar
+        }
     </button>
-
-
-
-
-
-
 
 </div>
 <div class="hidden p-4 rounded-lg bg-gray-50 dark:bg-gray-800" id="styled-contacts1" role="tabpanel"
@@ -132,4 +137,8 @@ Mirkooooo, el skeleon :v
         and styling.
     </p>
 </div>
+
+@if (showUpdatePass) {
+<app-password></app-password>
+}
 }
