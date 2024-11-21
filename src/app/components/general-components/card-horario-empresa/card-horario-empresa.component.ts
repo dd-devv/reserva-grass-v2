@@ -34,6 +34,7 @@ export class CardHorarioEmpresaComponent implements OnInit, AfterViewInit {
   public nombre_cliente = '';
   public telefono_cliente = '';
   public reservacion: any = {};
+  public load_reserva = true;
 
   public url_socket = GLOBAL.url_socket;
   private socket: Socket;
@@ -164,9 +165,13 @@ export class CardHorarioEmpresaComponent implements OnInit, AfterViewInit {
   }
 
   obtener_reservacion(id: string) {
+    this.load_reserva = true;
     this._userService.obtener_reservacion_empresa(id, this.token).subscribe({
       next: (res) => {
         this.reservacion = res.data;
+        this.load_reserva = false;
+        console.log(this.reservacion);
+        
       },
       error: (err) => {
         this.reservacion = {};
