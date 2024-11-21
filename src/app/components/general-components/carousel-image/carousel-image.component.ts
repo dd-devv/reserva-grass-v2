@@ -57,10 +57,10 @@ export class CarouselImageComponent implements OnInit, AfterViewInit, OnDestroy 
 
       const options: CarouselOptions = {
         defaultPosition: 0,
-        interval: 3000,
+        interval: 4500,
         indicators: {
           activeClasses: 'bg-red-800 w-6 dark:bg-red-800',
-          inactiveClasses: 'bg-red-400/50 dark:bg-red-800/50 hover:bg-gray-400',
+          inactiveClasses: 'bg-red-400/50 dark:bg-red-800/50 hover:bg-red-400',
           items: this.images.map(img => ({
             position: img.id - 1,
             el: document.getElementById(`carousel-indicator-${img.id}`) as HTMLElement

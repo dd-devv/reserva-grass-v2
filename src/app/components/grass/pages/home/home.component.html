@@ -1,10 +1,13 @@
 
-<div>
+<div class="flex items-center justify-center gap-4 lg:gap-8 pb-4">
     @if (!load_data) {}
     @for (cancha of canchas; track $index) {
-    <input type="radio" [id]="cancha._id" name="contact" [value]="cancha._id" [checked]="cancha._id === id_cancha"
-    (change)="onRadioChange(cancha.tipo, cancha._id)" />
-    <label [for]="cancha._id"> {{cancha.nombre}} </label>
+        <div>
+            <input class="size-5" type="radio" [id]="cancha._id" name="contact" [value]="cancha._id" [checked]="cancha._id === id_cancha"
+            (change)="onRadioChange(cancha.tipo, cancha._id)" />
+            <label [for]="cancha._id"> {{cancha.nombre}} </label>
+        </div>
+    
     }
 </div>
 
