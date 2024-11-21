@@ -170,8 +170,6 @@ export class CardHorarioEmpresaComponent implements OnInit, AfterViewInit {
       next: (res) => {
         this.reservacion = res.data;
         this.load_reserva = false;
-        console.log(this.reservacion);
-        
       },
       error: (err) => {
         this.reservacion = {};

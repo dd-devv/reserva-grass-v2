@@ -60,6 +60,9 @@ export class HomeComponent implements OnInit {
 
   ahora: Date = new Date();
 
+  public url_socket = GLOBAL.url_socket;
+  private socket: Socket;
+
   constructor(
     private _userService: UserService,
     private _title: Title,
@@ -69,6 +72,11 @@ export class HomeComponent implements OnInit {
     this.id = localStorage.getItem('_id') || sessionStorage.getItem('_id');
     this.url = GLOBAL.url;
 
+    this.socket = io(GLOBAL.url_socket, {
+      path: '/socket.io'
+    });
+    this.socket.on('connect', () => {
+    });
   }
 
   ngOnInit(): void {
@@ -76,6 +84,10 @@ export class HomeComponent implements OnInit {
     this.init_chart();
     this.init_data();
     this.inicializarBotonesHoras();
+
+    this.socket.on('mostrar-reservas-user', () => {
+      this.init_data();
+    });
   }
 
   init_data() {

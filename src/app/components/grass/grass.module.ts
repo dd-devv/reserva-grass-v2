@@ -17,6 +17,7 @@ import { AyudaComponent } from './pages/ayuda/ayuda.component';
 import { ImageCropperModule } from 'ngx-image-cropper';
 import { GeneralComponentsModule } from "../general-components/general-components.module";
 import { HomeContainerComponent } from './pages/home-container/home-container.component';
+import { FormsModule } from '@angular/forms';
 
 
 @NgModule({
@@ -39,7 +40,8 @@ import { HomeContainerComponent } from './pages/home-container/home-container.co
     CommonModule,
     GrassRoutingModule,
     ImageCropperModule,
-    GeneralComponentsModule
+    GeneralComponentsModule,
+    FormsModule
 ]
 })
 export class GrassModule { }
