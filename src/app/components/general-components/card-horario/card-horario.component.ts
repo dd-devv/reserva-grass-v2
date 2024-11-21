@@ -88,7 +88,10 @@ export class CardHorarioComponent implements OnInit, AfterViewInit {
         minDate: this.fechaMinima,
         maxDate: this.fechaMaxima,
         autohide: true,
-        format: 'mm/dd/yyyy',
+        format: 'dd/mm/yyyy',
+        title: "prueba",
+        autoSelectToday: 1
+
       };
 
       this.datepicker = new Datepicker(targetEl, options);
@@ -157,7 +160,7 @@ export class CardHorarioComponent implements OnInit, AfterViewInit {
     const mes = (fecha.getMonth() + 1).toString().padStart(2, '0');
     const dia = fecha.getDate().toString().padStart(2, '0');
     const año = fecha.getFullYear();
-    return `${mes}/${dia}/${año}`;
+    return `${dia}/${mes}/${año}`;
   }
 
   // Si los datos cambian después de la carga inicial
