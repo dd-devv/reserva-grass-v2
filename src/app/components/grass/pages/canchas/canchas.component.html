@@ -4,6 +4,84 @@
 
 <!-- CANCHAS -->
  @if (!load_data) {
+    <div class="w-full  grid grid-cols-1 md:grid-cols-2 justify-center items-center place-content-center place-items-center gap-4 py-2">
+        <!-- INICIO FUTBOL -->
+       <div class="p-2 space-y-2 w-full lg:min-w-lg max-w-lg rounded-lg border border-gray-200 bg-white ">
+           <div class="flex justify-center">
+               <p class="font-bold text-center skeleton-title"> item.nombre </p>
+           </div>
+           <div >
+               <p class="text-xs mb-5 skeleton-1">.</p>
+            </div>
+           <div class="flex items-center w-full">
+               <div class="space-y-2 w-full">
+                   <p class="text-xs font-semibold skeleton">Medidas:  </p>
+                   <p class="text-xs font-semibold skeleton-text-1">Precio dia: </p>
+                   <p class="text-xs font-semibold skeleton">Precio noche: </p>
+                   <p class="text-xs font-semibold skeleton-text-2">Hora noche: </p>
+               </div>
+               <!-- canchas.component.html -->
+               <div class="p-4  lg:p-3 mx-auto w-full max-w-md h-28 skeleton-img">
+                   <!-- <app-carousel-image [galeria]="item?.galeria"></app-carousel-image> -->
+               </div>
+           </div>
+           <div class="flex gap-2 md:gap-4 justify-between w-full">
+               <button
+                   class="flex justify-between items-center px-2 py-1 w-full text-xs font-medium rounded-lg h-[26px]  bg-slate-50 skeleton-button">
+               </button>
+               <button
+                   class="flex justify-between items-center px-2 py-1 w-full text-xs font-medium rounded-lg  bg-slate-50 skeleton-button">
+   
+               </button>
+               <button
+                   class="flex justify-between items-center px-2 py-1 w-full text-xs font-medium rounded-lg border  bg-slate-50 text-nowrap skeleton-button">
+               </button>
+           </div>
+   
+   
+       </div>
+        <!-- FIN FUTBOL -->
+
+         <!-- INICIO VOLEY -->
+   
+         <div class="p-2 space-y-2 w-full lg:min-w-lg max-w-lg rounded-lg border border-gray-200 bg-white ">
+            <div class="flex justify-center">
+                <p class="font-bold text-center skeleton-title"> item.nombre </p>
+            </div>
+            <div >
+                <p class="text-xs mb-5 skeleton-1">.</p>
+             </div>
+            <div class="flex items-center w-full">
+                <div class="space-y-2 w-full">
+                    <p class="text-xs font-semibold skeleton">Medidas:  </p>
+                    <p class="text-xs font-semibold skeleton-text-1">Precio dia: </p>
+                    <p class="text-xs font-semibold skeleton">Precio noche: </p>
+                    <p class="text-xs font-semibold skeleton-text-2">Hora noche: </p>
+                </div>
+                <!-- canchas.component.html -->
+                <div class="p-4  lg:p-3 mx-auto w-full max-w-md h-28 skeleton-img">
+                    <!-- <app-carousel-image [galeria]="item?.galeria"></app-carousel-image> -->
+                </div>
+            </div>
+            <div class="flex gap-2 md:gap-4 justify-between w-full">
+                <button
+                    class="flex justify-between items-center px-2 py-1 w-full text-xs font-medium rounded-lg h-[26px]  bg-slate-50 skeleton-button">
+                </button>
+                <button
+                    class="flex justify-between items-center px-2 py-1 w-full text-xs font-medium rounded-lg  bg-slate-50 skeleton-button">
+    
+                </button>
+                <button
+                    class="flex justify-between items-center px-2 py-1 w-full text-xs font-medium rounded-lg border  bg-slate-50 text-nowrap skeleton-button">
+                </button>
+            </div>
+    
+    
+        </div>
+       <!-- FIN VOLEY -->
+       
+   </div>
+   
     @for (item of canchas; track $index) {
         <div class="w-full  grid grid-cols-1 md:grid-cols-2 justify-center items-center place-content-center place-items-center gap-4 py-2">
              <!-- INICIO FUTBOL -->
