@@ -18,6 +18,7 @@ import { ImageCropperModule } from 'ngx-image-cropper';
 import { GeneralComponentsModule } from "../general-components/general-components.module";
 import { HomeContainerComponent } from './pages/home-container/home-container.component';
 import { FormsModule } from '@angular/forms';
+import { PasswordComponent } from './pages/datos/password/password.component';
 
 
 @NgModule({
@@ -34,7 +35,8 @@ import { FormsModule } from '@angular/forms';
     ClientesComponent,
     ContactoComponent,
     AyudaComponent,
-    HomeContainerComponent
+    HomeContainerComponent,
+    PasswordComponent
   ],
   imports: [
     CommonModule,
