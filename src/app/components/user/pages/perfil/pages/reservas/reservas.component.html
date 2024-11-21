@@ -378,13 +378,14 @@
 
   @for (reserva of reservaciones_pendientes; track $index) {
   <!-- PENDIENTE -->
-  <div class="flex flex-col  gap-1 rounded-lg   h-fit max-w-md md:max-w-xl ">
+  <div class="flex flex-col items-center  gap-1 rounded-lg   h-fit w-full ">
     <p class="text-center text-orange-400 text-xs ">
       Pendiente de confirmación, quedan <app-countdown-timer [startDate]="reserva.createdAt"></app-countdown-timer>
       para su eliminación automatica
     </p>
-    <div
-      class="grid grid-cols-[32px_repeat(2,1fr)] auto-cols-min grid-rows-5 rounded-lg border border-orange-400 w-full max-w-md md:max-w-xl h-[175px] md:h-[190px]">
+    <div class="flex gap-y-4 rounded-lg w-full justify-center  h-fit min-w-lg max-w-lg">
+      <div
+      class="grid grid-cols-[32px_repeat(4,1fr)] auto-cols-min grid-rows-5 rounded-lg border border-orange-500 w-full  h-[175px] md:h-[190px]">
 
       <div
         class="flex bg-orange-100 border-b-2 border-dotted border-orange-400  flex-col rounded-t-lg col-span-5 w-full h-11  px-2 py-1 ">
@@ -466,6 +467,9 @@
 
     </div>
 
+
+    </div>
+    
     @if (reservaciones_pendientes.length >= 1) {
     <!-- MODAL -->
 
