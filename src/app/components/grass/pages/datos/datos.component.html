@@ -41,13 +41,13 @@ Mirkooooo, el skeleon :v
             [(ngModel)]="empresa.referencia" type="text">
     </div>
 
-    <div class="flex flex-col w-full">
+    <div class="flex flex-col w-full ">
         <label class="text-xs" for="hora_inicio">Horario de atención</label>
         <div class="flex w-full">
             <!-- <input class="text-xs w-full rounded-lg rounded-r-none border-r-inherit h-9 border-gray-300 text-gray-900"
             name="hora_inicio" id="hora_inicio" [(ngModel)]="empresa.hora_inicio" type="text"> -->
 
-            <select name="hora_inicio" id="hora_inicio" [(ngModel)]="empresa.hora_inicio">
+            <select class="rounded-l-lg h-9 border-gray-300 text-gray-900 text-xs w-full" name="hora_inicio" id="hora_inicio" [(ngModel)]="empresa.hora_inicio">
                 <option value="6">6 am</option>
                 <option value="7">7 am</option>
                 <option value="8">8 am</option>
@@ -55,7 +55,7 @@ Mirkooooo, el skeleon :v
                 <option value="10">10 am</option>
             </select>
 
-            <select name="hora_fin" id="hora_fin" [(ngModel)]="empresa.hora_fin">
+            <select class="rounded-r-lg h-9 border-l-transparent border-gray-300 text-gray-900 text-xs w-full" name="hora_fin" id="hora_fin" [(ngModel)]="empresa.hora_fin">
                 <option value="19">7 pm</option>
                 <option value="20">8 pm</option>
                 <option value="21">9 pm</option>
@@ -70,7 +70,7 @@ Mirkooooo, el skeleon :v
         </div>
     </div>
 
-    <div class="flex">
+    <div class="flex justify-center">
         <div class="flex items-center me-4">
             <input type="checkbox" value="" id="iluminacion" [(ngModel)]="caracteristicas.iluminacion"
                 name="iluminacion" class="size-4 text-forestGreen-500 bg-white-100 border-forestGreen-500 rounded"
@@ -103,39 +103,32 @@ Mirkooooo, el skeleon :v
         </div>
 
     </div>
-
-
-
-
+<div class="flex gap-4">
     <button (click)="actualizar()"
-        class="flex font-semibold items-center justify-center text-white bg-forestGreen-500 h-10 w-1/2  rounded-lg self-center">
-        Actualizar datos
-        <svg width="25" height="24" viewBox="0 0 25 24" fill="none" xmlns="http://www.w3.org/2000/svg">
-            <path
-                d="M21.5 12.002C21.5 16.9725 17.4706 21.002 12.5 21.002C7.52944 21.002 3.5 16.9725 3.5 12.002C3.5 7.03139 7.52944 3.00195 12.5 3.00195C13.9121 3.00195 15.2482 3.32714 16.4375 3.90672M19.8125 6.37695L11.9375 14.252L9.6875 12.002"
-                stroke="#F0FDF3" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" />
-        </svg>
-    </button>
+    class="flex font-semibold items-center justify-center text-white bg-forestGreen-500 h-10 w-1/2  rounded-lg self-center">
+    Actualizar datos
+    <svg width="25" height="24" viewBox="0 0 25 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+        <path
+            d="M21.5 12.002C21.5 16.9725 17.4706 21.002 12.5 21.002C7.52944 21.002 3.5 16.9725 3.5 12.002C3.5 7.03139 7.52944 3.00195 12.5 3.00195C13.9121 3.00195 15.2482 3.32714 16.4375 3.90672M19.8125 6.37695L11.9375 14.252L9.6875 12.002"
+            stroke="#F0FDF3" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" />
+    </svg>
+</button>
 
-    <button (click)="changeUpdatepass()"
-        class="flex font-semibold items-center justify-center  border border-forestGreen-500 h-10 w-1/2  rounded-lg self-center">
-        @if (!showUpdatePass) {
-            Actualizar contraseña
-        }
-        @if (showUpdatePass) {
-            Ocultar
-        }
-    </button>
-
+<button (click)="changeUpdatepass()"
+    class="flex font-semibold items-center justify-center  border border-forestGreen-500 h-10 w-1/2  rounded-lg self-center">
+    @if (!showUpdatePass) {
+        Actualizar contraseña
+    }
+    @if (showUpdatePass) {
+        Ocultar
+    }
+</button>
 </div>
-<div class="hidden p-4 rounded-lg bg-gray-50 dark:bg-gray-800" id="styled-contacts1" role="tabpanel"
-    aria-labelledby="contacts-tab">
-    <p class="text-sm text-gray-500 dark:text-gray-400">
-        This is some placeholder content the Contacts tab's associated content.
-        Clicking another tab will toggle the visibility of this one for the
-        next. The tab JavaScript swaps classes to control the content visibility
-        and styling.
-    </p>
+
+
+
+   
+
 </div>
 
 @if (showUpdatePass) {
