@@ -70,20 +70,26 @@
     <!-- Campos para cancha mixta -->
     <div class="flex flex-col gap-3" *ngIf="field_extra">
         <!-- Sección Futsal -->
-        <span class="text-xs font-medium">Detalles de futsal/fútbol</span>
-        <ng-container *ngTemplateOutlet="dimensionesPrecios; context: { 
-            prefix: '',
-            datos: cancha
-        }">
-        </ng-container>
+         <div class="border-2 rounded-lg border-dotted border-forestGreen-300 bg-forestGreen-50  gap-3 p-2">
+
+             <span class="text-xs font-medium">Detalles de futsal/fútbol</span>
+             <ng-container *ngTemplateOutlet="dimensionesPrecios; context: { 
+                 prefix: '',
+                 datos: cancha
+             }">
+             </ng-container>
+         </div>
 
         <!-- Sección Voley -->
+        <div class="border-2 rounded-lg border-dotted border-pink-300 bg-pink-50 p-2 gap-3">
+
         <span class="text-xs font-medium mt-2">Detalles de voley</span>
         <ng-container *ngTemplateOutlet="dimensionesPrecios; context: { 
             prefix: '_voley',
             datos: cancha
         }">
         </ng-container>
+        </div>
     </div>
 
     <!-- Botón de registro -->
