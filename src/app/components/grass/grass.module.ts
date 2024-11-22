@@ -19,6 +19,9 @@ import { GeneralComponentsModule } from "../general-components/general-component
 import { HomeContainerComponent } from './pages/home-container/home-container.component';
 import { FormsModule } from '@angular/forms';
 import { PasswordComponent } from './pages/datos/password/password.component';
+import { CrearComponent } from './pages/canchas/crear/crear.component';
+import { ActualizarComponent } from './pages/canchas/actualizar/actualizar.component';
+import { GaleriaComponent } from './pages/canchas/galeria/galeria.component';
 
 
 @NgModule({
@@ -36,7 +39,10 @@ import { PasswordComponent } from './pages/datos/password/password.component';
     ContactoComponent,
     AyudaComponent,
     HomeContainerComponent,
-    PasswordComponent
+    PasswordComponent,
+    CrearComponent,
+    ActualizarComponent,
+    GaleriaComponent
   ],
   imports: [
     CommonModule,

@@ -11,6 +11,9 @@ import { ReservacionesComponent } from './pages/reservaciones/reservaciones.comp
 import { ClientesComponent } from './pages/clientes/clientes.component';
 import { ContactoComponent } from './pages/contacto/contacto.component';
 import { AyudaComponent } from './pages/ayuda/ayuda.component';
+import { CrearComponent } from './pages/canchas/crear/crear.component';
+import { ActualizarComponent } from './pages/canchas/actualizar/actualizar.component';
+import { GaleriaComponent } from './pages/canchas/galeria/galeria.component';
 
 const routes: Routes = [
   {
@@ -22,6 +25,9 @@ const routes: Routes = [
         children: [
           { path: '', component: HomeComponent },
           { path: 'canchas', component: CanchasComponent },
+          { path: 'canchas/crear', component: CrearComponent },
+          { path: 'canchas/:id_cancha', component: ActualizarComponent },
+          { path: 'canchas/galeria/:id_cancha', component: GaleriaComponent },
           { path: 'datos', component: DatosComponent },
           { path: 'suscripcion', component: SuscripcionComponent },
           { path: 'cuentas', component: CuentasComponent },

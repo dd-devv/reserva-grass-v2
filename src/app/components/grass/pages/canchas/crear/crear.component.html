@@ -1,0 +1,145 @@
+<form #registroForm="ngForm" (ngSubmit)="registro(registroForm)" class="flex flex-col gap-3 w-full">
+    <!-- Título -->
+    <p class="text-xl font-semibold text-center">Registrar cancha</p>
+
+    <!-- Información básica -->
+    <div class="flex flex-col gap-3">
+        <!-- Nombre y tipo -->
+        <div class="flex gap-3 w-full">
+            <div class="flex flex-col gap-1 w-full">
+                <label class="text-xs" for="nombre">Nombre</label>
+                <input class="h-9 text-xs text-gray-900 rounded-lg border-gray-300"
+                    type="text" placeholder="P. ej. Cancha 1"
+                    id="nombre" name="nombre" [(ngModel)]="cancha.nombre" required>
+            </div>
+
+            <div class="flex flex-col gap-1 w-full">
+                <label class="text-xs" for="tipo">Tipo de cancha</label>
+                <select class="h-9 text-xs text-gray-900 rounded-lg border-gray-300"
+                    id="tipo" name="tipo" [(ngModel)]="cancha.tipo" 
+                    (change)="select_tipo()" required>
+                    <option value="" disabled>Seleccione</option>
+                    <option value="Voley">Voley</option>
+                    <option value="Fútbol/Futsal">Fútbol / Futsal</option>
+                    <option value="Mixto">Mixto</option>
+                </select>
+            </div>
+        </div>
+
+        <!-- Descripción -->
+        <div class="flex flex-col gap-1">
+            <label class="text-xs" for="descripcion">Descripción</label>
+            <textarea class="w-full text-xs text-gray-900 rounded-lg border-gray-300" 
+                rows="3" placeholder="Escriba la descripción"
+                id="descripcion" name="descripcion" [(ngModel)]="cancha.descripcion">
+            </textarea>
+        </div>
+
+        <!-- Precios y hora -->
+        <div class="flex gap-3 w-full">
+            <div class="flex flex-col gap-1 w-full">
+                <label class="text-xs" for="precio_reservacion">Precio de reserva</label>
+                <input class="h-9 text-xs text-gray-900 rounded-lg border-gray-300"
+                    type="number" min="1" placeholder="Ingrese precio"
+                    id="precio_reservacion" name="precio_reservacion" 
+                    [(ngModel)]="cancha.precio_reservacion" required>
+            </div>
+
+            <div class="flex flex-col gap-1 w-full">
+                <label class="text-xs" for="hora_noche">Hora de inicio noche</label>
+                <select class="h-9 text-xs text-gray-900 rounded-lg border-gray-300"
+                    id="hora_noche" name="hora_noche" [(ngModel)]="cancha.hora_noche" required>
+                    <option value="" disabled>Seleccione</option>
+                    <option *ngFor="let hora of [5,6,7]" [value]="hora+12">
+                        {{hora}} pm
+                    </option>
+                </select>
+            </div>
+        </div>
+    </div>
+
+    <!-- Campos para cancha simple (Voley o Futsal) -->
+    <div class="flex flex-col gap-3" *ngIf="!field_extra">
+        <ng-container *ngTemplateOutlet="dimensionesPrecios; context: { 
+            prefix: '',
+            datos: cancha
+        }">
+        </ng-container>
+    </div>
+
+    <!-- Campos para cancha mixta -->
+    <div class="flex flex-col gap-3" *ngIf="field_extra">
+        <!-- Sección Futsal -->
+        <span class="text-xs font-medium">Detalles de futsal/fútbol</span>
+        <ng-container *ngTemplateOutlet="dimensionesPrecios; context: { 
+            prefix: '',
+            datos: cancha
+        }">
+        </ng-container>
+
+        <!-- Sección Voley -->
+        <span class="text-xs font-medium mt-2">Detalles de voley</span>
+        <ng-container *ngTemplateOutlet="dimensionesPrecios; context: { 
+            prefix: '_voley',
+            datos: cancha
+        }">
+        </ng-container>
+    </div>
+
+    <!-- Botón de registro -->
+    <button *ngIf="!load_btn_crear" 
+        class="flex justify-center items-center self-center w-1/2 h-10 text-white rounded-lg bg-forestGreen-500"
+        type="submit" [disabled]="registroForm.invalid">
+        Registrar
+        <svg class="ml-2" width="25" height="24" viewBox="0 0 25 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+            <path d="M13.5 6.00195L19.5 12.002M19.5 12.002L13.5 18.002M19.5 12.002H5.5" 
+                stroke="#F0FDF3" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" />
+        </svg>
+    </button>
+
+    <button *ngIf="load_btn_crear" 
+        class="flex justify-center items-center self-center w-1/2 h-10 text-white rounded-lg bg-forestGreen-500"
+        type="button" disabled>
+        <span class="spinner-grow spinner-grow-sm"></span>
+        <span class="text-xs ml-2">Creando...</span>
+    </button>
+</form>
+
+<!-- Template para dimensiones y precios -->
+<ng-template #dimensionesPrecios let-prefix="prefix" let-datos="datos">
+    <div class="flex gap-3 w-full">
+        <div class="flex flex-col gap-1 w-full">
+            <label class="text-xs" [for]="'largo' + prefix">Largo (m)</label>
+            <input class="h-9 text-xs text-gray-900 rounded-lg border-gray-300"
+                type="number" min="1"
+                [id]="'largo' + prefix" [name]="'largo' + prefix" 
+                [(ngModel)]="datos['largo' + prefix]" required>
+        </div>
+
+        <div class="flex flex-col gap-1 w-full">
+            <label class="text-xs" [for]="'ancho' + prefix">Ancho (m)</label>
+            <input class="h-9 text-xs text-gray-900 rounded-lg border-gray-300"
+                type="number" min="1"
+                [id]="'ancho' + prefix" [name]="'ancho' + prefix" 
+                [(ngModel)]="datos['ancho' + prefix]" required>
+        </div>
+    </div>
+
+    <div class="flex gap-3 w-full">
+        <div class="flex flex-col gap-1 w-full">
+            <label class="text-xs" [for]="'precio_dia' + prefix">Precio día (S/)</label>
+            <input class="h-9 text-xs text-gray-900 rounded-lg border-gray-300"
+                type="number" min="1"
+                [id]="'precio_dia' + prefix" [name]="'precio_dia' + prefix" 
+                [(ngModel)]="datos['precio_dia' + prefix]" required>
+        </div>
+
+        <div class="flex flex-col gap-1 w-full">
+            <label class="text-xs" [for]="'precio_noche' + prefix">Precio noche (S/)</label>
+            <input class="h-9 text-xs text-gray-900 rounded-lg border-gray-300"
+                type="number" min="1"
+                [id]="'precio_noche' + prefix" [name]="'precio_noche' + prefix" 
+                [(ngModel)]="datos['precio_noche' + prefix]" required>
+        </div>
+    </div>
+</ng-template>

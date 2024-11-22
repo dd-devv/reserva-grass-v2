@@ -1,6 +1,9 @@
 
-
-<!-- DINO AQUÍ LE METES LA CONDICIONAL PARA QUE CUANDO SOLO HAYA UNA CANCHA, LA CLASE SEA grid-cols-1 -->
+<div class="w-full flex justify-center mt-8">
+    <button [routerLink]="['/grass/canchas/crear']" class="w-full max-w-lg self-center place-self-center place-content-center h-9 font-semibold text-white rounded-md bg-chambray-700 hover:scale-105 hover:duration-75">
+        Agregar cancha
+    </button>
+</div>
 
 <!-- CANCHAS -->
  @if (load_data) {
@@ -106,7 +109,7 @@
                     </div>
                 </div>
                 <div class="flex gap-2 md:gap-4 justify-between w-full">
-                    <button
+                    <button [routerLink]="['/grass/canchas', item._id]"
                         class="flex justify-between items-center px-2 py-1 w-full text-xs font-medium rounded-lg border border-forestGreen-500 bg-slate-50"
                         [ngClass]="{'border-pink-500': item.tipo === 'Voley'}"
                         >
@@ -133,91 +136,3 @@
         </div>
     }
  }
-   
-<div class="w-full flex justify-center mt-8">
-    <button class="w-full max-w-lg self-center place-self-center place-content-center h-9 font-semibold text-white rounded-md bg-chambray-700 hover:scale-105 hover:duration-75">
-        Ver anteriores
-    </button>
-</div>
-  
-
-
-<!-- REGISTRAR CANCHA -->
-<!-- 
-<div class="flex flex-col gap-3 w-full">
-    <p class="text-xl font-semibold text-center">Registrar cancha</p>
-    <div class="flex flex-col gap-1">
-        <label class="text-xs" for="descripcion">Descripción</label>
-        <textarea class="w-full text-xs text-gray-900 rounded-lg border-gray-300" name="descripcion" id="descripcion"
-            rows="3" placeholder="Escriba la descripción">a</textarea>
-    </div>
-    <div class="flex gap-3 w-full">
-        <div class="flex flex-col gap-1 w-full">
-            <label class="text-xs" for="nombre">Nombre</label>
-            <input class="h-9 text-xs text-gray-900 rounded-lg border-gray-300" name="nombre" id="nombre"
-                autocomplete="off" type="text" placeholder="Ingrese su nombre">
-        </div>
-        <div class="flex flex-col gap-1 w-full">
-            <label class="text-xs" for="tipoCancha">Tipo de cancha</label>
-            <select id="tipoCancha" class="h-9 text-xs text-gray-900 rounded-lg border-gray-300">
-                <option value="US">United States</option>
-                <option value="CA">Canada</option>
-                <option value="FR">France</option>
-                <option value="DE">Germany</option>
-            </select>
-        </div>
-    </div>
-
-    <div class="flex gap-3 w-full">
-        <div class="flex flex-col gap-1 w-full">
-            <label class="text-xs" for="precioReserva">Precio de reserva</label>
-            <input class="h-9 text-xs text-gray-900 rounded-lg border-gray-300" name="precioReserva" id="precioReserva"
-                autocomplete="off" type="text" placeholder="Ingrese precio">
-        </div>
-        <div class="flex flex-col gap-1 w-full">
-            <label class="text-xs" for="horaInicioNoche">Hora de inicio noche</label>
-            <select id="horaInicioNoche" class="h-9 text-xs text-gray-900 rounded-lg border-gray-300">
-                <option value="US">United States</option>
-                <option value="CA">Canada</option>
-                <option value="FR">France</option>
-                <option value="DE">Germany</option>
-            </select>
-        </div>
-    </div>
-
-    <div class="flex gap-3 w-full">
-        <div class="flex flex-col gap-1 w-full">
-            <label class="text-xs" for="largo">Largo (m)</label>
-            <input class="h-9 text-xs text-gray-900 rounded-lg border-gray-300" name="largo" id="largo" type="number"
-                placeholder="Ancho">
-        </div>
-        <div class="flex flex-col gap-1 w-full">
-            <label class="text-xs" for="ancho">Ancho (m)</label>
-            <input class="h-9 text-xs text-gray-900 rounded-lg border-gray-300" name="ancho" id="ancho" type="number"
-                placeholder="Largo">
-        </div>
-    </div>
-
-    <div class="flex gap-3 w-full">
-        <div class="flex flex-col gap-1 w-full">
-            <label class="text-xs" for="precioDia">Precio día (S/)</label>
-            <input class="h-9 text-xs text-gray-900 rounded-lg border-gray-300" name="precioDia" id="precioDia"
-                type="number" placeholder="Ingrese precio">
-        </div>
-        <div class="flex flex-col gap-1 w-full">
-            <label class="text-xs" for="precioNoche">Precio noche (S/)</label>
-            <input class="h-9 text-xs text-gray-900 rounded-lg border-gray-300" name="precioNoche" id="precioNoche"
-                type="number" placeholder="Ingrese precio">
-        </div>
-    </div>
-
-    <button class="flex justify-center items-center self-center w-1/2 h-10 text-white rounded-lg bg-forestGreen-500">
-        Registrar
-        <svg width="25" height="24" viewBox="0 0 25 24" fill="none" xmlns="http://www.w3.org/2000/svg">
-            <path d="M13.5 6.00195L19.5 12.002M19.5 12.002L13.5 18.002M19.5 12.002H5.5" stroke="#F0FDF3"
-                stroke-width="2" stroke-linecap="round" stroke-linejoin="round" />
-        </svg>
-
-    </button>
-
-</div> -->
