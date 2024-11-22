@@ -1,1 +1,177 @@
-<p>actualizar works!</p>
+<!-- Título -->
+<p class="text-xl font-semibold text-center">Registrar cancha</p>
+
+    <!-- Descripción -->
+    <div class="flex flex-col gap-1 mb-3">
+        <label for="descripcion" class="text-xs">Descripción de la cancha</label>
+        <textarea class="w-full text-xs text-gray-900 rounded-lg border-gray-300" id="descripcion" name="descripcion"
+            [(ngModel)]="cancha.descripcion" rows="3" placeholder="Ingrese una descripción (opcional)">
+        </textarea>
+    </div>
+
+    <div class="flex flex-col gap-3">
+        <!-- Tipo y Precio -->
+        <div class="flex gap-3 w-full">
+            <!-- Tipo de cancha -->
+            <div class="flex flex-col gap-1 w-full">
+                <label for="tipo" class="text-xs">Tipo de cancha</label>
+                <select class="h-9 text-xs text-gray-900 rounded-lg border-gray-300 cursor-not-allowed" id="tipo" name="tipo"
+                    [(ngModel)]="cancha.tipo" disabled>
+                    <option selected disabled value="">Seleccione</option>
+                    <option value="Voley">Voley</option>
+                    <option value="Fútbol/Futsal">Fútbol / Futsal</option>
+                    <option value="Mixto">Mixto</option>
+                </select>
+            </div>
+
+            <!-- Precio reservación -->
+            <div class="flex flex-col gap-1 w-full">
+                <label for="precio_reservacion" class="text-xs">
+                    Precio de reservación * hora (soles)
+                </label>
+                <input type="number" class="h-9 text-xs text-gray-900 rounded-lg border-gray-300" min="1"
+                    id="precio_reservacion" name="precio_reservacion" [(ngModel)]="cancha.precio_reservacion" required
+                    placeholder="0">
+            </div>
+        </div>
+
+        <!-- Campos para cancha simple -->
+        <ng-container *ngIf="!field_extra">
+            <div class="flex gap-3 w-full">
+                <div class="flex flex-col gap-1 w-full">
+                    <label for="largo" class="text-xs">Largo</label>
+                    <input type="number" class="h-9 text-xs text-gray-900 rounded-lg border-gray-300" min="0" id="largo"
+                        name="largo" [(ngModel)]="cancha.largo">
+                </div>
+
+                <div class="flex flex-col gap-1 w-full">
+                    <label for="ancho" class="text-xs">Ancho</label>
+                    <input type="number" class="h-9 text-xs text-gray-900 rounded-lg border-gray-300" min="0" id="ancho"
+                        name="ancho" [(ngModel)]="cancha.ancho">
+                </div>
+            </div>
+        </ng-container>
+
+        <!-- Campos para cancha mixta -->
+        <ng-container *ngIf="field_extra">
+            <!-- Dimensiones Futsal -->
+            <div class="flex gap-3 w-full">
+                <div class="flex flex-col gap-1 w-full">
+                    <label for="largo" class="text-xs">
+                        Largo <em class="text-blue-600">futsal</em>
+                    </label>
+                    <input type="number" class="h-9 text-xs text-gray-900 rounded-lg border-gray-300" min="0" id="largo"
+                        name="largo" [(ngModel)]="cancha.largo">
+                </div>
+
+                <div class="flex flex-col gap-1 w-full">
+                    <label for="ancho" class="text-xs">
+                        Ancho <em class="text-blue-600">futsal</em>
+                    </label>
+                    <input type="number" class="h-9 text-xs text-gray-900 rounded-lg border-gray-300" min="0" id="ancho"
+                        name="ancho" [(ngModel)]="cancha.ancho">
+                </div>
+            </div>
+
+            <!-- Dimensiones Voley -->
+            <div class="flex gap-3 w-full">
+                <div class="flex flex-col gap-1 w-full">
+                    <label for="largo_voley" class="text-xs">
+                        Largo <em class="text-green-600">voley</em>
+                    </label>
+                    <input type="number" class="h-9 text-xs text-gray-900 rounded-lg border-gray-300" min="0"
+                        id="largo_voley" name="largo_voley" [(ngModel)]="cancha.largo_voley">
+                </div>
+
+                <div class="flex flex-col gap-1 w-full">
+                    <label for="ancho_voley" class="text-xs">
+                        Ancho <em class="text-green-600">voley</em>
+                    </label>
+                    <input type="number" class="h-9 text-xs text-gray-900 rounded-lg border-gray-300" min="0"
+                        id="ancho_voley" name="ancho_voley" [(ngModel)]="cancha.ancho_voley">
+                </div>
+            </div>
+        </ng-container>
+
+        <!-- Precios cancha simple -->
+        <ng-container *ngIf="!field_extra">
+            <div class="flex gap-3 w-full">
+                <div class="flex flex-col gap-1 w-full">
+                    <label for="precio_dia" class="text-xs">
+                        Precio de día (SOLES)
+                    </label>
+                    <input type="number" class="h-9 text-xs text-gray-900 rounded-lg border-gray-300" min="0"
+                        id="precio_dia" name="precio_dia" [(ngModel)]="cancha.precio_dia">
+                </div>
+
+                <div class="flex flex-col gap-1 w-full">
+                    <label for="precio_noche" class="text-xs">
+                        Precio de noche (SOLES)
+                    </label>
+                    <input type="number" class="h-9 text-xs text-gray-900 rounded-lg border-gray-300" min="0"
+                        id="precio_noche" name="precio_noche" [(ngModel)]="cancha.precio_noche">
+                </div>
+            </div>
+        </ng-container>
+
+        <!-- Precios cancha mixta -->
+        <ng-container *ngIf="field_extra">
+            <!-- Precios Futsal -->
+            <div class="flex gap-3 w-full">
+                <div class="flex flex-col gap-1 w-full">
+                    <label for="precio_dia" class="text-xs">
+                        Precio de día <em class="text-blue-600">futsal</em> (SOLES)
+                    </label>
+                    <input type="number" class="h-9 text-xs text-gray-900 rounded-lg border-gray-300" min="0"
+                        id="precio_dia" name="precio_dia" [(ngModel)]="cancha.precio_dia">
+                </div>
+
+                <div class="flex flex-col gap-1 w-full">
+                    <label for="precio_noche" class="text-xs">
+                        Precio de noche <em class="text-blue-600">futsal</em> (SOLES)
+                    </label>
+                    <input type="number" class="h-9 text-xs text-gray-900 rounded-lg border-gray-300" min="0"
+                        id="precio_noche" name="precio_noche" [(ngModel)]="cancha.precio_noche">
+                </div>
+            </div>
+
+            <!-- Precios Voley -->
+            <div class="flex gap-3 w-full">
+                <div class="flex flex-col gap-1 w-full">
+                    <label for="precio_dia_voley" class="text-xs">
+                        Precio de día <em class="text-green-600">voley</em> (SOLES)
+                    </label>
+                    <input type="number" class="h-9 text-xs text-gray-900 rounded-lg border-gray-300" min="0"
+                        id="precio_dia_voley" name="precio_dia_voley" [(ngModel)]="cancha.precio_dia_voley">
+                </div>
+
+                <div class="flex flex-col gap-1 w-full">
+                    <label for="precio_noche_voley" class="text-xs">
+                        Precio de noche <em class="text-green-600">voley</em> (SOLES)
+                    </label>
+                    <input type="number" class="h-9 text-xs text-gray-900 rounded-lg border-gray-300" min="0"
+                        id="precio_noche_voley" name="precio_noche_voley" [(ngModel)]="cancha.precio_noche_voley">
+                </div>
+            </div>
+        </ng-container>
+    </div>
+
+    <!-- Botón de actualización -->
+    <div class="flex justify-center pt-4">
+        <button *ngIf="!load_btn_act"
+            class="flex justify-center items-center w-1/2 h-10 text-white rounded-lg bg-forestGreen-500" type="button"
+            (click)="actualizar()">
+            Actualizar
+            <svg class="ml-2" width="25" height="24" viewBox="0 0 25 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                <path d="M13.5 6.00195L19.5 12.002M19.5 12.002L13.5 18.002M19.5 12.002H5.5" stroke="#F0FDF3"
+                    stroke-width="2" stroke-linecap="round" stroke-linejoin="round" />
+            </svg>
+        </button>
+
+        <button *ngIf="load_btn_act"
+            class="flex justify-center items-center w-1/2 h-10 text-white rounded-lg bg-forestGreen-500" type="button"
+            disabled>
+            <span class="spinner-grow spinner-grow-sm"></span>
+            <span class="text-xs ml-2">Actualizando...</span>
+        </button>
+    </div>
