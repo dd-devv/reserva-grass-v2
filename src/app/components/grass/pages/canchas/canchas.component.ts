@@ -18,23 +18,23 @@ export class CanchasComponent implements OnInit, AfterViewInit, OnDestroy {
   public url;
   public token;
   public id;
-  public load_data = false;
+  public load_data = true;
   public load_btn = false;
   public load_btn_crear = false;
   public btn_crear = false;
-  public canchas : any = [];
+  public canchas: any = [];
 
 
   @ViewChild('carouselExample') carouselElement!: ElementRef;
 
   private carousel: any;
 
-  
+
   constructor(
     private _userService: UserService,
     private _title: Title,
     private _toastrService: ToastrService
-  ){
+  ) {
 
     this.token = localStorage.getItem('token') || sessionStorage.getItem('token');
     this.id = localStorage.getItem('_id') || sessionStorage.getItem('_id');
@@ -65,5 +65,17 @@ export class CanchasComponent implements OnInit, AfterViewInit, OnDestroy {
     if (this.carousel) {
       this.carousel.pause();
     }
+  }
+
+  eliminar(id: any) {
+    this.load_btn = true;
+    this._userService.eliminar_cancha_empresa(id, this.token).subscribe(
+      response => {
+        this._toastrService.success('Se eliminó con éxito', 'ELIMINADO!');
+
+        this.load_btn = false;
+        this.ngOnInit();
+      }
+    );
   }
 }
