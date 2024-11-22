@@ -70,42 +70,51 @@ Mirkooooo, el skeleon :v
         </div>
     </div>
 
-    <div class="flex justify-center">
-        <div class="flex items-center me-4">
-            <input type="checkbox" value="" id="iluminacion" [(ngModel)]="caracteristicas.iluminacion"
-                name="iluminacion" class="size-4 text-forestGreen-500 bg-white-100 border-forestGreen-500 rounded"
-                (change)="actualizar_caracteristicas()">
-            <label for="iluminacion" class="ms-2 text-sm font-medium text-gray-900">Iluminación</label>
-        </div>
-        <div class="flex items-center me-4">
-            <input type="checkbox" value="" id="techado" [(ngModel)]="caracteristicas.techado" name="techado"
-                class="size-4 text-forestGreen-500 bg-white-100 border-forestGreen-500 rounded"
-                (change)="actualizar_caracteristicas()">
-            <label for="techado" class="ms-2 text-sm font-medium text-gray-900">Techado</label>
-        </div>
-        <div class="flex items-center me-4">
-            <input type="checkbox" value="" id="garaje" [(ngModel)]="caracteristicas.garaje" name="garaje"
-                class="size-4 text-forestGreen-500 bg-white-100 border-forestGreen-500 rounded"
-                (change)="actualizar_caracteristicas()">
-            <label for="garaje" class="ms-2 text-sm font-medium text-gray-900">Garaje</label>
-        </div>
-        <div class="flex items-center me-4">
-            <input type="checkbox" value="" id="canchas_futsal" [(ngModel)]="caracteristicas.canchas_futsal"
-                name="canchas_futsal" class="size-4 text-forestGreen-500 bg-white-100 border-forestGreen-500 rounded"
-                (change)="actualizar_caracteristicas()">
-            <label for="canchas_futsal" class="ms-2 text-sm font-medium text-gray-900">Canchas de futbol</label>
-        </div>
-        <div class="flex items-center me-4">
-            <input type="checkbox" value="" id="canchas_voley" [(ngModel)]="caracteristicas.canchas_voley"
-                name="canchas_voley" class="size-4 text-forestGreen-500 bg-white-100 border-forestGreen-500 rounded"
-                (change)="actualizar_caracteristicas()">
-            <label for="canchas_voley" class="ms-2 text-sm font-medium text-gray-900">Canchas de voley</label>
-        </div>
+
+    <div class="grid grid-flow grid-row-2 md:grid-row-1 grid-cols-3 md:grid-cols-5  justify-between w-full items-center gap-3">
+
+            <div class="flex items-center md:justify-center ">
+                <input type="checkbox" value="" id="iluminacion" [(ngModel)]="caracteristicas.iluminacion"
+                    name="iluminacion" class="size-4 text-forestGreen-500 bg-white-100 border-forestGreen-500 rounded"
+                    (change)="actualizar_caracteristicas()">
+                <label for="iluminacion" class="ms-2 text-sm font-medium text-gray-900">Iluminación</label>
+            </div>
+            <div class="flex items-center md:justify-center">
+                <input type="checkbox" value="" id="techado" [(ngModel)]="caracteristicas.techado" name="techado"
+                    class="size-4 text-forestGreen-500 bg-white-100 border-forestGreen-500 rounded"
+                    (change)="actualizar_caracteristicas()">
+                <label for="techado" class="ms-2 text-sm font-medium text-gray-900">Techado</label>
+            </div>
+            <div class="flex items-center md:justify-center ">
+                <input type="checkbox" value="" id="garaje" [(ngModel)]="caracteristicas.garaje" name="garaje"
+                    class="size-4 text-forestGreen-500 bg-white-100 border-forestGreen-500 rounded"
+                    (change)="actualizar_caracteristicas()">
+                <label for="garaje" class="ms-2 text-sm font-medium text-gray-900">Garaje</label>
+            </div>
+
+            <div class="flex items-center md:justify-center ">
+                <input type="checkbox" value="" id="canchas_futsal" [(ngModel)]="caracteristicas.canchas_futsal"
+                    name="canchas_futsal" class="size-4 text-forestGreen-500 bg-white-100 border-forestGreen-500 rounded"
+                    (change)="actualizar_caracteristicas()">
+                <label for="canchas_futsal" class="ms-2 text-sm font-medium text-gray-900  text-nowrap">Fútbol</label>
+            </div>
+            <div class="flex items-center md:justify-center ">
+                <input type="checkbox" value="" id="canchas_voley" [(ngModel)]="caracteristicas.canchas_voley"
+                    name="canchas_voley" class="size-4 text-forestGreen-500 bg-white-100 border-forestGreen-500 rounded"
+                    (change)="actualizar_caracteristicas()">
+                <label for="canchas_voley" class="ms-2 text-sm font-medium text-gray-900 text-nowrap">Voley</label>
+            </div>
+
+        
+        
+       
 
     </div>
+
+   
 <div class="flex gap-4">
     <button (click)="actualizar()"
-    class="flex font-semibold items-center justify-center text-white bg-forestGreen-500 h-10 w-1/2  rounded-lg self-center">
+    class="flex font-semibold items-center justify-center text-xs text-nowrap md:text-base text-white bg-forestGreen-500 h-10 w-1/2  rounded-lg self-center">
     Actualizar datos
     <svg width="25" height="24" viewBox="0 0 25 24" fill="none" xmlns="http://www.w3.org/2000/svg">
         <path
@@ -115,7 +124,7 @@ Mirkooooo, el skeleon :v
 </button>
 
 <button (click)="changeUpdatepass()"
-    class="flex font-semibold items-center justify-center  border border-forestGreen-500 h-10 w-1/2  rounded-lg self-center">
+    class="flex font-semibold items-center justify-center text-xs text-nowrap md:text-base  border border-forestGreen-500 h-10 w-1/2  rounded-lg self-center">
     @if (!showUpdatePass) {
         Actualizar contraseña
     }
