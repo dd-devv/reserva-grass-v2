@@ -81,7 +81,7 @@
 }
 @if (!load_data) {
 <div class="w-full grid grid-cols-1 justify-center items-center place-content-center place-items-center gap-4 py-2"
-    [ngClass]="{'grid-cols-2': canchas.length >= 2}">
+    [ngClass]="{'md:grid-cols-2': canchas.length >= 2}">
     @for (item of canchas; track $index) {
 
     <!-- INICIO FUTBOL -->
