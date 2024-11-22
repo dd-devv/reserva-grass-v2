@@ -5,6 +5,7 @@ import { ToastService } from '../../../../services/toast.service';
 import { UserService } from '../../../../services/user.service';
 import { ImageCroppedEvent, LoadedImage } from 'ngx-image-cropper';
 import { v4 as uuidv4 } from 'uuid';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-portrait',
@@ -31,7 +32,8 @@ export class PortraitComponent implements OnInit {
   constructor(
     private _toastrService: ToastService,
     private _userService: UserService,
-    private sanitizer: DomSanitizer
+    private sanitizer: DomSanitizer,
+    public router: Router
   ) {
     this.token = localStorage.getItem('token') || sessionStorage.getItem('token');
     this.id = localStorage.getItem('_id') || sessionStorage.getItem('_id');
