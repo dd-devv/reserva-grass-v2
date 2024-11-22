@@ -130,15 +130,18 @@
         <!-- Modal eliminar -->
       <div id="modal-{{item._id}}" tabindex="-1" aria-hidden="true"
       class="hidden overflow-y-auto overflow-x-hidden fixed top-0 right-0 left-0 z-50 justify-center items-center w-full md:inset-0 h-[calc(100%-1rem)] max-h-full">
-      <div class="relative p-4 w-full max-w-sm max-h-full">
+      <div class="relative p-4  w-full max-w-xs max-h-full">
         <!-- Modal content -->
-        <div class="relative bg-white rounded-lg shadow dark:bg-gray-700">
+        <div class="relative  bg-white rounded-lg shadow dark:bg-gray-700 space-y-4">
           <!-- Modal body -->
-          Desea eliinar su cancha?
+           <div class="flex p-4 px-6 items-center justify-center">
+           <p class="py-3 text-center">¿Está seguro de eliminar su cancha?</p> 
+           </div>
+          
           <!-- Modal footer -->
-          <div class="font-semibold flex items-center pb-2 px-1.5 justify-between md:p-5 md:pt-0 pt-0 rounded-b">
+          <div class="font-semibold flex items-center pb-2 px-1.5 justify-center gap-x-6">
             <button [attr.data-modal-hide]="'modal-' + item._id" type="button"
-              class="py-2.5 px-5 ms-3 text-sm text-gray-900 focus:outline-none bg-white rounded-lg border border-gray-200 hover:bg-gray-100 hover:text-forestGreen-700 focus:z-10 focus:ring-4 focus:ring-gray-100">
+              class="py-2.5 px-5 text-sm text-gray-900 focus:outline-none bg-white rounded-lg border border-gray-200 hover:bg-gray-100 hover:text-forestGreen-700 focus:z-10 focus:ring-4 focus:ring-gray-100">
               Cancelar</button>
             <button [attr.data-modal-hide]="'modal-' + item._id" type="button" (click)="eliminar(item._id)"
               class="font-semibold text-white bg-red-500 hover:bg-red-600 focus:ring-4 focus:outline-none focus:ring-red-300 rounded-lg text-sm px-5 py-2.5 text-center">
