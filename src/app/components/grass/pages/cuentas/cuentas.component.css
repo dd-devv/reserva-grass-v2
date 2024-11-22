@@ -1,0 +1,55 @@
+.skeleton{
+    background-color: white;
+    min-width: 45px;
+    width: 90%;
+    max-width: 140px;
+    border-radius: 5px;
+    color: transparent;
+}
+.skeleton-text-1{
+    background-color: white;
+    min-width: 45px;
+    width: 90%;
+    max-width: 140px;
+    border-radius: 5px;
+    color: transparent;
+}
+.skeleton-text-2{
+    background-color: white;
+    min-width: 45px;
+    width: 180px;
+    max-width: 50%;
+    border-radius: 5px;
+    color: transparent;
+}
+
+.skeleton-button{
+  color: transparent;
+}
+.skeleton-img{
+  border-radius: 2px;
+}
+
+@keyframes wave {
+  0% {
+    background-position: -468px 0;
+  }
+  100% {
+    background-position: 468px 0;
+  }
+}
+.skeleton,
+.skeleton-text-1,
+.skeleton-text-2,
+.skeleton-button,
+.skeleton-img
+{
+  background-image: linear-gradient(
+    90deg,
+    #f0f0f0 0%,
+    #e0e0e0 40%,
+    #f0f0f0 100%
+  );
+  background-size: 200% 200%;
+  animation: wave 1.5s ease infinite;
+}
