@@ -1,138 +1,142 @@
+<!-- CANCHAS -->
+@if (load_data) {
+<div
+    class="w-full  grid grid-cols-1 md:grid-cols-2 justify-center items-center place-content-center place-items-center gap-4 py-2">
+    <!-- INICIO FUTBOL -->
+    <div class="p-2 space-y-2 w-full lg:min-w-lg max-w-lg rounded-lg border border-gray-200 bg-white ">
+        <div class="flex justify-center">
+            <p class="font-bold text-center skeleton-title"> item.nombre </p>
+        </div>
+        <div>
+            <p class="text-xs mb-5 skeleton-1">.</p>
+        </div>
+        <div class="flex items-center w-full">
+            <div class="space-y-2 w-full">
+                <p class="text-xs font-semibold skeleton">Medidas: </p>
+                <p class="text-xs font-semibold skeleton-text-1">Precio dia: </p>
+                <p class="text-xs font-semibold skeleton">Precio noche: </p>
+                <p class="text-xs font-semibold skeleton-text-2">Hora noche: </p>
+            </div>
+            <!-- canchas.component.html -->
+            <div class="p-4  lg:p-3 mx-auto w-full max-w-md h-28 skeleton-img">
+                <!-- <app-carousel-image [galeria]="item?.galeria"></app-carousel-image> -->
+            </div>
+        </div>
+        <div class="flex gap-2 md:gap-4 justify-between w-full">
+            <button
+                class="flex justify-between items-center px-2 py-1 w-full text-xs font-medium rounded-lg h-[26px]  bg-slate-50 skeleton-button">
+            </button>
+            <button
+                class="flex justify-between items-center px-2 py-1 w-full text-xs font-medium rounded-lg  bg-slate-50 skeleton-button">
 
+            </button>
+            <button
+                class="flex justify-between items-center px-2 py-1 w-full text-xs font-medium rounded-lg border  bg-slate-50 text-nowrap skeleton-button">
+            </button>
+        </div>
+
+
+    </div>
+    <!-- FIN FUTBOL -->
+
+    <!-- INICIO VOLEY -->
+
+    <div class="p-2 space-y-2 w-full lg:min-w-lg max-w-lg rounded-lg border border-gray-200 bg-white ">
+        <div class="flex justify-center">
+            <p class="font-bold text-center skeleton-title"> item.nombre </p>
+        </div>
+        <div>
+            <p class="text-xs mb-5 skeleton-1">.</p>
+        </div>
+        <div class="flex items-center w-full">
+            <div class="space-y-2 w-full">
+                <p class="text-xs font-semibold skeleton">Medidas: </p>
+                <p class="text-xs font-semibold skeleton-text-1">Precio dia: </p>
+                <p class="text-xs font-semibold skeleton">Precio noche: </p>
+                <p class="text-xs font-semibold skeleton-text-2">Hora noche: </p>
+            </div>
+            <!-- canchas.component.html -->
+            <div class="p-4  lg:p-3 mx-auto w-full max-w-md h-28 skeleton-img">
+                <!-- <app-carousel-image [galeria]="item?.galeria"></app-carousel-image> -->
+            </div>
+        </div>
+        <div class="flex gap-2 md:gap-4 justify-between w-full">
+            <button
+                class="flex justify-between items-center px-2 py-1 w-full text-xs font-medium rounded-lg h-[26px]  bg-slate-50 skeleton-button">
+            </button>
+            <button
+                class="flex justify-between items-center px-2 py-1 w-full text-xs font-medium rounded-lg  bg-slate-50 skeleton-button">
+
+            </button>
+            <button
+                class="flex justify-between items-center px-2 py-1 w-full text-xs font-medium rounded-lg border  bg-slate-50 text-nowrap skeleton-button">
+            </button>
+        </div>
+
+
+    </div>
+    <!-- FIN VOLEY -->
+
+</div>
+}
+@if (!load_data) {
+<div class="w-full grid grid-cols-1 justify-center items-center place-content-center place-items-center gap-4 py-2"
+    [ngClass]="{'grid-cols-2': canchas.length >= 2}">
+    @for (item of canchas; track $index) {
+
+    <!-- INICIO FUTBOL -->
+    <div class="p-2 space-y-2 w-full lg:min-w-lg max-w-lg rounded-lg border border-forestGreen-500 bg-forestGreen-50"
+        [ngClass]="{'border-pink-500 bg-pink-50': item.tipo === 'Voley'}">
+        <p class="font-bold text-center"> {{item.nombre}} <span class="text-forestGreen-500"
+                [ngClass]="{'text-pink-500': item.tipo === 'Voley'}"> {{item.tipo}}</span></p>
+        <p class="text-xs">{{item.descripcion}}</p>
+        <div class="flex items-center w-full">
+            <div class="space-y-2 w-full">
+                <p class="text-xs font-semibold">Medidas: <span class="font-normal">{{item.largo}}m x
+                        {{item.ancho}}m</span> </p>
+                <p class="text-xs font-semibold">Precio dia: <span class="font-normal"> S/. {{item.precio_dia}}</span>
+                </p>
+                <p class="text-xs font-semibold">Precio noche: <span class="font-normal"> S/.
+                        {{item.precio_noche}}</span></p>
+                <p class="text-xs font-semibold">Hora noche: <span class="font-normal">{{item.hora_noche | time24to12
+                        }}</span></p>
+            </div>
+            <!-- canchas.component.html -->
+            <div class="p-4 lg:p-3 mx-auto w-full max-w-md">
+                <app-carousel-image [galeria]="item?.galeria"></app-carousel-image>
+            </div>
+        </div>
+        <div class="flex gap-2 md:gap-4 justify-between w-full">
+            <button [routerLink]="['/grass/canchas', item._id]"
+                class="flex justify-between items-center px-2 py-1 w-full text-xs font-medium rounded-lg border border-forestGreen-500 bg-slate-50"
+                [ngClass]="{'border-pink-500': item.tipo === 'Voley'}">
+                Actualizar
+                <img src="../../../../../assets/svg-icons/pencil.svg" alt="">
+
+            </button>
+            <button
+                class="flex justify-between items-center px-2 py-1 w-full text-xs font-medium rounded-lg border border-red-500 bg-slate-50">
+                Eliminar
+                <img src="../../../../../assets/svg-icons/trash.svg" alt="">
+
+            </button>
+            <button [routerLink]="['/grass/canchas/galeria', item._id]"
+                class="flex justify-between items-center px-2 py-1 w-full text-xs font-medium rounded-lg border border-seashell-700 bg-slate-50 text-nowrap">
+                Actualizar fotos
+                <img src="../../../../../assets/svg-icons/upload.svg" alt="">
+            </button>
+        </div>
+
+
+    </div>
+    <!-- FIN FUTBOL -->
+
+    }
+</div>
+}
 <div class="w-full flex justify-center mt-8">
-    <button [routerLink]="['/grass/canchas/crear']" class="w-full max-w-lg self-center place-self-center place-content-center h-9 font-semibold text-white rounded-md bg-chambray-700 hover:scale-105 hover:duration-75">
+    <button [routerLink]="['/grass/canchas/crear']"
+        class="w-full max-w-lg self-center place-self-center place-content-center h-9 font-semibold text-white rounded-md bg-chambray-700 hover:scale-105 hover:duration-75">
         Agregar cancha
     </button>
 </div>
-
-<!-- CANCHAS -->
- @if (load_data) {
-    <div class="w-full  grid grid-cols-1 md:grid-cols-2 justify-center items-center place-content-center place-items-center gap-4 py-2">
-        <!-- INICIO FUTBOL -->
-       <div class="p-2 space-y-2 w-full lg:min-w-lg max-w-lg rounded-lg border border-gray-200 bg-white ">
-           <div class="flex justify-center">
-               <p class="font-bold text-center skeleton-title"> item.nombre </p>
-           </div>
-           <div >
-               <p class="text-xs mb-5 skeleton-1">.</p>
-            </div>
-           <div class="flex items-center w-full">
-               <div class="space-y-2 w-full">
-                   <p class="text-xs font-semibold skeleton">Medidas:  </p>
-                   <p class="text-xs font-semibold skeleton-text-1">Precio dia: </p>
-                   <p class="text-xs font-semibold skeleton">Precio noche: </p>
-                   <p class="text-xs font-semibold skeleton-text-2">Hora noche: </p>
-               </div>
-               <!-- canchas.component.html -->
-               <div class="p-4  lg:p-3 mx-auto w-full max-w-md h-28 skeleton-img">
-                   <!-- <app-carousel-image [galeria]="item?.galeria"></app-carousel-image> -->
-               </div>
-           </div>
-           <div class="flex gap-2 md:gap-4 justify-between w-full">
-               <button
-                   class="flex justify-between items-center px-2 py-1 w-full text-xs font-medium rounded-lg h-[26px]  bg-slate-50 skeleton-button">
-               </button>
-               <button
-                   class="flex justify-between items-center px-2 py-1 w-full text-xs font-medium rounded-lg  bg-slate-50 skeleton-button">
-   
-               </button>
-               <button
-                   class="flex justify-between items-center px-2 py-1 w-full text-xs font-medium rounded-lg border  bg-slate-50 text-nowrap skeleton-button">
-               </button>
-           </div>
-   
-   
-       </div>
-        <!-- FIN FUTBOL -->
-
-         <!-- INICIO VOLEY -->
-   
-         <div class="p-2 space-y-2 w-full lg:min-w-lg max-w-lg rounded-lg border border-gray-200 bg-white ">
-            <div class="flex justify-center">
-                <p class="font-bold text-center skeleton-title"> item.nombre </p>
-            </div>
-            <div >
-                <p class="text-xs mb-5 skeleton-1">.</p>
-             </div>
-            <div class="flex items-center w-full">
-                <div class="space-y-2 w-full">
-                    <p class="text-xs font-semibold skeleton">Medidas:  </p>
-                    <p class="text-xs font-semibold skeleton-text-1">Precio dia: </p>
-                    <p class="text-xs font-semibold skeleton">Precio noche: </p>
-                    <p class="text-xs font-semibold skeleton-text-2">Hora noche: </p>
-                </div>
-                <!-- canchas.component.html -->
-                <div class="p-4  lg:p-3 mx-auto w-full max-w-md h-28 skeleton-img">
-                    <!-- <app-carousel-image [galeria]="item?.galeria"></app-carousel-image> -->
-                </div>
-            </div>
-            <div class="flex gap-2 md:gap-4 justify-between w-full">
-                <button
-                    class="flex justify-between items-center px-2 py-1 w-full text-xs font-medium rounded-lg h-[26px]  bg-slate-50 skeleton-button">
-                </button>
-                <button
-                    class="flex justify-between items-center px-2 py-1 w-full text-xs font-medium rounded-lg  bg-slate-50 skeleton-button">
-    
-                </button>
-                <button
-                    class="flex justify-between items-center px-2 py-1 w-full text-xs font-medium rounded-lg border  bg-slate-50 text-nowrap skeleton-button">
-                </button>
-            </div>
-    
-    
-        </div>
-       <!-- FIN VOLEY -->
-       
-   </div>
- }
- @if (!load_data) {
-    @for (item of canchas; track $index) {
-        <div class="w-full grid grid-cols-1 justify-center items-center place-content-center place-items-center gap-4 py-2" 
-        [ngClass]="{'grid-cols-2': canchas.length >= 2}"
-        >
-             <!-- INICIO FUTBOL -->
-            <div class="p-2 space-y-2 w-full lg:min-w-lg max-w-lg rounded-lg border border-forestGreen-500 bg-forestGreen-50"
-            [ngClass]="{'border-pink-500 bg-pink-50': item.tipo === 'Voley'}"
-            >
-                <p class="font-bold text-center"> {{item.nombre}} <span class="text-forestGreen-500" [ngClass]="{'text-pink-500': item.tipo === 'Voley'}"> {{item.tipo}}</span></p>
-                <p class="text-xs">{{item.descripcion}}</p>
-                <div class="flex items-center w-full">
-                    <div class="space-y-2 w-full">
-                        <p class="text-xs font-semibold">Medidas: <span class="font-normal">{{item.largo}}m x {{item.ancho}}m</span> </p>
-                        <p class="text-xs font-semibold">Precio dia: <span class="font-normal"> S/. {{item.precio_dia}}</span></p>
-                        <p class="text-xs font-semibold">Precio noche: <span class="font-normal"> S/. {{item.precio_noche}}</span></p>
-                        <p class="text-xs font-semibold">Hora noche: <span class="font-normal">{{item.hora_noche | time24to12 }}</span></p>
-                    </div>
-                    <!-- canchas.component.html -->
-                    <div class="p-4 lg:p-3 mx-auto w-full max-w-md">
-                        <app-carousel-image [galeria]="item?.galeria"></app-carousel-image>
-                    </div>
-                </div>
-                <div class="flex gap-2 md:gap-4 justify-between w-full">
-                    <button [routerLink]="['/grass/canchas', item._id]"
-                        class="flex justify-between items-center px-2 py-1 w-full text-xs font-medium rounded-lg border border-forestGreen-500 bg-slate-50"
-                        [ngClass]="{'border-pink-500': item.tipo === 'Voley'}"
-                        >
-                        Actualizar
-                        <img src="../../../../../assets/svg-icons/pencil.svg" alt="">
-        
-                    </button>
-                    <button
-                        class="flex justify-between items-center px-2 py-1 w-full text-xs font-medium rounded-lg border border-red-500 bg-slate-50">
-                        Eliminar
-                        <img src="../../../../../assets/svg-icons/trash.svg" alt="">
-        
-                    </button>
-                    <button [routerLink]="['/grass/canchas/galeria', item._id]"
-                        class="flex justify-between items-center px-2 py-1 w-full text-xs font-medium rounded-lg border border-seashell-700 bg-slate-50 text-nowrap">
-                        Actualizar fotos
-                        <img src="../../../../../assets/svg-icons/upload.svg" alt="">
-                    </button>
-                </div>
-        
-        
-            </div>
-             <!-- FIN FUTBOL -->
-        </div>
-    }
- }
