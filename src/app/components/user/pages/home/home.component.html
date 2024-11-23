@@ -1,11 +1,11 @@
-<div class="wrapper">
+<div class="wrapper min-h-32">
 
     <!-- <app-button-search class="mb-3" (option)="handleSearch($event)"></app-button-search> -->
   
-    <div class=" rounded-b-xl flex  justify-center h-24  md:h-96 bg-cover w-full py-8 bg-no-repeat bg-center bg-[url('https://images.pexels.com/photos/47730/the-ball-stadion-football-the-pitch-47730.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1')]">
+    <div class=" rounded-b-xl flex   justify-center h-fit max-h-24  md:max-h-96 bg-cover w-full md:py-8 bg-no-repeat bg-center md:bg-[url('https://images.pexels.com/photos/47730/the-ball-stadion-football-the-pitch-47730.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1')]">
   
-      <div class="bg-white/70 md:flex-row rounded-full w-full md:w-9/12 p-4 justify-center gap-0.5 flex h-20">
-        <select id="region" class="w-full border-none rounded-l-full" name="region" [(ngModel)]="empresa.region"
+      <div class="h-full gap-y-1  md:bg-white/70 flex-col md:flex-row rounded-full w-full max-w-6xl px-3.5 md:p-4 justify-center  md:gap-0.5 flex md:h-20">
+        <select id="region" class="w-full text-xs md:text-base  md:border-none rounded-lg md:rounded-l-full" name="region" [(ngModel)]="empresa.region"
           (change)="select_region()" required>
           <option value="" selected disabled>Departamento</option>
           <option value="{{ item.id }}" *ngFor="let item of regiones">
@@ -13,7 +13,7 @@
           </option>
         </select>
   
-        <select id="provincia" class="w-full border-none" name="provincia" (change)="select_provincia()"
+        <select id="provincia" class="w-full text-xs md:text-base md:border-none rounded-lg md:rounded-none " name="provincia" (change)="select_provincia()"
           [(ngModel)]="empresa.provincia" required>
           <option value="" selected disabled>Provincia</option>
           <option value="{{ item.id }}" *ngFor="let item of provincias">
@@ -22,7 +22,7 @@
         </select>
   
   
-        <input type="text" class="w-full border-none rounded-r-full" placeholder="Escribe el nombre del grass aquí"
+        <input type="text" class="w-full text-xs md:text-base  md:border-none rounded-lg md:rounded-r-full" placeholder="Escribe el nombre del grass aquí"
           aria-label="buscar" autocomplete="off" aria-describedby="button-addon2" [(ngModel)]="busqueda" name="busqueda"
           (keyup)="buscarName()" />
   
