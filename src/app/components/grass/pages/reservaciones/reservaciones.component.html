@@ -106,7 +106,8 @@ Suscribete :VVV
 
                                     <!-- Precios para horas de dia -->
                                     @if (item.hora_inicio < item.cancha.hora_noche && item.hora_fin <
-                                        item.cancha.hora_noche) { <p class="text-gray-500 dark:text-gray-400">
+                                        item.cancha.hora_noche) { 
+                                            <p class="text-gray-500 dark:text-gray-400">
                                         Precio total: S/. {{item.cancha.precio_dia * (item.hora_fin - item.hora_inicio)
                                         }}
                                         </p>
@@ -120,9 +121,20 @@ Suscribete :VVV
                                         </p>
                                         }
 
-                                        //TODO: //TODO:
+                                    <!-- Precios para horas de noche -->
+                                    @if (item.hora_inicio <= item.cancha.hora_noche && item.hora_fin >= item.cancha.hora_noche) { 
+                                            <p class="text-gray-500 dark:text-gray-400">
+                                        Precio total: S/. {{item.cancha.precio_noche * (item.hora_fin - item.hora_inicio) }}
+                                        </p>
+                                        <p class="text-gray-500 dark:text-gray-400">
+                                            Adelantado: S/. {{item.subtotal }}
+                                        </p>
+                                        <p class="text-gray-500 dark:text-gray-400">
+                                            Restante: S/. {{item.cancha.precio_noche * (item.hora_fin - item.hora_inicio) - item.subtotal}}
+                                        </p>
+                                        }
 
-                                        @if (item.hora_inicio < item.cancha.hora_noche && item.hora_fin>
+                                        @if (item.hora_inicio < item.cancha.hora_noche && item.hora_fin >
                                             item.cancha.hora_noche) {
                                             <p class="text-gray-500 dark:text-gray-400">
                                                 Precio total: S/. {{calcularPrecioMixto(item)}}
