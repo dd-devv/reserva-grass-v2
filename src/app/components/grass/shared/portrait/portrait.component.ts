@@ -6,6 +6,7 @@ import { UserService } from '../../../../services/user.service';
 import { ImageCroppedEvent, LoadedImage } from 'ngx-image-cropper';
 import { v4 as uuidv4 } from 'uuid';
 import { Router } from '@angular/router';
+import { Modal } from 'flowbite';
 
 @Component({
   selector: 'app-portrait',
@@ -23,6 +24,7 @@ export class PortraitComponent implements OnInit {
   public isImagePort = false;
   public addImage = true;
   public isImage = false;
+  private modal: Modal | null = null;
 
   imagePreview: string | ArrayBuffer | null = null;
   croppedImageFile: File | null = null;
@@ -41,31 +43,57 @@ export class PortraitComponent implements OnInit {
   }
 
   ngOnInit(): void {
+    this.initModal();
+    this.loadCompanyData();
+  }
 
-    this._userService
-      .obtener_empresa(this.id, this.token)
-      .subscribe({
-        next: (res) => {
-          this.empresa = res.data;
-          if (this.empresa.portada) {
-            if (this.empresa.portada.length >= 1) {
-              this.isImagePort = true;
-              this.addImage = false;
-            } else {
-              this.isImagePort = false;
-              this.addImage = true;
-            }
+  private initModal(): void {
+    const modalElement = document.getElementById('uploadModal');
+    if (modalElement) {
+      this.modal = new Modal(modalElement);
+    }
+  }
+
+  private loadCompanyData(): void {
+    this._userService.obtener_empresa(this.id, this.token).subscribe({
+      next: (res) => {
+        this.empresa = res.data;
+        if (this.empresa.portada) {
+          if (this.empresa.portada.length >= 1) {
+            this.isImagePort = true;
+            this.addImage = false;
           } else {
             this.isImagePort = false;
             this.addImage = true;
           }
-        },
-        error: (err) => {
-          this.empresa = {};
+        } else {
           this.isImagePort = false;
           this.addImage = true;
         }
-      });
+      },
+      error: (err) => {
+        this.empresa = {};
+        this.isImagePort = false;
+        this.addImage = true;
+      }
+    });
+  }
+
+  openModal(): void {
+    if (this.modal) {
+      this.modal.show();
+    }
+  }
+
+  closeModal(): void {
+    if (this.modal) {
+      this.modal.hide();
+      // Resetear estados cuando se cierra el modal
+      this.file = undefined;
+      this.imagePreview = null;
+      this.croppedImage = '';
+      this.show_image = false;
+    }
   }
 
   fileChangeEventCrop(event: any): void {
@@ -84,20 +112,13 @@ export class PortraitComponent implements OnInit {
       }
 
       this.show_image = true;
-
-      // Continúa con el procesamiento de la imagen si el tipo es válido
     }
   }
 
   imageCropped(event: ImageCroppedEvent) {
     if (event.blob) {
-      // Crear un nuevo archivo a partir del blob
       this.croppedImageFile = new File([event.blob], 'cropped_image.png', { type: 'image/png' });
-
-      // Crear una URL para previsualización
       this.croppedImage = this.sanitizer.bypassSecurityTrustUrl(URL.createObjectURL(event.blob));
-
-      // Asignar el archivo a foto_perfil (asumiendo que foto_perfil es de tipo File)
       this.file = this.croppedImageFile;
     }
   }
@@ -111,7 +132,7 @@ export class PortraitComponent implements OnInit {
   }
 
   loadImageFailed() {
-    // show message
+    this._toastrService.showToast('Error al cargar la imagen');
   }
 
   fileChangeEvent(event: any): void {
@@ -127,68 +148,52 @@ export class PortraitComponent implements OnInit {
       return;
     }
 
-    if (
-      ![
-        'image/png',
-        'image/webp',
-        'image/jpg',
-        'image/jpeg',
-        'image/gif',
-      ].includes(file.type)
-    ) {
+    if (!['image/png', 'image/webp', 'image/jpg', 'image/jpeg', 'image/gif'].includes(file.type)) {
       this.showErrorMessage('El archivo debe ser una imagen');
       return;
     }
 
-    const reader = new FileReader();
-    reader.readAsDataURL(file);
-
     this.file = file;
-
-    if (file) {
-      // Convierte el archivo en una URL de datos (data URL)
-      this.convertToBase64(file);
-    }
+    this.convertToBase64(file);
   }
 
   convertToBase64(file: File): void {
     const reader = new FileReader();
-
     reader.onload = (e: any) => {
-      // Asigna la URL de datos a la propiedad imagePreview
       this.imagePreview = e.target.result;
     };
-
-    // Lee el contenido del archivo como una URL de datos
     reader.readAsDataURL(file);
   }
 
   subir_imagen() {
+    if (!this.file) {
+      this.showErrorMessage('Debe seleccionar una imagen');
+      return;
+    }
+
     this.load_btn = true;
     const uuid = uuidv4();
+    const data = {
+      imagen: this.file,
+      _id: uuid,
+    };
 
-    if (this.file) {
-      const data = {
-        imagen: this.file,
-        _id: uuid,
-      };
-
-      this._userService
-        .agregar_imagen_portada(this.id, data, this.token)
-        .subscribe((response) => {
-          this._toastrService.showToast(
-            'Se subió con éxito');
-          this.file = undefined;
-          this.load_btn = false;
-        });
-    } else {
-      this.showErrorMessage('Debe seleccionar una imagen');
-      this.load_btn = false;
-    }
+    this._userService.agregar_imagen_portada(this.id, data, this.token).subscribe({
+      next: (response) => {
+        this._toastrService.showToast('Se subió con éxito');
+        this.file = undefined;
+        this.load_btn = false;
+        this.closeModal();
+        this.loadCompanyData(); // Recargar datos después de subir
+      },
+      error: (error) => {
+        this.showErrorMessage('Error al subir la imagen');
+        this.load_btn = false;
+      }
+    });
   }
 
   private showErrorMessage(message: string) {
     this._toastrService.showToast(message);
   }
-
 }
