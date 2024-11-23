@@ -3,6 +3,7 @@ import { Title } from '@angular/platform-browser';
 import { UserService } from '../../../../../services/user.service';
 import { ActivatedRoute, Router } from '@angular/router';
 import { ToastService } from '../../../../../services/toast.service';
+import { initFlowbite } from 'flowbite';
 
 @Component({
   selector: 'app-actualizar',
@@ -32,6 +33,8 @@ export class ActualizarComponent implements OnInit {
 
   ngOnInit(): void {
     this._title.setTitle('GRASS | Editar cancha');
+
+    initFlowbite();
 
     this._route.params.subscribe(
 

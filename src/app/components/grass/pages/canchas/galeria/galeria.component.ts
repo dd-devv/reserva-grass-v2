@@ -32,6 +32,34 @@ export class GaleriaComponent implements OnInit {
   imageChangedEvent: any = '';
   croppedImage: SafeUrl = '';
   public show_image = false;
+// Método para permitir que el área de destino acepte archivos
+onDragOver(event: DragEvent) {
+  event.preventDefault();
+  event.stopPropagation();
+}
+
+// Método para activar el efecto de "arrastrar sobre el área"
+onDragEnter(event: DragEvent) {
+  event.preventDefault();
+  event.stopPropagation();
+}
+
+// Método cuando se suelta el archivo
+onDrop(event: DragEvent) {
+  event.preventDefault();
+  event.stopPropagation();
+  
+  const files = event.dataTransfer?.files;
+  if (files && files.length > 0) {
+    this.fileChangeEventCrop({ target: { files: files } });
+  }
+}
+
+// Método para manejar los archivos después de la carga
+handleFileUpload(files: FileList) {
+  // Llamar al método para procesar el archivo
+  console.log(files[0]); // Aquí puedes hacer lo que necesites con el archivo (subir, mostrar, etc.)
+}
 
   constructor(
     private _route: ActivatedRoute,
