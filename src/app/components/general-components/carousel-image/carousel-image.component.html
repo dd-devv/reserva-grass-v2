@@ -1,5 +1,13 @@
-<div class=" mx-auto w-full max-w-md">
-    <div #carouselExample class="relative space-y-1.5 h-24 md:h-32">
+<!-- cuando se usa el componente en un html se debe hacer de la siguiente manera -->
+ <!-- para que el contenedor del componente mande el tamaño al componente -->
+  
+<!-- <div class="h-20 md:h-28 w-full max-w-md mx-auto"> 
+    <app-carousel-image [galeria]="item?.galeria"></app-carousel-image>
+</div> -->
+
+
+<div class="mx-auto w-full max-w-md h-[100%]">
+    <div #carouselExample class="relative h-full">
         <!-- Carousel wrapper -->
         <div class="overflow-hidden relative h-full rounded-lg">
             @for (image of images; track image.id) {
@@ -10,7 +18,7 @@
         </div>
 
         <!-- Slider indicators -->
-        <div class="flex z-30 justify-center space-x-3">
+        <div class="absolute bottom-4 left-1/2 -translate-x-1/2 flex justify-center space-x-3 z-30">
             @for (image of images; track image.id) {
             <button [id]="'carousel-indicator-' + image.id" type="button"
                 class="rounded-full size-2.5 bg-forestGreen-500/50 hover:bg-forestGreen-500"
@@ -20,3 +28,4 @@
         </div>
     </div>
 </div>
+        

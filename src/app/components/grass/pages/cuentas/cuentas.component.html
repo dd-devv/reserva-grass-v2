@@ -1,194 +1,327 @@
-<form class="flex flex-col gap-3">
+<button
+  (click)="openModal()"
+  class="py-1 flex gap-1.5 items-center px-2 bg-white rounded-full shadow-lg transition hover:bg-gray-100"
+>
+  Registrar cuenta
+</button>
 
-  <div class="flex w-full gap-3">
-    <div class="flex flex-col gap-1 w-full">
-      <label class="text-xs" for="banco">Banco</label>
-      <input class=" rounded-lg h-9 border-gray-300 text-gray-900 text-xs" name="banco" id="banco" type="text">
-    </div>
-    <div class="flex flex-col gap-1 w-full">
-      <label class="text-xs" for="numeroCuenta">Número de cuenta </label>
-      <input class="rounded-lg h-9 border-gray-300 text-gray-900 text-xs" name="numeroCuenta" id="numeroCuenta"
-        type="text">
-    </div>
-  </div>
-
-
-  <div class="flex flex-col gap-1 w-full">
-    <label class="text-xs" for="cci">CCI</label>
-    <input class="rounded-lg h-9 border-gray-300 text-gray-900 text-xs" name="cci" id="cci" type="text">
-  </div>
-  <div class="flex flex-col gap-1 w-full">
-    <label class="text-xs" for="titular">Titular</label>
-    <input class="rounded-lg h-9 border-gray-300 text-gray-900 text-xs" name="titular" id="titular" type="text">
-  </div>
-</form>
-
-
-
-
-<!-- Cuentas de pago -->
 <div
-  class="w-full  grid grid-cols-1 md:grid-cols-2 justify-center items-center place-content-center place-items-center gap-4 py-2">
-  <!-- INICIO YAPE -->
-  <div
-    class="flex md:flex-col flex-row-reverse items-center  w-full gap-4 p-3 md:p-6 bg-purple-50/30 text-forestGreen-500 shadow-lg rounded-lg border border-purple-500 hover:shadow-xl">
-    <div class=" flex justify-center items-center object-contain w-16 h-12">
-      <img  src="../../../../../assets/img/yape.png" alt="">
-    </div>
-
-    <div class="w-full">
-      <p class="text-black text-sm mb-2">
-        <span class="font-bold">Cuenta:</span> 15615644
-      </p>
-      <p class="text-black text-sm mb-2">
-        <span class="font-bold">Titular:</span> Pepito Perez Cuellar
-      </p>
-
-      <!-- Botones con íconos -->
-      <div class="flex md:justify-between gap-2 justify-start h-6">
-        <!-- Botón de Actualizar -->
-        <button class="flex items-center gap-2 bg-white text-black text-xs px-4 rounded-lg border border-purple-500">
-          Actualizar
-          <svg width="16" height="16" viewBox="0 0 16 16" fill="none" xmlns="http://www.w3.org/2000/svg">
-            <path
-              d="M3.19998 10.4001L5.99997 12.8001M7.99997 14.8001H14.4M2.79998 10.4001L10.6876 2.23705C11.5368 1.38778 12.9138 1.38778 13.763 2.23705C14.6123 3.08631 14.6123 4.46325 13.763 5.31252L5.59997 13.2001L1.59998 14.4001L2.79998 10.4001Z"
-              stroke="black" stroke-linecap="round" stroke-linejoin="round" />
-          </svg>
-
-        </button>
-
-        <!-- Botón de Eliminar -->
+  id="crearCanchaModal"
+  tabindex="-1"
+  aria-hidden="true"
+  class="fixed top-0 left-0 right-0 z-50 hidden w-full p-4 overflow-x-hidden overflow-y-auto md:inset-0 h-[calc(100%-1rem)] max-h-full"
+>
+  <div class="relative w-full max-w-2xl max-h-full">
+    <!-- Modal content -->
+    <div class="relative bg-white rounded-lg shadow dark:bg-gray-700">
+      <!-- Modal header -->
+      <div
+        class="flex items-start justify-between p-4 border-b rounded-t dark:border-gray-600"
+      >
+        <h3 class="text-xl font-semibold text-gray-900 dark:text-white">
+          Actualizar imagen de portada
+        </h3>
         <button
-          class="flex items-center gap-2 bg-white text-black text-xs py-2 px-4 rounded-lg border border-red-500">
-          Eliminar
-          <svg width="16" height="16" viewBox="0 0 16 16" fill="none" xmlns="http://www.w3.org/2000/svg">
+          type="button"
+          class="text-gray-400 bg-transparent hover:bg-gray-200 hover:text-gray-900 rounded-lg text-sm w-8 h-8 ml-auto inline-flex justify-center items-center dark:hover:bg-gray-600 dark:hover:text-white"
+          (click)="closeModal()"
+        >
+          <svg
+            class="w-3 h-3"
+            xmlns="http://www.w3.org/2000/svg"
+            fill="none"
+            viewBox="0 0 14 14"
+          >
             <path
-              d="M2.66663 4.1196H13.3333M6.66663 11.1784V6.94313M9.33329 11.1784V6.94313M10.6666 14.002H5.33329C4.59691 14.002 3.99996 13.3699 3.99996 12.5902V4.82548C3.99996 4.43563 4.29844 4.1196 4.66663 4.1196H11.3333C11.7015 4.1196 12 4.43563 12 4.82548V12.5902C12 13.3699 11.403 14.002 10.6666 14.002ZM6.66663 4.1196H9.33329C9.70148 4.1196 9.99996 3.80357 9.99996 3.41372V2.70784C9.99996 2.31799 9.70148 2.00195 9.33329 2.00195H6.66663C6.29844 2.00195 5.99996 2.31799 5.99996 2.70784V3.41372C5.99996 3.80357 6.29844 4.1196 6.66663 4.1196Z"
-              stroke="black" stroke-linecap="round" stroke-linejoin="round" />
+              stroke="currentColor"
+              stroke-linecap="round"
+              stroke-linejoin="round"
+              stroke-width="2"
+              d="m1 1 6 6m0 0 6 6M7 7l6-6M7 7l-6 6"
+            />
           </svg>
+          <span class="sr-only">Cerrar modal</span>
         </button>
       </div>
-    </div>
 
+      <!-- Modal body -->
+      <div class="p-6 space-y-6">
+        <form
+          #registroForm="ngForm"
+          (ngSubmit)="registro(registroForm)"
+          class="w-full"
+        >
+          <div class="grid grid-cols-12 gap-4">
+            <div class="col-span-6 mt-3">
+              <label
+                for="banco"
+                class="block text-sm font-medium text-gray-700 mb-1"
+                >Banco</label
+              >
+              <select
+                id="banco"
+                class="w-full rounded-md border-gray-300 shadow-sm focus:border-indigo-500 focus:ring-indigo-500"
+                name="banco"
+                [(ngModel)]="cuenta.banco"
+                (ngModelChange)="onBancoChange()"
+                required
+              >
+                <option value="" selected disabled>Seleccionar</option>
+                <option value="{{ item }}" *ngFor="let item of bancos">
+                  {{ item | titlecase }}
+                </option>
+              </select>
+            </div>
+            <div class="col-span-6 mt-3">
+              <label
+                for="titular"
+                class="block text-sm font-medium text-gray-700 mb-1"
+                >Nombre del titular</label
+              >
+              <input
+                class="w-full rounded-md border-gray-300 shadow-sm focus:border-indigo-500 focus:ring-indigo-500"
+                type="text"
+                id="titular"
+                name="titular"
+                [(ngModel)]="cuenta.titular"
+                placeholder="Ingrese nombre del titular"
+                required
+              />
+            </div>
+            <div class="col-span-4 mt-3">
+              <label
+                for="cuenta"
+                class="block text-sm font-medium text-gray-700 mb-1"
+                >N°
+                <span *ngIf="esCuenta">Cuenta</span>
+                <span *ngIf="!esCuenta">Celular</span>
+              </label>
+              <input
+                class="w-full rounded-md border-gray-300 shadow-sm focus:border-indigo-500 focus:ring-indigo-500"
+                type="text"
+                id="cuenta"
+                name="cuenta"
+                [(ngModel)]="cuenta.cuenta"
+                placeholder="Número de cuenta"
+                min="0"
+                maxlength="{{ limiteCuenta }}"
+                required
+              />
+            </div>
+
+            <div class="col-span-4 mt-3" *ngIf="esCuenta">
+              <label
+                for="cci"
+                class="block text-sm font-medium text-gray-700 mb-1"
+                >CCI</label
+              >
+              <input
+                class="w-full rounded-md border-gray-300 shadow-sm focus:border-indigo-500 focus:ring-indigo-500"
+                type="text"
+                id="cci"
+                name="cci"
+                [(ngModel)]="cuenta.cci"
+                placeholder="CCI"
+                min="0"
+              />
+            </div>
+            <div class="col-span-4 mt-3">
+              <label
+                for="color-input"
+                class="block text-sm font-medium text-gray-700 mb-1"
+                >Color</label
+              >
+              <input
+                class="h-10 w-full rounded-md border-gray-300 shadow-sm cursor-pointer disabled:opacity-50"
+                type="color"
+                id="color-input"
+                value="{{ cuenta.color }}"
+                name="color"
+                [(ngModel)]="cuenta.color"
+                required
+                disabled
+              />
+            </div>
+          </div>
+
+          <div class="text-center mt-3">
+            <button
+              class="inline-flex items-center px-4 py-2 bg-indigo-600 text-white font-medium rounded-md hover:bg-indigo-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500 disabled:opacity-50 disabled:cursor-not-allowed mx-2"
+              type="submit"
+              [disabled]="registroForm.invalid"
+              *ngIf="!load_btn"
+            >
+              <i class="bi-plus-circle-fill mr-2"></i>
+              Crear cuenta
+            </button>
+
+            <button
+              *ngIf="load_btn"
+              type="button"
+              class="inline-flex items-center px-4 py-2 bg-gray-500 text-white font-medium rounded-md disabled:opacity-50 disabled:cursor-not-allowed"
+              disabled
+            >
+              <span
+                class="animate-ping h-2 w-2 rounded-full bg-white mr-2"
+              ></span>
+              Creando...
+            </button>
+          </div>
+        </form>
+      </div>
+    </div>
   </div>
-<!--FIN YAPE -->
+</div>
+
+@if (load_data) {
+  <!-- Skeleton -->
+  <div
+    class="w-full grid grid-cols-1 md:grid-cols-2 justify-center items-center place-content-center place-items-center gap-4 py-2"
+  >
+    <div
+      class="flex md:flex-col flex-row-reverse items-center w-full gap-4 p-3 md:p-6 bg-white text-forestGreen-500 shadow-lg rounded-lg border border-gray-200 hover:shadow-xl"
+    >
+      <div
+        class="flex justify-center items-center object-contain w-16 h-12 skeleton-img"
+      ></div>
   
-<!-- INICIO INTERBANK -->
-  <div
-    class="flex md:flex-col flex-row-reverse items-center  w-full gap-4 p-3 md:p-6 bg-green-50 text-forestGreen-500 shadow-lg rounded-lg border border-green-500 hover:shadow-xl">
-    <div class=" flex justify-center items-center object-contain w-16 h-12">
-      <img  src="../../../../../assets/img/yape.png" alt="">
-    </div>
-
-    <div class="w-full">
-      <p class="text-black text-sm mb-2">
-        <span class="font-bold">Cuenta:</span> 15615644
-      </p>
-      <p class="text-black text-sm mb-2">
-        <span class="font-bold">Titular:</span> Pepito Perez Cuellar
-      </p>
-
-      <!-- Botones con íconos -->
-      <div class="flex md:justify-between gap-2 justify-start h-6">
-        <!-- Botón de Actualizar -->
-        <button class="flex items-center gap-2 bg-white text-black text-xs px-4 rounded-lg border border-green-500">
-          Actualizar
-          <svg width="16" height="16" viewBox="0 0 16 16" fill="none" xmlns="http://www.w3.org/2000/svg">
-            <path
-              d="M3.19998 10.4001L5.99997 12.8001M7.99997 14.8001H14.4M2.79998 10.4001L10.6876 2.23705C11.5368 1.38778 12.9138 1.38778 13.763 2.23705C14.6123 3.08631 14.6123 4.46325 13.763 5.31252L5.59997 13.2001L1.59998 14.4001L2.79998 10.4001Z"
-              stroke="black" stroke-linecap="round" stroke-linejoin="round" />
-          </svg>
-
-        </button>
-
-        <!-- Botón de Eliminar -->
-        <button
-          class="flex items-center gap-2 bg-white text-black text-xs py-2 px-4 rounded-lg border border-red-500">
-          Eliminar
-          <svg width="16" height="16" viewBox="0 0 16 16" fill="none" xmlns="http://www.w3.org/2000/svg">
-            <path
-              d="M2.66663 4.1196H13.3333M6.66663 11.1784V6.94313M9.33329 11.1784V6.94313M10.6666 14.002H5.33329C4.59691 14.002 3.99996 13.3699 3.99996 12.5902V4.82548C3.99996 4.43563 4.29844 4.1196 4.66663 4.1196H11.3333C11.7015 4.1196 12 4.43563 12 4.82548V12.5902C12 13.3699 11.403 14.002 10.6666 14.002ZM6.66663 4.1196H9.33329C9.70148 4.1196 9.99996 3.80357 9.99996 3.41372V2.70784C9.99996 2.31799 9.70148 2.00195 9.33329 2.00195H6.66663C6.29844 2.00195 5.99996 2.31799 5.99996 2.70784V3.41372C5.99996 3.80357 6.29844 4.1196 6.66663 4.1196Z"
-              stroke="black" stroke-linecap="round" stroke-linejoin="round" />
-          </svg>
-        </button>
+      <div class="w-full">
+        <p class="text-black text-sm mb-2 skeleton-text-1">
+          <span class="font-bold">Cuenta:</span>
+        </p>
+        <p class="text-black text-sm mb-2 skeleton-text-2">
+          <span class="font-bold">Titular:</span>
+        </p>
+  
+        <!-- Botones con íconos -->
+        <div class="flex md:justify-between gap-2 justify-start h-6">
+          <!-- Botón de Actualizar -->
+          <button
+            class="flex items-center gap-2 bg-white text-black text-xs px-4 rounded-lg skeleton-button"
+          >
+            Actualizarrrrrii
+          </button>
+  
+          <!-- Botón de Eliminar -->
+          <button
+            class="flex items-center gap-2 bg-white text-black text-xs py-2 px-4 rounded-lg skeleton-button"
+          >
+            Eliminarrrrrii
+          </button>
+        </div>
       </div>
     </div>
-
+  
+    <div
+      class="flex md:flex-col flex-row-reverse items-center w-full gap-4 p-3 md:p-6 bg-white text-forestGreen-500 shadow-lg rounded-lg border border-gray-200 hover:shadow-xl"
+    >
+      <div
+        class="flex justify-center items-center object-contain w-16 h-12 skeleton-img"
+      ></div>
+  
+      <div class="w-full">
+        <p class="text-black text-sm mb-2 skeleton-text-1">
+          <span class="font-bold">Cuenta:</span>
+        </p>
+        <p class="text-black text-sm mb-2 skeleton-text-2">
+          <span class="font-bold">Titular:</span>
+        </p>
+  
+        <!-- Botones con íconos -->
+        <div class="flex md:justify-between gap-2 justify-start h-6">
+          <!-- Botón de Actualizar -->
+          <button
+            class="flex items-center gap-2 bg-white text-black text-xs px-4 rounded-lg skeleton-button"
+          >
+            Actualizarrrrrii
+          </button>
+  
+          <!-- Botón de Eliminar -->
+          <button
+            class="flex items-center gap-2 bg-white text-black text-xs py-2 px-4 rounded-lg skeleton-button"
+          >
+            Eliminarrrrrii
+          </button>
+        </div>
+      </div>
+    </div>
   </div>
-<!-- FIN INTERBANK -->
+}
 
-<!-- INICIO BCP -->
-<div
-class="flex md:flex-col flex-row-reverse items-center  w-full gap-4 p-3 md:p-6 bg-orange-50/10 text-forestGreen-500 shadow-lg rounded-lg border border-orange-500 hover:shadow-xl">
-<div class=" flex justify-center items-center object-contain w-16 h-12">
-  <img  src="../../../../../assets/img/yape.png" alt="">
-</div>
+@if (!load_data) {
+  <!-- Cuentas de pago -->
+  <div
+    class="w-full grid grid-cols-1 md:grid-cols-2 justify-center items-center place-content-center place-items-center gap-4 py-2"
+  >
 
-<div class="w-full">
-  <p class="text-black text-sm mb-2">
-    <span class="font-bold">Cuenta:</span> 15615644
-  </p>
-  <p class="text-black text-sm mb-2">
-    <span class="font-bold">Titular:</span> Pepito Perez Cuellar
-  </p>
-
-  <!-- Botones con íconos -->
-  <div class="flex md:justify-between gap-2 justify-start h-6">
-    <!-- Botón de Actualizar -->
-    <button class="flex items-center gap-2 bg-white text-black text-xs px-4 rounded-lg border border-orange-500">
-      Actualizar
-      <svg width="16" height="16" viewBox="0 0 16 16" fill="none" xmlns="http://www.w3.org/2000/svg">
-        <path
-          d="M3.19998 10.4001L5.99997 12.8001M7.99997 14.8001H14.4M2.79998 10.4001L10.6876 2.23705C11.5368 1.38778 12.9138 1.38778 13.763 2.23705C14.6123 3.08631 14.6123 4.46325 13.763 5.31252L5.59997 13.2001L1.59998 14.4001L2.79998 10.4001Z"
-          stroke="black" stroke-linecap="round" stroke-linejoin="round" />
-      </svg>
-
-    </button>
-
-    <!-- Botón de Eliminar -->
-    <button
-      class="flex items-center gap-2 bg-white text-black text-xs py-2 px-4 rounded-lg border border-red-500">
-      Eliminar
-      <svg width="16" height="16" viewBox="0 0 16 16" fill="none" xmlns="http://www.w3.org/2000/svg">
-        <path
-          d="M2.66663 4.1196H13.3333M6.66663 11.1784V6.94313M9.33329 11.1784V6.94313M10.6666 14.002H5.33329C4.59691 14.002 3.99996 13.3699 3.99996 12.5902V4.82548C3.99996 4.43563 4.29844 4.1196 4.66663 4.1196H11.3333C11.7015 4.1196 12 4.43563 12 4.82548V12.5902C12 13.3699 11.403 14.002 10.6666 14.002ZM6.66663 4.1196H9.33329C9.70148 4.1196 9.99996 3.80357 9.99996 3.41372V2.70784C9.99996 2.31799 9.70148 2.00195 9.33329 2.00195H6.66663C6.29844 2.00195 5.99996 2.31799 5.99996 2.70784V3.41372C5.99996 3.80357 6.29844 4.1196 6.66663 4.1196Z"
-          stroke="black" stroke-linecap="round" stroke-linejoin="round" />
-      </svg>
-    </button>
+  @for (cuenta of cuentas; track $index) {
+    <div
+      class="flex md:flex-col flex-row-reverse items-center w-full gap-4 p-3 md:p-6 bg-purple-50/30 text-forestGreen-500 shadow-lg rounded-lg border hover:shadow-xl"
+    >
+      <div class="flex justify-center items-center object-contain w-16 h-12">
+        <img src="../../../../../assets/svg/{{cuenta.banco | lowercase}}.svg" alt="" />
+      </div>
+  
+      <div class="w-full">
+        <p class="text-black text-sm mb-2">
+          <span class="font-bold">Cuenta:</span> {{cuenta.cuenta}}
+        </p>
+        <p class="text-black text-sm mb-2">
+          <span class="font-bold">CCI:</span> {{cuenta.cci || ''}}
+        </p>
+        <p class="text-black text-sm mb-2">
+          <span class="font-bold">Titular:</span> {{cuenta.titular}}
+        </p>
+  
+        <!-- Botones con íconos -->
+        <div class="flex md:justify-between gap-2 justify-start h-6">
+          <!-- Botón de Actualizar -->
+          <button
+            class="flex items-center gap-2 bg-white text-black text-xs px-4 rounded-lg border border-purple-500"
+          >
+            Actualizar
+            <svg
+              width="16"
+              height="16"
+              viewBox="0 0 16 16"
+              fill="none"
+              xmlns="http://www.w3.org/2000/svg"
+            >
+              <path
+                d="M3.19998 10.4001L5.99997 12.8001M7.99997 14.8001H14.4M2.79998 10.4001L10.6876 2.23705C11.5368 1.38778 12.9138 1.38778 13.763 2.23705C14.6123 3.08631 14.6123 4.46325 13.763 5.31252L5.59997 13.2001L1.59998 14.4001L2.79998 10.4001Z"
+                stroke="black"
+                stroke-linecap="round"
+                stroke-linejoin="round"
+              />
+            </svg>
+          </button>
+  
+          <!-- Botón de Eliminar -->
+          <button
+            class="flex items-center gap-2 bg-white text-black text-xs py-2 px-4 rounded-lg border border-red-500"
+          >
+            Eliminar
+            <svg
+              width="16"
+              height="16"
+              viewBox="0 0 16 16"
+              fill="none"
+              xmlns="http://www.w3.org/2000/svg"
+            >
+              <path
+                d="M2.66663 4.1196H13.3333M6.66663 11.1784V6.94313M9.33329 11.1784V6.94313M10.6666 14.002H5.33329C4.59691 14.002 3.99996 13.3699 3.99996 12.5902V4.82548C3.99996 4.43563 4.29844 4.1196 4.66663 4.1196H11.3333C11.7015 4.1196 12 4.43563 12 4.82548V12.5902C12 13.3699 11.403 14.002 10.6666 14.002ZM6.66663 4.1196H9.33329C9.70148 4.1196 9.99996 3.80357 9.99996 3.41372V2.70784C9.99996 2.31799 9.70148 2.00195 9.33329 2.00195H6.66663C6.29844 2.00195 5.99996 2.31799 5.99996 2.70784V3.41372C5.99996 3.80357 6.29844 4.1196 6.66663 4.1196Z"
+                stroke="black"
+                stroke-linecap="round"
+                stroke-linejoin="round"
+              />
+            </svg>
+          </button>
+        </div>
+      </div>
+    </div>
+  }
+    <!-- INICIO YAPE -->
+    <!--FIN YAPE -->
+  
   </div>
-</div>
-
-</div>
-<!-- FIN BCP -->
-
-<!-- skeleton INICIO -->
-<div
-class="flex md:flex-col flex-row-reverse items-center  w-full gap-4 p-3 md:p-6 bg-white text-forestGreen-500 shadow-lg rounded-lg border border-gray-200 hover:shadow-xl">
-<div class=" flex justify-center items-center object-contain w-16 h-12 skeleton-img">
-</div>
-
-<div class="w-full">
-  <p class="text-black text-sm mb-2 skeleton-text-1">
-    <span class="font-bold ">Cuenta:</span> 
-  </p>
-  <p class="text-black text-sm mb-2 skeleton-text-2">
-    <span class="font-bold ">Titular:</span> 
-  </p>
-
-  <!-- Botones con íconos -->
-  <div class="flex md:justify-between gap-2 justify-start h-6">
-    <!-- Botón de Actualizar -->
-    <button class="flex items-center gap-2 bg-white text-black text-xs px-4 rounded-lg  skeleton-button">
-      Actualizarrrrrii
-    </button>
-
-    <!-- Botón de Eliminar -->
-    <button
-      class="flex items-center gap-2 bg-white text-black text-xs py-2 px-4 rounded-lg   skeleton-button">
-      Eliminarrrrrii
-    </button>
-  </div>
-</div>
-
-</div>
-<!-- SKELETON FIN -->
+}
