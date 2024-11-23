@@ -4,276 +4,98 @@
 
   @if (load_reservas) {
     <!-- skeleton -->
-  <div class="flex gap-y-4 rounded-lg w-full  h-fit min-w-lg max-w-lg">
-    <div
-      class="grid grid-cols-[32px_repeat(4,1fr)] auto-cols-min grid-rows-5 rounded-lg border border-gray-200 w-full  h-[175px] md:h-[190px]">
-      <div class="bg-gray-200 text-white w-8 rounded-l-md row-span-5">
-        <p class="w-full -rotate-90 flex justify-center items-center text-center h-full text-nowrap font-semibold ">
-        </p>
-      </div>
-      <div
-        class="flex  border-b-2 border-dotted border-gray-200  flex-col rounded-t-lg col-span-5 w-full h-11  px-2 py-1 ">
-        <div class="flex">
-          <div class="w-6/12">
-            <div class="flex flex-col align-middle">
-              <label class="text-xs font-semibold text-seashell-500 text-no-skeleton">
-                Empresa
-              </label>
-              <p class="font-bold capitalize skeleton">.</p>
-            </div>
-          </div>
-          <div class="w-6/12">
-            <div class="flex flex-col">
-              <label class="text-xs font-semibold text-seashell-500 text-no-skeleton">
-                Cancha
-              </label>
-              <p class="font-bold skeleton">.</p>
-            </div>
-          </div>
-        </div>
-
-
-        <!-- INICIO PARTE BOLETA -->
-
-        <div class="flex flex-col md:gap-1.5">
-          <div class="flex w-full">
-            <div class="items-start flex flex-col justify-start">
-              <p class="text-seashell-500 text-[10px] font-bold text-no-skeleton">
-                Dirección
-              </p>
-              <div class="flex gap-4">
-                <p class="text-[12px] skeleton">.</p>
-              </div>
-
-
-            </div>
-          </div>
-          <div class="flex w-full">
-            <div class="w-6/12 items-start flex flex-col justify-start">
-              <p class="text-seashell-500 text-[10px] font-bold text-no-skeleton">Fecha</p>
-              <p class="text-[12px] skeleton">.</p>
-            </div>
-
-            <div class="items-start flex flex-col justify-start">
-              <p class="text-seashell-500 text-[10px] font-bold text-no-skeleton">
-                Horario
-              </p>
-              <p class="text-[12px] skeleton">.</p>
-            </div>
-          </div>
-          <div class="flex w-full">
-            <div class="w-6/12 items-start flex flex-col justify-start">
-              <p class="text-seashell-500 text-[10px] font-bold text-no-skeleton">
-                Monto de reservación
-              </p>
-              <p class="text-base font-bold skeleton">. </p>
-            </div>
-
-            <div class="items-start flex flex-col justify-start">
-              <p class="text-seashell-500 text-[10px] font-bold text-no-skeleton">
-                Cliente
-              </p>
-              <p class="text-base font-bold skeleton">.</p>
-            </div>
-          </div>
-          <div class="flex items-center justify-center ">
-            <p class="font-jetBrainsMono text-[12px] skeleton">.</p>
-            <div class="invisible w-12 md:w20">
-            </div>
-          </div>
-        </div>
-
-      </div>
-
-      <div
-        class="w-12 sm:w-16 md:w-20 justify-center flex rounded-br-lg row-span-4 col-start-6 row-start-2 border-l-2 border-gray-200 border-dotted my-3 items-center">
-        <div class="w-4/5 aspect-square qr-skeleton"></div>
-        <!-- <qrcode [qrdata]="reserva._id" elementType="img" [errorCorrectionLevel]="'M'"> -->
-        <!-- </qrcode> -->
-      </div>
-    </div>
-
-  </div>
-  <div class="flex gap-y-4 rounded-lg w-full  h-fit min-w-lg max-w-lg">
-    <div
-      class="grid grid-cols-[32px_repeat(4,1fr)] auto-cols-min grid-rows-5 rounded-lg border border-gray-200 w-full  h-[175px] md:h-[190px]">
-      <div class="bg-gray-200 text-white w-8 rounded-l-md row-span-5">
-        <p class="w-full -rotate-90 flex justify-center items-center text-center h-full text-nowrap font-semibold ">
-        </p>
-      </div>
-      <div
-        class="flex  border-b-2 border-dotted border-gray-200  flex-col rounded-t-lg col-span-5 w-full h-11  px-2 py-1 ">
-        <div class="flex">
-          <div class="w-6/12">
-            <div class="flex flex-col align-middle">
-              <label class="text-xs font-semibold text-seashell-500 text-no-skeleton">
-                Empresa
-              </label>
-              <p class="font-bold capitalize skeleton">.</p>
-            </div>
-          </div>
-          <div class="w-6/12">
-            <div class="flex flex-col">
-              <label class="text-xs font-semibold text-seashell-500 text-no-skeleton">
-                Cancha
-              </label>
-              <p class="font-bold skeleton">.</p>
-            </div>
-          </div>
-        </div>
-
-
-        <!-- INICIO PARTE BOLETA -->
-
-        <div class="flex flex-col md:gap-1.5">
-          <div class="flex w-full">
-            <div class="items-start flex flex-col justify-start">
-              <p class="text-seashell-500 text-[10px] font-bold text-no-skeleton">
-                Dirección
-              </p>
-              <div class="flex gap-4">
-                <p class="text-[12px] skeleton">.</p>
-              </div>
-
-
-            </div>
-          </div>
-          <div class="flex w-full">
-            <div class="w-6/12 items-start flex flex-col justify-start">
-              <p class="text-seashell-500 text-[10px] font-bold text-no-skeleton">Fecha</p>
-              <p class="text-[12px] skeleton">.</p>
-            </div>
-
-            <div class="items-start flex flex-col justify-start">
-              <p class="text-seashell-500 text-[10px] font-bold text-no-skeleton">
-                Horario
-              </p>
-              <p class="text-[12px] skeleton">.</p>
-            </div>
-          </div>
-          <div class="flex w-full">
-            <div class="w-6/12 items-start flex flex-col justify-start">
-              <p class="text-seashell-500 text-[10px] font-bold text-no-skeleton">
-                Monto de reservación
-              </p>
-              <p class="text-base font-bold skeleton">. </p>
-            </div>
-
-            <div class="items-start flex flex-col justify-start">
-              <p class="text-seashell-500 text-[10px] font-bold text-no-skeleton">
-                Cliente
-              </p>
-              <p class="text-base font-bold skeleton">.</p>
-            </div>
-          </div>
-          <div class="flex items-center justify-center ">
-            <p class="font-jetBrainsMono text-[12px] skeleton">.</p>
-            <div class="invisible w-12 md:w20">
-            </div>
-          </div>
-        </div>
-
-      </div>
-
-      <div
-        class="w-12 sm:w-16 md:w-20 justify-center flex rounded-br-lg row-span-4 col-start-6 row-start-2 border-l-2 border-gray-200 border-dotted my-3 items-center">
-        <div class="w-4/5 aspect-square qr-skeleton"></div>
-        <!-- <qrcode [qrdata]="reserva._id" elementType="img" [errorCorrectionLevel]="'M'"> -->
-        <!-- </qrcode> -->
-      </div>
-    </div>
-
-  </div>
-  <div class="flex gap-y-4 rounded-lg w-full  h-fit min-w-lg max-w-lg">
-    <div
-      class="grid grid-cols-[32px_repeat(4,1fr)] auto-cols-min grid-rows-5 rounded-lg border border-gray-200 w-full  h-[175px] md:h-[190px]">
-      <div class="bg-gray-200 text-white w-8 rounded-l-md row-span-5">
-        <p class="w-full -rotate-90 flex justify-center items-center text-center h-full text-nowrap font-semibold ">
-        </p>
-      </div>
-      <div
-        class="flex  border-b-2 border-dotted border-gray-200  flex-col rounded-t-lg col-span-5 w-full h-11  px-2 py-1 ">
-        <div class="flex">
-          <div class="w-6/12">
-            <div class="flex flex-col align-middle">
-              <label class="text-xs font-semibold text-seashell-500 text-no-skeleton">
-                Empresa
-              </label>
-              <p class="font-bold capitalize skeleton">.</p>
-            </div>
-          </div>
-          <div class="w-6/12">
-            <div class="flex flex-col">
-              <label class="text-xs font-semibold text-seashell-500 text-no-skeleton">
-                Cancha
-              </label>
-              <p class="font-bold skeleton">.</p>
-            </div>
-          </div>
-        </div>
-
-
-        <!-- INICIO PARTE BOLETA -->
-
-        <div class="flex flex-col md:gap-1.5">
-          <div class="flex w-full">
-            <div class="items-start flex flex-col justify-start">
-              <p class="text-seashell-500 text-[10px] font-bold text-no-skeleton">
-                Dirección
-              </p>
-              <div class="flex gap-4">
-                <p class="text-[12px] skeleton">.</p>
-              </div>
-
-
-            </div>
-          </div>
-          <div class="flex w-full">
-            <div class="w-6/12 items-start flex flex-col justify-start">
-              <p class="text-seashell-500 text-[10px] font-bold text-no-skeleton">Fecha</p>
-              <p class="text-[12px] skeleton">.</p>
-            </div>
-
-            <div class="items-start flex flex-col justify-start">
-              <p class="text-seashell-500 text-[10px] font-bold text-no-skeleton">
-                Horario
-              </p>
-              <p class="text-[12px] skeleton">.</p>
-            </div>
-          </div>
-          <div class="flex w-full">
-            <div class="w-6/12 items-start flex flex-col justify-start">
-              <p class="text-seashell-500 text-[10px] font-bold text-no-skeleton">
-                Monto de reservación
-              </p>
-              <p class="text-base font-bold skeleton">. </p>
-            </div>
-
-            <div class="items-start flex flex-col justify-start">
-              <p class="text-seashell-500 text-[10px] font-bold text-no-skeleton">
-                Cliente
-              </p>
-              <p class="text-base font-bold skeleton">.</p>
-            </div>
-          </div>
-          <div class="flex items-center justify-center ">
-            <p class="font-jetBrainsMono text-[12px] skeleton">.</p>
-            <div class="invisible w-12 md:w20">
-            </div>
-          </div>
-        </div>
-
-      </div>
-
-      <div
-        class="w-12 sm:w-16 md:w-20 justify-center flex rounded-br-lg row-span-4 col-start-6 row-start-2 border-l-2 border-gray-200 border-dotted my-3 items-center">
-        <div class="w-4/5 aspect-square qr-skeleton"></div>
-        <!-- <qrcode [qrdata]="reserva._id" elementType="img" [errorCorrectionLevel]="'M'"> -->
-        <!-- </qrcode> -->
-      </div>
-    </div>
-
-  </div>
+     @for (item of [1,2,3,4]; track $index) {
+       <div class="flex gap-y-4 rounded-lg w-full  h-fit min-w-lg max-w-lg">
+         <div
+           class="grid grid-cols-[32px_repeat(4,1fr)] auto-cols-min grid-rows-5 rounded-lg border border-gray-200 w-full  h-[175px] md:h-[190px]">
+           <div class="bg-gray-200 text-white w-8 rounded-l-md row-span-5">
+             <p class="w-full -rotate-90 flex justify-center items-center text-center h-full text-nowrap font-semibold ">
+             </p>
+           </div>
+           <div
+             class="flex  border-b-2 border-dotted border-gray-200  flex-col rounded-t-lg col-span-5 w-full h-11  px-2 py-1 ">
+             <div class="flex">
+               <div class="w-6/12">
+                 <div class="flex flex-col align-middle">
+                   <label class="text-xs font-semibold text-seashell-500 text-no-skeleton">
+                     Empresa
+                   </label>
+                   <p class="font-bold capitalize skeleton">.</p>
+                 </div>
+               </div>
+               <div class="w-6/12">
+                 <div class="flex flex-col">
+                   <label class="text-xs font-semibold text-seashell-500 text-no-skeleton">
+                     Cancha
+                   </label>
+                   <p class="font-bold skeleton">.</p>
+                 </div>
+               </div>
+             </div>
+     
+     
+             <!-- INICIO PARTE BOLETA -->
+     
+             <div class="flex flex-col md:gap-1.5">
+               <div class="flex w-full">
+                 <div class="items-start flex flex-col justify-start">
+                   <p class="text-seashell-500 text-[10px] font-bold text-no-skeleton">
+                     Dirección
+                   </p>
+                   <div class="flex gap-4">
+                     <p class="text-[12px] skeleton">.</p>
+                   </div>
+     
+     
+                 </div>
+               </div>
+               <div class="flex w-full">
+                 <div class="w-6/12 items-start flex flex-col justify-start">
+                   <p class="text-seashell-500 text-[10px] font-bold text-no-skeleton">Fecha</p>
+                   <p class="text-[12px] skeleton">.</p>
+                 </div>
+     
+                 <div class="items-start flex flex-col justify-start">
+                   <p class="text-seashell-500 text-[10px] font-bold text-no-skeleton">
+                     Horario
+                   </p>
+                   <p class="text-[12px] skeleton">.</p>
+                 </div>
+               </div>
+               <div class="flex w-full">
+                 <div class="w-6/12 items-start flex flex-col justify-start">
+                   <p class="text-seashell-500 text-[10px] font-bold text-no-skeleton">
+                     Monto de reservación
+                   </p>
+                   <p class="text-base font-bold skeleton">. </p>
+                 </div>
+     
+                 <div class="items-start flex flex-col justify-start">
+                   <p class="text-seashell-500 text-[10px] font-bold text-no-skeleton">
+                     Cliente
+                   </p>
+                   <p class="text-base font-bold skeleton">.</p>
+                 </div>
+               </div>
+               <div class="flex items-center justify-center ">
+                 <p class="font-jetBrainsMono text-[12px] skeleton">.</p>
+                 <div class="invisible w-12 md:w20">
+                 </div>
+               </div>
+             </div>
+     
+           </div>
+     
+           <div
+             class="w-12 sm:w-16 md:w-20 justify-center flex rounded-br-lg row-span-4 col-start-6 row-start-2 border-l-2 border-gray-200 border-dotted my-3 items-center">
+             <div class="w-4/5 aspect-square qr-skeleton"></div>
+             <!-- <qrcode [qrdata]="reserva._id" elementType="img" [errorCorrectionLevel]="'M'"> -->
+             <!-- </qrcode> -->
+           </div>
+         </div>
+     
+       </div>
+     }
   }
   @if (!load_reservas) {
 

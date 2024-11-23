@@ -1,0 +1,38 @@
+.skeleton{
+    background-color: white;
+    min-width: 45px;
+    width: 85%;
+    max-width: 120px;
+    border-radius: 5px;
+    color: transparent;
+}
+.qr-skeleton{
+    background-color: white;
+}
+
+.text-no-skeleton{
+    color: transparent;
+}
+
+
+@keyframes wave {
+    0% {
+      background-position: -468px 0;
+    }
+    100% {
+      background-position: 468px 0;
+    }
+  }
+
+.skeleton,
+.qr-skeleton
+{
+  background-image: linear-gradient(
+    90deg,
+    #f0f0f0 0%,
+    #e0e0e0 40%,
+    #f0f0f0 100%
+  );
+  background-size: 200% 200%;
+  animation: wave 1.5s ease infinite;
+}
