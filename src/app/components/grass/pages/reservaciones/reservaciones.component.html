@@ -1,189 +1,296 @@
-@if (load_data) {
-Mirko el skeleton :v
-}
-
-@if (!activePagos && viewButton) {
-Suscribete :VVV
-}
-
-@if (activePagos && !viewButton) {
-
+@if (load_data) { Mirko el skeleton :v } @if (!activePagos && viewButton) {
+Suscribete :VVV } @if (activePagos && !viewButton) {
 
 <div class="relative overflow-x-auto shadow-md sm:rounded-lg">
-    <div class="flex flex-column sm:flex-row flex-wrap space-y-4 sm:space-y-0 items-center justify-between pb-4">
-        <label for="table-search" class="sr-only">Search</label>
-        <div class="relative">
-            <div class="absolute inset-y-0 left-0 rtl:inset-r-0 rtl:right-0 flex items-center ps-3 pointer-events-none">
-                <svg class="w-5 h-5 text-gray-500 dark:text-gray-400" aria-hidden="true" fill="currentColor"
-                    viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg">
-                    <path fill-rule="evenodd"
-                        d="M8 4a4 4 0 100 8 4 4 0 000-8zM2 8a6 6 0 1110.89 3.476l4.817 4.817a1 1 0 01-1.414 1.414l-4.816-4.816A6 6 0 012 8z"
-                        clip-rule="evenodd"></path>
-                </svg>
-            </div>
-            <input type="text" id="table-search"
-                class="block p-2 ps-10 text-sm text-gray-900 border border-gray-300 rounded-lg w-80 bg-gray-50 focus:ring-blue-500 focus:border-blue-500 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
-                placeholder="Search for items">
-        </div>
+  <div
+    class="flex flex-column sm:flex-row flex-wrap space-y-4 sm:space-y-0 items-center justify-between pb-4"
+  >
+    <label for="table-search" class="sr-only">Search</label>
+    <div class="relative">
+      <div
+        class="absolute inset-y-0 left-0 rtl:inset-r-0 rtl:right-0 flex items-center ps-3 pointer-events-none"
+      >
+        <svg
+          class="w-5 h-5 text-gray-500 dark:text-gray-400"
+          aria-hidden="true"
+          fill="currentColor"
+          viewBox="0 0 20 20"
+          xmlns="http://www.w3.org/2000/svg"
+        >
+          <path
+            fill-rule="evenodd"
+            d="M8 4a4 4 0 100 8 4 4 0 000-8zM2 8a6 6 0 1110.89 3.476l4.817 4.817a1 1 0 01-1.414 1.414l-4.816-4.816A6 6 0 012 8z"
+            clip-rule="evenodd"
+          ></path>
+        </svg>
+      </div>
+      <input
+        [(ngModel)]="search"
+        name="search"
+        (input)="onSearchChange($event)"
+        autocomplete="off"
+        [readonly]="load_data"
+        type="text"
+        id="table-search"
+        class="block p-2 ps-10 text-sm text-gray-900 border border-gray-300 rounded-lg w-80 bg-gray-50 focus:ring-blue-500 focus:border-blue-500 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
+        placeholder="Search for items"
+      />
     </div>
-    <table class="w-full text-sm text-left rtl:text-right text-gray-500 dark:text-gray-400">
-        <thead class="text-xs text-gray-700 uppercase bg-gray-50 dark:bg-gray-700 dark:text-gray-400">
-            <tr>
-                <th scope="col" class="px-6 py-3">
-                    N°
-                </th>
-                <th scope="col" class="px-6 py-3">
-                    Cliente
-                </th>
-                <th scope="col" class="px-6 py-3">
-                    Telefono
-                </th>
-                <th scope="col" class="px-6 py-3">
-                    Monto
-                </th>
-                <th scope="col" class="px-6 py-3">
-                    Opcs
-                </th>
-                <th scope="col" class="px-6 py-3">
-                    Cancha_reservada
-                </th>
-                <th scope="col" class="px-6 py-3">
-                    Fecha_reserva
-                </th>
-                <th scope="col" class="px-6 py-3">
-                    Horas
-                </th>
-                <th scope="col" class="px-6 py-3">
-                    Estado
-                </th>
-            </tr>
-        </thead>
-        <tbody>
-            @if (!load_data) {
-            @for (item of reservacionesOtras; track $index) {
-            <tr class="bg-white border-b dark:bg-gray-800 dark:border-gray-700 hover:bg-gray-50 dark:hover:bg-gray-600">
-                <th scope="row" class="px-6 py-4 font-medium text-gray-900 whitespace-nowrap dark:text-white">
-                    {{reservaciones.length - $index}}
-                </th>
-                <td class="px-6 py-4">
-                    {{ item.cliente.nombres }}
-                </td>
-                <td class="px-6 py-4">
-                    {{ item.cliente.telefono }}
-                </td>
-                <td class="px-6 py-4">
-                    S/ {{item.subtotal}}
-                </td>
-                <td class="px-6 py-4">
-                    <button (click)="openModal(item._id)"
-                        class="flex justify-between items-center px-2 py-1 w-full text-xs font-medium rounded-lg border border-red-500 bg-slate-50">
-                        Confirmar
+  </div>
+  <table
+    class="w-full text-sm text-left rtl:text-right text-gray-500 dark:text-gray-400"
+  >
+    <thead
+      class="text-xs text-gray-700 uppercase bg-gray-50 dark:bg-gray-700 dark:text-gray-400"
+    >
+      <tr>
+        <th scope="col" class="px-6 py-3">N°</th>
+        <th scope="col" class="px-6 py-3">Cliente</th>
+        <th scope="col" class="px-6 py-3">Telefono</th>
+        <th scope="col" class="px-6 py-3">Monto</th>
+        <th scope="col" class="px-6 py-3">Opcs</th>
+        <th scope="col" class="px-6 py-3">Cancha_reservada</th>
+        <th scope="col" class="px-6 py-3">Fecha_reserva</th>
+        <th scope="col" class="px-6 py-3">Horas</th>
+        <th scope="col" class="px-6 py-3">Estado</th>
+      </tr>
+    </thead>
+    <tbody>
+      @if (!load_data) { @for (item of reservacionesOtras; track $index) {
+      <tr
+        class="bg-white border-b dark:bg-gray-800 dark:border-gray-700 hover:bg-gray-50 dark:hover:bg-gray-600"
+      >
+        <th
+          scope="row"
+          class="px-6 py-4 font-medium text-gray-900 whitespace-nowrap dark:text-white"
+        >
+          {{ reservaciones.length - $index }}
+        </th>
+        <td class="px-6 py-4">
+          {{ item.cliente.nombres }}
+        </td>
+        <td class="px-6 py-4">
+          {{ item.cliente.telefono }}
+        </td>
+        <td class="px-6 py-4">S/ {{ item.subtotal }}</td>
+        <td class="px-6 py-4">
+          <button
+            [disabled]="item.pagado"
+            (click)="openModal(item._id)"
+            [ngClass]="{ 'border-red-500': !item.pagado }"
+            class="flex justify-between items-center px-2 py-1 w-full text-xs font-medium rounded-lg border border-forestGreen-500 bg-slate-50"
+          >
+            @if (item.pagado) { Pagado } @if (!item.pagado) { Confirmar }
+          </button>
+
+          <!-- Modal confirmar -->
+          <div
+            id="modal-{{ item._id }}"
+            tabindex="-1"
+            aria-hidden="true"
+            class="hidden overflow-y-auto overflow-x-hidden fixed top-0 right-0 left-0 z-50 justify-center items-center w-full md:inset-0 h-[calc(100%-1rem)] max-h-full"
+          >
+            <div class="relative p-4 w-full max-w-sm max-h-full">
+              <div class="relative bg-white rounded-lg shadow dark:bg-gray-700">
+                <!-- Modal header -->
+                <div
+                  class="flex items-center justify-between p-4 md:p-5 border-b rounded-t dark:border-gray-600"
+                >
+                  <h3
+                    class="text-lg font-semibold text-gray-900 dark:text-white"
+                  >
+                    Confirmar pago completo
+                  </h3>
+                  <button
+                    type="button"
+                    (click)="closeModal(item._id)"
+                    class="text-gray-400 bg-transparent hover:bg-gray-200 hover:text-gray-900 rounded-lg text-sm w-8 h-8 ms-auto inline-flex justify-center items-center dark:hover:bg-gray-600 dark:hover:text-white"
+                  >
+                    <svg
+                      class="w-3 h-3"
+                      xmlns="http://www.w3.org/2000/svg"
+                      fill="none"
+                      viewBox="0 0 14 14"
+                    >
+                      <path
+                        stroke="currentColor"
+                        stroke-linecap="round"
+                        stroke-linejoin="round"
+                        stroke-width="2"
+                        d="m1 1 6 6m0 0 6 6M7 7l6-6M7 7l-6 6"
+                      />
+                    </svg>
+                    <span class="sr-only">Close modal</span>
+                  </button>
+                </div>
+                <!-- Modal body -->
+                <div class="p-4 md:p-5">
+                  <!-- Precios para horas de dia -->
+                  @if (item.hora_inicio < item.cancha.hora_noche &&
+                  item.hora_fin < item.cancha.hora_noche) {
+                  <p class="text-gray-500 dark:text-gray-400">
+                    Precio total: S/.
+                    {{
+                      item.cancha.precio_dia *
+                        (item.hora_fin - item.hora_inicio)
+                    }}
+                  </p>
+                  <p class="text-gray-500 dark:text-gray-400">
+                    Adelantado: S/. {{ item.subtotal }}
+                  </p>
+                  <p class="text-gray-500 dark:text-gray-400">
+                    Restante: S/.
+                    {{
+                      item.cancha.precio_dia *
+                        (item.hora_fin - item.hora_inicio) -
+                        item.subtotal
+                    }}
+                  </p>
+
+                  <!-- Modal footer -->
+                  @if (item.cancha.precio_dia * (item.hora_fin -
+                  item.hora_inicio) - item.subtotal > 0) {
+                  <div
+                    class="flex items-center justify-between p-4 md:p-5 border-t border-gray-200 rounded-b dark:border-gray-600"
+                  >
+                    <button
+                      (click)="closeModal(item._id)"
+                      type="button"
+                      class="py-2.5 px-5 ms-3 text-sm text-gray-900 focus:outline-none bg-white rounded-lg border border-gray-200 hover:bg-gray-100 hover:text-gray-900 focus:z-10 focus:ring-4 focus:ring-gray-100"
+                    >
+                      Cancelar
                     </button>
+                    <button
+                      (click)="
+                        closeModal(item._id);
+                        actualizar_reserva_total_grass(
+                          item._id,
+                          item.cancha.precio_dia *
+                            (item.hora_fin - item.hora_inicio)
+                        )
+                      "
+                      type="button"
+                      class="ms-3 text-white bg-red-500 hover:bg-red-600 focus:ring-4 focus:outline-none focus:ring-red-300 font-medium rounded-lg text-sm px-5 py-2.5 text-center"
+                    >
+                      Confirmar
+                    </button>
+                  </div>
+                  } }
 
-                    <!-- Modal eliminar -->
-                    <div id="modal-{{item._id}}" tabindex="-1" aria-hidden="true"
-                        class="hidden overflow-y-auto overflow-x-hidden fixed top-0 right-0 left-0 z-50 justify-center items-center w-full md:inset-0 h-[calc(100%-1rem)] max-h-full">
-                        <div class="relative p-4 w-full max-w-sm max-h-full">
-                            <div class="relative bg-white rounded-lg shadow dark:bg-gray-700">
-                                <!-- Modal header -->
-                                <div
-                                    class="flex items-center justify-between p-4 md:p-5 border-b rounded-t dark:border-gray-600">
-                                    <h3 class="text-lg font-semibold text-gray-900 dark:text-white">
-                                        Confirmar pago completo
-                                    </h3>
-                                    <button type="button" (click)="closeModal(item._id)"
-                                        class="text-gray-400 bg-transparent hover:bg-gray-200 hover:text-gray-900 rounded-lg text-sm w-8 h-8 ms-auto inline-flex justify-center items-center dark:hover:bg-gray-600 dark:hover:text-white">
-                                        <svg class="w-3 h-3" xmlns="http://www.w3.org/2000/svg" fill="none"
-                                            viewBox="0 0 14 14">
-                                            <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round"
-                                                stroke-width="2" d="m1 1 6 6m0 0 6 6M7 7l6-6M7 7l-6 6" />
-                                        </svg>
-                                        <span class="sr-only">Close modal</span>
-                                    </button>
-                                </div>
-                                <!-- Modal body -->
-                                <div class="p-4 md:p-5">
+                  <!-- Precios para horas de noche -->
+                  @if (item.hora_inicio <= item.cancha.hora_noche &&
+                  item.hora_fin>= item.cancha.hora_noche) {
+                  <p class="text-gray-500 dark:text-gray-400">
+                    Precio total: S/.
+                    {{
+                      item.cancha.precio_noche *
+                        (item.hora_fin - item.hora_inicio)
+                    }}
+                  </p>
+                  <p class="text-gray-500 dark:text-gray-400">
+                    Adelantado: S/. {{ item.subtotal }}
+                  </p>
+                  <p class="text-gray-500 dark:text-gray-400">
+                    Restante: S/.
+                    {{
+                      item.cancha.precio_noche *
+                        (item.hora_fin - item.hora_inicio) -
+                        item.subtotal
+                    }}
+                  </p>
 
-                                    <!-- Precios para horas de dia -->
-                                    @if (item.hora_inicio < item.cancha.hora_noche && item.hora_fin <
-                                        item.cancha.hora_noche) { 
-                                            <p class="text-gray-500 dark:text-gray-400">
-                                        Precio total: S/. {{item.cancha.precio_dia * (item.hora_fin - item.hora_inicio)
-                                        }}
-                                        </p>
-                                        <p class="text-gray-500 dark:text-gray-400">
-                                            Adelantado: S/. {{item.subtotal }}
-                                        </p>
-                                        <p class="text-gray-500 dark:text-gray-400">
-                                            Restante: S/. {{item.cancha.precio_dia * (item.hora_fin - item.hora_inicio)
-                                            -
-                                            item.subtotal}}
-                                        </p>
-                                        }
+                  <!-- Modal footer -->
+                  @if (item.cancha.precio_noche * (item.hora_fin -
+                  item.hora_inicio) - item.subtotal > 0) {
+                  <div
+                    class="flex items-center justify-between p-4 md:p-5 border-t border-gray-200 rounded-b dark:border-gray-600"
+                  >
+                    <button
+                      (click)="closeModal(item._id)"
+                      type="button"
+                      class="py-2.5 px-5 ms-3 text-sm text-gray-900 focus:outline-none bg-white rounded-lg border border-gray-200 hover:bg-gray-100 hover:text-gray-900 focus:z-10 focus:ring-4 focus:ring-gray-100"
+                    >
+                      Cancelar
+                    </button>
+                    <button
+                      (click)="
+                        closeModal(item._id);
+                        actualizar_reserva_total_grass(
+                          item._id,
+                          item.cancha.precio_noche *
+                            (item.hora_fin - item.hora_inicio)
+                        )
+                      "
+                      type="button"
+                      class="ms-3 text-white bg-red-500 hover:bg-red-600 focus:ring-4 focus:outline-none focus:ring-red-300 font-medium rounded-lg text-sm px-5 py-2.5 text-center"
+                    >
+                      Confirmar
+                    </button>
+                  </div>
+                  } } @if (item.hora_inicio < item.cancha.hora_noche &&
+                  item.hora_fin> item.cancha.hora_noche) {
+                  <p class="text-gray-500 dark:text-gray-400">
+                    Precio total: S/. {{ calcularPrecioMixto(item) }}
+                  </p>
+                  <p class="text-gray-500 dark:text-gray-400">
+                    Adelantado: S/. {{ item.subtotal }}
+                  </p>
+                  <p class="text-gray-500 dark:text-gray-400">
+                    Restante: S/.
+                    {{ calcularPrecioMixto(item) - item.subtotal }}
+                  </p>
 
-                                    <!-- Precios para horas de noche -->
-                                    @if (item.hora_inicio <= item.cancha.hora_noche && item.hora_fin >= item.cancha.hora_noche) { 
-                                            <p class="text-gray-500 dark:text-gray-400">
-                                        Precio total: S/. {{item.cancha.precio_noche * (item.hora_fin - item.hora_inicio) }}
-                                        </p>
-                                        <p class="text-gray-500 dark:text-gray-400">
-                                            Adelantado: S/. {{item.subtotal }}
-                                        </p>
-                                        <p class="text-gray-500 dark:text-gray-400">
-                                            Restante: S/. {{item.cancha.precio_noche * (item.hora_fin - item.hora_inicio) - item.subtotal}}
-                                        </p>
-                                        }
+                  <!-- Modal footer -->
+                  @if (calcularPrecioMixto(item) - item.subtotal > 0) {
+                  <div
+                    class="flex items-center justify-between p-4 md:p-5 border-t border-gray-200 rounded-b dark:border-gray-600"
+                  >
+                    <button
+                      (click)="closeModal(item._id)"
+                      type="button"
+                      class="py-2.5 px-5 ms-3 text-sm text-gray-900 focus:outline-none bg-white rounded-lg border border-gray-200 hover:bg-gray-100 hover:text-gray-900 focus:z-10 focus:ring-4 focus:ring-gray-100"
+                    >
+                      Cancelar
+                    </button>
+                    <button
+                      (click)="
+                        closeModal(item._id);
+                        actualizar_reserva_total_grass(
+                          item._id,
+                          calcularPrecioMixto(item)
+                        )
+                      "
+                      type="button"
+                      class="ms-3 text-white bg-red-500 hover:bg-red-600 focus:ring-4 focus:outline-none focus:ring-red-300 font-medium rounded-lg text-sm px-5 py-2.5 text-center"
+                    >
+                      Confirmar
+                    </button>
+                  </div>
+                  } }
 
-                                        @if (item.hora_inicio < item.cancha.hora_noche && item.hora_fin >
-                                            item.cancha.hora_noche) {
-                                            <p class="text-gray-500 dark:text-gray-400">
-                                                Precio total: S/. {{calcularPrecioMixto(item)}}
-                                            </p>
-                                            <p class="text-gray-500 dark:text-gray-400">
-                                                Adelantado: S/. {{item.subtotal}}
-                                            </p>
-                                            <p class="text-gray-500 dark:text-gray-400">
-                                                Restante: S/. {{calcularPrecioMixto(item) - item.subtotal}}
-                                            </p>
+                  <!-- Precios para horas de noche -->
+                </div>
+              </div>
+            </div>
+          </div>
+        </td>
+        <td class="px-6 py-4">
+          {{ item.cancha.nombre }}
+        </td>
+        <td class="px-6 py-4">
+          {{ item.fecha | date : "mediumDate" }}
+        </td>
+        <td class="px-6 py-4">
+          {{ item.hora_inicio | time24to12 }} - {{ item.hora_fin | time24to12 }}
+        </td>
+        <td class="px-6 py-4">
+          {{ item.estado }}
+        </td>
+      </tr>
 
-                                            }
-
-                                            <!-- Precios para horas de noche -->
-                                </div>
-                                <!-- Modal footer -->
-                                <div
-                                    class="flex items-center justify-end p-4 md:p-5 border-t border-gray-200 rounded-b dark:border-gray-600">
-                                    <button (click)="closeModal(item._id)" type="button"
-                                        class="py-2.5 px-5 ms-3 text-sm text-gray-900 focus:outline-none bg-white rounded-lg border border-gray-200 hover:bg-gray-100 hover:text-gray-900 focus:z-10 focus:ring-4 focus:ring-gray-100">
-                                        Cancelar
-                                    </button>
-                                    <button (click)="eliminar_reservacion(item._id)" type="button"
-                                        class="ms-3 text-white bg-red-500 hover:bg-red-600 focus:ring-4 focus:outline-none focus:ring-red-300 font-medium rounded-lg text-sm px-5 py-2.5 text-center">
-                                        Confirmar
-                                    </button>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </td>
-                <td class="px-6 py-4">
-                    {{item.cancha.nombre}}
-                </td>
-                <td class="px-6 py-4">
-                    {{ item.fecha | date: 'mediumDate' }}
-                </td>
-                <td class="px-6 py-4">
-                    {{item.hora_inicio | time24to12}} - {{item.hora_fin | time24to12}}
-                </td>
-                <td class="px-6 py-4">
-                    {{item.estado}}
-                </td>
-            </tr>
-
-            }
-            }
-        </tbody>
-    </table>
+      } }
+    </tbody>
+  </table>
 </div>
 
 }

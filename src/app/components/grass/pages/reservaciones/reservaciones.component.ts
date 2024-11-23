@@ -198,7 +198,7 @@ export class ReservacionesComponent implements OnInit {
   // Método que realiza la búsqueda
   private performSearch(value: string) {
     if (value === '') {
-      this.updateReservacionesOtras(this.reservacionesOtras);
+      this.updateReservacionesOtras(this.reservaciones);
       return;
     }
 
@@ -263,7 +263,7 @@ export class ReservacionesComponent implements OnInit {
   actualizar_reserva_total_grass(id: string, total: number) {
     this._userService.actualizar_reserva_total_grass(id, total, this.token).subscribe({
       next: (res) => {
-
+        this.init_data();
       },
       error: (err) => {
 
