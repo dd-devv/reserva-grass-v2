@@ -1,48 +1,33 @@
-<div
-  class="flex flex-col w-full p-2 bg-white gap-2 gap-y-4"
-  id="registro-component"
->
-  <div class="flex flex-col bg-blue-300 rounded-lg gap-1 p-5 header-form">
-    <p class="font-semibold text-2xl text-center">¡Regístrate!</p>
-    <p class="text-center text-pretty text-sm text-slate-700 mb-6 mt-3">
-      Crea tu cuenta y accede a todas las ventajas de nuestro sistema.
-    </p>
+<div class="flex md:flex-row flex-col w-full px-2 h-full bg-white gap-2 md:gap-x-6 gap-y-4" id="registro-component">
+  <div
+    class=" bg-blue-300 md:bg-transparent md:flex md:flex-col py-2 md:py-8 w-full items-center  align-middle rounded-lg md:bg-no-repeat md:bg-cover bg-bottom md:bg-blend-multiply  md:bg-[url('https://images.pexels.com/photos/27674890/pexels-photo-27674890/free-photo-of-hombre-estadio-juego-partido.jpeg')]">
+    <div class="w-full md:h-full flex  flex-col items-center align-middle justify-center md:gap-y-16">
+    <div class="md:backdrop-brightness-50  p-4 w-full">
+      <p class="font-semibold text-2xl text-center md:text-white">¡Regístrate!</p>
+      <p class="text-center text-pretty text-sm md:text-white text-slate-700 mb-5 mt-3">
+        Crea tu cuenta y accede a todas las ventajas de nuestro sistema.
+      </p>
+    </div>
 
-    <div class="flex justify-center w-full flex-wrap gap-4">
+
+    <div class="flex mt-auto justify-center w-fit  gap-2 backdrop-brightness-50   rounded-lg p-2 md:p-4 flex-nowrap">
       <button
-        class="flex flex-col items-center justify-center rounded-md bg-blue-100 focus:border-blue-500 w-36 p-3 text-center shadow-lg border-2 border-blue-700"
-      >
-        <svg
-          width="13"
-          height="15"
-          viewBox="0 0 13 15"
-          fill="none"
-          xmlns="http://www.w3.org/2000/svg"
-        >
+        class="flex flex-col items-center justify-center rounded-md bg-blue-100 focus:border-blue-500 w-36 p-3 text-center shadow-lg border-2 border-blue-700">
+        <svg width="13" height="15" viewBox="0 0 13 15" fill="none" xmlns="http://www.w3.org/2000/svg">
           <path
             d="M13 14.4375C13 14.5867 12.9386 14.7298 12.8294 14.8352C12.7202 14.9407 12.572 15 12.4176 15H0.582437C0.427965 15 0.27982 14.9407 0.170592 14.8352C0.0613637 14.7298 0 14.5867 0 14.4375C0 11.3625 3.49462 8.9775 6.5 8.9775C9.50537 8.9775 13 11.3625 13 14.4375ZM10.4606 3.8325C10.459 4.58869 10.2254 5.32748 9.78932 5.95551C9.3532 6.58354 8.73411 7.07263 8.01027 7.36099C7.28644 7.64934 6.49034 7.72402 5.72258 7.57559C4.95482 7.42715 4.24984 7.06227 3.69672 6.52703C3.1436 5.9918 2.76716 5.31024 2.61497 4.56847C2.46278 3.82669 2.54166 3.058 2.84166 2.35951C3.14165 1.66102 3.64929 1.06408 4.30043 0.644112C4.95158 0.224146 5.717 1.45366e-06 6.5 0C7.55112 0.00198658 8.55849 0.406644 9.30102 1.12516C10.0435 1.84368 10.4606 2.81736 10.4606 3.8325Z"
-            fill="#3558C0"
-          />
+            fill="#3558C0" />
         </svg>
         <p class="text-lg font-semibold">Usuario</p>
         <p class="text-[8px]">Para jugadores apasionados por el deporte</p>
       </button>
 
-      <button
-        [routerLink]="['/auth/registro-empresa']"
-        class="flex flex-col items-center justify-center rounded-md bg-blue-100 focus:border-blue-500 w-36 p-3 text-center shadow-lg"
-      >
-        <svg
-          width="20"
-          height="15"
-          viewBox="0 0 20 15"
-          fill="none"
-          xmlns="http://www.w3.org/2000/svg"
-        >
+      <button [routerLink]="['/auth/registro-empresa']"
+        class="flex flex-col items-center justify-center rounded-md bg-blue-100 focus:border-blue-500 w-36 p-3 text-center shadow-lg">
+        <svg width="20" height="15" viewBox="0 0 20 15" fill="none" xmlns="http://www.w3.org/2000/svg">
           <path
             d="M14 13V15H0V13C0 13 0 9.00004 7 9.00004C14 9.00004 14 13 14 13ZM10.5 3.50004C10.5 2.8078 10.2947 2.13111 9.91014 1.55554C9.52556 0.979969 8.97893 0.531365 8.33939 0.266459C7.69985 0.0015519 6.99612 -0.0677598 6.31718 0.0672885C5.63825 0.202337 5.01461 0.53568 4.52513 1.02516C4.03564 1.51465 3.7023 2.13829 3.56725 2.81722C3.4322 3.49615 3.50152 4.19989 3.76642 4.83943C4.03133 5.47897 4.47993 6.0256 5.0555 6.41018C5.63108 6.79477 6.30777 7.00004 7 7.00004C7.92826 7.00004 8.8185 6.63129 9.47487 5.97491C10.1313 5.31853 10.5 4.42829 10.5 3.50004ZM13.94 9.00004C14.5547 9.47578 15.0578 10.0805 15.4137 10.7715C15.7696 11.4626 15.9697 12.2233 16 13V15H20V13C20 13 20 9.37004 13.94 9.00004ZM13 3.67965e-05C12.3118 -0.00316434 11.6388 0.202568 11.07 0.590037C11.6774 1.43877 12.0041 2.45632 12.0041 3.50004C12.0041 4.54375 11.6774 5.5613 11.07 6.41004C11.6388 6.79751 12.3118 7.00324 13 7.00004C13.9283 7.00004 14.8185 6.63129 15.4749 5.97491C16.1313 5.31853 16.5 4.42829 16.5 3.50004C16.5 2.57178 16.1313 1.68154 15.4749 1.02516C14.8185 0.368786 13.9283 3.67965e-05 13 3.67965e-05Z"
-            fill="#464646"
-          />
+            fill="#464646" />
         </svg>
 
         <p class="text-lg font-semibold">Empresa</p>
@@ -51,20 +36,14 @@
         </p>
       </button>
     </div>
+    </div>
   </div>
 
-  <div class="form-content">
-    <form
-      [formGroup]="registerForm"
-      (ngSubmit)="onSubmit()"
-      autocomplete="off"
-      class="flex flex-col justify-between rounded-l rounded-2xl border border-slate-400 px-2.5 py-8 gap-2.5"
-    >
+  <div class="w-full h-full">
+    <form [formGroup]="registerForm" (ngSubmit)="onSubmit()" autocomplete="off"
+      class="flex flex-col  justify-between rounded-l rounded-2xl border border-slate-400 md:border-none md:shadow-lg md:shadow-slate-300 md:rounded-lg px-2.5 py-8 md:py-4 md:px-4 md:gap-4 gap-2.5">
       <div>
-        <label
-          for="nombres"
-          class="block mb-1 text-sm font-medium text-gray-900 dark:text-white"
-          >Nombres
+        <label for="nombres" class="block mb-1 text-sm font-medium text-gray-900 dark:text-white">Nombres
 
           <!-- Para mostrar texto de error de las validaciones -->
           @if (isValidField('nombres')) {
@@ -73,83 +52,53 @@
           </span>
           }
         </label>
-        <input
-          formControlName="nombres"
-          id="nombres"
-          placeholder="Ingrese su nombre"
-          type="text"
-          class="block w-full p-2 h-9 text-gray-900 border border-gray-300 rounded-md bg-gray-50 text-xs focus:ring-blue-500 focus:border-blue-500 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
-        />
+        <input formControlName="nombres" id="nombres" placeholder="Ingrese su nombre" type="text"
+          class="block w-full p-2 h-9 text-gray-900 border border-gray-300 rounded-md bg-gray-50 text-xs focus:ring-blue-500 focus:border-blue-500 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500" />
       </div>
 
       <div>
-        <label
-          for="whatsapp"
-          class="block mb-1 text-sm font-medium text-gray-900 dark:text-white"
-          >Whatsapp @if (isValidField('whatsapp')) {
+        <label for="whatsapp" class="block mb-1 text-sm font-medium text-gray-900 dark:text-white">Whatsapp @if
+          (isValidField('whatsapp')) {
           <span class="text-red-600 text-xs">
             {{ getFieldError("whatsapp") }}*
           </span>
           }
         </label>
-        <input
-          formControlName="whatsapp"
-          id="whatsapp"
-          maxlength="9"
-          placeholder="Ingrese su nombre"
-          type="text"
-          class="block w-full p-2 h-9 text-gray-900 border border-gray-300 rounded-md bg-gray-50 text-xs focus:ring-blue-500 focus:border-blue-500 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
-        />
+        <input formControlName="whatsapp" id="whatsapp" maxlength="9" placeholder="Ingrese su nombre" type="text"
+          class="block w-full p-2 h-9 text-gray-900 border border-gray-300 rounded-md bg-gray-50 text-xs focus:ring-blue-500 focus:border-blue-500 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500" />
       </div>
       <div>
-        <label
-          for="region"
-          class="block mb-2 text-sm font-medium text-gray-900 dark:text-white"
-        >
+        <label for="region" class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">
           Ingrese su ciudad @if (isValidField('region')) {
           <span class="text-red-600 text-xs">
             {{ getFieldError("region") }}*
           </span>
           }
         </label>
-        <select
-          formControlName="region"
-          id="region"
-          class="bg-gray-50 border h-9 border-gray-300 text-gray-900 text-xs rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
-        >
+        <select formControlName="region" id="region"
+          class="bg-gray-50 border h-9 border-gray-300 text-gray-900 text-xs rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500">
           <option selected value="">Seleccionar</option>
           @for (region of regiones; track $index) {
-            <option [value]="region">{{region}}</option>
+          <option [value]="region">{{region}}</option>
           }
         </select>
       </div>
 
       <div>
-        <label
-          for="email"
-          class="block mb-1 text-sm font-medium text-gray-900 dark:text-white"
-          >Correo @if (isValidField('email')) {
+        <label for="email" class="block mb-1 text-sm font-medium text-gray-900 dark:text-white">Correo @if
+          (isValidField('email')) {
           <span class="text-red-600 text-xs">
             {{ getFieldError("email") }}*
           </span>
           }
         </label>
-        <input
-          formControlName="email"
-          id="email"
-          placeholder="Ingrese su correo"
-          type="text"
-          id="email"
-          class="block w-full p-2 h-9 text-gray-900 border border-gray-300 rounded-md bg-gray-50 text-xs focus:ring-blue-500 focus:border-blue-500 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
-        />
+        <input formControlName="email" id="email" placeholder="Ingrese su correo" type="text" id="email"
+          class="block w-full p-2 h-9 text-gray-900 border border-gray-300 rounded-md bg-gray-50 text-xs focus:ring-blue-500 focus:border-blue-500 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500" />
       </div>
 
       <!-- Password -->
       <div>
-        <label
-          for="password"
-          class="block mb-1 text-sm font-medium text-gray-900 dark:text-white"
-        >
+        <label for="password" class="block mb-1 text-sm font-medium text-gray-900 dark:text-white">
           Contraseña @if (isValidField('password')) {
           <span class="text-red-600 text-xs">
             {{ getFieldError("password") }}*
@@ -157,54 +106,25 @@
           }
         </label>
         <div class="relative">
-          <input
-            [type]="showPassword ? 'text' : 'password'"
-            formControlName="password"
-            id="password"
+          <input [type]="showPassword ? 'text' : 'password'" formControlName="password" id="password"
             placeholder="Ingrese su contraseña"
             class="block w-full p-2 h-9 text-gray-900 border border-gray-300 rounded-md bg-gray-50 text-xs focus:ring-blue-500 focus:border-blue-500 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
-            [class.border-red-500]="isValidField('password')"
-          />
-          <button
-            type="button"
-            (click)="togglePasswordVisibility('password')"
-            class="absolute inset-y-0 right-0 flex items-center pr-3 text-gray-600 dark:text-gray-400"
-          >
-            <svg
-              class="w-4 h-4"
-              [class.hidden]="showPassword"
-              fill="none"
-              stroke="currentColor"
-              viewBox="0 0 24 24"
-              xmlns="http://www.w3.org/2000/svg"
-            >
-              <path
-                stroke-linecap="round"
-                stroke-linejoin="round"
-                stroke-width="2"
-                d="M15 12a3 3 0 11-6 0 3 3 0 016 0z"
-              ></path>
-              <path
-                stroke-linecap="round"
-                stroke-linejoin="round"
-                stroke-width="2"
-                d="M2.458 12C3.732 7.943 7.523 5 12 5c4.478 0 8.268 2.943 9.542 7-1.274 4.057-5.064 7-9.542 7-4.477 0-8.268-2.943-9.542-7z"
-              ></path>
+            [class.border-red-500]="isValidField('password')" />
+          <button type="button" (click)="togglePasswordVisibility('password')"
+            class="absolute inset-y-0 right-0 flex items-center pr-3 text-gray-600 dark:text-gray-400">
+            <svg class="w-4 h-4" [class.hidden]="showPassword" fill="none" stroke="currentColor" viewBox="0 0 24 24"
+              xmlns="http://www.w3.org/2000/svg">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                d="M15 12a3 3 0 11-6 0 3 3 0 016 0z"></path>
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                d="M2.458 12C3.732 7.943 7.523 5 12 5c4.478 0 8.268 2.943 9.542 7-1.274 4.057-5.064 7-9.542 7-4.477 0-8.268-2.943-9.542-7z">
+              </path>
             </svg>
-            <svg
-              class="w-4 h-4"
-              [class.hidden]="!showPassword"
-              fill="none"
-              stroke="currentColor"
-              viewBox="0 0 24 24"
-              xmlns="http://www.w3.org/2000/svg"
-            >
-              <path
-                stroke-linecap="round"
-                stroke-linejoin="round"
-                stroke-width="2"
-                d="M13.875 18.825A10.05 10.05 0 0112 19c-4.478 0-8.268-2.943-9.543-7a9.97 9.97 0 011.563-3.029m5.858.908a3 3 0 114.243 4.243M9.878 9.878l4.242 4.242M9.88 9.88l-3.29-3.29m7.532 7.532l3.29 3.29M3 3l3.59 3.59m0 0A9.953 9.953 0 0112 5c4.478 0 8.268 2.943 9.543 7a10.025 10.025 0 01-4.132 5.411m0 0L21 21"
-              ></path>
+            <svg class="w-4 h-4" [class.hidden]="!showPassword" fill="none" stroke="currentColor" viewBox="0 0 24 24"
+              xmlns="http://www.w3.org/2000/svg">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                d="M13.875 18.825A10.05 10.05 0 0112 19c-4.478 0-8.268-2.943-9.543-7a9.97 9.97 0 011.563-3.029m5.858.908a3 3 0 114.243 4.243M9.878 9.878l4.242 4.242M9.88 9.88l-3.29-3.29m7.532 7.532l3.29 3.29M3 3l3.59 3.59m0 0A9.953 9.953 0 0112 5c4.478 0 8.268 2.943 9.543 7a10.025 10.025 0 01-4.132 5.411m0 0L21 21">
+              </path>
             </svg>
           </button>
         </div>
@@ -212,103 +132,71 @@
 
       <!-- Confirm Password -->
       <div>
-        <label
-          for="confirmPassword"
-          class="block mb-1 text-sm font-medium text-gray-900 dark:text-white"
-        >
+        <label for="confirmPassword" class="block mb-1 text-sm font-medium text-gray-900 dark:text-white">
           Confirmar Contraseña @if (isValidField('confirmPassword') ||
           registerForm.errors?.['passwordMismatch']) {
           <span class="text-red-600 text-xs">
             {{
-              getFieldError("confirmPassword") ||
-                "Las contraseñas no coinciden"
+            getFieldError("confirmPassword") ||
+            "Las contraseñas no coinciden"
             }}*
           </span>
           }
         </label>
         <div class="relative">
-          <input
-            [type]="showConfirmPassword ? 'text' : 'password'"
-            formControlName="confirmPassword"
-            id="confirmPassword"
-            placeholder="Confirme su contraseña"
+          <input [type]="showConfirmPassword ? 'text' : 'password'" formControlName="confirmPassword"
+            id="confirmPassword" placeholder="Confirme su contraseña"
             class="block w-full p-2 h-9 text-gray-900 border border-gray-300 rounded-md bg-gray-50 text-xs focus:ring-blue-500 focus:border-blue-500 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
-            [class.border-red-500]="isValidField('confirmPassword') || registerForm.errors?.['passwordMismatch']"
-          />
-          <button
-            type="button"
-            (click)="togglePasswordVisibility('confirmPassword')"
-            class="absolute inset-y-0 right-0 flex items-center pr-3 text-gray-600 dark:text-gray-400"
-          >
-            <svg
-              class="w-4 h-4"
-              [class.hidden]="showConfirmPassword"
-              fill="none"
-              stroke="currentColor"
-              viewBox="0 0 24 24"
-              xmlns="http://www.w3.org/2000/svg"
-            >
-              <path
-                stroke-linecap="round"
-                stroke-linejoin="round"
-                stroke-width="2"
-                d="M15 12a3 3 0 11-6 0 3 3 0 016 0z"
-              ></path>
-              <path
-                stroke-linecap="round"
-                stroke-linejoin="round"
-                stroke-width="2"
-                d="M2.458 12C3.732 7.943 7.523 5 12 5c4.478 0 8.268 2.943 9.542 7-1.274 4.057-5.064 7-9.542 7-4.477 0-8.268-2.943-9.542-7z"
-              ></path>
+            [class.border-red-500]="isValidField('confirmPassword') || registerForm.errors?.['passwordMismatch']" />
+          <button type="button" (click)="togglePasswordVisibility('confirmPassword')"
+            class="absolute inset-y-0 right-0 flex items-center pr-3 text-gray-600 dark:text-gray-400">
+            <svg class="w-4 h-4" [class.hidden]="showConfirmPassword" fill="none" stroke="currentColor"
+              viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                d="M15 12a3 3 0 11-6 0 3 3 0 016 0z"></path>
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                d="M2.458 12C3.732 7.943 7.523 5 12 5c4.478 0 8.268 2.943 9.542 7-1.274 4.057-5.064 7-9.542 7-4.477 0-8.268-2.943-9.542-7z">
+              </path>
             </svg>
-            <svg
-              class="w-4 h-4"
-              [class.hidden]="!showConfirmPassword"
-              fill="none"
-              stroke="currentColor"
-              viewBox="0 0 24 24"
-              xmlns="http://www.w3.org/2000/svg"
-            >
-              <path
-                stroke-linecap="round"
-                stroke-linejoin="round"
-                stroke-width="2"
-                d="M13.875 18.825A10.05 10.05 0 0112 19c-4.478 0-8.268-2.943-9.543-7a9.97 9.97 0 011.563-3.029m5.858.908a3 3 0 114.243 4.243M9.878 9.878l4.242 4.242M9.88 9.88l-3.29-3.29m7.532 7.532l3.29 3.29M3 3l3.59 3.59m0 0A9.953 9.953 0 0112 5c4.478 0 8.268 2.943 9.543 7a10.025 10.025 0 01-4.132 5.411m0 0L21 21"
-              ></path>
+            <svg class="w-4 h-4" [class.hidden]="!showConfirmPassword" fill="none" stroke="currentColor"
+              viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                d="M13.875 18.825A10.05 10.05 0 0112 19c-4.478 0-8.268-2.943-9.543-7a9.97 9.97 0 011.563-3.029m5.858.908a3 3 0 114.243 4.243M9.878 9.878l4.242 4.242M9.88 9.88l-3.29-3.29m7.532 7.532l3.29 3.29M3 3l3.59 3.59m0 0A9.953 9.953 0 0112 5c4.478 0 8.268 2.943 9.543 7a10.025 10.025 0 01-4.132 5.411m0 0L21 21">
+              </path>
             </svg>
           </button>
         </div>
       </div>
 
-      <p class="text-center text-xs text-pretty text-balance">
+      <p class="text-center text-xs text-pretty">
         Al  <span class="font-bold">Crear Cuenta</span> aceptas nuestros
         Términos y condiciones, y Políticas de privacidad
       </p>
       @if (!isLoading) {
-        <button
-        type="submit"
-        class="w-full bg-blue-600 text-white h-9 rounded-md"
-      >
+      <button type="submit" class="w-full bg-blue-600 text-white h-9 rounded-md">
         Crear cuenta
       </button>
       }
       @else() {
-        <div class="text-center">
-          <div role="status">
-              <svg aria-hidden="true" class="inline w-8 h-8 text-gray-200 animate-spin dark:text-gray-600 fill-blue-600" viewBox="0 0 100 101" fill="none" xmlns="http://www.w3.org/2000/svg">
-                  <path d="M100 50.5908C100 78.2051 77.6142 100.591 50 100.591C22.3858 100.591 0 78.2051 0 50.5908C0 22.9766 22.3858 0.59082 50 0.59082C77.6142 0.59082 100 22.9766 100 50.5908ZM9.08144 50.5908C9.08144 73.1895 27.4013 91.5094 50 91.5094C72.5987 91.5094 90.9186 73.1895 90.9186 50.5908C90.9186 27.9921 72.5987 9.67226 50 9.67226C27.4013 9.67226 9.08144 27.9921 9.08144 50.5908Z" fill="currentColor"/>
-                  <path d="M93.9676 39.0409C96.393 38.4038 97.8624 35.9116 97.0079 33.5539C95.2932 28.8227 92.871 24.3692 89.8167 20.348C85.8452 15.1192 80.8826 10.7238 75.2124 7.41289C69.5422 4.10194 63.2754 1.94025 56.7698 1.05124C51.7666 0.367541 46.6976 0.446843 41.7345 1.27873C39.2613 1.69328 37.813 4.19778 38.4501 6.62326C39.0873 9.04874 41.5694 10.4717 44.0505 10.1071C47.8511 9.54855 51.7191 9.52689 55.5402 10.0491C60.8642 10.7766 65.9928 12.5457 70.6331 15.2552C75.2735 17.9648 79.3347 21.5619 82.5849 25.841C84.9175 28.9121 86.7997 32.2913 88.1811 35.8758C89.083 38.2158 91.5421 39.6781 93.9676 39.0409Z" fill="currentFill"/>
-              </svg>
-              <span class="sr-only">Loading...</span>
-          </div>
+      <div class="text-center">
+        <div role="status">
+          <svg aria-hidden="true" class="inline w-8 h-8 text-gray-200 animate-spin dark:text-gray-600 fill-blue-600"
+            viewBox="0 0 100 101" fill="none" xmlns="http://www.w3.org/2000/svg">
+            <path
+              d="M100 50.5908C100 78.2051 77.6142 100.591 50 100.591C22.3858 100.591 0 78.2051 0 50.5908C0 22.9766 22.3858 0.59082 50 0.59082C77.6142 0.59082 100 22.9766 100 50.5908ZM9.08144 50.5908C9.08144 73.1895 27.4013 91.5094 50 91.5094C72.5987 91.5094 90.9186 73.1895 90.9186 50.5908C90.9186 27.9921 72.5987 9.67226 50 9.67226C27.4013 9.67226 9.08144 27.9921 9.08144 50.5908Z"
+              fill="currentColor" />
+            <path
+              d="M93.9676 39.0409C96.393 38.4038 97.8624 35.9116 97.0079 33.5539C95.2932 28.8227 92.871 24.3692 89.8167 20.348C85.8452 15.1192 80.8826 10.7238 75.2124 7.41289C69.5422 4.10194 63.2754 1.94025 56.7698 1.05124C51.7666 0.367541 46.6976 0.446843 41.7345 1.27873C39.2613 1.69328 37.813 4.19778 38.4501 6.62326C39.0873 9.04874 41.5694 10.4717 44.0505 10.1071C47.8511 9.54855 51.7191 9.52689 55.5402 10.0491C60.8642 10.7766 65.9928 12.5457 70.6331 15.2552C75.2735 17.9648 79.3347 21.5619 82.5849 25.841C84.9175 28.9121 86.7997 32.2913 88.1811 35.8758C89.083 38.2158 91.5421 39.6781 93.9676 39.0409Z"
+              fill="currentFill" />
+          </svg>
+          <span class="sr-only">Loading...</span>
+        </div>
       </div>
       }
       <div class="inline-flex items-center justify-center w-full font-medium">
         <hr class="w-full h-px my-8 bg-gray-200 border-0 dark:bg-gray-700" />
         <div class="flex justify-center absolute">
-          <p
-            class="px-3 text-[12px] text-gray-900 bg-white left-1/2 dark:text-white dark:bg-gray-900"
-          >
+          <p class="px-3 text-[12px] text-gray-900 bg-white left-1/2 dark:text-white dark:bg-gray-900">
             ¿Ya tienes cuenta?
             <span class="text-blue-400">
               <a [routerLink]="['/auth']"> Inicia Sesión </a>
