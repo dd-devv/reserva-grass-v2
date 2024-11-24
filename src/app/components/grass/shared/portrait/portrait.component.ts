@@ -71,7 +71,7 @@ export class PortraitComponent implements OnInit {
             this.addImage = true;
           }
         } else {
-          this.portada_url = '../../../../../assets/img/default-portada.jpeg'
+          this.portada_url = '../../../../../assets/img-webp/default-portada.webp'
           this.isImagePort = false;
           this.addImage = true;
         }
