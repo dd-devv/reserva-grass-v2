@@ -11,7 +11,7 @@ import { UserService } from '../../../../services/user.service';
 export class SuscripcionComponent implements OnInit {
   public load_data = false;
   public activePagos: boolean = false;
-  public activeSuscripcion: any = null;
+  public activeSuscripcion: any = {};
 
   private token: any;
   private id: any;
@@ -48,11 +48,9 @@ export class SuscripcionComponent implements OnInit {
           const suscripcionConfirmada = response.data.find(
             (susc: any) => susc.estado === 'Confirmado'
           );
-          
           this.activeSuscripcion = suscripcionConfirmada || null;
-          console.log(this.activeSuscripcion);
-          
           this.activePagos = !!suscripcionConfirmada;
+          this.load_data = false;
         }
         this.load_data = false;
       }
