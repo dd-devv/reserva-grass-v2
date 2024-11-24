@@ -2,7 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 import { UserService } from '../../../../../services/user.service';
 import { Title } from '@angular/platform-browser';
-import { ToastService } from '../../../../../services/toast.service';
+import { ToastService } from '../../../../../services/toast/toast.service';
 
 @Component({
   selector: 'app-password',
@@ -56,19 +56,19 @@ export class PasswordComponent implements OnInit {
     this._userService.comparar_password(data, this.token).subscribe({
       next: (res) => {
         if (res.data) {
-          this._toastrService.showToast('Se verificó con éxito');
+          this._toastrService.success('Se verificó con éxito');
   
           this.verificado = true;
           this.pass = '';
         } else {
-          this._toastrService.showToast('Contraseña incorrecta, intenta de nuevo!');
+          this._toastrService.warning('Contraseña incorrecta, intenta de nuevo!');
   
           this.verificado = false;
         }
         
       },
       error: (err) => {
-        this._toastrService.showToast(err.message);
+        this._toastrService.error(err.message);
       }
     }
     );
@@ -101,7 +101,7 @@ export class PasswordComponent implements OnInit {
     }
     this._userService.actualizar_password_user(this.empresa._id, data, this.token).subscribe({
       next: (res) => {
-        this._toastrService.showToast('Se actualizó la contraseña');
+        this._toastrService.success('Se actualizó la contraseña');
 
         this.verificado = false;
         this.password = '';
@@ -113,7 +113,7 @@ export class PasswordComponent implements OnInit {
 
       },
       error: (err) => {
-        this._toastrService.showToast(err.message);
+        this._toastrService.error(err.message);
       }
     }
     );

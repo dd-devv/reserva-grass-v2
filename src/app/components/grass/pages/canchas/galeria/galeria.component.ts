@@ -2,7 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { DomSanitizer, SafeUrl, Title } from '@angular/platform-browser';
 import { ActivatedRoute } from '@angular/router';
 import { UserService } from '../../../../../services/user.service';
-import { ToastService } from '../../../../../services/toast.service';
+import { ToastService } from '../../../../../services/toast/toast.service';
 import { GLOBAL } from '../../../../../services/global';
 import { ImageCroppedEvent, LoadedImage } from 'ngx-image-cropper';
 import { v4 as uuidv4 } from 'uuid';
@@ -120,7 +120,7 @@ handleFileUpload(files: FileList) {
       ];
 
       if (!allowedTypes.includes(file.type)) {
-        this._toastrService.showToast('Solo se permiten archivos webp, jpeg, jpg, png');
+        this._toastrService.warning('Solo se permiten archivos webp, jpeg, jpg, png');
         return;
       }
 
@@ -224,7 +224,7 @@ handleFileUpload(files: FileList) {
       this._userService
         .agregar_imagen_galeria_cancha(this.id, data, this.token)
         .subscribe((response) => {
-          this._toastrService.showToast('Se subió con éxito');
+          this._toastrService.success('Se subió con éxito');
           this.init_data();
           this.file = undefined;
           this.load_btn = false;
@@ -240,13 +240,13 @@ handleFileUpload(files: FileList) {
     this._userService
       .eliminar_imagen_galeria_cancha(this.id, { _id: id }, this.token)
       .subscribe((response) => {
-        this._toastrService.showToast('Se eliminó con éxito');
+        this._toastrService.success('Se eliminó con éxito');
         this.load_btn_eliminar = false;
         this.init_data();
       });
   }
 
   private showErrorMessage(message: string) {
-    this._toastrService.showToast(message);
+    this._toastrService.error(message);
   }
 }

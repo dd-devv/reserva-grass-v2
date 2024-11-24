@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { GLOBAL } from '../../../../services/global';
 import { DomSanitizer, SafeUrl } from '@angular/platform-browser';
-import { ToastService } from '../../../../services/toast.service';
+import { ToastService } from '../../../../services/toast/toast.service';
 import { UserService } from '../../../../services/user.service';
 import { ImageCroppedEvent, LoadedImage } from 'ngx-image-cropper';
 import { v4 as uuidv4 } from 'uuid';
@@ -107,7 +107,7 @@ export class PortraitComponent implements OnInit {
       ];
 
       if (!allowedTypes.includes(file.type)) {
-        this._toastrService.showToast('Solo se permiten archivos webp, jpeg, jpg, png');
+        this._toastrService.warning('Solo se permiten archivos webp, jpeg, jpg, png');
         return;
       }
 
@@ -132,7 +132,7 @@ export class PortraitComponent implements OnInit {
   }
 
   loadImageFailed() {
-    this._toastrService.showToast('Error al cargar la imagen');
+    this._toastrService.error('Error al cargar la imagen');
   }
 
   fileChangeEvent(event: any): void {
@@ -180,7 +180,7 @@ export class PortraitComponent implements OnInit {
 
     this._userService.agregar_imagen_portada(this.id, data, this.token).subscribe({
       next: (response) => {
-        this._toastrService.showToast('Se subió con éxito');
+        this._toastrService.success('Se subió con éxito');
         this.file = undefined;
         this.load_btn = false;
         this.closeModal();
@@ -194,6 +194,6 @@ export class PortraitComponent implements OnInit {
   }
 
   private showErrorMessage(message: string) {
-    this._toastrService.showToast(message);
+    this._toastrService.error(message);
   }
 }

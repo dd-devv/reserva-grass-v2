@@ -2,7 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { Title } from '@angular/platform-browser';
 import { UserService } from '../../../../../services/user.service';
 import { ActivatedRoute, Router } from '@angular/router';
-import { ToastService } from '../../../../../services/toast.service';
+import { ToastService } from '../../../../../services/toast/toast.service';
 import { initFlowbite } from 'flowbite';
 
 @Component({
@@ -64,10 +64,10 @@ export class ActualizarComponent implements OnInit {
     this._userService.actualizar_cancha_empresa(this.id, this.cancha, this.token).subscribe(
       response => {
         if (response.data == undefined) {
-          this._toastrService.showToast(response.message);
+          this._toastrService.info(response.message);
 
         } else {
-          this._toastrService.showToast('Se actualizó con éxito');
+          this._toastrService.success('Se actualizó con éxito');
           this.load_btn_act = false;
           this._router.navigate(['/grass/canchas']);
         }

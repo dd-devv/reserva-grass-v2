@@ -2,7 +2,7 @@ import { Component, Input, OnInit } from '@angular/core';
 import { initFlowbite } from 'flowbite';
 import { UserService } from '../../../../../../services/user.service';
 import { Title } from '@angular/platform-browser';
-import { ToastService } from '../../../../../../services/toast.service';
+import { ToastService } from '../../../../../../services/toast/toast.service';
 import { io, Socket } from 'socket.io-client';
 import { GLOBAL } from '../../../../../../services/global';
 import html2canvas from 'html2canvas';
@@ -144,18 +144,18 @@ export class ReservasComponent implements OnInit {
   async copiar_portapapeles(id: string) {
     try {
       await navigator.clipboard.writeText(id);
-      this._toastrService.showToast('Copiado al portapapeles!');
+      this._toastrService.success('Copiado al portapapeles!');
     } catch (err) {
-      this._toastrService.showToast('No se pudo copiar al portapapeles.');
+      this._toastrService.error('No se pudo copiar al portapapeles.');
     }
   }
 
   async copiar_ubicacion_portapapeles(ubicacion: string) {
     try {
       await navigator.clipboard.writeText(`La ubicación de la cancha es ${ubicacion}`);
-      this._toastrService.showToast('Direccion copiado!');
+      this._toastrService.success('Direccion copiado!');
     } catch (err) {
-      this._toastrService.showToast('No se pudo copiar al portapapeles.');
+      this._toastrService.error('No se pudo copiar al portapapeles.');
     }
   }
 
@@ -230,9 +230,9 @@ export class ReservasComponent implements OnInit {
     this._userService.crear_reservacion_user(data, this.token).subscribe(
       response => {
         if (response.data == undefined) {
-          this._toastrService.showToast(response.message);
+          this._toastrService.warning(response.message);
         } else {
-          this._toastrService.showToast('Se reservó con éxito');
+          this._toastrService.success('Se reservó con éxito');
           this.socket.emit('crear-reserva-ocupado-out', { data: true });
           localStorage.removeItem('afuera');
           localStorage.removeItem('fecha_reserva');

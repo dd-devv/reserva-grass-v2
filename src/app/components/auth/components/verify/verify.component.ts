@@ -35,17 +35,17 @@
 //       if (this.id) {
 //         this._userService.actualizar_user_verificado(this.id, this.codigo).subscribe({
 //           next: (res) => {
-//             this._toastrService.showToast('Se verificó correctamente');
+//             this._toastrService.success('Se verificó correctamente');
 //             this._router.navigate(['/login']);
 //             localStorage.removeItem('user_email');
 //           },
 //           error: (err) => {
-//             this._toastrService.showToast('Código incorrecto, vuelve a intentarlo');
+//             this._toastrService.success('Código incorrecto, vuelve a intentarlo');
 //             this.codigo = '';
 //           }
 //         });
 //       } else {
-//         this._toastrService.showToast('Verifique su cuenta en el mismo dispositivo');
+//         this._toastrService.success('Verifique su cuenta en el mismo dispositivo');
 //         this.codigo = '';
 //       }
 //     }
@@ -65,7 +65,7 @@ import { Component, OnInit } from '@angular/core';
 import { Title } from '@angular/platform-browser';
 import { UserService } from '../../../../services/user.service';
 import { Router } from '@angular/router';
-import { ToastService } from '../../../../services/toast.service';
+import { ToastService } from '../../../../services/toast/toast.service';
 
 @Component({
   selector: 'app-verify',
@@ -188,7 +188,7 @@ export class VerifyComponent implements OnInit {
             this._userService
             .login_user(loginData).subscribe({
               next: (response) => {
-                this._toastrService.showToast('Se verificó correctamente');
+                this._toastrService.success('Se verificó correctamente');
                 const storage = this.rememberMe ? localStorage : sessionStorage;
                 storage.setItem('token', response.token);
                 storage.setItem('_id', response.data._id);
@@ -199,13 +199,13 @@ export class VerifyComponent implements OnInit {
                   sessionStorage.removeItem('password');
                 },
                 error: (error) => {
-                  this._toastrService.showToast('Error al iniciar sesión');
+                  this._toastrService.error('Error al iniciar sesión');
                   console.error('Login error:', error);
                 },
               });
           },
           error: (err) => {
-            this._toastrService.showToast('Código incorrecto, vuelve a intentarlo');
+            this._toastrService.warning('Código incorrecto, vuelve a intentarlo');
             // Limpiar todos los inputs
             this.codigo1 = '';
             this.codigo2 = '';
@@ -217,12 +217,12 @@ export class VerifyComponent implements OnInit {
           }
         });
       } else {
-        this._toastrService.showToast('Verifique su cuenta en el mismo dispositivo');
+        this._toastrService.warning('Verifique su cuenta en el mismo dispositivo');
         this.codigo = '';
       }
     }
     else {
-      this._toastrService.showToast('Completa todos los campos');
+      this._toastrService.warning('Completa todos los campos');
     }
   }
 }
