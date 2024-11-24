@@ -164,12 +164,16 @@
   background-color: transparent; */
   font-family: "Quicksand", sans-serif;
 }
+body {
+  height: 100vh;
+}
 
 .wrapper {
   display: block;
   max-width: 1280px;
   margin: 10px auto;
   padding: 10px;
+  width: 100%;
 }
 
 @media screen and (min-width: 576px) {
