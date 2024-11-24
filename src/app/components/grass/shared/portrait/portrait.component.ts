@@ -26,6 +26,8 @@ export class PortraitComponent implements OnInit {
   public isImage = false;
   private modal: Modal | null = null;
 
+  public portada_url = '';
+
   imagePreview: string | ArrayBuffer | null = null;
   croppedImageFile: File | null = null;
   imageChangedEvent: any = '';
@@ -58,8 +60,10 @@ export class PortraitComponent implements OnInit {
     this._userService.obtener_empresa(this.id, this.token).subscribe({
       next: (res) => {
         this.empresa = res.data;
+        
         if (this.empresa.portada) {
           if (this.empresa.portada.length >= 1) {
+            this.portada_url = `https://api.reservatugrass.com/api/obtener_imagen_portada/${this.empresa.portada[0].imagen}`;
             this.isImagePort = true;
             this.addImage = false;
           } else {
@@ -67,6 +71,7 @@ export class PortraitComponent implements OnInit {
             this.addImage = true;
           }
         } else {
+          this.portada_url = '../../../../../assets/img/default-portada.jpeg'
           this.isImagePort = false;
           this.addImage = true;
         }

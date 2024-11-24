@@ -1,5 +1,5 @@
 
-<div class="portada relative w-full h-48 bg-cover bg-center bg-gray-300 bg-[url('https://images.pexels.com/photos/46798/the-ball-stadion-football-the-pitch-46798.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1')]">
+<div class="portada relative w-full h-48 bg-cover bg-center bg-gray-300" [style.backgroundImage]="'url(' + portada_url + ')'">
     <!-- Contenedor de íconos en la esquina inferior izquierda -->
     <div class="flex w-full justify-between absolute bottom-4 px-4 space-x-4">
         <div class="flex gap-4">
@@ -69,7 +69,7 @@
                           <span class="font-semibold">Click para subir</span> o arrastra y suelta
                         </p>
                         <p class="text-xs text-gray-500 dark:text-gray-400">
-                          PNG, JPG, WEBP o GIF (Máx. 20MB)
+                          PNG, JPG, WEBP (Máx. 20MB)
                         </p>
                       </div>
                       <input id="dropzone-file" 
