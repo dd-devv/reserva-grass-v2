@@ -2,12 +2,16 @@
 <div class="container-canchas">
 
 <div class="flex flex-col justify-center gap-4 bg-slate-50 p-2 mx-auto rounded-md border-solid border-[1px] border-slate-400 content-cancha">
-  <h3 class="text-center">{{cancha.nombre}}</h3>
+  <h3 class="text-center">
+    {{cancha.nombre}}
+    @if (cancha.tipo === 'Mixto') {   <small>(mixto)</small>
+    }
+  </h3>
   <div class=" flex lg:flex-col p-2 gap-4 lg:gap-5">
 
   @if (cancha.tipo === 'Fútbol/Futsal') {
   <div
-    class="flex flex-col w-full justify-between bg-forestGreen-50 border border-forestGreen-500 rounded-lg px-4 py-4 min-w-44 max-w-72 gap-3 lg:w-[232px]"
+    class="flex flex-col w-full justify-between bg-forestGreen-50 border border-forestGreen-500 rounded-lg px-4 py-4 min-w-40 max-w-72 gap-3 lg:w-[232px]"
   >
     <div class="flex gap-4 justify-start items-center">
       <img src="../../../../assets/svg-icons/football.svg" alt="" />
@@ -48,7 +52,7 @@
   </div>
   } @if (cancha.tipo === 'Voley') {
   <div
-    class="flex flex-col w-full justify-between bg-pinkk-50 border border-pinkk-100 rounded-lg max-w-72 min-w-44 px-4 py-4 gap-3 lg:w-[232px]"
+    class="flex flex-col w-full justify-between bg-pinkk-50 border border-pinkk-100 rounded-lg max-w-72 min-w-40 px-4 py-4 gap-3 lg:w-[232px]"
   >
     <div class="flex gap-4 justify-start items-center">
       <img src="../../../../assets/svg-icons/voley-pink.svg" alt="" />
@@ -90,11 +94,11 @@
   }
   @if (cancha.tipo === 'Mixto') {
     <div
-    class="flex flex-col w-full justify-between bg-forestGreen-50 border border-forestGreen-500 rounded-lg px-4 py-4 min-w-44 max-w-72 gap-3"
+    class="flex flex-col w-full justify-between bg-forestGreen-50 border border-forestGreen-500 rounded-lg px-4 py-4 min-w-40 max-w-72 gap-3"
   >
     <div class="flex gap-4 justify-start items-center">
       <img src="../../../../assets/svg-icons/football.svg" alt="" />
-      <p class="font-bold text-forestGreen-500 leading-none">Futbol / Futsal <small>(mixto)</small></p>
+      <p class="font-bold text-forestGreen-500 leading-none">Futbol / Futsal </p>
     </div>
     <div class="flex gap-4 justify-start items-center">
       <img src="../../../../assets/svg-icons/square.svg" alt="" />
@@ -131,11 +135,11 @@
   </div>
 
   <div
-    class="flex flex-col w-full justify-between bg-pinkk-50 border border-pinkk-100 rounded-lg min-w-44 max-w-72 px-4 py-4 gap-3"
+    class="flex flex-col w-full justify-between bg-pinkk-50 border border-pinkk-100 rounded-lg min-w-40 max-w-72 px-4 py-4 gap-3"
   >
     <div class="flex gap-4 justify-start items-center">
       <img src="../../../../assets/svg-icons/voley-pink.svg" alt="" />
-      <p class="font-bold text-pinkk-100 leading-none">Voley <small>(mixto)</small></p>
+      <p class="font-bold text-pinkk-100 leading-none">Voley </p>
     </div>
     <div class="flex gap-4 justify-start items-center">
       <img src="../../../../assets/svg-icons/square-pink.svg" alt="" />
