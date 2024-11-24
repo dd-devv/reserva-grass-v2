@@ -22,6 +22,7 @@ import { PasswordComponent } from './pages/datos/password/password.component';
 import { CrearComponent } from './pages/canchas/crear/crear.component';
 import { ActualizarComponent } from './pages/canchas/actualizar/actualizar.component';
 import { GaleriaComponent } from './pages/canchas/galeria/galeria.component';
+import { ActualizarCuentaComponent } from './pages/cuentas/actualizar-cuenta/actualizar-cuenta.component';
 
 
 @NgModule({
@@ -42,7 +43,8 @@ import { GaleriaComponent } from './pages/canchas/galeria/galeria.component';
     PasswordComponent,
     CrearComponent,
     ActualizarComponent,
-    GaleriaComponent
+    GaleriaComponent,
+    ActualizarCuentaComponent
   ],
   imports: [
     CommonModule,

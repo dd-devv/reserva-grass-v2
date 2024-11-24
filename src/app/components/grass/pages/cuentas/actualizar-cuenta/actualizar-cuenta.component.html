@@ -1,0 +1,100 @@
+<form
+          #actualizarForm="ngForm"
+          (ngSubmit)="actualizar(actualizarForm)"
+          class="w-full"
+        >
+          <div class="grid grid-cols-12 gap-4">
+            <div class="col-span-6 mt-3">
+              <label
+                for="banco"
+                class="block text-sm font-medium text-gray-700 mb-1"
+                >Banco</label
+              >
+              <input readonly
+                class="w-full rounded-md border-gray-300 shadow-sm focus:border-indigo-500 focus:ring-indigo-500"
+                type="text"
+                id="banco"
+                name="banco"
+                [(ngModel)]="cuenta.banco"
+                required
+              />
+            </div>
+            <div class="col-span-6 mt-3">
+              <label
+                for="titular"
+                class="block text-sm font-medium text-gray-700 mb-1"
+                >Nombre del titular</label
+              >
+              <input
+                class="w-full rounded-md border-gray-300 shadow-sm focus:border-indigo-500 focus:ring-indigo-500"
+                type="text"
+                id="titular"
+                name="titular"
+                [(ngModel)]="cuenta.titular"
+                placeholder="Ingrese nombre del titular"
+                required
+              />
+            </div>
+            <div class="col-span-6 mt-3">
+              <label
+                for="cuenta"
+                class="block text-sm font-medium text-gray-700 mb-1"
+                >N° Cuenta
+                <span *ngIf="esCuenta">Cuenta</span>
+                <span *ngIf="!esCuenta">Celular</span>
+              </label>
+              <input
+                class="w-full rounded-md border-gray-300 shadow-sm focus:border-indigo-500 focus:ring-indigo-500"
+                type="text"
+                id="cuenta"
+                name="cuenta"
+                [(ngModel)]="cuenta.cuenta"
+                placeholder="Número de cuenta"
+                min="0"
+                maxlength="{{ limiteCuenta }}"
+                required
+              />
+            </div>
+
+            <div class="col-span-6 mt-3" *ngIf="esCuenta">
+              <label
+                for="cci"
+                class="block text-sm font-medium text-gray-700 mb-1"
+                >CCI</label
+              >
+              <input
+                class="w-full rounded-md border-gray-300 shadow-sm focus:border-indigo-500 focus:ring-indigo-500"
+                type="text"
+                id="cci"
+                name="cci"
+                [(ngModel)]="cuenta.cci"
+                placeholder="CCI"
+                min="0"
+              />
+            </div>
+          </div>
+
+          <div class="text-center mt-3">
+            <button
+              class="inline-flex items-center px-4 py-2 bg-indigo-600 text-white font-medium rounded-md hover:bg-indigo-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500 disabled:opacity-50 disabled:cursor-not-allowed mx-2"
+              type="submit"
+              [disabled]="actualizarForm.invalid"
+              *ngIf="!load_btn"
+            >
+              <i class="bi-plus-circle-fill mr-2"></i>
+              Actualizar cuenta
+            </button>
+
+            <button
+              *ngIf="load_btn"
+              type="button"
+              class="inline-flex items-center px-4 py-2 bg-gray-500 text-white font-medium rounded-md disabled:opacity-50 disabled:cursor-not-allowed"
+              disabled
+            >
+              <span
+                class="animate-ping h-2 w-2 rounded-full bg-white mr-2"
+              ></span>
+              Actualizando...
+            </button>
+          </div>
+        </form>
