@@ -1,98 +1,159 @@
 @if (load_data) { 
-    
-    @for (item of [1,2,3,4]; track $index) {
-        <div class="flex gap-y-4 rounded-lg w-full  h-fit min-w-lg max-w-lg">
-            <div
-            class="grid grid-cols-[32px_repeat(4,1fr)] auto-cols-min grid-rows-5 rounded-lg border border-gray-200 w-full  h-[175px] md:h-[190px]">
-              <div class="bg-gray-200 text-white w-8 rounded-l-md row-span-5">
-                <p class="w-full -rotate-90 flex justify-center items-center text-center h-full text-nowrap font-semibold ">
+    <div class="relative overflow-x-auto shadow-md sm:rounded-lg">
+      <div class="relative">
+        <div
+          class="flex flex-row h-[38px] mb-4  p-2 text-sm text-gray-900 border border-gray-300 rounded-lg w-80 bg-white dark:bg-gray-700 dark:border-gray-600 dark:text-white"
+        >
+        <p class="skeleton-svg">
+        .
+        </p>
+        <p class="skeleton">
+        .
+        </p>
+        </div>
+      </div>
+      <table
+        class="w-full text-sm text-left rtl:text-right text-gray-500 dark:text-gray-400"
+      >
+        <thead
+          class="text-xs text-gray-700 uppercase bg-gray-300 dark:bg-gray-700 dark:text-gray-400"
+        >
+          <tr>
+            <th scope="col" class="px-2 py-3 text-center max-w-2">
+              <p class="skeleton-th">
+                .
+              </p>
+            </th>
+            <th scope="col" class="px-2 py-3 text-center ">
+              <div class="flex justify-center">
+
+                <p class="skeleton">
+                  Cliente
                 </p>
               </div>
-              <div
-                class="flex  border-b-2 border-dotted border-gray-200  flex-col rounded-t-lg col-span-5 w-full h-11  px-2 py-1 ">
-                <div class="flex">
-                  <div class="w-6/12">
-                    <div class="flex flex-col align-middle">
-                      <label class="text-xs font-semibold text-seashell-500 text-no-skeleton">
-                        Empresa
-                      </label>
-                      <p class="font-bold capitalize skeleton">.</p>
-                    </div>
-                  </div>
-                  <div class="w-6/12">
-                    <div class="flex flex-col">
-                      <label class="text-xs font-semibold text-seashell-500 text-no-skeleton">
-                        Cancha
-                      </label>
-                      <p class="font-bold skeleton">.</p>
-                    </div>
-                  </div>
-                </div>
-        
-        
-                <!-- INICIO PARTE BOLETA -->
-        
-                <div class="flex flex-col md:gap-1.5">
-                  <div class="flex w-full">
-                    <div class="items-start flex flex-col justify-start">
-                      <p class="text-seashell-500 text-[10px] font-bold text-no-skeleton">
-                        Dirección
-                      </p>
-                      <div class="flex gap-4">
-                        <p class="text-[12px] skeleton">.</p>
-                      </div>
-        
-        
-                    </div>
-                  </div>
-                  <div class="flex w-full">
-                    <div class="w-6/12 items-start flex flex-col justify-start">
-                      <p class="text-seashell-500 text-[10px] font-bold text-no-skeleton">Fecha</p>
-                      <p class="text-[12px] skeleton">.</p>
-                    </div>
-        
-                    <div class="items-start flex flex-col justify-start">
-                      <p class="text-seashell-500 text-[10px] font-bold text-no-skeleton">
-                        Horario
-                      </p>
-                      <p class="text-[12px] skeleton">.</p>
-                    </div>
-                  </div>
-                  <div class="flex w-full">
-                    <div class="w-6/12 items-start flex flex-col justify-start">
-                      <p class="text-seashell-500 text-[10px] font-bold text-no-skeleton">
-                        Monto de reservación
-                      </p>
-                      <p class="text-base font-bold skeleton">. </p>
-                    </div>
-        
-                    <div class="items-start flex flex-col justify-start">
-                      <p class="text-seashell-500 text-[10px] font-bold text-no-skeleton">
-                        Cliente
-                      </p>
-                      <p class="text-base font-bold skeleton">.</p>
-                    </div>
-                  </div>
-                  <div class="flex items-center justify-center ">
-                    <p class="font-jetBrainsMono text-[12px] skeleton">.</p>
-                    <div class="invisible w-12 md:w20">
-                    </div>
-                  </div>
-                </div>
-        
+              </th>
+            <th scope="col" class="px-2 py-3 text-center "> 
+              <div class="flex justify-center">
+                
+                <p class="skeleton">
+                  Telefono
+                </p>
               </div>
-        
-              <div
-                class="w-12 sm:w-16 md:w-20 justify-center flex rounded-br-lg row-span-4 col-start-6 row-start-2 border-l-2 border-gray-200 border-dotted my-3 items-center">
-                <div class="w-4/5 aspect-square qr-skeleton"></div>
-                <!-- <qrcode [qrdata]="reserva._id" elementType="img" [errorCorrectionLevel]="'M'"> -->
-                <!-- </qrcode> -->
+            </th>
+            <th scope="col" class="px-2 py-3 text-center "> 
+              <div class="flex justify-center">
+                
+                <p class="skeleton">
+                  Monto
+                </p>
               </div>
-            </div>
-        </div>
-    }
+            </th>
+            <th scope="col" class="px-2 py-3 text-center "> 
+              <div class="flex justify-center">
 
-    Mirko el skeleton de la tabla :v 
+                <p class="skeleton">
+                  Opciones
+                </p>
+              </div>
+            </th>
+            <th scope="col" class="px-2 py-3 text-center "> 
+              <div class="flex justify-center">
+                <p class="skeleton">
+                  Canchaaaaaaaaaaa
+                </p>
+              </div>
+            </th>
+            <th scope="col" class="px-2 py-3 text-center "> 
+              <div class="flex justify-center">
+
+                <p class="skeleton">
+                  Fecha 
+                </p>
+              </div>
+            </th>
+            <th scope="col" class="px-2 py-3 text-center "> 
+              <div class="flex justify-center">
+
+                <p class="skeleton">
+                  Horas
+                </p>
+              </div>
+            </th>
+            <th scope="col" class="px-2 py-3 text-center "> 
+              <div class="flex justify-center">
+
+                <p class="skeleton">
+                  Estado
+                </p>
+              </div>
+            </th>
+          </tr>
+        </thead>
+        <tbody>
+          @for (item of [1,2,3,4,5,6,7,8,9]; track $index) {
+          <tr
+            class="bg-white border-b dark:bg-gray-800 dark:border-gray-700 hover:bg-gray-50 dark:hover:bg-gray-600"
+          >
+            <th
+              scope="row"
+              class="px-2 py-3 font-medium text-gray-900 whitespace-nowrap dark:text-white "
+            >
+            <p class="skeleton-th">
+              1
+            </p>
+            </th>
+            <td class="px-2 py-3 ">
+              <p class="skeleton">
+                2
+              </p>
+            </td>
+            <td class="px-2 py-3 ">
+              <p class="skeleton">
+                3
+              </p>
+            </td>
+            <td class="px-2 py-3 ">
+              <p class="skeleton">
+                4
+              </p>
+              </td>
+            <td class="px-2 py-3">
+              <button
+
+                class="flex justify-between items-center px-2 py-1 w-full text-xs font-medium rounded-lg  bg-slate-50 text-forestGreen-500 bg-transparent"
+              >
+              <p class="mx-auto bg-transparent skeleton">
+                5
+              </p>
+              </button>
+    
+            </td>
+            <td class="px-2 py-3 ">
+              <p class="skeleton">
+                6
+              </p>
+            </td>
+            <td class="px-2 py-3 ">
+              <p class="skeleton">
+                7
+              </p>
+            </td>
+            <td class="px-2 py-3">
+              <span class="flex flex-col md:flex-row">
+                <p class="text-nowrap skeleton">
+                  8
+                </p>
+              </span>
+            </td>
+            <td class="px-2 py-3 ">
+              <p class="skeleton">
+                10
+              </p>
+            </td>
+          </tr>}
+        </tbody>
+      </table>
+    </div>
 } 
 
 @if (!activePagos && viewButton) {
@@ -222,18 +283,18 @@ Suscribete :VVV
     class="w-full text-sm text-left rtl:text-right text-gray-500 dark:text-gray-400"
   >
     <thead
-      class="text-xs text-gray-700 uppercase bg-gray-50 dark:bg-gray-700 dark:text-gray-400"
+      class="text-xs text-gray-700 uppercase bg-gray-300 dark:bg-gray-700 dark:text-gray-400"
     >
       <tr>
-        <th scope="col" class="px-6 py-3">N°</th>
-        <th scope="col" class="px-6 py-3">Cliente</th>
-        <th scope="col" class="px-6 py-3">Telefono</th>
-        <th scope="col" class="px-6 py-3">Monto</th>
-        <th scope="col" class="px-6 py-3">Opcs</th>
-        <th scope="col" class="px-6 py-3">Cancha_reservada</th>
-        <th scope="col" class="px-6 py-3">Fecha_reserva</th>
-        <th scope="col" class="px-6 py-3">Horas</th>
-        <th scope="col" class="px-6 py-3">Estado</th>
+        <th scope="col" class="px-2 py-3 text-center">N°</th>
+        <th scope="col" class="px-2 py-3 text-center">Cliente</th>
+        <th scope="col" class="px-2 py-3 text-center">Telefono</th>
+        <th scope="col" class="px-2 py-3 text-center">Monto</th>
+        <th scope="col" class="px-2 py-3 text-center">Opciones</th>
+        <th scope="col" class="px-2 py-3 text-center">Cancha Reservada</th>
+        <th scope="col" class="px-2 py-3 text-center">Fecha Reserva</th>
+        <th scope="col" class="px-2 py-3 text-center">Horas</th>
+        <th scope="col" class="px-2 py-3 text-center">Estado</th>
       </tr>
     </thead>
     <tbody>
@@ -243,25 +304,27 @@ Suscribete :VVV
       >
         <th
           scope="row"
-          class="px-6 py-4 font-medium text-gray-900 whitespace-nowrap dark:text-white"
+          class="px-2 py-3 font-medium text-gray-900 whitespace-nowrap dark:text-white"
         >
           {{ reservaciones.length - $index }}
         </th>
-        <td class="px-6 py-4">
+        <td class="px-2 py-3">
           {{ item.cliente.nombres }}
         </td>
-        <td class="px-6 py-4">
+        <td class="px-2 py-3">
           {{ item.cliente.telefono }}
         </td>
-        <td class="px-6 py-4">S/ {{ item.subtotal }}</td>
-        <td class="px-6 py-4">
+        <td class="px-2 py-3">S/ {{ item.subtotal }}</td>
+        <td class="px-2 py-3">
           <button
             [disabled]="item.pagado"
             (click)="openModal(item._id)"
-            [ngClass]="{ 'border-red-500': !item.pagado }"
-            class="flex justify-between items-center px-2 py-1 w-full text-xs font-medium rounded-lg border border-forestGreen-500 bg-slate-50"
+            [ngClass]="{ ' border border-red-500 text-gray-500': !item.pagado }"
+            class="flex justify-between items-center px-2 py-1 w-full text-xs font-medium rounded-lg  bg-slate-50 text-forestGreen-500 bg-transparent"
           >
+          <p class="mx-auto bg-transparent">
             @if (item.pagado) { Pagado } @if (!item.pagado) { Confirmar }
+          </p>
           </button>
 
           <!-- Modal confirmar -->
@@ -455,20 +518,29 @@ Suscribete :VVV
             </div>
           </div>
         </td>
-        <td class="px-6 py-4">
+        <td class="px-2 py-3">
           {{ item.cancha.nombre }}
         </td>
-        <td class="px-6 py-4">
+        <td class="px-2 py-3">
           {{ item.fecha | date : "mediumDate" }}
         </td>
-        <td class="px-6 py-4">
-          {{ item.hora_inicio | time24to12 }} - {{ item.hora_fin | time24to12 }}
+        <td class="px-2 py-3">
+          <span class="flex flex-col md:flex-row">
+            <p class="text-nowrap">
+              {{ item.hora_inicio | time24to12 }}
+            </p>
+            <p class="hidden md:block">
+              -
+            </p>
+            <p class="text-nowrap">
+              {{ item.hora_fin | time24to12 }}
+            </p>
+          </span>
         </td>
-        <td class="px-6 py-4">
+        <td class="px-2 py-3">
           {{ item.estado }}
         </td>
       </tr>
-
       } }
     </tbody>
   </table>
