@@ -309,57 +309,53 @@
       <div *ngIf="isOpen" class="fixed inset-0 bg-black bg-opacity-50 transition-opacity" (click)="closeModal()">
       </div>
 
-      <!-- Main modal -->
-      <div id="default-modal" [ngClass]="{'hidden': !isOpen}"
-        class="overflow-y-auto overflow-x-hidden fixed top-0 right-0 left-0 z-50 flex justify-center items-center w-full md:inset-0 h-[calc(100%-1rem)] max-h-full">
-        <div class="relative p-4 w-full max-w-2xl max-h-full">
-          <!-- Modal content -->
-          <div class="flex justify-center py-4 px-8 bg-white rounded-lg shadow dark:bg-gray-700"
-            (click)="$event.stopPropagation()"> <!-- Evita que el click se propague al backdrop -->
-            <!-- Tu contenido actual del modal aquí -->
-            <div class="flex justify-end w-full absolute top-2 right-2">
-              <button type="button" class="text-gray-500 hover:text-gray-700 p-2 mr-2 mt-1" (click)="closeModal()">
-                ✕
-              </button>
-            </div>
+        <!-- Main modal -->
+  <div id="default-modal" [ngClass]="{'hidden': !isOpen}"
+  class="overflow-y-auto overflow-x-hidden fixed top-0 right-0 left-0 z-50 flex justify-center items-center w-full md:inset-0 h-[calc(100%-1rem)] max-h-full">
+  <div class="relative p-4 w-full max-w-2xl max-h-full">
+    <!-- Modal content -->
+    <div class="flex justify-center py-4 px-8 bg-white rounded-lg shadow dark:bg-gray-700"
+      (click)="$event.stopPropagation()">
+      <div class="flex justify-end w-full absolute top-2 right-2">
+        <button type="button" class="text-gray-500 hover:text-gray-700 p-2 mr-2 mt-1" (click)="closeModal()">
+          ✕
+        </button>
+      </div>
 
             <!-- Modal body -->
 
-            <ol class="w-full relative text-gray-500 border-s-2  border-forestGreen-300">
-
-              <li class=" mb-10 ms-6 flex items-center">
+            <ol class="w-full relative text-gray-500 border-s-2 border-forestGreen-300">
+              <li class="mb-10 ms-6 flex items-center">
                 <span
-                  class="absolute  flex items-center justify-center size-8 bg-forestGreen-500 text-white rounded-full -start-4  ">
+                  class="absolute flex items-center justify-center size-8 bg-forestGreen-500 text-white rounded-full -start-4">
                   1
                 </span>
-                <div class="flex flex-col items-center p-4 w-full bg-forestGreen-50 border border-forestGreen-500 rounded-lg leading-5">
-                 
-                  <p> Realizar un pago de <span class="text-forestGreen-500">S/. 30 </span> a una de las siguientes cuentas.</p>
+                <div class="flex flex-col items-center p-4 w-full bg-forestGreen-50 border border-forestGreen-500 rounded-lg">
+                  <p>Realizar un pago de <span class="text-forestGreen-500 font-bold text-lg">S/ 30 </span> a una de las siguientes cuentas.</p>
+    
 
 
                   <!-- MEDIOS PAGO -->
-                  <div class="flex  gap-1 md:gap-4 justify-center  bg-red-300 px-4 w-24 overflow-x-auto">
-                    @if (cuentas.length >= 1) {
-                    @for (cuenta of cuentas; track $index) {
-                    <div
-                      class="flex w-full flex-col items-center align-middle bg-forestGreen-200 rounded-lg p-1 md:p-4">
-                      <img class="w-16 h-12" src="../../../../../../../assets/svg/{{cuenta.banco | lowercase}}.svg"
-                        alt="{{cuenta.banco}}">
-
-                      <div class="flex items-center gap-4">
-                        <p class="font-semibold text-nowrap">
-                          {{cuenta.cuenta}}
-                        </p>
-
-                        <button title="Copiar código" (click)="copiar_portapapeles(cuenta.cuenta)">
-                          <img src="../../../../../../../assets/svg-icons/copy.svg" alt="">
-                        </button>
-                      </div>
-                      <p class="text-xs"> {{cuenta.titular | titlecase}} </p>
+                  <div class="w-full overflow-x-auto snap-x snap-mandatory scroll-smooth">
+                    <div class=" flex gap-4 py-4 min-w-min">
+                      @if (cuentas.length >= 1) {
+                        @for (cuenta of cuentas; track $index) {
+                          <div class="snap-center flex flex-col items-center justify-between bg-forestGreen-200 rounded-lg p-4 min-w-[200px]">
+                            <img class="w-16 h-12 object-contain" src="../../../../../../../assets/svg/{{cuenta.banco | lowercase}}.svg"
+                              alt="{{cuenta.banco}}">
+                            <div class="flex flex-col items-center gap-2 mt-2">
+                              <div class="flex items-center gap-2">
+                                <p class="font-semibold text-nowrap">{{cuenta.cuenta}}</p>
+                                <button title="Copiar código" (click)="copiar_portapapeles(cuenta.cuenta)">
+                                  <img src="../../../../../../../assets/svg-icons/copy.svg" alt="">
+                                </button>
+                              </div>
+                              <p class="text-xs text-center">{{cuenta.titular | titlecase}}</p>
+                            </div>
+                          </div>
+                        }
+                      }
                     </div>
-                    }
-                    }
-
                   </div>
 
                   <!-- MEDIOS PAGO -->
@@ -376,9 +372,9 @@
                   2
                 </span>
                 <div class="p-4 w-full bg-forestGreen-50 border border-forestGreen-500 rounded-lg leading-5">
-                  Enviar el voucher de la operación mediante <span class="text-forestGreen-500"> WhatsApp</span> al
+                  Enviar el voucher de la operación mediante <span class="text-forestGreen-500 font-semibold text-lg"> WhatsApp</span> al
                   numero
-                  <span class="text-forestGreen-500"> {{telefono_empresa}}</span>.
+                  <span class="text-forestGreen-500 font-semibold text-lg"> {{telefono_empresa}}</span>.
                 </div>
               </li>
 
@@ -388,7 +384,7 @@
                   3
                 </span>
                 <div class="p-4 w-full bg-forestGreen-50 border border-forestGreen-500 rounded-lg leading-5">
-                  Enviar el código <span class="text-forestGreen-500"> {{codigo_reserva}} </span> al mismo numero.
+                  Enviar el código <span class="text-forestGreen-500 font-semibold text-lg"> {{codigo_reserva}} </span> al mismo numero.
                 </div>
               </li>
 
@@ -398,7 +394,7 @@
                   4
                 </span>
                 <div class="p-4 w-full bg-forestGreen-50 border border-forestGreen-500 rounded-lg leading-5">
-                  Comunícate con <span class="text-forestGreen-500"> {{telefono_empresa}} </span> para verificar la
+                  Comunícate con <span class="text-forestGreen-500 font-semibold text-lg"> {{telefono_empresa}} </span> para verificar la
                   confirmación de su reserva.
                 </div>
               </li>
