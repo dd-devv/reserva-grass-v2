@@ -1,5 +1,5 @@
 <button
-  (click)="openModal()"
+  (click)="openModalCrear()"
   class="py-1 flex gap-1.5 items-center px-2 bg-white rounded-full shadow-lg transition hover:bg-gray-100"
 >
   Registrar cuenta
@@ -24,7 +24,7 @@
         <button
           type="button"
           class="text-gray-400 bg-transparent hover:bg-gray-200 hover:text-gray-900 rounded-lg text-sm w-8 h-8 ml-auto inline-flex justify-center items-center dark:hover:bg-gray-600 dark:hover:text-white"
-          (click)="closeModal()"
+          (click)="closeModalCrear()"
         >
           <svg
             class="w-3 h-3"
@@ -297,7 +297,7 @@
           </button>
   
           <!-- Botón de Eliminar -->
-          <button
+          <button (click)="openModalEliminar(cuenta._id)"
             class="flex items-center gap-2 bg-white text-black text-xs py-2 px-4 rounded-lg border border-red-500"
           >
             Eliminar
@@ -319,6 +319,30 @@
         </div>
       </div>
     </div>
+
+     <!-- Modal eliminar -->
+     <div id="modal-{{cuenta._id}}" tabindex="-1" aria-hidden="true"
+     class="hidden overflow-y-auto overflow-x-hidden fixed top-0 right-0 left-0 z-50 justify-center items-center w-full md:inset-0 h-[calc(100%-1rem)] max-h-full">
+     <div class="relative p-4  w-full max-w-xs max-h-full">
+       <!-- Modal content -->
+       <div class="relative  bg-white rounded-lg shadow dark:bg-gray-700 space-y-4">
+         <!-- Modal body -->
+          <div class="flex p-4 px-6 items-center justify-center">
+          <p class="py-3 text-center">¿Está seguro de eliminar su cuenta de  {{cuenta.banco}}?</p> 
+          </div>
+         
+         <!-- Modal footer -->
+         <div class="font-semibold flex items-center pb-2 px-1.5 justify-center gap-x-6">
+           <button (click)="closeModalEliminar(cuenta._id)" type="button"
+             class="py-2.5 px-5 text-sm text-gray-900 focus:outline-none bg-white rounded-lg border border-gray-200 hover:bg-gray-100 hover:text-forestGreen-700 focus:z-10 focus:ring-4 focus:ring-gray-100">
+             Cancelar</button>
+           <button (click)="eliminar(cuenta._id); closeModalEliminar(cuenta._id)" type="button"
+             class="font-semibold text-white bg-red-500 hover:bg-red-600 focus:ring-4 focus:outline-none focus:ring-red-300 rounded-lg text-sm px-5 py-2.5 text-center">
+             Eliminar</button>
+         </div>
+       </div>
+     </div>
+   </div>
   }
     <!-- INICIO YAPE -->
     <!--FIN YAPE -->

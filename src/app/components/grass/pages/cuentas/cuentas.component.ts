@@ -10,14 +10,14 @@ import { Modal } from 'flowbite';
   styleUrl: './cuentas.component.css'
 })
 export class CuentasComponent implements OnInit {
-
   public token;
   public id;
   public cuentas: Array<any> = [];
   public load_btn = false;
   public btn_crear = false;
   public load_data = true;
-  private modal: Modal | null = null;
+  private modales: { [key: string]: Modal } = {}; // Objeto para almacenar múltiples modales
+  private modalCrear: Modal | null = null;
 
   public cuenta: any = {
     banco: '',
@@ -34,39 +34,70 @@ export class CuentasComponent implements OnInit {
     private _userService: UserService,
     private _toastrService: ToastService
   ) {
-
     this.token = localStorage.getItem('token') || sessionStorage.getItem('token');
     this.id = localStorage.getItem('_id') || sessionStorage.getItem('_id');
   }
 
   ngOnInit(): void {
     this._title.setTitle('GRASS | Cuentas');
-
     this.init_data();
-    this.initModal();
+    this.initModalCrear();
   }
 
-  private initModal(): void {
+  ngAfterViewInit(): void {
+    // Inicializar los modales después de que los datos se hayan cargado
+    setTimeout(() => {
+      this.initModalesEliminar();
+    }, 100);
+  }
+
+  private initModalCrear(): void {
     const modalElement = document.getElementById('crearCanchaModal');
     if (modalElement) {
-      this.modal = new Modal(modalElement);
+      this.modalCrear = new Modal(modalElement);
     }
   }
 
-  openModal(): void {
-    if (this.modal) {
-      this.modal.show();
+  private initModalesEliminar(): void {
+    // Inicializar un modal para cada cuenta
+    this.cuentas.forEach(cuenta => {
+      const modalId = `modal-${cuenta._id}`;
+      const modalElement = document.getElementById(modalId);
+      if (modalElement) {
+        this.modales[modalId] = new Modal(modalElement);
+      }
+    });
+  }
+
+  openModalEliminar(cuentaId: string): void {
+    const modalId = `modal-${cuentaId}`;
+    if (this.modales[modalId]) {
+      this.modales[modalId].show();
     }
   }
 
-  closeModal(): void {
-    if (this.modal) {
-      this.modal.hide();
+  closeModalEliminar(cuentaId: string): void {
+    const modalId = `modal-${cuentaId}`;
+    if (this.modales[modalId]) {
+      this.modales[modalId].hide();
+    }
+  }
+
+  openModalCrear(): void {
+    if (this.modalCrear) {
+      this.modalCrear.show();
+    }
+  }
+
+  closeModalCrear(): void {
+    if (this.modalCrear) {
+      this.modalCrear.hide();
     }
   }
 
   init_data() {
     this.cuentas = [];
+    this.load_data = true;
     this._userService.obtener_cuentas_grass(this.id, this.token).subscribe({
       next: (res) => {
         if (res.data.length == 0) {
@@ -74,9 +105,12 @@ export class CuentasComponent implements OnInit {
           this.btn_crear = true;
         } else {
           this.cuentas = res.data;
-
           this.load_data = false;
           this.btn_crear = false;
+          // Inicializar los modales después de cargar los datos
+          setTimeout(() => {
+            this.initModalesEliminar();
+          }, 100);
         }
       },
       error: (res) => {
@@ -97,10 +131,8 @@ export class CuentasComponent implements OnInit {
     }
   }
 
-  // Esta función se llama cuando cambia la selección del banco
   public onBancoChange(): void {
     this.actualizarColor();
-
     if (this.cuenta.banco == 'Yape' || this.cuenta.banco == 'Plin') {
       this.esCuenta = false;
       this.limiteCuenta = 9;
@@ -117,8 +149,8 @@ export class CuentasComponent implements OnInit {
       this._userService.registro_cuenta_grass(this.cuenta, this.token).subscribe({
         next: (res) => {
           this._toastrService.showToast('Se registró con éxito');
-
-          this.closeModal();
+          this.closeModalCrear();
+          this.init_data();
         },
         error: (err) => {
           this._toastrService.showToast('Error');
@@ -132,11 +164,10 @@ export class CuentasComponent implements OnInit {
     this._userService.eliminar_cuenta_grass(id, this.token).subscribe(
       response => {
         this._toastrService.showToast('Se eliminó con éxito');
-
+        this.closeModalEliminar(id);
         this.load_btn = false;
         this.init_data();
       }
     );
   }
-
 }
