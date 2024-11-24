@@ -15,6 +15,7 @@ import { CrearComponent } from './pages/canchas/crear/crear.component';
 import { ActualizarComponent } from './pages/canchas/actualizar/actualizar.component';
 import { GaleriaComponent } from './pages/canchas/galeria/galeria.component';
 import { ActualizarCuentaComponent } from './pages/cuentas/actualizar-cuenta/actualizar-cuenta.component';
+import { PaymentComponent } from './pages/payment/payment.component';
 
 const routes: Routes = [
   {
@@ -37,6 +38,7 @@ const routes: Routes = [
         ]
       },
       { path: 'clientes', component: ClientesComponent },
+      { path: 'payment', component: PaymentComponent },
       { path: 'contacto', component: ContactoComponent },
       { path: 'ayuda', component: AyudaComponent }
     ]

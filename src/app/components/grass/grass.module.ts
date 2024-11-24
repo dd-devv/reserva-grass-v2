@@ -23,6 +23,7 @@ import { CrearComponent } from './pages/canchas/crear/crear.component';
 import { ActualizarComponent } from './pages/canchas/actualizar/actualizar.component';
 import { GaleriaComponent } from './pages/canchas/galeria/galeria.component';
 import { ActualizarCuentaComponent } from './pages/cuentas/actualizar-cuenta/actualizar-cuenta.component';
+import { PaymentComponent } from './pages/payment/payment.component';
 
 
 @NgModule({
@@ -44,7 +45,8 @@ import { ActualizarCuentaComponent } from './pages/cuentas/actualizar-cuenta/act
     CrearComponent,
     ActualizarComponent,
     GaleriaComponent,
-    ActualizarCuentaComponent
+    ActualizarCuentaComponent,
+    PaymentComponent
   ],
   imports: [
     CommonModule,
