@@ -1,5 +1,5 @@
 // canchas.component.ts
-import { Component, AfterViewInit, ViewChild, ElementRef, OnDestroy, OnInit } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { initFlowbite } from 'flowbite';
 import { UserService } from '../../../../services/user.service';
 import { Title } from '@angular/platform-browser';
@@ -12,7 +12,7 @@ import { GLOBAL } from '../../../../services/global';
   templateUrl: './canchas.component.html',
   styleUrl: './canchas.component.css'
 })
-export class CanchasComponent implements OnInit, AfterViewInit, OnDestroy {
+export class CanchasComponent implements OnInit {
 
   public galeria: Array<any> = [];
   public url;
@@ -23,11 +23,6 @@ export class CanchasComponent implements OnInit, AfterViewInit, OnDestroy {
   public load_btn_crear = false;
   public btn_crear = false;
   public canchas: any = [];
-
-
-  @ViewChild('carouselExample') carouselElement!: ElementRef;
-
-  private carousel: any;
 
 
   constructor(
@@ -59,12 +54,6 @@ export class CanchasComponent implements OnInit, AfterViewInit, OnDestroy {
   ngAfterViewInit(): void {
     // Initialize Flowbite
     initFlowbite();
-  }
-
-  ngOnDestroy(): void {
-    if (this.carousel) {
-      this.carousel.pause();
-    }
   }
 
   eliminar(id: any) {

@@ -7,25 +7,24 @@
 
 
 <div class="mx-auto w-full max-w-md h-[100%]">
-    <div #carouselExample class="relative h-full">
-        <!-- Carousel wrapper -->
-        <div class="overflow-hidden relative h-full rounded-lg">
-            @for (image of images; track image.id) {
-            <div [id]="'carousel-item-' + image.id" class="hidden absolute inset-0 duration-700 ease-in-out">
-                <img [src]="image.src" [alt]="image.alt" class="block object-cover absolute w-full h-full">
-            </div>
-            }
-        </div>
+    <div #carouselExample class="relative h-full" [id]="'carousel-' + uniqueId">
+      <!-- Carousel wrapper -->
+      <div class="overflow-hidden relative h-full rounded-lg">
+        @for (image of images; track image.id) {
+          <div [id]="getItemId(image.id)" class="hidden absolute inset-0 duration-700 ease-in-out">
+            <img [src]="image.src" [alt]="image.alt" class="block object-cover absolute w-full h-full">
+          </div>
+        }
+      </div>
 
-        <!-- Slider indicators -->
-        <div class="absolute bottom-4 left-1/2 -translate-x-1/2 flex justify-center space-x-3 z-30">
-            @for (image of images; track image.id) {
-            <button [id]="'carousel-indicator-' + image.id" type="button"
-                class="rounded-full size-2.5 bg-forestGreen-500/50 hover:bg-forestGreen-500"
-                [attr.aria-label]="'Slide ' + image.id">
-            </button>
-            }
-        </div>
+      <!-- Slider indicators -->
+      <div class="absolute bottom-4 left-1/2 -translate-x-1/2 flex justify-center space-x-3 z-30">
+        @for (image of images; track image.id) {
+          <button [id]="getIndicatorId(image.id)" type="button"
+            class="rounded-full size-2.5 bg-forestGreen-500/50 hover:bg-forestGreen-500"
+            [attr.aria-label]="'Slide ' + image.id">
+          </button>
+        }
+      </div>
     </div>
-</div>
-        
+  </div>
