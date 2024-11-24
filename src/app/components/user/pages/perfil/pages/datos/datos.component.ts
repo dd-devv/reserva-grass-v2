@@ -2,7 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { UserService } from '../../../../../../services/user.service';
 import { GuestService } from '../../../../../../services/guest.service';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
-import { ToastService } from '../../../../../../services/toast.service';
+import { ToastService } from '../../../../../../services/toast/toast.service';
 import { finalize } from 'rxjs';
 import { Region, UpdateData } from '../../../../core/core';
 
@@ -86,7 +86,7 @@ export class DatosComponent implements OnInit {
   onSubmit(): void {
       if (this.updateForm.invalid || this.isLoading) {
         this.updateForm.markAllAsTouched();
-        this.toastr.showToast('Por favor, complete todos los campos correctamente');
+        this.toastr.success('Por favor, complete todos los campos correctamente');
         return;
       }
   
@@ -103,10 +103,10 @@ export class DatosComponent implements OnInit {
         .pipe(finalize(() => this.isLoading = false))
         .subscribe({
           next: (response) => {
-            this.toastr.showToast('Se actualizó con éxito');
+            this.toastr.success('Se actualizó con éxito');
           },
           error: (error) => {
-            this.toastr.showToast(error.error.message || 'Error en la actualizacion');
+            this.toastr.success(error.error.message || 'Error en la actualizacion');
           },
         });
     }

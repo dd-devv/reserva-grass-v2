@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { UserService } from '../../../../services/user.service';
 import { Title } from '@angular/platform-browser';
-import { ToastService } from '../../../../services/toast.service';
+import { ToastService } from '../../../../services/toast/toast.service';
 import { GLOBAL } from '../../../../services/global';
 import Chart from 'chart.js/auto';
 import { io, Socket } from 'socket.io-client';

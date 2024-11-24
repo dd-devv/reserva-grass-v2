@@ -4,7 +4,7 @@ import { io, Socket } from 'socket.io-client';
 import { Router } from '@angular/router';
 import { Title } from '@angular/platform-browser';
 import { UserService } from '../../../../services/user.service';
-import { ToastService } from '../../../../services/toast.service';
+import { ToastService } from '../../../../services/toast/toast.service';
 import { BehaviorSubject, debounceTime, distinctUntilChanged, Subject, takeUntil } from 'rxjs';
 import { initFlowbite, Modal, ModalInterface, ModalOptions } from 'flowbite';
 
@@ -126,7 +126,7 @@ export class ReservacionesComponent implements OnInit {
     this._userService.obtener_empresa(this.id, this.token).subscribe(
       response => {
         if (response.data == undefined) {
-          this._toastrService.showToast('Usuario inexistente');
+          this._toastrService.warning('Usuario inexistente');
           this.load_data = false;
         } else {
           this.empresa = response.data;
@@ -241,7 +241,7 @@ export class ReservacionesComponent implements OnInit {
     this.load_btn = true;
     this._userService.eliminar_reservacion_empresa(id, this.token).subscribe(
       response => {
-        this._toastrService.showToast('Se eliminó con éxito');
+        this._toastrService.success('Se eliminó con éxito');
 
         this.load_btn = false;
         this.init_data();
@@ -253,7 +253,7 @@ export class ReservacionesComponent implements OnInit {
     this.load_btn = true;
     this._userService.actualizar_reserva_reservado_empresa(id, this.token).subscribe(
       response => {
-        this._toastrService.showToast('Se confirmó con éxito');
+        this._toastrService.success('Se confirmó con éxito');
         this.socket.emit('confirmar-reserva-admin', { data: true });
         this.load_btn = false;
         this.init_data();

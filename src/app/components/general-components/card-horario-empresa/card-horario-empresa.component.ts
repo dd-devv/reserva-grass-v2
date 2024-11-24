@@ -1,7 +1,7 @@
 import { AfterViewInit, Component, EventEmitter, Input, OnInit, Output, SimpleChanges } from '@angular/core';
 import { GLOBAL } from '../../../services/global';
 import { Router } from '@angular/router';
-import { ToastService } from '../../../services/toast.service';
+import { ToastService } from '../../../services/toast/toast.service';
 import { UserService } from '../../../services/user.service';
 import { Datepicker, DatepickerOptions, initFlowbite } from 'flowbite';
 import { io, Socket } from 'socket.io-client';
@@ -100,7 +100,7 @@ export class CardHorarioEmpresaComponent implements OnInit, AfterViewInit {
     }
   }
   mostrarToast() {
-    this.toastService.showToast('No se pueden agregar más horas. Excede el horario de cierre.');
+    this.toastService.success('No se pueden agregar más horas. Excede el horario de cierre.');
   }
 
   changeHoras(hora: number, cant: number) {
@@ -133,18 +133,18 @@ export class CardHorarioEmpresaComponent implements OnInit, AfterViewInit {
 
         this._userService.registro_reservacion_grass(data, this.token).subscribe({
           next: (res) => {
-            this.toastService.showToast('Se reservó con éxito');
+            this.toastService.success('Se reservó con éxito');
             this.reservacionCreada.emit(true);
           },
           error: (err) => {
-            this.toastService.showToast(err.message);
+            this.toastService.success(err.message);
           }
         });
       } else {
-        this.toastService.showToast('Completa todos los campos');
+        this.toastService.success('Completa todos los campos');
       }
     } else {
-      this.toastService.showToast('Hora ya ocupada');
+      this.toastService.success('Hora ya ocupada');
     }
   }
 
@@ -181,7 +181,7 @@ export class CardHorarioEmpresaComponent implements OnInit, AfterViewInit {
   confirmar_reservacion(id: string) {
     this._userService.actualizar_reserva_reservado_empresa(id, this.token).subscribe({
       next: (res) => {
-        this.toastService.showToast('Se confirmó con éxito');
+        this.toastService.success('Se confirmó con éxito');
         this.socket.emit('confirmar-reserva-admin', { data: true });
         this.reservacionCreada.emit(true);
       }

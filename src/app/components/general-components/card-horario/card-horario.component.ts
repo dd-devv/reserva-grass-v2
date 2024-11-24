@@ -2,7 +2,7 @@ import { Component, EventEmitter, Input, OnInit, Output, AfterViewInit, ChangeDe
 import { Router } from '@angular/router';
 import { Datepicker, initFlowbite } from 'flowbite';
 import type { DatepickerOptions } from 'flowbite';
-import { ToastService } from '../../../services/toast.service';
+import { ToastService } from '../../../services/toast/toast.service';
 import { AuthService } from '../../../services/auth.service';
 import { UserService } from '../../../services/user.service';
 import { GLOBAL } from '../../../services/global';
@@ -105,7 +105,7 @@ export class CardHorarioComponent implements OnInit, AfterViewInit {
     }
   }
   mostrarToast() {
-    this.toastService.showToast('No se pueden agregar más horas. Excede el horario de cierre.');
+    this.toastService.success('No se pueden agregar más horas. Excede el horario de cierre.');
   }
 
   changeHoras(hora: number, cant: number) {
@@ -134,12 +134,12 @@ export class CardHorarioComponent implements OnInit, AfterViewInit {
       }
       this._userService.crear_reservacion_user(data, this.token).subscribe({
         next: (res) => {
-          this.toastService.showToast('Se reservó con éxito');
+          this.toastService.success('Se reservó con éxito');
           this.socket.emit('crear-reserva-ocupado', { data: true });
           this._router.navigate(['/usuario/perfil/reservas']);
         },
         error: (err) => {
-          this.toastService.showToast(err.error.message || 'No se pudo registrar, intete de nuevo');
+          this.toastService.success(err.error.message || 'No se pudo registrar, intete de nuevo');
 
           setTimeout(() => {
             window.location.reload();

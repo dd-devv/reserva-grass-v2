@@ -4,7 +4,7 @@ import { Router } from '@angular/router';
 import { Title } from '@angular/platform-browser';
 import { UserService } from '../../../../services/user.service';
 import { finalize } from 'rxjs/operators';
-import { ToastService } from '../../../../services/toast.service';
+import { ToastService } from '../../../../services/toast/toast.service';
 
 interface LoginData {
   email: string;
@@ -121,7 +121,7 @@ export class LoginComponent implements OnInit {
           }
         },
         error: (error) => {
-          this.toastr.showToast('Error al iniciar sesión');
+          this.toastr.success('Error al iniciar sesión');
           console.error('Login error:', error);
         },
       });
@@ -134,12 +134,12 @@ export class LoginComponent implements OnInit {
       .subscribe({
         next: (response) => {
           if (!response.data) {
-            this.toastr.showToast(response.message);
+            this.toastr.success(response.message);
             return;
           }
 
           if (!response.data.verificado) {
-            this.toastr.showToast('Empresa aún no verificada');
+            this.toastr.success('Empresa aún no verificada');
             this.router.navigate(['/wait']);
             return;
           }
@@ -148,7 +148,7 @@ export class LoginComponent implements OnInit {
           this.redirectBasedOnRole(response.data);
         },
         error: (error) => {
-          this.toastr.showToast('Error al iniciar sesión como empresa');
+          this.toastr.success('Error al iniciar sesión como empresa');
           console.error('Company login error:', error);
         },
       });
@@ -157,7 +157,7 @@ export class LoginComponent implements OnInit {
   private handleUserLogin(response: any): void {
     localStorage.setItem('user_data', JSON.stringify(response.data));
     if (!response.data.verificado) {
-      this.toastr.showToast('Correo aún no verificado');
+      this.toastr.success('Correo aún no verificado');
       this.router.navigate(['/verificar']);
       return;
     }

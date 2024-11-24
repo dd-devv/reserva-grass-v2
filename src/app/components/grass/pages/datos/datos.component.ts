@@ -3,7 +3,7 @@ import { Title } from '@angular/platform-browser';
 import { Router } from '@angular/router';
 import { GuestService } from '../../../../services/guest.service';
 import { UserService } from '../../../../services/user.service';
-import { ToastService } from '../../../../services/toast.service';
+import { ToastService } from '../../../../services/toast/toast.service';
 
 @Component({
   selector: 'app-datos',
@@ -74,7 +74,7 @@ export class DatosComponent implements OnInit {
         });
       },
       error: (err) => {
-        this._toastrService.showToast('Usuario inexistente');
+        this._toastrService.error('Usuario inexistente');
         this.load_data = false;
       }
     });
@@ -93,7 +93,7 @@ export class DatosComponent implements OnInit {
 
     this._userService.actualizar_caracteristicas_empresa(this.id, this.token, data).subscribe(
       response => {
-        this._toastrService.showToast('Se actualizó con éxito');
+        this._toastrService.success('Se actualizó con éxito');
         this.load_btn = false;
         this.ngOnInit();
       }
@@ -114,12 +114,12 @@ export class DatosComponent implements OnInit {
 
     this._userService.actualizar_empresa(this.id, data, this.token).subscribe({
       next: (res) => {
-        this._toastrService.showToast('Se actualizó con éxito');
+        this._toastrService.success('Se actualizó con éxito');
         this.load_btn = false;
         this._router.navigate(['/grass']);
       },
       error: (err) => {
-        this._toastrService.showToast(err.message);
+        this._toastrService.error(err.message);
       }
     });
   }

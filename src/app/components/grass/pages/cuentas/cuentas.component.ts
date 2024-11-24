@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { Title } from '@angular/platform-browser';
 import { UserService } from '../../../../services/user.service';
-import { ToastService } from '../../../../services/toast.service';
+import { ToastService } from '../../../../services/toast/toast.service';
 import { Modal } from 'flowbite';
 
 @Component({
@@ -148,12 +148,12 @@ export class CuentasComponent implements OnInit {
       this.load_btn = true;
       this._userService.registro_cuenta_grass(this.cuenta, this.token).subscribe({
         next: (res) => {
-          this._toastrService.showToast('Se registró con éxito');
+          this._toastrService.success('Se registró con éxito');
           this.closeModalCrear();
           this.init_data();
         },
         error: (err) => {
-          this._toastrService.showToast('Error');
+          this._toastrService.error('Error');
         }
       });
     }
@@ -163,7 +163,7 @@ export class CuentasComponent implements OnInit {
     this.load_btn = true;
     this._userService.eliminar_cuenta_grass(id, this.token).subscribe(
       response => {
-        this._toastrService.showToast('Se eliminó con éxito');
+        this._toastrService.success('Se eliminó con éxito');
         this.closeModalEliminar(id);
         this.load_btn = false;
         this.init_data();

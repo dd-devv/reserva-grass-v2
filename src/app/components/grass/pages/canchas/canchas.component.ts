@@ -71,8 +71,7 @@ export class CanchasComponent implements OnInit, AfterViewInit, OnDestroy {
     this.load_btn = true;
     this._userService.eliminar_cancha_empresa(id, this.token).subscribe(
       response => {
-        this._toastrService.success('Se eliminó con éxito', 'ELIMINADO!');
-
+        this._toastrService.success('Se eliminó con éxito');
         this.load_btn = false;
         this.ngOnInit();
       }

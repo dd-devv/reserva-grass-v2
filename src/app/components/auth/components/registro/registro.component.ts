@@ -6,7 +6,7 @@ import { Title } from '@angular/platform-browser';
 import { UserService } from '../../../../services/user.service';
 import { GuestService } from '../../../../services/guest.service';
 import { finalize } from 'rxjs/operators';
-import { ToastService } from '../../../../services/toast.service';
+import { ToastService } from '../../../../services/toast/toast.service';
 import { Region, RegisterData } from '../../core/core';
 
 @Component({
@@ -118,7 +118,7 @@ export class RegistroComponent implements OnInit {
   onSubmit(): void {
     if (this.registerForm.invalid || this.isLoading) {
       this.registerForm.markAllAsTouched();
-      this.toastr.showToast('Por favor, complete todos los campos correctamente');
+      this.toastr.success('Por favor, complete todos los campos correctamente');
       return;
     }
 
@@ -143,7 +143,7 @@ export class RegistroComponent implements OnInit {
         error: (error) => {
           console.log(error);
           
-          this.toastr.showToast(error.error.message || 'Error en el registro');
+          this.toastr.success(error.error.message || 'Error en el registro');
         },
       });
   }
@@ -152,7 +152,7 @@ export class RegistroComponent implements OnInit {
     localStorage.setItem('_id', response.data._id);
     localStorage.setItem('user_email', this.registerForm.get('email')?.value);
     sessionStorage.setItem('password', this.registerForm.get('password')?.value);
-    this.toastr.showToast('Se registró con éxito');
+    this.toastr.success('Se registró con éxito');
     this.sendConfirmationEmail(response.data._id);
   }
 
@@ -160,12 +160,12 @@ export class RegistroComponent implements OnInit {
     this.userService.enviar_correo_confirmacion(userId).subscribe({
       next: (response) => {
         if (response.data) {
-          this.toastr.showToast('Se envió el código de verificación');
+          this.toastr.success('Se envió el código de verificación');
           this.router.navigate(['/auth/verificar']);
         }
       },
       error: (error) => {
-        this.toastr.showToast('Error al enviar el correo de confirmación');
+        this.toastr.success('Error al enviar el correo de confirmación');
         console.error('Error sending confirmation email:', error);
       },
     });

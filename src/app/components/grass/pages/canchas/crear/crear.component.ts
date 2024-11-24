@@ -2,7 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { UserService } from '../../../../../services/user.service';
 import { Router } from '@angular/router';
 import { Title } from '@angular/platform-browser';
-import { ToastService } from '../../../../../services/toast.service';
+import { ToastService } from '../../../../../services/toast/toast.service';
 
 @Component({
   selector: 'app-crear',
@@ -56,7 +56,7 @@ export class CrearComponent implements OnInit {
           this.load_data = false;
         },
         error: (err) => {
-          this._toastrService.showToast('Usuario inexistente');
+          this._toastrService.error('Usuario inexistente');
           this.load_data = false;
         }
       });
@@ -110,13 +110,13 @@ export class CrearComponent implements OnInit {
         .crear_cancha_empresa(this.id, this.token, this.data)
         .subscribe({
           next: (res) => {
-            this._toastrService.showToast('Se creó con éxito');
+            this._toastrService.success('Se creó con éxito');
             this.load_btn_crear = false;
             this._router.navigate(['/grass/canchas']);
           }
         });
     } else {
-      this._toastrService.showToast(
+      this._toastrService.warning(
         'Verifique y complete adecuadamente'
       );
       this.load_btn_crear = false;
