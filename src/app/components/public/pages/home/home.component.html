@@ -2,10 +2,10 @@
 
   <!-- <app-button-search class="mb-3" (option)="handleSearch($event)"></app-button-search> -->
 
-  <div class="  rounded-b-xl flex   justify-center h-fit max-h-24  md:max-h-96 bg-cover w-full md:py-8 bg-no-repeat bg-center md:bg-[url('https://images.pexels.com/photos/47730/the-ball-stadion-football-the-pitch-47730.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1')]">
+  <div class="  rounded-b-xl flex   md:bg-blend-darken md:bg-black/30 justify-center h-fit max-h-24  md:max-h-96 bg-cover w-full md:py-8 bg-no-repeat  bg-center md:bg-[url('https://images.pexels.com/photos/47730/the-ball-stadion-football-the-pitch-47730.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1')] ">
 
-    <div class="h-full gap-y-1  md:bg-white/70 flex-col md:flex-row rounded-full w-full max-w-6xl px-3.5 md:p-4 justify-center  md:gap-0.5 flex md:h-20">
-      <select id="region" class="w-full text-xs md:text-base  md:border-none rounded-lg md:rounded-l-full" name="region" [(ngModel)]="empresa.region"
+    <div class="h-full gap-y-1  md:bg-white/70 flex-col md:flex-row rounded-full w-full max-w-6xl md:px-3.5 md:p-4 justify-center  md:gap-0.5 flex md:h-20">
+      <select id="region" class=" w-full text-xs md:text-base  md:border-none rounded-lg md:rounded-l-full" name="region" [(ngModel)]="empresa.region"
         (change)="select_region()" required>
         <option value="" selected disabled>Departamento</option>
         <option value="{{ item.id }}" *ngFor="let item of regiones">

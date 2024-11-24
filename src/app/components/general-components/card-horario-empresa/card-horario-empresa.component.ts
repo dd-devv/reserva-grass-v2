@@ -100,7 +100,7 @@ export class CardHorarioEmpresaComponent implements OnInit, AfterViewInit {
     }
   }
   mostrarToast() {
-    this.toastService.success('No se pueden agregar más horas. Excede el horario de cierre.');
+    this.toastService.warning('No se pueden agregar más horas. Excede el horario de cierre.');
   }
 
   changeHoras(hora: number, cant: number) {
