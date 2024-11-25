@@ -173,7 +173,7 @@
               <p class="text-red-500 text-[10px] font-bold">
                 Cliente
               </p>
-              <p class="text-base font-bold">{{user_lc.nombres}}</p>
+              <p class="text-base font-bold">{{user_lc.nombres | textShorted}}/p>
             </div>
           </div>
         </div>
@@ -276,7 +276,7 @@
               <p class="text-orange-400 text-[10px] font-bold">
                 Cliente
               </p>
-              <p class="text-base font-bold">{{user_lc.nombres | titlecase}}</p>
+              <p class="text-base font-bold">{{user_lc.nombres | textShorted}}</p>
             </div>
           </div>
           <div class="flex items-center justify-center ">
@@ -499,7 +499,7 @@
                 <p class="text-forestGreen-600 text-[10px] font-bold">
                   Cliente
                 </p>
-                <p class="text-base font-bold">{{user_lc.nombres | titlecase}}</p>
+                <p class="text-base font-bold">{{user_lc.nombres | textShorted}}</p>
               </div>
             </div>
             <div class="flex items-center justify-center ">
@@ -624,7 +624,7 @@
               <p class="text-seashell-500 text-[10px] font-bold">
                 Cliente
               </p>
-              <p class="text-base font-bold">Dino</p>
+              <p class="text-base font-bold">{{user_lc.nombres | textShorted}}</p>
             </div>
           </div>
           <div class="flex items-center justify-center ">

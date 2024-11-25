@@ -22,6 +22,7 @@ import { CountdownTimerComponent } from './countdown-timer/countdown-timer.compo
 import { HeaderEmpresaComponent } from './header-empresa/header-empresa.component';
 import { CardHorarioEmpresaComponent } from './card-horario-empresa/card-horario-empresa.component';
 import { FormsModule } from '@angular/forms';
+import { TextShortedPipe } from '../../pipes/text-shorted.pipe';
 
 
 
@@ -41,6 +42,7 @@ import { FormsModule } from '@angular/forms';
     CardEmpresaSkeletonComponent,
     ButtonSearchComponent,
     Time24to12Pipe,
+    TextShortedPipe,
     CardSportFeaturesSkeletonComponent,
     HeaderUserComponent,
     CardHorarioSkeletonComponent,
@@ -71,6 +73,7 @@ import { FormsModule } from '@angular/forms';
     HeaderComponent,
     HeaderUserComponent,
     Time24to12Pipe,
+    TextShortedPipe,
     CountdownTimerComponent,
     HeaderEmpresaComponent,
     CarouselImageComponent,

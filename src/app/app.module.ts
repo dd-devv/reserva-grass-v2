@@ -12,6 +12,7 @@ import { GoogleMapsModule } from '@angular/google-maps';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import localeEs from "@angular/common/locales/es";
 import { registerLocaleData } from "@angular/common";
+import { TextShortedPipe } from './pipes/text-shorted.pipe';
 registerLocaleData(localeEs, "es");
 
 @NgModule({

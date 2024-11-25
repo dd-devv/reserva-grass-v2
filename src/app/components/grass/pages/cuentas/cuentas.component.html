@@ -9,7 +9,7 @@
 </div>
 
 
-
+<!-- Modal -->
 <div
   id="crearCanchaModal"
   tabindex="-1"
@@ -281,8 +281,8 @@
         <!-- Botones con íconos -->
         <div class="flex md:justify-between gap-2 justify-start h-6">
           <!-- Botón de Actualizar -->
-          <button [routerLink]="['/grass/cuentas', cuenta._id]"
-            class="flex items-center gap-2 bg-white text-black text-xs px-4 rounded-lg border border-purple-500"
+          <button [routerLink]="['/grass/cuentas', cuenta._id]" [style.borderColor]="cuenta.color"
+            class="flex items-center gap-2 bg-white text-black text-xs px-4 rounded-lg border-2"
           >
             Actualizar
             <svg
@@ -303,7 +303,7 @@
   
           <!-- Botón de Eliminar -->
           <button (click)="openModalEliminar(cuenta._id)"
-            class="flex items-center gap-2 bg-white text-black text-xs py-2 px-4 rounded-lg border border-red-500"
+            class="flex items-center gap-2 bg-white text-black text-xs py-2 px-4 rounded-lg border-2 border-red-500"
           >
             Eliminar
             <svg

@@ -156,92 +156,88 @@
     </div>
 } 
 
-@if (!activePagos && viewButton) {
-Suscribete :VVV 
-} 
-
 @if (activePagos && !viewButton) { 
     
+  <div class="mb-5">
     @for (reservacion of reservacionesOcupadas; track $index) {
-<div
-  class="flex gap-y-4 rounded-lg w-full justify-center h-fit min-w-lg max-w-lg"
->
-  <div
-    id="{{ reservacion._id }}"
-    class="grid grid-cols-[32px_repeat(2,1fr)] grid-rows-4 rounded-lg border border-gray-500 w-full h-[175px] md:h-[155px]"
-  >
-    <div class="bg-forestGreen-600 text-white w-8 rounded-l-md row-span-5">
-      <p
-        class="w-full -rotate-90 flex justify-center items-center text-center h-full text-nowrap font-semibold"
-      >
-        {{ reservacion.codigo }}
-      </p>
-    </div>
-    <div
-      class="flex border-b-2 border-dotted border-seashell-400 flex-col rounded-t-lg col-span-2 w-full h-11 px-2 py-1"
-    >
-      <div class="flex justify-start">
-        <div class="flex flex-col items-start w-3/5">
-          <label class="text-xs font-semibold text-forestGreen-600">
-            Cliente
-          </label>
-          <p class="font-bold capitalize">
-            {{ reservacion.cliente?.nombres | titlecase }}
+    <div class="flex gap-y-4 rounded-lg w-full justify-center h-fit min-w-lg max-w-lg">
+      <div id="{{ reservacion._id }}"
+        class="grid grid-cols-[32px_repeat(2,1fr)] grid-rows-4 rounded-lg border border-forestGreen-500 w-full h-[175px] md:h-[155px]">
+        <div class="bg-forestGreen-600 text-white w-8 rounded-l-md row-span-5">
+          <p class="w-full -rotate-90 flex justify-center items-center text-center h-full text-nowrap font-semibold">
+            {{ reservacion.codigo }}
           </p>
         </div>
-
-        <div class="flex flex-col items-start w-2/5">
-          <label class="text-xs font-semibold text-forestGreen-600">
-            Cancha
-          </label>
-          <p class="font-bold">{{ reservacion.cancha.nombre | titlecase }}</p>
+        <div
+          class="flex border-b-2 border-dotted border-seashell-400 flex-col rounded-t-lg col-span-2 w-full h-11 px-2 py-1">
+          <div class="flex justify-start">
+            <div class="flex flex-col items-start w-3/5">
+              <label class="text-xs font-semibold text-forestGreen-600">
+                Cliente
+              </label>
+              <p class="font-bold capitalize">
+                {{ reservacion.cliente?.nombres | textShorted }}
+              </p>
+            </div>
+  
+            <div class="flex flex-col items-start w-2/5">
+              <label class="text-xs font-semibold text-forestGreen-600">
+                Cancha
+              </label>
+              <p class="font-bold">{{ reservacion.cancha.nombre | titlecase }}</p>
+            </div>
+          </div>
+  
+          <!-- INICIO PARTE BOLETA -->
+  
+          <div class="flex flex-col md:gap-1.5 pt-2">
+            <div class="flex w-full">
+              <div class="w-3/5 items-start flex flex-col justify-start">
+                <p class="text-forestGreen-600 text-[10px] font-bold">Fecha</p>
+                <p class="text-[12px]">
+                  {{ reservacion.fecha | date : "EEEE, MMMM d " | titlecase }}
+                </p>
+              </div>
+  
+              <div class="w-2/5 items-start flex flex-col justify-start">
+                <p class="text-forestGreen-600 text-[10px] font-bold">Horario</p>
+                <p class="text-[12px]">
+                  {{ reservacion.hora_inicio | time24to12 }} -
+                  {{ reservacion.hora_fin | time24to12 }}
+                </p>
+              </div>
+            </div>
+            <div class="flex w-full">
+              <div class="w-3/5 items-start flex flex-col justify-start">
+                <p class="text-forestGreen-600 text-[10px] font-bold">
+                  Monto de reservación
+                </p>
+                <p class="text-base font-bold">S/ {{ reservacion.subtotal }}</p>
+              </div>
+  
+              <div class="w-2/5 items-start flex flex-col justify-start">
+                <p class="text-forestGreen-600 text-[10px] font-bold">
+                  Monto pendiente
+                </p>
+                <p class="text-base font-bold">S/ {{ reservacion.subtotal }}</p>
+              </div>
+            </div>
+            <div class="flex items-center justify-center">
+              <p class="font-jetBrainsMono text-[12px]">
+                Creación: {{ reservacion.createdAt | date : "medium" }}
+              </p>
+            </div>
+          </div>
         </div>
       </div>
-
-      <!-- INICIO PARTE BOLETA -->
-
-      <div class="flex flex-col md:gap-1.5 pt-2">
-        <div class="flex w-full">
-          <div class="w-3/5 items-start flex flex-col justify-start">
-            <p class="text-forestGreen-600 text-[10px] font-bold">Fecha</p>
-            <p class="text-[12px]">
-              {{ reservacion.fecha | date : "EEEE, MMMM d " | titlecase }}
-            </p>
-          </div>
-
-          <div class="w-2/5 items-start flex flex-col justify-start">
-            <p class="text-forestGreen-600 text-[10px] font-bold">Horario</p>
-            <p class="text-[12px]">
-              {{ reservacion.hora_inicio | time24to12 }} -
-              {{ reservacion.hora_fin | time24to12 }}
-            </p>
-          </div>
-        </div>
-        <div class="flex w-full">
-          <div class="w-3/5 items-start flex flex-col justify-start">
-            <p class="text-forestGreen-600 text-[10px] font-bold">
-              Monto de reservación
-            </p>
-            <p class="text-base font-bold">S/ {{ reservacion.subtotal }}</p>
-          </div>
-
-          <div class="w-2/5 items-start flex flex-col justify-start">
-            <p class="text-forestGreen-600 text-[10px] font-bold">
-              Monto pendiente
-            </p>
-            <p class="text-base font-bold">S/ {{ reservacion.subtotal }}</p>
-          </div>
-        </div>
-        <div class="flex items-center justify-center">
-          <p class="font-jetBrainsMono text-[12px]">
-            Creación: {{ reservacion.createdAt | date : "medium" }}
-          </p>
-        </div>
-      </div>
+  
     </div>
+    <button (click)="confirmar_reservacion(reservacion._id)"
+      class="py-1 text-sm flex gap-1.5 items-center px-4 bg-forestGreen-50 border border-forestGreen-500 rounded-full shadow-lg transition hover:bg-gray-100">
+      Confirmar reservacion
+    </button>
+    }
   </div>
-</div>
-}
 
 <div class="relative overflow-x-auto shadow-md sm:rounded-lg">
   <div
@@ -309,7 +305,7 @@ Suscribete :VVV
           {{ reservaciones.length - $index }}
         </th>
         <td class="px-2 py-3">
-          {{ item.cliente.nombres }}
+          {{ item.cliente.nombres | textShorted }}
         </td>
         <td class="px-2 py-3">
           {{ item.cliente.telefono }}
