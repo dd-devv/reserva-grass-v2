@@ -42,8 +42,6 @@ export class SuscripcionComponent implements OnInit {
     this.load_data = true;
     this._userService.obtener_suscripciones_empresa(this.id, this.token).subscribe(
       response => {
-        console.log(response.data);
-        
         if (response.data) {
           // Filtrar solo la suscripción confirmada
           const suscripcionConfirmada = response.data.find(

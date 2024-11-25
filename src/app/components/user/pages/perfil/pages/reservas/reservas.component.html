@@ -398,6 +398,15 @@
                   confirmación de su reserva.
                 </div>
               </li>
+
+              <a href="https://api.whatsapp.com/send?phone=51{{reserva.empresa.telefono}}&text=Hola%20{{reserva.empresa.nombre}}%2C%20confirma%20mi%20pago%20de%20S/.%20{{reserva.subtotal}}%20por%20la%20reservacion%20{{reserva.codigo}}%20para%20las%20horas%20{{reserva.hora_inicio | time24to12 }}%20-%20{{reserva.hora_fin | time24to12 }}%20de%20la%20fecha%20{{reserva.fecha | date: 'shortDate' }}."
+               target="_blank" class="hover:scale-110  hover:duration-75 bg-forestGreen-500 rounded-md text-forestGreen-50 inline-flex justify-center items-center px-4">
+              Enviar mensaje a {{reserva.empresa.telefono}}
+              <svg width="25" height="24" viewBox="0 0 25 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                <path d="M13.5 6L19.5 12M19.5 12L13.5 18M19.5 12H5.5" stroke="#F0FDF3" stroke-width="2" stroke-linecap="round"
+                  stroke-linejoin="round" />
+              </svg>
+            </a>
             </ol>
           </div>
         </div>
