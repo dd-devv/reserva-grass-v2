@@ -255,8 +255,8 @@
   >
 
   @for (cuenta of cuentas; track $index) {
-    <div
-      class="flex md:flex-col flex-row-reverse items-center w-full gap-4 p-3 md:p-6 bg-purple-50/30 text-forestGreen-500 shadow-lg rounded-lg border hover:shadow-xl"
+    <div [style.borderColor]="cuenta.color" [style.backgroundColor]="cuenta.fondo"
+      class="flex md:flex-col flex-row-reverse items-center w-full gap-4 p-3 md:p-6  text-forestGreen-500 shadow-lg rounded-lg border-2 hover:shadow-xl"
     >
       <div class="flex justify-center items-center object-contain w-16 h-12">
         <img src="../../../../../assets/svg/{{cuenta.banco | lowercase}}.svg" alt="" />
