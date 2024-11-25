@@ -1,10 +1,126 @@
-<p>contact works!</p>
-<div class="fondo">
-  hola
+<div class="wrapper">
+
+  <!-- PC -->
+   <div class="hidden md:block">
+     <div class="grid grid-cols-2">
+       <div class="col-span-1 grid justify-center items-center max-h-[540px]">
+         <img src="../../../../../assets/img/man-with-laptop.png" alt="persona con laptop" class="max-h-[540px]">
+       </div>
+       <div class="col-span-1">
+         <form autocomplete="off"
+         class="flex flex-col  justify-between rounded-l rounded-2xl border border-slate-400 md:border-none md:rounded-lg px-2.5 py-8 md:py-4 md:px-4 md:gap-4 gap-2.5">
+   
+           <!-- nombre y apellidos -->
+           <div>
+             <label for="nombres" class="block mb-1 text-sm font-medium text-gray-900 dark:text-white">Nombres y apellidos
+             </label>
+   
+             <input id="nombres" placeholder="Ingrese su nombre y apellidos" type="text"
+             class="block w-full p-2 h-9 text-gray-900 border border-gray-300 rounded-md bg-gray-50 text-xs focus:ring-blue-500 focus:border-blue-500 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500" />
+           </div>
+         
+           <!-- email -->
+           <div>
+             <label for="email" class="block mb-1 text-sm font-medium text-gray-900 dark:text-white">Correo
+             </label>
+   
+             <input id="email" placeholder="Ingrese su correo" type="text"
+             class="block w-full p-2 h-9 text-gray-900 border border-gray-300 rounded-md bg-gray-50 text-xs focus:ring-blue-500 focus:border-blue-500 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500" />
+           </div>
+         
+           <!-- telefono -->
+           <div>
+             <label for="telefono" class="block mb-1 text-sm font-medium text-gray-900 dark:text-white">Teléfono
+             </label>
+   
+             <input id="telefono" placeholder="999-888-777" type="text"
+             class="block w-full p-2 h-9 text-gray-900 border border-gray-300 rounded-md bg-gray-50 text-xs focus:ring-blue-500 focus:border-blue-500 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500" />
+           </div>
+         
+           <!-- asunto -->
+           <div>
+             <label for="asunto" class="block mb-1 text-sm font-medium text-gray-900 dark:text-white">Asunto
+             </label>
+   
+             <input id="asunto" placeholder="Título del mensaje" type="text"
+             class="block w-full p-2 h-9 text-gray-900 border border-gray-300 rounded-md bg-gray-50 text-xs focus:ring-blue-500 focus:border-blue-500 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500" />
+           </div>
+   
+           <!-- mensaje -->
+           <div>
+             <label for="mensaje" class="block mb-1 text-sm font-medium text-gray-900 dark:text-white">Mensaje
+             </label>
+   
+             <textarea id="mensaje" name="mensaje" cols="50" placeholder="Escriba su consulta" 
+             class="block w-full p-2 h-32 text-gray-900 border border-gray-300 rounded-md bg-gray-50 text-xs focus:ring-blue-500 focus:border-blue-500 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"></textarea>
+   
+           </div>
+   
+           <button class="w-full bg-blue-600 text-white h-9 rounded-md">
+             Enviar
+           </button>
+   
+         </form>
+       </div>
+     </div>
+   </div>
+
+  <!-- Mobile -->
+  <div class="block md:hidden">
+    <form autocomplete="off"
+        class="flex flex-col  justify-between rounded-l rounded-2xl border border-slate-400 md:border-none md:rounded-lg px-2.5 py-8 md:py-4 md:px-4 md:gap-4 gap-2.5">
+  
+          <!-- nombre y apellidos -->
+          <div>
+            <label for="nombres" class="block mb-1 text-sm font-medium text-gray-900 dark:text-white">Nombres y apellidos
+            </label>
+  
+            <input id="nombres" placeholder="Ingrese su nombre y apellidos" type="text"
+            class="block w-full p-2 h-9 text-gray-900 border border-gray-300 rounded-md bg-gray-50 text-xs focus:ring-blue-500 focus:border-blue-500 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500" />
+          </div>
+        
+          <!-- email -->
+          <div>
+            <label for="email" class="block mb-1 text-sm font-medium text-gray-900 dark:text-white">Correo
+            </label>
+  
+            <input id="email" placeholder="Ingrese su correo" type="text"
+            class="block w-full p-2 h-9 text-gray-900 border border-gray-300 rounded-md bg-gray-50 text-xs focus:ring-blue-500 focus:border-blue-500 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500" />
+          </div>
+        
+          <!-- telefono -->
+          <div>
+            <label for="telefono" class="block mb-1 text-sm font-medium text-gray-900 dark:text-white">Teléfono
+            </label>
+  
+            <input id="telefono" placeholder="999-888-777" type="text"
+            class="block w-full p-2 h-9 text-gray-900 border border-gray-300 rounded-md bg-gray-50 text-xs focus:ring-blue-500 focus:border-blue-500 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500" />
+          </div>
+        
+          <!-- asunto -->
+          <div>
+            <label for="asunto" class="block mb-1 text-sm font-medium text-gray-900 dark:text-white">Asunto
+            </label>
+  
+            <input id="asunto" placeholder="Título del mensaje" type="text"
+            class="block w-full p-2 h-9 text-gray-900 border border-gray-300 rounded-md bg-gray-50 text-xs focus:ring-blue-500 focus:border-blue-500 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500" />
+          </div>
+  
+          <!-- mensaje -->
+          <div>
+            <label for="mensaje" class="block mb-1 text-sm font-medium text-gray-900 dark:text-white">Mensaje
+            </label>
+  
+            <textarea id="mensaje" name="mensaje" cols="50" placeholder="Escriba su consulta" 
+            class="block w-full p-2 h-32 text-gray-900 border border-gray-300 rounded-md bg-gray-50 text-xs focus:ring-blue-500 focus:border-blue-500 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"></textarea>
+  
+          </div>
+  
+          <button class="w-full bg-blue-600 text-white h-9 rounded-md">
+            Enviar
+          </button>
+  
+    </form>
+  </div>
 </div>
-
-
-
-
-
 
