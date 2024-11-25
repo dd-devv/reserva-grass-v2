@@ -41,11 +41,11 @@ export class CarouselImageComponent implements OnInit, AfterViewInit, OnDestroy 
   getIndicatorClasses(): string {
     switch (this.tipo) {
       case 'Voley':
-        return 'bg-pink-400/50 dark:bg-pink-500/50 hover:bg-pink-400 rounded-full size-2.5';
+        return 'bg-pink-400/50 dark:bg-pink-500/50 hover:bg-pink-400 rounded-full size-2';
       case 'Mixto':
-        return 'bg-purple-400/50 dark:bg-purple-500/50 hover:bg-purple-400 rounded-full size-2.5';
+        return 'bg-purple-400/50 dark:bg-purple-500/50 hover:bg-purple-400 rounded-full size-2';
       default: // Futbol o Futsal
-        return 'bg-forestGreen-400/50 dark:bg-forestGreen-500/50 hover:bg-forestGreen-400 rounded-full size-2.5';
+        return 'bg-forestGreen-400/50 dark:bg-forestGreen-500/50 hover:bg-forestGreen-400 rounded-full size-2';
     }
   }
 
@@ -105,11 +105,11 @@ export class CarouselImageComponent implements OnInit, AfterViewInit, OnDestroy 
   private getActiveIndicatorClasses(): string {
     switch (this.tipo) {
       case 'Voley':
-        return 'bg-pink-500 w-6 dark:bg-pink-500';
+        return 'bg-pink-500 w-6 h-2 rounded dark:bg-pink-500';
       case 'Mixto':
-        return 'bg-purple-500 w-6 dark:bg-purple-500';
+        return 'bg-purple-500 w-6 h-2 rounded dark:bg-purple-500';
       default: // Futbol o Futsal
-        return 'bg-forestGreen-500 w-6 dark:bg-forestGreen-500';
+        return 'bg-forestGreen-500 w-6 h-2 rounded dark:bg-forestGreen-500';
     }
   }
 
