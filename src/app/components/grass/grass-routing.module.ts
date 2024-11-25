@@ -16,6 +16,7 @@ import { ActualizarComponent } from './pages/canchas/actualizar/actualizar.compo
 import { GaleriaComponent } from './pages/canchas/galeria/galeria.component';
 import { ActualizarCuentaComponent } from './pages/cuentas/actualizar-cuenta/actualizar-cuenta.component';
 import { PaymentComponent } from './pages/payment/payment.component';
+import { paymentGuard } from '../../guards/payment.guard';
 
 const routes: Routes = [
   {
@@ -23,7 +24,7 @@ const routes: Routes = [
     component: ContainerComponent,
     children: [
       {
-        path: '', component: HomeContainerComponent,
+        path: '', component: HomeContainerComponent, canActivate: [paymentGuard],
         children: [
           { path: '', component: HomeComponent },
           { path: 'canchas', component: CanchasComponent },

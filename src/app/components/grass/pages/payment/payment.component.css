@@ -1,0 +1,82 @@
+.skeleton{
+    background-color: white;
+    min-width: 45px;
+    width: 90%;
+    max-width: 140px;
+    border-radius: 5px;
+    color: transparent;
+}
+.skeleton-title{
+    background-color: white;
+    min-width: 45px;
+    width: 100%;
+    max-width: 120px;
+    border-radius: 5px;
+    color: transparent;
+    text-align: center;
+}
+
+.skeleton-1{
+    background-color: white;
+    min-width: 45px;
+    width: 90%;
+    max-width: 110px;
+    border-radius: 5px;
+    color: transparent;
+}
+.skeleton-2{
+    background-color: white;
+    min-width: 45px;
+    width: 90%;
+    max-width: 90px;
+    border-radius: 5px;
+    color: transparent;
+}
+.skeleton-3{
+    background-color: white;
+    min-width: 45px;
+    width: 90%;
+    max-width: 120px;
+    border-radius: 5px;
+    color: transparent;
+}
+
+.skeleton-4{
+    background-color: white;
+    min-width: 45px;
+    width: 90%;
+    max-width: 140px;
+    border-radius: 5px;
+    color: transparent;
+}
+
+
+
+
+@keyframes wave {
+    0% {
+      background-position: -468px 0;
+    }
+    100% {
+      background-position: 468px 0;
+    }
+  }
+
+.skeleton,
+.qr-skeleton,
+.skeleton-title,
+.skeleton-1,
+.skeleton-2,
+.skeleton-3,
+.skeleton-4,
+.skeleton-button
+{
+  background-image: linear-gradient(
+    90deg,
+    #f0f0f0 0%,
+    #e0e0e0 40%,
+    #f0f0f0 100%
+  );
+  background-size: 200% 200%;
+  animation: wave 1.5s ease infinite;
+}

@@ -24,8 +24,8 @@ export class CuentasComponent implements OnInit {
     color: '#FFFFFF'
   };
   public bancos = ['yape', 'plin', 'bcp', 'interbank', 'nacion', 'bbva'];
-  public colores = ['#9061f9', '#72eade', '#ff5a1f', '#0e9f6e', '#ffb5b5', '#b5f2f2'];
-  public colores_fondo = ['#FCFCFF', '#eafffc', '#FFFEFE', '#f3faf7', '#fff2f2', '#edffff'];
+  public colores = ['#9061f9', '#72eade', '#ff5a1f', '#25c26b', '#f05656', '#56dbdb'];
+  public colores_fondo = ['#f6f2ff', '#f7fffe', '#fff4f0', '#f7fffb', '#fff2f2', '#f2ffff'];
   public esCuenta = true;
   public limiteCuenta = 20;
 
