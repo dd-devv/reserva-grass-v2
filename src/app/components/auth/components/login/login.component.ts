@@ -121,7 +121,7 @@ export class LoginComponent implements OnInit {
           }
         },
         error: (error) => {
-          this.toastr.success('Error al iniciar sesión');
+          this.toastr.error('Error al iniciar sesión');
           console.error('Login error:', error);
         },
       });
@@ -134,12 +134,12 @@ export class LoginComponent implements OnInit {
       .subscribe({
         next: (response) => {
           if (!response.data) {
-            this.toastr.success(response.message);
+            this.toastr.error(response.message);
             return;
           }
 
           if (!response.data.verificado) {
-            this.toastr.success('Empresa aún no verificada');
+            this.toastr.warning('Empresa aún no verificada');
             this.router.navigate(['/wait']);
             return;
           }
@@ -148,7 +148,7 @@ export class LoginComponent implements OnInit {
           this.redirectBasedOnRole(response.data);
         },
         error: (error) => {
-          this.toastr.success('Error al iniciar sesión como empresa');
+          this.toastr.error('Error al iniciar sesión como empresa');
           console.error('Company login error:', error);
         },
       });
@@ -157,7 +157,7 @@ export class LoginComponent implements OnInit {
   private handleUserLogin(response: any): void {
     localStorage.setItem('user_data', JSON.stringify(response.data));
     if (!response.data.verificado) {
-      this.toastr.success('Correo aún no verificado');
+      this.toastr.error('Correo aún no verificado');
       this.router.navigate(['/verificar']);
       return;
     }

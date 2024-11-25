@@ -1,9 +1,14 @@
-<button
+<div class="w-full flex justify-end">
+  <button
   (click)="openModalCrear()"
-  class="py-1 flex gap-1.5 items-center px-2 bg-white rounded-full shadow-lg transition hover:bg-gray-100"
+  class="py-1 text-sm flex gap-1.5 items-center px-4 bg-forestGreen-50 border border-forestGreen-500 rounded-full shadow-lg transition hover:bg-gray-100"
 >
   Registrar cuenta
 </button>
+
+</div>
+
+
 
 <div
   id="crearCanchaModal"
@@ -19,7 +24,7 @@
         class="flex items-start justify-between p-4 border-b rounded-t dark:border-gray-600"
       >
         <h3 class="text-xl font-semibold text-gray-900 dark:text-white">
-          Actualizar imagen de portada
+          Registrar cuenta
         </h3>
         <button
           type="button"
@@ -60,7 +65,7 @@
               >
               <select
                 id="banco"
-                class="w-full rounded-md border-gray-300 shadow-sm focus:border-indigo-500 focus:ring-indigo-500"
+                class="bg-gray-50 border h-9 border-gray-300 text-gray-900 text-xs rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
                 name="banco"
                 [(ngModel)]="cuenta.banco"
                 (ngModelChange)="onBancoChange()"
@@ -79,7 +84,7 @@
                 >Nombre del titular</label
               >
               <input
-                class="w-full rounded-md border-gray-300 shadow-sm focus:border-indigo-500 focus:ring-indigo-500"
+                class="block w-full p-2 h-9 text-gray-900 border border-gray-300 rounded-md bg-gray-50 text-xs focus:ring-blue-500 focus:border-blue-500 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
                 type="text"
                 id="titular"
                 name="titular"
@@ -97,7 +102,7 @@
                 <span *ngIf="!esCuenta">Celular</span>
               </label>
               <input
-                class="w-full rounded-md border-gray-300 shadow-sm focus:border-indigo-500 focus:ring-indigo-500"
+                class="block w-full p-2 h-9 text-gray-900 border border-gray-300 rounded-md bg-gray-50 text-xs focus:ring-blue-500 focus:border-blue-500 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
                 type="text"
                 id="cuenta"
                 name="cuenta"
@@ -116,7 +121,7 @@
                 >CCI</label
               >
               <input
-                class="w-full rounded-md border-gray-300 shadow-sm focus:border-indigo-500 focus:ring-indigo-500"
+                class="block w-full p-2 h-9 text-gray-900 border border-gray-300 rounded-md bg-gray-50 text-xs focus:ring-blue-500 focus:border-blue-500 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
                 type="text"
                 id="cci"
                 name="cci"
@@ -132,7 +137,7 @@
                 >Color</label
               >
               <input
-                class="h-10 w-full rounded-md border-gray-300 shadow-sm cursor-pointer disabled:opacity-50"
+                class="block w-full  h-10 rounded-md disabled:opacity-50"
                 type="color"
                 id="color-input"
                 value="{{ cuenta.color }}"
@@ -151,7 +156,7 @@
               [disabled]="registroForm.invalid"
               *ngIf="!load_btn"
             >
-              <i class="bi-plus-circle-fill mr-2"></i>
+             
               Crear cuenta
             </button>
 
