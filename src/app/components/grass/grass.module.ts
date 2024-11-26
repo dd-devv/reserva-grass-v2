@@ -47,15 +47,15 @@ import { PaginatePipe } from '../../pipes/paginate.pipe';
     ActualizarComponent,
     GaleriaComponent,
     ActualizarCuentaComponent,
-    PaymentComponent,
-    PaginatePipe
+    PaymentComponent
   ],
   imports: [
     CommonModule,
     GrassRoutingModule,
     ImageCropperModule,
     GeneralComponentsModule,
-    FormsModule
+    FormsModule,
+    PaginatePipe
 ]
 })
 export class GrassModule { }

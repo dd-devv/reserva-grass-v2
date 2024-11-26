@@ -1,7 +1,8 @@
 import { Pipe, PipeTransform } from '@angular/core';
 
 @Pipe({
-  name: 'paginate'
+  name: 'paginate',
+  standalone: true
 })
 export class PaginatePipe implements PipeTransform {
   transform(array: any[], page: number = 1, pageSize: number = 10): any[] {

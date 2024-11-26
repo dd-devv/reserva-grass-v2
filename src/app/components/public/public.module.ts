@@ -18,14 +18,14 @@ import { PaginatePipe } from '../../pipes/paginate.pipe';
     ContactComponent,
     ContainerComponent,
     VerComponent,
-    NosotrosComponent,
-    PaginatePipe
+    NosotrosComponent
   ],
   imports: [
     CommonModule,
     PublicRoutingModule,
     GeneralComponentsModule,
-    FormsModule
+    FormsModule,
+    PaginatePipe
   ]
 })
 export class PublicModule { }

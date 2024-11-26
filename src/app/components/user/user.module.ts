@@ -30,8 +30,7 @@ import { PaginatePipe } from '../../pipes/paginate.pipe';
     ReservasComponent,
     AccesoComponent,
     CanchasComponent,
-    PortraitComponent,
-    PaginatePipe
+    PortraitComponent
   ],
   imports: [
     CommonModule,
@@ -39,7 +38,8 @@ import { PaginatePipe } from '../../pipes/paginate.pipe';
     GeneralComponentsModule,
     FormsModule,
     QRCodeModule,
-    ReactiveFormsModule
+    ReactiveFormsModule,
+    PaginatePipe
   ]
 })
 export class UserModule { }
