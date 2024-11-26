@@ -282,7 +282,7 @@
       class="text-xs text-gray-700 uppercase bg-gray-300 dark:bg-gray-700 dark:text-gray-400"
     >
       <tr>
-        <th scope="col" class="px-2 py-3 text-center">N°</th>
+        <th scope="col" class="px-2 py-3 text-center">Codigo</th>
         <th scope="col" class="px-2 py-3 text-center">Cliente</th>
         <th scope="col" class="px-2 py-3 text-center">Telefono</th>
         <th scope="col" class="px-2 py-3 text-center">Monto</th>
@@ -303,7 +303,7 @@
           scope="row"
           class="px-2 py-3 font-medium text-gray-900 whitespace-nowrap dark:text-white"
         >
-          {{ reservaciones.length - $index }}
+          {{ item.codigo }}
         </th>
         <td class="px-2 py-3">
           {{ item.cliente.nombres | textShorted }}
