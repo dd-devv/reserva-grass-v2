@@ -134,6 +134,7 @@ export class CardHorarioEmpresaComponent implements OnInit, AfterViewInit {
         this._userService.registro_reservacion_grass(data, this.token).subscribe({
           next: (res) => {
             this.toastService.success('Se reservó con éxito');
+            this.socket.emit('crear-reserva-grass', { data: true });
             this.reservacionCreada.emit(true);
           },
           error: (err) => {

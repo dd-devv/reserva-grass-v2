@@ -85,7 +85,7 @@ export class HomeComponent implements OnInit {
     this.init_data();
     this.inicializarBotonesHoras();
 
-    this.socket.on('mostrar-reservas-user', () => {
+    this.socket.on('mostrar-reservas', () => {
       this.init_data();
     });
   }
