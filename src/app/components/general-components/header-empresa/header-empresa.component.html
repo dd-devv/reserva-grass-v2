@@ -9,63 +9,52 @@
       </p>
     </a>
 
-    <ul class="flex gap-6 justify-between">
+    <ul class="flex gap-6 justify-between relative">
 
-      <li id="dropdownDefaultButton" data-dropdown-toggle="dropdown"
-        class="flex flex-row gap-3 items-center cursor-pointer">
+      <li id="dropdownDefaultButton" class="flex flex-row gap-3 items-center cursor-pointer relative">
         <img src="../../../../assets/svg-icons/house.svg" alt="">
         <div class="hidden gap-3 items-center md:flex">
           Inicio
         </div>
         <img class="hover:rotate-90 hover:scale-105 hover:duration-150"
           src="../../../../assets/svg-icons/arrow-right.svg" alt="">
+        <!-- Dropdown menu -->
+        <div id="dropdown"
+          class="hidden z-10 w-44 bg-white rounded-lg divide-y divide-gray-100 shadow dark:bg-gray-700">
+          <ul class="py-2 text-sm text-gray-700 dark:text-gray-200">
+            <li [routerLink]="['horarios']"
+              class="block px-4 py-2 hover:bg-gray-100 dark:hover:bg-gray-600 dark:hover:text-white">
+              Horario
+            </li>
+            <li [routerLink]="['canchas']"
+              class="block px-4 py-2 hover:bg-gray-100 dark:hover:bg-gray-600 dark:hover:text-white">
+              Canchas
+            </li>
+            <li [routerLink]="['datos']"
+              class="block px-4 py-2 hover:bg-gray-100 dark:hover:bg-gray-600 dark:hover:text-white">
+              Datos
+            </li>
+            <li [routerLink]="['suscripcion']"
+              class="block px-4 py-2 hover:bg-gray-100 dark:hover:bg-gray-600 dark:hover:text-white">
+              Suscripción
+            </li>
+          </ul>
+        </div>
       </li>
-
-
-      <!-- Dropdown menu -->
-      <div id="dropdown" class="hidden z-10 w-44 bg-white rounded-lg divide-y divide-gray-100 shadow dark:bg-gray-700">
-        <ul class="py-2 text-sm text-gray-700 dark:text-gray-200">
-          <li [routerLink]="['horarios']"
-            class="block px-4 py-2 hover:bg-gray-100 dark:hover:bg-gray-600 dark:hover:text-white">
-            Horario
-          </li>
-          <li [routerLink]="['canchas']"
-            class="block px-4 py-2 hover:bg-gray-100 dark:hover:bg-gray-600 dark:hover:text-white">
-            Canchas
-          </li>
-          <li [routerLink]="['datos']"
-            class="block px-4 py-2 hover:bg-gray-100 dark:hover:bg-gray-600 dark:hover:text-white">
-            Datos
-          </li>
-          <li [routerLink]="['suscripcion']"
-            class="block px-4 py-2 hover:bg-gray-100 dark:hover:bg-gray-600 dark:hover:text-white">
-            Suscripción
-          </li>
-        </ul>
-      </div>
-
-
-
 
       <li [routerLink]="['clientes']" class="flex flex-row-reverse gap-3 items-center cursor-pointer">
         <p class="hidden md:block">Usuarios</p>
-
         <img src="../../../../assets/svg-icons/users.svg" alt="">
-
       </li>
 
       <li [routerLink]="['contacto']" class="flex flex-row-reverse gap-3 items-center cursor-pointer">
         <p class="hidden md:block">Contactos</p>
-
-
         <img src="../../../../assets/svg-icons/message.svg" alt="">
       </li>
 
       <li [routerLink]="['ayuda']" class="flex flex-row-reverse gap-3 items-center cursor-pointer">
         <p class="hidden md:block">Ayuda</p>
-
         <img src="../../../../assets/svg-icons/light-2.svg" alt="">
-
       </li>
 
     </ul>
