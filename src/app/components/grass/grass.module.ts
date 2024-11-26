@@ -24,6 +24,7 @@ import { ActualizarComponent } from './pages/canchas/actualizar/actualizar.compo
 import { GaleriaComponent } from './pages/canchas/galeria/galeria.component';
 import { ActualizarCuentaComponent } from './pages/cuentas/actualizar-cuenta/actualizar-cuenta.component';
 import { PaymentComponent } from './pages/payment/payment.component';
+import { PaginatePipe } from '../../pipes/paginate.pipe';
 
 
 @NgModule({
@@ -46,7 +47,8 @@ import { PaymentComponent } from './pages/payment/payment.component';
     ActualizarComponent,
     GaleriaComponent,
     ActualizarCuentaComponent,
-    PaymentComponent
+    PaymentComponent,
+    PaginatePipe
   ],
   imports: [
     CommonModule,

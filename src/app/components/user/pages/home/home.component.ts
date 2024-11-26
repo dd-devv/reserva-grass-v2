@@ -55,7 +55,8 @@ export class HomeComponent implements OnInit {
   public reviews: Array<any> = [];
   public reviewsDestacados: Array<any> = [];
 
-  p: number = 1;
+  currentPage = 1;
+  pageSize = 8;
 
   public imagen_fondo: String = '';
 
@@ -114,6 +115,14 @@ export class HomeComponent implements OnInit {
     setTimeout(() => {
       this.load_data = false;
     }, 500);
+  }
+
+  get totalPages(): number {
+    return Math.ceil(this.caracBuscada.length / this.pageSize);
+  }
+
+  onPageChange(page: number): void {
+    this.currentPage = page;
   }
 
   handleSearch(opt: string) {

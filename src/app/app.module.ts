@@ -17,8 +17,7 @@ registerLocaleData(localeEs, "es");
 
 @NgModule({
   declarations: [
-    AppComponent,
-    PaginatePipe
+    AppComponent
   ],
   imports: [
     BrowserModule,

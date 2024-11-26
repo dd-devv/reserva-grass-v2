@@ -552,7 +552,7 @@
 
   @if (ver_finalizadas) {
 
-  @for (reserva of reservaciones_finalizadas; track $index) {
+  @for (reserva of reservaciones_finalizadas | paginate:currentPage:pageSize; track $index) {
   <!-- VENCIDO -->
   <div class="flex gap-y-4 rounded-lg w-full  h-fit min-w-lg max-w-lg">
     <div
@@ -646,6 +646,13 @@
   </div>
   <!-- VENCIDO -->
   }
+
+  <!-- paginacion -->
+  @if (totalPages > 1) {
+    <app-pagination [currentPage]="currentPage" [totalPages]="totalPages" (pageChange)="onPageChange($event)">
+    </app-pagination>
+  }
+ <!-- paginacion -->
   }
 
 

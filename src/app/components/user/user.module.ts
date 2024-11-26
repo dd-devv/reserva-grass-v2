@@ -16,6 +16,7 @@ import { CanchasComponent } from './pages/canchas/canchas.component';
 import { QRCodeModule } from 'angularx-qrcode';
 import { PortraitComponent } from './pages/perfil/portrait/portrait.component';
 import { TextShortedPipe } from '../../pipes/text-shorted.pipe';
+import { PaginatePipe } from '../../pipes/paginate.pipe';
 
 
 @NgModule({
@@ -29,7 +30,8 @@ import { TextShortedPipe } from '../../pipes/text-shorted.pipe';
     ReservasComponent,
     AccesoComponent,
     CanchasComponent,
-    PortraitComponent
+    PortraitComponent,
+    PaginatePipe
   ],
   imports: [
     CommonModule,

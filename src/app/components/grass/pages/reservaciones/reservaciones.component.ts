@@ -27,7 +27,8 @@ export class ReservacionesComponent implements OnInit {
   public reservacionesOcupadas: Array<any> = [];
   public reservacionesOtras: Array<any> = [];
   public reservacion: any = {};
-  p: number = 1;
+  currentPage = 1;
+  pageSize = 12;
 
   private reservacionesOtrasSubject = new BehaviorSubject<any[]>([]);
   public reservacionesOtras$ = this.reservacionesOtrasSubject.asObservable();
@@ -83,6 +84,14 @@ export class ReservacionesComponent implements OnInit {
     ).subscribe(value => {
       this.performSearch(value);
     });
+  }
+
+  get totalPages(): number {
+    return Math.ceil(this.reservacionesOtras.length / this.pageSize);
+  }
+
+  onPageChange(page: number): void {
+    this.currentPage = page;
   }
 
   initializeModals() {

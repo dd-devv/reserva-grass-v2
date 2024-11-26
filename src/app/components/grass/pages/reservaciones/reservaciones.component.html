@@ -294,7 +294,8 @@
       </tr>
     </thead>
     <tbody>
-      @if (!load_data) { @for (item of reservacionesOtras; track $index) {
+      @if (!load_data) { 
+        @for (item of reservacionesOtras | paginate:currentPage:pageSize; track $index) {
       <tr
         class="bg-white border-b dark:bg-gray-800 dark:border-gray-700 hover:bg-gray-50 dark:hover:bg-gray-600"
       >
@@ -540,6 +541,13 @@
       } }
     </tbody>
   </table>
+
+  <!-- paginacion -->
+  @if (totalPages > 1) {
+    <app-pagination [currentPage]="currentPage" [totalPages]="totalPages" (pageChange)="onPageChange($event)">
+    </app-pagination>
+  }
+ <!-- paginacion -->
 </div>
 
 }

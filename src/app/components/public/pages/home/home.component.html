@@ -42,7 +42,7 @@
     }
     @if(!load_data) {
     @if (caracBuscada.length >= 1) {
-    @for (cancha of caracBuscada; track $index) {
+    @for (cancha of caracBuscada | paginate:currentPage:pageSize; track $index) {
     <app-card-empresa [caracteristicas]="cancha" [urlInput]="''" class="flex justify-center" />
     }
     }
@@ -54,48 +54,10 @@
 
 
   <!-- paginacion -->
-
-
-  <nav aria-label="Page navigation example" class="flex justify-center py-2">
-    <ul class="flex items-center  gap-4 h-8 text-sm">
-      <li
-        class=" cursor-pointer flex items-center p-3 justify-center   bg-forestGreen-100   rounded-full hover:bg-forestGreen-200  dark:bg-gray-800 dark:border-gray-700 dark:text-gray-400 dark:hover:bg-gray-700 dark:hover:text-white">
-        <span class="sr-only">Previous</span>
-        <svg class="size-3  stroke-forestGreen-500 fill-none" aria-hidden="true" xmlns="http://www.w3.org/2000/svg"
-          viewBox="0 0 6 10">
-          <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 1 1 5l4 4" />
-        </svg>
-
-      </li>
-      <li class="text-base font-medium cursor-pointer">
-        1
-      </li>
-
-      <li class="font-semibold text-base  text-forestGreen-600 cursor-pointer">
-        2
-      </li>
-      <li class="text-base font-medium cursor-pointer">
-        3
-      </li>
-      <li class="text-base font-medium cursor-pointer">
-        4
-      </li>
-
-      <li
-        class=" cursor-pointer flex items-center p-3 justify-center   bg-forestGreen-100   rounded-full hover:bg-forestGreen-200  dark:bg-gray-800 dark:border-gray-700 dark:text-gray-400 dark:hover:bg-gray-700 dark:hover:text-white">
-
-
-        <span class="sr-only">Next</span>
-        <svg class="size-3 stroke-forestGreen-500 fill-none" aria-hidden="true" xmlns="http://www.w3.org/2000/svg"
-          viewBox="0 0 6 10">
-          <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="m1 9 4-4-4-4" />
-        </svg>
-
-      </li>
-    </ul>
-  </nav>
-
-
+   @if (totalPages > 1) {
+     <app-pagination [currentPage]="currentPage" [totalPages]="totalPages" (pageChange)="onPageChange($event)">
+     </app-pagination>
+   }
   <!-- paginacion -->
 
 

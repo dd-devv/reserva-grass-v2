@@ -48,7 +48,8 @@ export class ReservasComponent implements OnInit {
   public fromOut: boolean = false;
   public existReservas: boolean = false;
   public myAngularxQrCode: string = '';
-  p: number = 1;
+  currentPage = 1;
+  pageSize = 8;
 
   public url_socket = GLOBAL.url_socket;
   private socket: Socket;
@@ -110,6 +111,14 @@ export class ReservasComponent implements OnInit {
     } else {
       this.existReservas = false;
     }
+  }
+
+  get totalPages(): number {
+    return Math.ceil(this.reservaciones_finalizadas.length / this.pageSize);
+  }
+
+  onPageChange(page: number): void {
+    this.currentPage = page;
   }
 
   ngAfterViewInit(): void {

@@ -50,7 +50,7 @@
       }
       @if(!load_data) {
       @if (caracBuscada.length >= 1) {
-        @for (cancha of caracBuscada; track $index) {
+        @for (cancha of caracBuscada | paginate:currentPage:pageSize; track $index) {
         <app-card-empresa [caracteristicas]="cancha" [urlInput]="''" class="flex justify-center" />
         }
       }
@@ -59,4 +59,11 @@
         }
         }
     </div>
+
+  <!-- paginacion -->
+   @if (totalPages > 1) {
+    <app-pagination [currentPage]="currentPage" [totalPages]="totalPages" (pageChange)="onPageChange($event)">
+    </app-pagination>
+  }
+ <!-- paginacion -->
   </div>
