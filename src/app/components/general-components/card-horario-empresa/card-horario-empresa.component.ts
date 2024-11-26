@@ -120,12 +120,12 @@ export class CardHorarioEmpresaComponent implements OnInit, AfterViewInit {
     if (hora.estado === 'Libre') {
       if (this.nombre_cliente !== '' || this.telefono_cliente !== '') {
         let data = {
-          empresa: this.cancha.empresa._id,
+          empresa: this.id_user,
           cancha: this.cancha._id,
           estado: 'Reservado',
           nombre: this.nombre_cliente,
           telefono: this.telefono_cliente,
-          subtotal: this.cantidad_horas * this.cancha.precio_reservacion,
+          subtotal: this.precio_reservacion || this.cantidad_horas * this.cancha.precio_reservacion,
           fecha: hora.fecha.toDateString(),
           hora_inicio: hora.hora,
           hora_fin: hora.hora + this.cantidad_horas
@@ -140,6 +140,7 @@ export class CardHorarioEmpresaComponent implements OnInit, AfterViewInit {
             this.toastService.success(err.message);
           }
         });
+        
       } else {
         this.toastService.success('Completa todos los campos');
       }

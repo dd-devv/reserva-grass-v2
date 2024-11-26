@@ -151,10 +151,8 @@ export class ReservacionesComponent implements OnInit {
 
                 // Separar las reservaciones en dos arreglos
                 this.reservacionesOcupadas = this.reservaciones.filter(res => res.estado === 'Ocupado');
-                console.log(this.reservacionesOcupadas);
                 this.reservacionesOtras = this.reservaciones.filter(res => res.estado !== 'Ocupado');
 
-                this.reservacionesOtras = [...response.data]; // Guardamos copia original
                 this.updateReservacionesOtras(this.reservacionesOtras);
               }
             }
