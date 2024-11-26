@@ -1,4 +1,6 @@
 import { Component, HostListener, OnInit } from '@angular/core';
+import { AuthService } from '../../../services/auth.service';
+import { initFlowbite } from 'flowbite';
 
 @Component({
   selector: 'app-header-user',
@@ -6,6 +8,14 @@ import { Component, HostListener, OnInit } from '@angular/core';
   styleUrl: './header-user.component.css'
 })
 export class HeaderUserComponent implements OnInit {
+
+
+
+  constructor(
+    private _authService: AuthService
+  ) {
+
+  }
 
 
   isMenuHidden = false;  // El menú comienza oculto
@@ -17,6 +27,7 @@ export class HeaderUserComponent implements OnInit {
   }
 
   ngOnInit(): void {
+    initFlowbite();
     this.screenWidth = window.innerWidth;
     this.screenHeight = window.innerHeight;
 
@@ -24,7 +35,10 @@ export class HeaderUserComponent implements OnInit {
       this.isMenuHidden = true;
     }
   }
-
+  logout() {
+    this._authService.logout();
+    location.reload();
+  }
   @HostListener('window:resize')
   onResize() {
     this.screenWidth = window.innerWidth;
