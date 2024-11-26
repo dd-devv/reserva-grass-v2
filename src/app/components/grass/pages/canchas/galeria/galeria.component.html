@@ -121,59 +121,11 @@
                                                     <img [src]="url + 'obtener_galeria_cancha/' + item.imagen"
                                                         class="w-full h-auto rounded-t-lg">
                                                     <div class="p-2 text-center items-center">
-                                                        <button data-bs-toggle="modal"
-                                                            [attr.data-bs-target]="'#delete-' + item._id"
+                                                        <button (click)="eliminar(item._id)"
                                                             class="bg-red-500 hover:bg-red-600 text-white py-1 px-4 text-sm rounded flex items-center justify-center gap-2">
 
                                                             Eliminar
                                                         </button>
-                                                    </div>
-                                                </div>
-
-                                                <!-- Modal de eliminación -->
-                                                <div class="modal fade" id="delete-{{ item._id }}" tabindex="-1"
-                                                    style="display: none" aria-hidden="true">
-                                                    <div class="modal-dialog">
-                                                        <div class="modal-content">
-                                                            <div class="modal-header">
-                                                                <h4 class="modal-title text-center">
-                                                                    Eliminar imagen de galería
-                                                                </h4>
-                                                                <button type="button" class="btn-close"
-                                                                    data-bs-dismiss="modal" aria-label="Close">
-                                                                </button>
-                                                            </div>
-                                                            <div class="modal-body text-center">
-                                                                <p class="text-sm">
-                                                                    Desea eliminar esta imagen?
-                                                                </p>
-                                                                <p><img [src]="url + 'obtener_galeria_cancha/' + item.imagen"
-                                                                        class="w-[10vw]"></p>
-                                                            </div>
-                                                            <div class="modal-footer">
-                                                                <button
-                                                                    class="bg-gray-500 hover:bg-gray-600 text-white py-2 px-4 rounded text-sm flex items-center gap-2"
-                                                                    type="button" data-bs-dismiss="modal">
-                                                                    <i class="bi bi-x-lg"></i>
-                                                                    Cancelar
-                                                                </button>
-                                                                <button *ngIf="!load_btn_eliminar"
-                                                                    class="bg-red-500 hover:bg-red-600 text-white py-2 px-4 rounded text-sm flex items-center gap-2"
-                                                                    (click)="eliminar(item._id)" type="button"
-                                                                    data-bs-dismiss="modal">
-                                                                    <i class="bi bi-trash-fill"></i>
-                                                                    Eliminar
-                                                                </button>
-
-                                                                <button *ngIf="load_btn_eliminar" type="button"
-                                                                    class="bg-gray-500 text-white py-2 px-4 rounded text-sm flex items-center gap-2"
-                                                                    disabled>
-                                                                    <span
-                                                                        class="w-4 h-4 border-2 border-white border-t-transparent rounded-full animate-spin"></span>
-                                                                    Eliminando...
-                                                                </button>
-                                                            </div>
-                                                        </div>
                                                     </div>
                                                 </div>
                                             </div>

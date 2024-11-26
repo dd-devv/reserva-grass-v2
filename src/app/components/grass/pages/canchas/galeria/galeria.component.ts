@@ -6,6 +6,7 @@ import { ToastService } from '../../../../../services/toast/toast.service';
 import { GLOBAL } from '../../../../../services/global';
 import { ImageCroppedEvent, LoadedImage } from 'ngx-image-cropper';
 import { v4 as uuidv4 } from 'uuid';
+import { initFlowbite } from 'flowbite';
 
 @Component({
   selector: 'app-galeria',
@@ -107,6 +108,7 @@ handleFileUpload(files: FileList) {
 
   ngOnInit(): void {
     this._title.setTitle('GRASS | Galería de canchas');
+    initFlowbite();
   }
 
   fileChangeEventCrop(event: any): void {
