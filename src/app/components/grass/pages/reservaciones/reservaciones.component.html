@@ -313,16 +313,29 @@
         </td>
         <td class="px-2 py-3">S/ {{ item.subtotal }}</td>
         <td class="px-2 py-3">
-          <button
-            [disabled]="item.pagado"
-            (click)="openModal(item._id)"
-            [ngClass]="{ ' border border-red-500 text-gray-500': !item.pagado }"
-            class="flex justify-between items-center px-2 py-1 w-full text-xs font-medium rounded-lg  bg-slate-50 text-forestGreen-500 bg-transparent"
-          >
-          <p class="mx-auto bg-transparent">
-            @if (item.pagado) { Pagado } @if (!item.pagado) { Confirmar }
-          </p>
-          </button>
+          @if (item.estado === 'Reservado') {
+            <button
+              [disabled]="item.pagado"
+              (click)="eliminar_reservacion(item._id)"
+              class="flex justify-between items-center px-2 py-1 w-full text-xs font-medium rounded-lg border border-red-500 bg-red-100 text-red-500"
+            >
+            <p class="mx-auto">
+              Eliminar
+            </p>
+            </button>
+          }
+          @if (item.estado === 'Finalizado') {
+            <button
+              [disabled]="item.pagado"
+              (click)="openModal(item._id)"
+              [ngClass]="{ ' border border-red-500 text-gray-500': !item.pagado }"
+              class="flex justify-between items-center px-2 py-1 w-full text-xs font-medium rounded-lg  bg-slate-50 text-forestGreen-500 bg-transparent"
+            >
+            <p class="mx-auto bg-transparent">
+              @if (item.pagado) { Pagado } @if (!item.pagado) { Confirmar }
+            </p>
+            </button>
+          }
 
           <!-- Modal confirmar -->
           <div
