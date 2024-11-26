@@ -86,9 +86,9 @@
 
     <!-- INICIO FUTBOL -->
     <div class="p-2 space-y-2 w-full lg:min-w-lg max-w-lg rounded-lg border border-forestGreen-500 bg-forestGreen-50"
-        [ngClass]="{'border-pink-500 bg-pink-50': item.tipo === 'Voley'}">
+        [ngClass]="{'border-pink-500 bg-pink-50': item.tipo === 'Voley'}" [ngClass]="{'border-purple-500 bg-purple-50': item.tipo === 'Mixto'}">
         <p class="font-bold text-center"> {{item.nombre}} <span class="text-forestGreen-500"
-                [ngClass]="{'text-pink-500': item.tipo === 'Voley'}"> {{item.tipo}}</span></p>
+                [ngClass]="{'text-pink-500': item.tipo === 'Voley'}" [ngClass]="{'text-purple-500': item.tipo === 'Mixto'}"> {{item.tipo}}</span></p>
         <p class="text-xs">{{item.descripcion}}</p>
         <div class="flex items-center w-full">
             <div class="space-y-2 w-full">
