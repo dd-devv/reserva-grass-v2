@@ -17,10 +17,9 @@
             d="M20 4a2 2 0 0 0-2-2h-2V1a1 1 0 0 0-2 0v1h-3V1a1 1 0 0 0-2 0v1H6V1a1 1 0 0 0-2 0v1H2a2 2 0 0 0-2 2v2h20V4ZM0 18a2 2 0 0 0 2 2h16a2 2 0 0 0 2-2V8H0v10Zm5-8h10a1 1 0 0 1 0 2H5a1 1 0 0 1 0-2Z" />
         </svg>
       </div>
-      <input type="text" id="datepicker-format" [placeholder]="fechaMinima"
+      <input #datepickerInput type="text" id="datepicker-format"
         class="ring-forestGreen-300 ps-10 border border-forestGreen-500 rounded-lg h-8 w-[160px]"
         [ngClass]="tipo === 'futbol' ? '' : 'voleyball-card'" readonly>
-      <!-- class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full ps-10 p-2.5  dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500" placeholder="Select date"> -->
     </div>
 
     <div class="flex flex-row gap-6 mt-2">
@@ -39,18 +38,18 @@
     </div>
   </div>
 
-  <div class="grid grid-cols-4 grid-flow-row auto-rows-auto  h-fit gap-4 w-full text-center justify-center items-center">
+  <div
+    class="grid grid-cols-4 grid-flow-row auto-rows-auto  h-fit gap-4 w-full text-center justify-center items-center">
 
     @if (botonesHoras && botonesHoras.length > 0) {
-      
+
     @for (hora of botonesHoras; track hora.id) {
 
     <div class="relative">
       <!-- Modal toggle -->
       @if (hora.estado === 'Ocupado') {
       <button disabled [attr.data-modal-target]="'modal-' + hora.id" [attr.data-modal-toggle]="'modal-' + hora.id"
-      class="bg-yellow-300 w-full rounded-lg h-9 flex justify-center items-center hover:scale-105"
-        type="button">
+        class="bg-yellow-300 w-full rounded-lg h-9 flex justify-center items-center hover:scale-105" type="button">
         <p>{{hora.hora | time24to12}}</p>
       </button>
       }
@@ -125,21 +124,23 @@
     }
 
     }@else {
-      <!-- Placeholders cuando no hay botonesHoras -->
-     <div class="col-span-4 w-full flex justify-center">
-      <div class="flex flex-col items-center rounded-lg space-y-4 bg-orange-100 border border-dashed border-orange-500 p-6 max-w-lg">
-        <p class="text-pretty"> No hay horarios disponibles para hoy, recuerda que el horario de atención de este grass es de <span class="font-bold">X AM</span> a <span class="font-bold">Y PM</span>
+    <!-- Placeholders cuando no hay botonesHoras -->
+    <div class="col-span-4 w-full flex justify-center">
+      <div
+        class="flex flex-col items-center rounded-lg space-y-4 bg-orange-100 border border-dashed border-orange-500 p-6 max-w-lg">
+        <p class="text-pretty"> No hay horarios disponibles para hoy, recuerda que el horario de atención de este grass
+          es de <span class="font-bold">X AM</span> a <span class="font-bold">Y PM</span>
         </p>
         <button class="bg-orange-500 text-gray-50 rounded-md w-fit px-4 py-2 flex gap-2 items-center">
           <p>
             Ver siguiente día
           </p>
           <img src="../../../../assets/svg-icons/arrow-right.svg" alt="">
-          
+
         </button>
       </div>
-     </div>
-  }
+    </div>
+    }
   </div>
 
   <div class="flex gap-2 justify-center items-center">
@@ -155,8 +156,8 @@
   </div>
 
   <!-- este sera el nuevo carrusel, el anterior se eliminara meter logica y definir el contenedor para 2 medidas de imagenes -->
-   
-    <!-- <div class="h-20 md:h-28 w-full max-w-md mx-auto"> 
+
+  <!-- <div class="h-20 md:h-28 w-full max-w-md mx-auto"> 
       <app-carousel-image [galeria]="item?.galeria"></app-carousel-image>
     </div> -->
 </div>
