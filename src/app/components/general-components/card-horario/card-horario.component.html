@@ -17,7 +17,7 @@
             d="M20 4a2 2 0 0 0-2-2h-2V1a1 1 0 0 0-2 0v1h-3V1a1 1 0 0 0-2 0v1H6V1a1 1 0 0 0-2 0v1H2a2 2 0 0 0-2 2v2h20V4ZM0 18a2 2 0 0 0 2 2h16a2 2 0 0 0 2-2V8H0v10Zm5-8h10a1 1 0 0 1 0 2H5a1 1 0 0 1 0-2Z" />
         </svg>
       </div>
-      <input #datepickerInput type="text" id="datepicker-format"
+      <input #datepickerInput type="text" id="datepicker-format" [placeholder]="fechaMinima"
         class="ring-forestGreen-300 ps-10 border border-forestGreen-500 rounded-lg h-8 w-[160px]"
         [ngClass]="tipo === 'futbol' ? '' : 'voleyball-card'" readonly>
     </div>
@@ -123,15 +123,16 @@
     </div>
     }
 
-    }@else {
+    }
+    @if(botonesHoras.length < 1 && mostrar_btn_next) {
     <!-- Placeholders cuando no hay botonesHoras -->
     <div class="col-span-4 w-full flex justify-center">
       <div
         class="flex flex-col items-center rounded-lg space-y-4 bg-orange-100 border border-dashed border-orange-500 p-6 max-w-lg">
         <p class="text-pretty"> No hay horarios disponibles para hoy, recuerda que el horario de atención de este grass
-          es de <span class="font-bold">X AM</span> a <span class="font-bold">Y PM</span>
+          es de <span class="font-bold"> {{cancha.empresa.hora_inicio | time24to12 }} </span> a <span class="font-bold"> {{ cancha.empresa.hora_fin | time24to12 }} </span>
         </p>
-        <button class="bg-orange-500 text-gray-50 rounded-md w-fit px-4 py-2 flex gap-2 items-center">
+        <button (click)="sumarUnDia()" class="bg-orange-500 text-gray-50 rounded-md w-fit px-4 py-2 flex gap-2 items-center">
           <p>
             Ver siguiente día
           </p>

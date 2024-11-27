@@ -32,6 +32,7 @@ export class CardHorarioComponent implements OnInit, AfterViewInit {
   public id_user: any;
   public token: any;
   public user_lc: any;
+  public mostrar_btn_next = false;
 
   public url_socket = GLOBAL.url_socket;
   private socket: Socket;
@@ -74,10 +75,20 @@ export class CardHorarioComponent implements OnInit, AfterViewInit {
       this.inicializarDatepicker();
       this.inicializarFlowbite();
     }, 100);
+
+    setTimeout(() => {
+      this.mostrar_btn_next = true;
+    }, 1000);
   }
 
   private inicializarFlowbite(): void {
     initFlowbite();
+  }
+
+  sumarUnDia() {
+    const fechaActual = new Date();
+    fechaActual.setDate(fechaActual.getDate() + 1);
+    this.fechaSeleccionada.emit(fechaActual);
   }
 
   private inicializarDatepicker(): void {
