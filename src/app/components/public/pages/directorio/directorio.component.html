@@ -1,0 +1,201 @@
+<p>Directorio de empresas</p>
+
+@if (load_data) {
+<div class="relative overflow-x-auto shadow-md sm:rounded-lg">
+    <div class="relative">
+        <div
+            class="flex flex-row h-[38px] mb-4  p-2 text-sm text-gray-900 border border-gray-300 rounded-lg w-80 bg-white dark:bg-gray-700 dark:border-gray-600 dark:text-white">
+            <p class="skeleton-svg">
+                .
+            </p>
+            <p class="skeleton">
+                .
+            </p>
+        </div>
+    </div>
+    <table class="w-full text-sm text-left rtl:text-right text-gray-500 dark:text-gray-400">
+        <thead class="text-xs text-gray-700 uppercase bg-gray-300 dark:bg-gray-700 dark:text-gray-400">
+            <tr>
+                <th scope="col" class="px-2 py-3 text-center max-w-2">
+                    <p class="skeleton-th">
+                        .
+                    </p>
+                </th>
+                <th scope="col" class="px-2 py-3 text-center ">
+                    <div class="flex justify-center">
+
+                        <p class="skeleton">
+                            Cliente
+                        </p>
+                    </div>
+                </th>
+                <th scope="col" class="px-2 py-3 text-center ">
+                    <div class="flex justify-center">
+
+                        <p class="skeleton">
+                            Telefono
+                        </p>
+                    </div>
+                </th>
+                <th scope="col" class="px-2 py-3 text-center ">
+                    <div class="flex justify-center">
+
+                        <p class="skeleton">
+                            Monto
+                        </p>
+                    </div>
+                </th>
+                <th scope="col" class="px-2 py-3 text-center ">
+                    <div class="flex justify-center">
+
+                        <p class="skeleton">
+                            Opciones
+                        </p>
+                    </div>
+                </th>
+                <th scope="col" class="px-2 py-3 text-center ">
+                    <div class="flex justify-center">
+                        <p class="skeleton">
+                            Canchaaaaaaaaaaa
+                        </p>
+                    </div>
+                </th>
+                <th scope="col" class="px-2 py-3 text-center ">
+                    <div class="flex justify-center">
+
+                        <p class="skeleton">
+                            Fecha
+                        </p>
+                    </div>
+                </th>
+                <th scope="col" class="px-2 py-3 text-center ">
+                    <div class="flex justify-center">
+
+                        <p class="skeleton">
+                            Horas
+                        </p>
+                    </div>
+                </th>
+                <th scope="col" class="px-2 py-3 text-center ">
+                    <div class="flex justify-center">
+
+                        <p class="skeleton">
+                            Estado
+                        </p>
+                    </div>
+                </th>
+            </tr>
+        </thead>
+        <tbody>
+            @for (item of [1,2,3,4,5,6,7,8,9]; track $index) {
+            <tr class="bg-white border-b dark:bg-gray-800 dark:border-gray-700 hover:bg-gray-50 dark:hover:bg-gray-600">
+                <th scope="row" class="px-2 py-3 font-medium text-gray-900 whitespace-nowrap dark:text-white ">
+                    <p class="skeleton-th">
+                        1
+                    </p>
+                </th>
+                <td class="px-2 py-3 ">
+                    <p class="skeleton">
+                        2
+                    </p>
+                </td>
+                <td class="px-2 py-3 ">
+                    <p class="skeleton">
+                        3
+                    </p>
+                </td>
+                <td class="px-2 py-3 ">
+                    <p class="skeleton">
+                        4
+                    </p>
+                </td>
+                <td class="px-2 py-3">
+                    <button
+                        class="flex justify-between items-center px-2 py-1 w-full text-xs font-medium rounded-lg  bg-slate-50 text-forestGreen-500 bg-transparent">
+                        <p class="mx-auto bg-transparent skeleton">
+                            5
+                        </p>
+                    </button>
+
+                </td>
+                <td class="px-2 py-3 ">
+                    <p class="skeleton">
+                        6
+                    </p>
+                </td>
+                <td class="px-2 py-3 ">
+                    <p class="skeleton">
+                        7
+                    </p>
+                </td>
+                <td class="px-2 py-3">
+                    <span class="flex flex-col md:flex-row">
+                        <p class="text-nowrap skeleton">
+                            8
+                        </p>
+                    </span>
+                </td>
+                <td class="px-2 py-3 ">
+                    <p class="skeleton">
+                        10
+                    </p>
+                </td>
+            </tr>}
+        </tbody>
+    </table>
+</div>
+}
+
+
+@if (!load_data) {
+<div class="relative overflow-x-auto shadow-md sm:rounded-lg">
+    <table class="w-full text-sm text-left rtl:text-right text-gray-500 dark:text-gray-400">
+        <thead class="text-xs text-gray-700 uppercase bg-gray-300 dark:bg-gray-700 dark:text-gray-400">
+            <tr>
+                <th scope="col" class="px-2 py-3 text-center">N°</th>
+                <th scope="col" class="px-2 py-3 text-center">Nombre</th>
+                <th scope="col" class="px-2 py-3 text-center">Region</th>
+                <th scope="col" class="px-2 py-3 text-center">Provincia</th>
+                <th scope="col" class="px-2 py-3 text-center">Direccion</th>
+                <th scope="col" class="px-2 py-3 text-center">Ubicacion</th>
+            </tr>
+        </thead>
+        <tbody>
+            @for (item of primeras_empresas | paginate:currentPage:pageSize; track $index) {
+            <tr class="bg-white border-b dark:bg-gray-800 dark:border-gray-700 hover:bg-gray-50 dark:hover:bg-gray-600">
+                <th scope="row" class="px-2 py-3 font-medium text-gray-900 whitespace-nowrap dark:text-white">
+                    {{$index+1}}
+                </th>
+                <td class="px-2 py-3">
+                    {{item.nombre}}
+                </td>
+                <td class="px-2 py-3">
+                    {{item.region}}
+                </td>
+                <td class="px-2 py-3">
+                    {{item.provincia}}
+                </td>
+                <td class="px-2 py-3">
+                    {{item.direccion}}
+                </td>
+                <td class="px-2 py-3">
+                    <a href="{{item.ubicacion}}" target="_blank">
+                        V<i class="bi bi-geo-alt"></i>
+                    </a> &nbsp;
+
+                    <button type="button" class="btn btn-primary btn-sm"
+                        [routerLink]="['/ver', item.path]">Reservar</button>
+                </td>
+            </tr>
+            }
+        </tbody>
+    </table>
+
+    <!-- paginacion -->
+    @if (totalPages > 1) {
+    <app-pagination [currentPage]="currentPage" [totalPages]="totalPages" (pageChange)="onPageChange($event)">
+    </app-pagination>
+    }
+    <!-- paginacion -->
+</div>
+}

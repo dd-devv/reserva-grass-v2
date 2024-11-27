@@ -89,6 +89,7 @@ export class CardHorarioComponent implements OnInit, AfterViewInit {
     const fechaActual = new Date();
     fechaActual.setDate(fechaActual.getDate() + 1);
     this.fechaSeleccionada.emit(fechaActual);
+    this.fechaMinima = this.formatearFecha(fechaActual);
   }
 
   private inicializarDatepicker(): void {

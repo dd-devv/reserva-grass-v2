@@ -10,6 +10,7 @@ import { VerComponent } from './pages/ver/ver.component';
 import { NosotrosComponent } from './pages/nosotros/nosotros.component';
 import { FormsModule } from '@angular/forms';
 import { PaginatePipe } from '../../pipes/paginate.pipe';
+import { DirectorioComponent } from './pages/directorio/directorio.component';
 
 
 @NgModule({
@@ -18,7 +19,8 @@ import { PaginatePipe } from '../../pipes/paginate.pipe';
     ContactComponent,
     ContainerComponent,
     VerComponent,
-    NosotrosComponent
+    NosotrosComponent,
+    DirectorioComponent
   ],
   imports: [
     CommonModule,
