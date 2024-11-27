@@ -222,15 +222,15 @@
 
         @if (step === 2) {
         <div>
-          <label for="direccion" class="block mb-1 text-sm font-medium text-gray-900 dark:text-white">
-            Direccción de la empresa @if (isValidField('direccion')) {
+          <label for="ubicacion" class="block mb-1 text-sm font-medium text-gray-900 dark:text-white">
+            Direccción de la empresa @if (isValidField('ubicacion')) {
             <span class="text-red-600 text-xs">
-              {{ getFieldError("direccion") }}*
+              {{ getFieldError("ubicacion") }}*
             </span>
             }
           </label>
           <div class="relative">
-            <input formControlName="direccion" id="direccion" placeholder="Ingrese direccción" type="text" readonly
+            <input formControlName="ubicacion" id="ubicacion" placeholder="Ingrese su ubicacion" type="text" readonly
               class="block w-full p-2 h-9 text-gray-900 border border-gray-300 rounded-md bg-gray-50 text-xs focus:ring-blue-500 focus:border-blue-500 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500" />
 
             <button class="absolute inset-y-0 right-0 flex items-center pr-3 text-gray-600 dark:text-gray-400"
@@ -277,6 +277,18 @@
               </div>
             </dialog>
           </div>
+        </div>
+
+        <div>
+          <label for="direccion" class="block mb-1 text-sm font-medium text-gray-900 dark:text-white">
+            direccion @if (isValidField('direccion')) {
+            <span class="text-red-600 text-xs">
+              {{ getFieldError("direccion") }}*
+            </span>
+            }
+          </label>
+          <input formControlName="direccion" id="direccion" placeholder="Ingrese la direccion" type="text"
+            class="block w-full p-2 h-9 text-gray-900 border border-gray-300 rounded-md bg-gray-50 text-xs focus:ring-blue-500 focus:border-blue-500 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500" />
         </div>
 
         <div>
