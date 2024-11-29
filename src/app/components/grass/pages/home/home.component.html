@@ -15,8 +15,12 @@
     @if (!load_btn_ver) {
     <app-card-horario-empresa [tipo]="tipo_cancha" [botonesHoras]="botonesHoras" [cancha]="cancha_ver"
         [hora_fin]="hora_fin" (fechaSeleccionada)="handleFecha($event)" (reservacionCreada)="handleReservado($event)"></app-card-horario-empresa>
+
     }
     @if (load_btn_ver) {
-    <app-card-horario-skeleton></app-card-horario-skeleton>
+        <app-card-horario-skeleton></app-card-horario-skeleton>
     }
+</div>
+<div class="mt-10">
+    <canvas id="MyChart"></canvas>
 </div>

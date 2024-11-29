@@ -24,6 +24,8 @@ import { CardHorarioEmpresaComponent } from './card-horario-empresa/card-horario
 import { FormsModule } from '@angular/forms';
 import { TextShortedPipe } from '../../pipes/text-shorted.pipe';
 import { PaginationComponent } from './pagination/pagination.component';
+import { TerminosCodicionesComponent } from './terminos-codiciones/terminos-codiciones.component';
+import { PoliticasPrivacidadComponent } from './politicas-privacidad/politicas-privacidad.component';
 
 
 
@@ -50,7 +52,9 @@ import { PaginationComponent } from './pagination/pagination.component';
     CountdownTimerComponent,
     HeaderEmpresaComponent,
     CardHorarioEmpresaComponent,
-    PaginationComponent
+    PaginationComponent,
+    TerminosCodicionesComponent,
+    PoliticasPrivacidadComponent
   ],
   imports: [
     CommonModule,
@@ -80,7 +84,9 @@ import { PaginationComponent } from './pagination/pagination.component';
     HeaderEmpresaComponent,
     CarouselImageComponent,
     CardHorarioEmpresaComponent,
-    PaginationComponent
+    PaginationComponent,
+    TerminosCodicionesComponent,
+    PoliticasPrivacidadComponent
   ]
 })
 export class GeneralComponentsModule { }

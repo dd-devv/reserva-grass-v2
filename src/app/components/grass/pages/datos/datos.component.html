@@ -31,7 +31,7 @@ Mirkooooo, el skeleon :v
         <div class="flex flex-col gap-1 w-full">
             <label class="text-xs" for="telefono_fijo">Teléfono fijo </label>
             <input class="rounded-lg h-9 border-gray-300 text-gray-900 text-xs" name="telefono_fijo" id="telefono_fijo"
-                [(ngModel)]="empresa.telefono_fijo" type="text">
+                [(ngModel)]="empresa.telefono_fijo" type="text" autocomplete="off">
         </div>
     </div>
 
@@ -39,6 +39,12 @@ Mirkooooo, el skeleon :v
         <label class="text-xs" for="referencia">Referencia</label>
         <input class="rounded-lg h-9 border-gray-300 text-gray-900 text-xs" name="referencia" id="referencia"
             [(ngModel)]="empresa.referencia" type="text">
+    </div>
+
+    <div class="flex flex-col gap-1 w-full">
+        <label class="text-xs" for="direccion">Dirección</label>
+        <input class="rounded-lg h-9 border-gray-300 text-gray-900 text-xs" name="direccion" id="direccion"
+            [(ngModel)]="empresa.direccion" type="text" autocomplete="off">
     </div>
 
     <div class="flex flex-col w-full ">
@@ -140,7 +146,9 @@ Mirkooooo, el skeleon :v
 
 </div>
 
+<div class="" id="passs">
 @if (showUpdatePass) {
-<app-password></app-password>
-}
+        <app-password></app-password>
+    }
+</div>
 }

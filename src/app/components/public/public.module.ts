@@ -11,6 +11,8 @@ import { NosotrosComponent } from './pages/nosotros/nosotros.component';
 import { FormsModule } from '@angular/forms';
 import { PaginatePipe } from '../../pipes/paginate.pipe';
 import { DirectorioComponent } from './pages/directorio/directorio.component';
+import { PoliticasComponent } from './pages/politicas/politicas.component';
+import { TerminosComponent } from './pages/terminos/terminos.component';
 
 
 @NgModule({
@@ -20,7 +22,9 @@ import { DirectorioComponent } from './pages/directorio/directorio.component';
     ContainerComponent,
     VerComponent,
     NosotrosComponent,
-    DirectorioComponent
+    DirectorioComponent,
+    PoliticasComponent,
+    TerminosComponent
   ],
   imports: [
     CommonModule,

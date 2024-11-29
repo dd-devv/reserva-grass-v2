@@ -88,7 +88,7 @@ export class DatosComponent implements OnInit {
       canchas_futsal: this.caracteristicas.canchas_futsal,
       canchas_voley: this.caracteristicas.canchas_voley,
       iluminacion: this.caracteristicas.iluminacion,
-      garaje : this.caracteristicas.garaje
+      garaje: this.caracteristicas.garaje
     }
 
     this._userService.actualizar_caracteristicas_empresa(this.id, this.token, data).subscribe(
@@ -125,6 +125,11 @@ export class DatosComponent implements OnInit {
   }
 
   changeUpdatepass() {
+    const targetElement = document.getElementById('passs');
+
+    if (targetElement) {
+      targetElement.scrollIntoView({ behavior: 'smooth' });
+    }
     this.showUpdatePass = !this.showUpdatePass;
   }
 

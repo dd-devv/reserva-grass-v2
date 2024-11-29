@@ -223,7 +223,7 @@
         @if (step === 2) {
         <div>
           <label for="ubicacion" class="block mb-1 text-sm font-medium text-gray-900 dark:text-white">
-            Direccción de la empresa @if (isValidField('ubicacion')) {
+            Ubicación de la empresa @if (isValidField('ubicacion')) {
             <span class="text-red-600 text-xs">
               {{ getFieldError("ubicacion") }}*
             </span>
@@ -281,7 +281,7 @@
 
         <div>
           <label for="direccion" class="block mb-1 text-sm font-medium text-gray-900 dark:text-white">
-            direccion @if (isValidField('direccion')) {
+            Dirección @if (isValidField('direccion')) {
             <span class="text-red-600 text-xs">
               {{ getFieldError("direccion") }}*
             </span>

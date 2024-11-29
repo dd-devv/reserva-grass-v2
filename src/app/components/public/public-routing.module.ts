@@ -6,6 +6,8 @@ import { ContactComponent } from './pages/contact/contact.component';
 import { VerComponent } from './pages/ver/ver.component';
 import { NosotrosComponent } from './pages/nosotros/nosotros.component';
 import { DirectorioComponent } from './pages/directorio/directorio.component';
+import { PoliticasComponent } from './pages/politicas/politicas.component';
+import { TerminosComponent } from './pages/terminos/terminos.component';
 
 const routes: Routes = [
   {
@@ -16,7 +18,9 @@ const routes: Routes = [
       { path: 'contacto', component: ContactComponent },
       { path: 'nosotros', component: NosotrosComponent },
       { path: 'ver/:path', component: VerComponent },
-      { path: 'directorio', component: DirectorioComponent }
+      { path: 'directorio', component: DirectorioComponent },
+      { path: 'politicas-privacidad', component: PoliticasComponent },
+      { path: 'terminos-condiciones', component: TerminosComponent }
     ]
   }
 ];

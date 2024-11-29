@@ -63,6 +63,9 @@ export class HomeComponent implements OnInit {
   public url_socket = GLOBAL.url_socket;
   private socket: Socket;
 
+  public meses_comp: string[] = ['Enero', 'Febrero', 'Marzo', 'Abril', 'Mayo', 'Junio', 'Julio', 'Agosto', 'Septiembre', 'Octubre', 'Noviembre', 'Diciembre'];
+  public meses_short: string[] = ['Ene', 'Feb', 'Mar', 'Abr', 'May', 'Jun', 'Jul', 'Ago', 'Sep', 'Oct', 'Nov', 'Dic'];
+
   constructor(
     private _userService: UserService,
     private _title: Title,
@@ -203,11 +206,12 @@ export class HomeComponent implements OnInit {
     this.chart = new Chart("MyChart", {
       type: 'line',
       data: {
-        labels: ['Enero', 'Febrero', 'Marzo', 'Abril', 'Mayo', 'Junio', 'Julio', 'Agosto', 'Septiembre', 'Octubre', 'Noviembre', 'Diciembre'],
+        labels: window.innerWidth <= 768 ? this.meses_short : this.meses_comp,
         datasets: datasets
       },
       options: {
-        aspectRatio: 2
+        aspectRatio: window.innerWidth <= 768 ? 1.5 : 2,
+        responsive: true
       }
     });
 
