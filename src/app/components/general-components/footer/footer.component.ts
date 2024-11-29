@@ -1,15 +1,17 @@
-import { Component, AfterViewInit, ViewChild, ElementRef } from '@angular/core';
+import { Component, AfterViewInit, ViewChild, ElementRef, OnInit } from '@angular/core';
+import { AuthService } from '../../../services/auth.service';
 
 @Component({
   selector: 'app-footer',
   templateUrl: './footer.component.html',
   styleUrls: ['./footer.component.css']
 })
-export class FooterComponent implements AfterViewInit {
+export class FooterComponent implements OnInit, AfterViewInit {
   // Control de visibilidad de las secciones
   isInfoOpen = false;
   isSocialOpen = false;
-
+  public isUser = false;
+  
   // Función para alternar el estado de las secciones
   toggleSection(section: string) {
     if (section === 'info') {
@@ -18,9 +20,19 @@ export class FooterComponent implements AfterViewInit {
       this.isSocialOpen = !this.isSocialOpen;
     }
   }
-
+  
   // Referencia al div que se va a animar
   @ViewChild('animarDiv') animarDiv!: ElementRef;
+
+  constructor(
+    private _authService: AuthService
+  ) {
+
+  }
+  
+  ngOnInit(): void {
+    this.isUser = this._authService.isAuthenticatedUser();
+  }
 
   ngAfterViewInit() {
     this.iniciarObservador();

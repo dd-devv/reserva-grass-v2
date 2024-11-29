@@ -8,6 +8,9 @@ import { ReservasComponent } from './pages/perfil/pages/reservas/reservas.compon
 import { AccesoComponent } from './pages/perfil/pages/acceso/acceso.component';
 import { ContainerPerfilComponent } from './pages/perfil/container-perfil/container-perfil.component';
 import { CanchasComponent } from './pages/canchas/canchas.component';
+import { AboutComponent } from './pages/about/about.component';
+import { PoliticasComponent } from './pages/politicas/politicas.component';
+import { TerminosComponent } from './pages/terminos/terminos.component';
 
 const routes: Routes = [
   {
@@ -15,6 +18,10 @@ const routes: Routes = [
     component: ContainerComponent,
     children: [
       { path: '', component: HomeComponent },
+      { path: 'nosotros', component: AboutComponent },
+      { path: 'contacto', component: ContactoComponent },
+      { path: 'politicas-privacidad', component: PoliticasComponent },
+      { path: 'terminos', component: TerminosComponent },
       { path: 'contacto', component: ContactoComponent },
       { path: 'ver/:path', component: CanchasComponent },
       {
