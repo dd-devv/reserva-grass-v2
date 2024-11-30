@@ -32,6 +32,7 @@ export class CardHorarioEmpresaComponent implements OnInit, AfterViewInit {
   public token: any;
   public user_lc: any;
   public nombre_cliente = '';
+  public tipo_cancha = 'futbol';
   public telefono_cliente = '';
   public reservacion: any = {};
   public load_reserva = true;
@@ -128,7 +129,12 @@ export class CardHorarioEmpresaComponent implements OnInit, AfterViewInit {
           subtotal: this.precio_reservacion || this.cantidad_horas * this.cancha.precio_reservacion,
           fecha: hora.fecha.toDateString(),
           hora_inicio: hora.hora,
-          hora_fin: hora.hora + this.cantidad_horas
+          hora_fin: hora.hora + this.cantidad_horas,
+          tipo_cancha: this.tipo
+        }
+
+        if (this.cancha.tipo === 'Mixto') {
+          data.tipo_cancha = this.tipo_cancha;
         }
 
         this._userService.registro_reservacion_grass(data, this.token).subscribe({

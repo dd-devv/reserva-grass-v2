@@ -104,34 +104,6 @@ export class HomeComponent implements OnInit {
           this.hora_inicio = this.empresa.hora_inicio;
           this.hora_fin = this.empresa.hora_fin;
 
-          this._userService.obtener_suscripciones_empresa(this.empresa._id, this.token).subscribe(
-            {
-              next: (resp) => {
-                this.exist_susc = true;
-                this.suscripciones = resp.data;
-
-                for (let i = 0; i < this.suscripciones.length; i++) {
-                  if (this.suscripciones[i].estado == 'Confirmado') {
-                    this.activePagos = true;
-                    this.viewButton = false;
-                    break;
-                  } else {
-                    this.activePagos = false;
-                  }
-                }
-
-                if (this.suscripciones.at(0).estado !== 'Confirmado') {
-                  this.viewButton = true;
-                  this.activePagos = false;
-                }
-              },
-              error: (errr) => {
-                this.exist_susc = false;
-                this.viewButton = true;
-                this.activePagos = false;
-              }
-            });
-
           this._userService.obtener_canchas_empresa(this.id, this.token).subscribe({
             next: (res) => {
 
@@ -341,7 +313,6 @@ export class HomeComponent implements OnInit {
           .obtener_reservaciones_public(this.cancha_ver._id)
           .subscribe((response) => {
             this.reservaciones = response.data;
-
             this.inicializarBotonesHoras();
           });
 

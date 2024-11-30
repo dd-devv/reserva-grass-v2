@@ -142,7 +142,8 @@ export class CardHorarioComponent implements OnInit, AfterViewInit {
         subtotal: this.cantidad_horas * this.cancha.precio_reservacion,
         fecha: hora.fecha.toDateString(),
         hora_inicio: hora.hora,
-        hora_fin: hora.hora + this.cantidad_horas
+        hora_fin: hora.hora + this.cantidad_horas,
+        tipo_cancha: this.tipo
       }
       this._userService.crear_reservacion_user(data, this.token).subscribe({
         next: (res) => {
