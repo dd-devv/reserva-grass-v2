@@ -169,7 +169,7 @@
           </p>
         </div>
         <div
-          class="flex border-b-2 border-dotted border-seashell-400 flex-col rounded-t-lg col-span-2 w-full h-11 px-2 py-1">
+          class="flex border-b-2 border-dotted border-forestGreen-500 flex-col rounded-t-lg col-span-2 w-full h-11 px-2 py-1">
           <div class="flex justify-start">
             <div class="flex flex-col items-start w-3/5">
               <label class="text-xs font-semibold text-forestGreen-600">
@@ -184,7 +184,7 @@
               <label class="text-xs font-semibold text-forestGreen-600">
                 Cancha
               </label>
-              <p class="font-bold">{{ reservacion.cancha.nombre | titlecase }}</p>
+              <p class="font-bold">{{ reservacion.cancha.nombre | titlecase }} <small>({{reservacion.tipo_cancha}})</small></p>
             </div>
           </div>
   
@@ -426,7 +426,7 @@
           </div>
         </td>
         <td class="px-2 py-3">
-          {{ item.cancha.nombre }}
+          {{ item.cancha.nombre }} <small>({{item.tipo_cancha}})</small>
         </td>
         <td class="px-2 py-3">
           {{ item.fecha | date : "mediumDate" }}
