@@ -169,7 +169,7 @@
           </p>
         </div>
         <div
-          class="flex border-b-2 border-dotted border-seashell-400 flex-col rounded-t-lg col-span-2 w-full h-11 px-2 py-1">
+          class="flex border-b-2 border-dotted border-forestGreen-500 flex-col rounded-t-lg col-span-2 w-full h-11 px-2 py-1">
           <div class="flex justify-start">
             <div class="flex flex-col items-start w-3/5">
               <label class="text-xs font-semibold text-forestGreen-600">
@@ -184,7 +184,7 @@
               <label class="text-xs font-semibold text-forestGreen-600">
                 Cancha
               </label>
-              <p class="font-bold">{{ reservacion.cancha.nombre | titlecase }}</p>
+              <p class="font-bold">{{ reservacion.cancha.nombre | titlecase }} <small>({{reservacion.tipo_cancha}})</small></p>
             </div>
           </div>
   
@@ -380,13 +380,10 @@
                 <!-- Modal body -->
                 <div class="p-4 md:p-5">
                   <!-- Precios para horas de dia -->
-                  @if (item.hora_inicio < item.cancha.hora_noche &&
-                  item.hora_fin < item.cancha.hora_noche) {
                   <p class="text-gray-500 dark:text-gray-400">
                     Precio total: S/.
                     {{
-                      item.cancha.precio_dia *
-                        (item.hora_fin - item.hora_inicio)
+                      item.total_pagar
                     }}
                   </p>
                   <p class="text-gray-500 dark:text-gray-400">
@@ -395,15 +392,9 @@
                   <p class="text-gray-500 dark:text-gray-400">
                     Restante: S/.
                     {{
-                      item.cancha.precio_dia *
-                        (item.hora_fin - item.hora_inicio) -
-                        item.subtotal
+                      item.restante
                     }}
                   </p>
-
-                  <!-- Modal footer -->
-                  @if (item.cancha.precio_dia * (item.hora_fin -
-                  item.hora_inicio) - item.subtotal > 0) {
                   <div
                     class="flex items-center justify-between p-4 md:p-5 border-t border-gray-200 rounded-b dark:border-gray-600"
                   >
@@ -419,8 +410,7 @@
                         closeModal(item._id);
                         actualizar_reserva_total_grass(
                           item._id,
-                          item.cancha.precio_dia *
-                            (item.hora_fin - item.hora_inicio)
+                          item.total_pagar
                         )
                       "
                       type="button"
@@ -429,99 +419,6 @@
                       Confirmar
                     </button>
                   </div>
-                  } }
-
-                  <!-- Precios para horas de noche -->
-                  @if (item.hora_inicio <= item.cancha.hora_noche &&
-                  item.hora_fin>= item.cancha.hora_noche) {
-                  <p class="text-gray-500 dark:text-gray-400">
-                    Precio total: S/.
-                    {{
-                      item.cancha.precio_noche *
-                        (item.hora_fin - item.hora_inicio)
-                    }}
-                  </p>
-                  <p class="text-gray-500 dark:text-gray-400">
-                    Adelantado: S/. {{ item.subtotal }}
-                  </p>
-                  <p class="text-gray-500 dark:text-gray-400">
-                    Restante: S/.
-                    {{
-                      item.cancha.precio_noche *
-                        (item.hora_fin - item.hora_inicio) -
-                        item.subtotal
-                    }}
-                  </p>
-
-                  <!-- Modal footer -->
-                  @if (item.cancha.precio_noche * (item.hora_fin -
-                  item.hora_inicio) - item.subtotal > 0) {
-                  <div
-                    class="flex items-center justify-between p-4 md:p-5 border-t border-gray-200 rounded-b dark:border-gray-600"
-                  >
-                    <button
-                      (click)="closeModal(item._id)"
-                      type="button"
-                      class="py-2.5 px-5 ms-3 text-sm text-gray-900 focus:outline-none bg-white rounded-lg border border-gray-200 hover:bg-gray-100 hover:text-gray-900 focus:z-10 focus:ring-4 focus:ring-gray-100"
-                    >
-                      Cancelar
-                    </button>
-                    <button
-                      (click)="
-                        closeModal(item._id);
-                        actualizar_reserva_total_grass(
-                          item._id,
-                          item.cancha.precio_noche *
-                            (item.hora_fin - item.hora_inicio)
-                        )
-                      "
-                      type="button"
-                      class="ms-3 text-white bg-red-500 hover:bg-red-600 focus:ring-4 focus:outline-none focus:ring-red-300 font-medium rounded-lg text-sm px-5 py-2.5 text-center"
-                    >
-                      Confirmar
-                    </button>
-                  </div>
-                  } } @if (item.hora_inicio < item.cancha.hora_noche &&
-                  item.hora_fin> item.cancha.hora_noche) {
-                  <p class="text-gray-500 dark:text-gray-400">
-                    Precio total: S/. {{ calcularPrecioMixto(item) }}
-                  </p>
-                  <p class="text-gray-500 dark:text-gray-400">
-                    Adelantado: S/. {{ item.subtotal }}
-                  </p>
-                  <p class="text-gray-500 dark:text-gray-400">
-                    Restante: S/.
-                    {{ calcularPrecioMixto(item) - item.subtotal }}
-                  </p>
-
-                  <!-- Modal footer -->
-                  @if (calcularPrecioMixto(item) - item.subtotal > 0) {
-                  <div
-                    class="flex items-center justify-between p-4 md:p-5 border-t border-gray-200 rounded-b dark:border-gray-600"
-                  >
-                    <button
-                      (click)="closeModal(item._id)"
-                      type="button"
-                      class="py-2.5 px-5 ms-3 text-sm text-gray-900 focus:outline-none bg-white rounded-lg border border-gray-200 hover:bg-gray-100 hover:text-gray-900 focus:z-10 focus:ring-4 focus:ring-gray-100"
-                    >
-                      Cancelar
-                    </button>
-                    <button
-                      (click)="
-                        closeModal(item._id);
-                        actualizar_reserva_total_grass(
-                          item._id,
-                          calcularPrecioMixto(item)
-                        )
-                      "
-                      type="button"
-                      class="ms-3 text-white bg-red-500 hover:bg-red-600 focus:ring-4 focus:outline-none focus:ring-red-300 font-medium rounded-lg text-sm px-5 py-2.5 text-center"
-                    >
-                      Confirmar
-                    </button>
-                  </div>
-                  } }
-
                   <!-- Precios para horas de noche -->
                 </div>
               </div>
@@ -529,7 +426,7 @@
           </div>
         </td>
         <td class="px-2 py-3">
-          {{ item.cancha.nombre }}
+          {{ item.cancha.nombre }} <small>({{item.tipo_cancha}})</small>
         </td>
         <td class="px-2 py-3">
           {{ item.fecha | date : "mediumDate" }}
