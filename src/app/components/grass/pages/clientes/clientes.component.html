@@ -7,7 +7,7 @@
             @for (item of clientes; track $index) {
                 <div class="flex flex-col bg-forestGreen-100 max-w-sm w-full p-4 gap-4 rounded-lg">
                     <p class="font-bold text-center"> {{item.nombres | textShorted}} </p>
-                    <div class="flex gap-4">
+                    <div class="flex justify-center gap-4">
                         <a href="tel:{{item.telefono}}" target="_blank">
                             <svg width="30" height="30" viewBox="0 0 20 24" fill="none" xmlns="http://www.w3.org/2000/svg">
                                 <path
