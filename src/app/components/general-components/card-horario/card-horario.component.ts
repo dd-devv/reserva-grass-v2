@@ -120,6 +120,10 @@ export class CardHorarioComponent implements OnInit, AfterViewInit {
     this.toastService.warning('No se pueden agregar más horas. Excede el horario de cierre.');
   }
 
+  resetHoras() {
+    this.cantidad_horas = 1;
+  }
+
   changeHoras(hora: number, cant: number) {
     const nuevaHoraFinal = hora + this.cantidad_horas + cant;
     if (nuevaHoraFinal <= this.hora_fin) {
