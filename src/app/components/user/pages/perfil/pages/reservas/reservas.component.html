@@ -409,7 +409,7 @@
 
                   <!-- Botón de WhatsApp -->
                   <div class="text-center mt-6">
-                    <a href="https://api.whatsapp.com/send?phone=51{{reserva.empresa.telefono}}&text=Hola%20{{reserva.empresa.nombre}}%2C%20confirma%20mi%20pago%20de%20S/.%20{{reserva.subtotal}}%20por%20la%20reservacion%20{{reserva.codigo}}%20para%20las%20horas%20{{reserva.hora_inicio | time24to12 }}%20-%20{{reserva.hora_fin | time24to12 }}%20de%20la%20fecha%20{{reserva.fecha | date: 'shortDate' }}."
+                    <a href="https://api.whatsapp.com/send?phone=51{{reserva.empresa.telefono}}&text=Hola%20{{reserva.empresa.nombre}}%2C%20por%20favor%20confirma%20mi%20pago%20de%20*S/.%20{{reserva.subtotal}}*%20por%20la%20reservacion%20*{{reserva.codigo}}*%20para%20las%20horas%20*{{reserva.hora_inicio | time24to12 }}*%20-%20*{{reserva.hora_fin | time24to12 }}*%20de%20la%20fecha%20*{{reserva.fecha | date: 'shortDate' }}*."
                       target="_blank"
                       class="inline-flex items-center px-6 py-3 bg-forestGreen-500 text-white rounded-lg hover:bg-forestGreen-600 transition-colors">
                       Enviar mensaje a {{reserva.empresa.telefono}}
