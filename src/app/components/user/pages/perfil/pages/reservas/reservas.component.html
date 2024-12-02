@@ -148,13 +148,15 @@
           <!-- INICIO PARTE BOLETA -->
 
           <div class="flex flex-col md:gap-1.5">
-            <div class="flex w-full">
-              <div class="items-start flex flex-col justify-start">
+            <div class="flex w-full ">
+              <div class="items-start flex flex-col justify-start ">
                 <p class="text-red-500 text-[10px] font-bold">Dirección</p>
                 <div class="flex gap-4">
                   <p class="text-[12px]">{{ cancha.empresa.direccion }}</p>
                 </div>
               </div>
+              
+
             </div>
             <div class="flex w-full">
               <div class="w-7/12 items-start flex flex-col justify-start">
@@ -182,7 +184,7 @@
               <div class="items-start flex flex-col justify-start">
                 <p class="text-red-500 text-[10px] font-bold">Cliente</p>
                 <p class="text-base font-bold">
-                  {{ user_lc.nombres | textShorted }}/p>
+                  {{ user_lc.nombres | textShorted }}
                 </p>
               </div>
             </div>
@@ -256,7 +258,7 @@
 
           <div class="flex flex-col md:gap-1.5">
             <div class="flex w-full">
-              <div class="items-start flex flex-col justify-start">
+              <div class="items-start flex flex-col justify-start w-7/12">
                 <p class="text-orange-400 text-[10px] font-bold">Dirección</p>
                 <div class="flex gap-4">
                   <p class="text-[12px]">{{ reserva.empresa.direccion }}</p>
@@ -273,6 +275,14 @@
                   </button>
                 </div>
               </div>
+
+              <div class="items-start flex flex-col justify-start w-5/12">
+                <p class="text-red-500 text-[10px] font-bold">Cliente</p>
+                <p class="text-base font-bold">
+                  {{ user_lc.nombres | textShorted }}
+                </p>
+              </div>
+              
             </div>
             <div class="flex w-full">
               <div class="w-7/12 items-start flex flex-col justify-start">
@@ -299,9 +309,9 @@
               </div>
 
               <div class="items-start flex flex-col justify-start">
-                <p class="text-orange-400 text-[10px] font-bold">Cliente</p>
+                <p class="text-orange-400 text-[10px] font-bold">Monto por pagar</p>
                 <p class="text-base font-bold">
-                  {{ user_lc.nombres | textShorted }}
+                  CAMBIAR MONTO
                 </p>
               </div>
             </div>
@@ -602,7 +612,7 @@
 
           <div class="flex flex-col md:gap-1.5">
             <div class="flex w-full">
-              <div class="items-start flex flex-col justify-start">
+              <div class="items-start flex flex-col justify-start w-1/2">
                 <p class="text-forestGreen-600 text-[10px] font-bold">
                   Dirección
                 </p>
@@ -620,6 +630,14 @@
                     />
                   </button>
                 </div>
+              </div>
+              <div class="items-start flex flex-col justify-start w-1/2">
+                <p class="text-forestGreen-600 text-[10px] font-bold">
+                  Cliente
+                </p>
+                <p class="text-base font-bold">
+                  {{ user_lc.nombres | textShorted }}
+                </p>
               </div>
             </div>
             <div class="flex w-full">
@@ -650,10 +668,10 @@
 
               <div class="items-start flex flex-col justify-start">
                 <p class="text-forestGreen-600 text-[10px] font-bold">
-                  Cliente
+                  Monto por pagar
                 </p>
                 <p class="text-base font-bold">
-                  {{ user_lc.nombres | textShorted }}
+                  MONTO POR CAMBIAR
                 </p>
               </div>
             </div>

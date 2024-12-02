@@ -166,6 +166,7 @@ export class CanchasComponent implements OnInit {
         // Manejo de datos indefinidos
       } else {
         this.empresa = response.data;
+  
         this.hora_inicio = this.empresa.hora_inicio;
         this.hora_fin = this.empresa.hora_fin;
 
