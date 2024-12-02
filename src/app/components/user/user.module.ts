@@ -20,6 +20,7 @@ import { PaginatePipe } from '../../pipes/paginate.pipe';
 import { AboutComponent } from './pages/about/about.component';
 import { PoliticasComponent } from './pages/politicas/politicas.component';
 import { TerminosComponent } from './pages/terminos/terminos.component';
+import { FaqUserComponent } from './pages/faq-user/faq-user.component';
 
 
 @NgModule({
@@ -36,7 +37,8 @@ import { TerminosComponent } from './pages/terminos/terminos.component';
     PortraitComponent,
     AboutComponent,
     PoliticasComponent,
-    TerminosComponent
+    TerminosComponent,
+    FaqUserComponent
   ],
   imports: [
     CommonModule,

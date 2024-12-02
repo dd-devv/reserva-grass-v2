@@ -36,6 +36,11 @@
             >Términos y condiciones</a
           >
         </li>
+        <li>
+          <a [routerLink]="['/preguntas-frecuentes']" class="hover:underline"
+            >Preguntas frecuentes</a
+          >
+        </li>
         } @if (isUser) {
         <li>
           <a [routerLink]="['/usuario/nosotros']" class="hover:underline"
@@ -52,6 +57,11 @@
         <li>
           <a [routerLink]="['/usuario/terminos']" class="hover:underline"
             >Términos y condiciones</a
+          >
+        </li>
+        <li>
+          <a [routerLink]="['/usuario/preguntas-frecuentes']" class="hover:underline"
+            >Preguntas frecuentes</a
           >
         </li>
         }

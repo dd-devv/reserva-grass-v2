@@ -11,6 +11,7 @@ import { CanchasComponent } from './pages/canchas/canchas.component';
 import { AboutComponent } from './pages/about/about.component';
 import { PoliticasComponent } from './pages/politicas/politicas.component';
 import { TerminosComponent } from './pages/terminos/terminos.component';
+import { FaqUserComponent } from './pages/faq-user/faq-user.component';
 
 const routes: Routes = [
   {
@@ -23,6 +24,7 @@ const routes: Routes = [
       { path: 'politicas-privacidad', component: PoliticasComponent },
       { path: 'terminos', component: TerminosComponent },
       { path: 'contacto', component: ContactoComponent },
+      { path: 'preguntas-frecuentes', component: FaqUserComponent },
       { path: 'ver/:path', component: CanchasComponent },
       {
         path: 'perfil', component: ContainerPerfilComponent,
