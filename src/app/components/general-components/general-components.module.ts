@@ -27,6 +27,7 @@ import { PaginationComponent } from './pagination/pagination.component';
 import { TerminosCodicionesComponent } from './terminos-codiciones/terminos-codiciones.component';
 import { PoliticasPrivacidadComponent } from './politicas-privacidad/politicas-privacidad.component';
 import { FaqClientesComponent } from './faq-clientes/faq-clientes.component';
+import { MapComponent } from './map/map.component';
 
 
 
@@ -56,7 +57,8 @@ import { FaqClientesComponent } from './faq-clientes/faq-clientes.component';
     PaginationComponent,
     TerminosCodicionesComponent,
     PoliticasPrivacidadComponent,
-    FaqClientesComponent
+    FaqClientesComponent,
+    MapComponent
   ],
   imports: [
     CommonModule,

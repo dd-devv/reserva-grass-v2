@@ -359,6 +359,10 @@ export class HomeComponent implements OnInit {
     this.busqueda = '';
     this.fecha = '';
   }
+
+  
+
+
 }
 
 
