@@ -42,7 +42,8 @@ interface Company {
   distrito: string;
   ubicacion: string;
   referencia: string;
-  horario_atencion: string;
+  hora_inicio: string;
+  hora_fin: string;
   password: string;
 }
 
@@ -406,7 +407,9 @@ export class RegistroEmpresaComponent implements OnInit {
 
     try {
       const companyData: Company = {
-        ...this.registrationForm.value
+        ...this.registrationForm.value,
+        horario_inicio: parseInt(this.registrationForm.get('horario_inicio')?.value),
+        horario_fin: parseInt(this.registrationForm.get('horario_fin')?.value)
       };
 
       const response = await this.userService.registro_empresa(companyData).toPromise();
