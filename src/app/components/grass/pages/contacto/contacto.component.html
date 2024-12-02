@@ -1,37 +1,132 @@
-<div class="flex w-full justify-center py-2 ">
-    <div class="w-full max-w-7xl px-2">
-
-        <p class="text-center font-bold text-xl">Contáctanos</p>
-
-        <div class="flex w-full gap-3">
-            <div class="flex flex-col gap-1 w-full">
-                <label class="text-xs" for="nombreEmpresa">Nombre del grass</label>
-                <input class=" rounded-lg h-9 border-gray-300 text-gray-900 text-xs" name="nombreGrass" id="nombreGrass"
-                    type="text">
-            </div>
-            <div class="flex flex-col gap-1 w-full">
-                <label class="text-xs" for="correo">Correo </label>
-                <input class="rounded-lg h-9 border-gray-300 text-gray-900 text-xs" name="correo" id="correo"
-                    type="email">
-            </div>
+<div class="wrapper">
+    <!-- PC -->
+    <!-- <div class="hidden md:block"> -->
+    <div class="">
+      <div class="grid grid-cols-1 md:grid-cols-2">
+        <div
+          class="hidden md:grid col-span-1 justify-center items-center max-h-[540px]"
+        >
+          <img
+            src="../../../../../assets/img/man-with-laptop.png"
+            alt="persona con laptop"
+            class="max-h-[540px]"
+          />
         </div>
-        <div class="flex w-full gap-3">
-            <div class="flex flex-col gap-1 w-full">
-                <label class="text-xs" for="telefono">Teléfono</label>
-                <input class="rounded-lg h-9 border-gray-300 text-gray-900 text-xs" name="telefono" id="telefono"
-                    type="text">
+        <div class="col-span-1">
+          <form
+            #registroForm="ngForm"
+            (ngSubmit)="registro(registroForm)"
+            autocomplete="off"
+            class="flex flex-col justify-between rounded-l rounded-2xl border border-slate-400 md:border-none md:rounded-lg px-2.5 py-8 md:py-4 md:px-4 md:gap-4 gap-2.5"
+          >
+            <!-- nombre y apellidos -->
+            <div>
+              <label
+                for="cliente"
+                class="block mb-1 text-sm font-medium text-gray-900 dark:text-white"
+                >Nombres y apellidos
+              </label>
+  
+              <input
+                id="cliente"
+                name="cliente"
+                [(ngModel)]="contacto.cliente"
+                placeholder="Ingrese su nombre y apellidos"
+                type="text"
+                class="block w-full p-2 h-9 text-gray-900 border border-gray-300 rounded-md bg-gray-50 text-xs focus:ring-blue-500 focus:border-blue-500 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
+                required
+              />
             </div>
-            <div class="flex flex-col gap-1 w-full">
-                <label class="text-xs" for="asunto">Asunto </label>
-                <input class="rounded-lg h-9 border-gray-300 text-gray-900 text-xs" name="asunto" id="asunto"
-                    type="text">
+  
+            <!-- email -->
+            <div>
+              <label
+                for="correo"
+                class="block mb-1 text-sm font-medium text-gray-900 dark:text-white"
+                >Correo
+              </label>
+  
+              <input
+                id="correo"
+                placeholder="Ingrese su correo"
+                type="text"
+                name="correo"
+                [(ngModel)]="contacto.correo"
+                required
+                class="block w-full p-2 h-9 text-gray-900 border border-gray-300 rounded-md bg-gray-50 text-xs focus:ring-blue-500 focus:border-blue-500 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
+              />
             </div>
+  
+            <!-- telefono -->
+            <div>
+              <label
+                for="telefono"
+                class="block mb-1 text-sm font-medium text-gray-900 dark:text-white"
+                >Teléfono
+              </label>
+  
+              <input
+                id="telefono"
+                placeholder="999-888-777"
+                type="text"
+                required
+                name="telefono"
+                [(ngModel)]="contacto.telefono"
+                maxlength="9"
+                class="block w-full p-2 h-9 text-gray-900 border border-gray-300 rounded-md bg-gray-50 text-xs focus:ring-blue-500 focus:border-blue-500 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
+              />
+            </div>
+  
+            <!-- asunto -->
+            <div>
+              <label
+                for="asunto"
+                class="block mb-1 text-sm font-medium text-gray-900 dark:text-white"
+                >Asunto
+              </label>
+  
+              <input
+                id="asunto"
+                placeholder="Título del mensaje"
+                type="text"
+                required
+                name="asunto"
+                [(ngModel)]="contacto.asunto"
+                class="block w-full p-2 h-9 text-gray-900 border border-gray-300 rounded-md bg-gray-50 text-xs focus:ring-blue-500 focus:border-blue-500 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
+              />
+            </div>
+  
+            <!-- mensaje -->
+            <div>
+              <label
+                for="mensaje"
+                class="block mb-1 text-sm font-medium text-gray-900 dark:text-white"
+                >Mensaje
+              </label>
+  
+              <textarea
+                id="mensaje"
+                name="mensaje"
+                cols="50"
+                placeholder="Escriba su consulta"
+                required
+                name="mensaje"
+                [(ngModel)]="contacto.mensaje"
+                class="block w-full p-2 h-32 text-gray-900 border border-gray-300 rounded-md bg-gray-50 text-xs focus:ring-blue-500 focus:border-blue-500 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
+              ></textarea>
+            </div>
+  
+            @if (!load_btn) {
+            <button
+              class="w-full bg-blue-600 text-white h-9 rounded-md"
+              type="submit"
+            >
+              Enviar
+            </button>
+            } @if (load_btn) { Enviando ... }
+          </form>
         </div>
-
-        <div class="flex flex-col gap-1 w-full">
-            <label class="text-xs" for="mensaje">Mensaje</label>
-            <textarea rows="4" class="rounded-lg h-9 border-gray-300 text-gray-900 text-xs" name="mensaje" id="mensaje"
-                type="text"></textarea>
-        </div>
+      </div>
     </div>
-</div>
+  </div>
+  

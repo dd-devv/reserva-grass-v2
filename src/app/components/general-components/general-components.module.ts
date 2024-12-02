@@ -26,6 +26,7 @@ import { TextShortedPipe } from '../../pipes/text-shorted.pipe';
 import { PaginationComponent } from './pagination/pagination.component';
 import { TerminosCodicionesComponent } from './terminos-codiciones/terminos-codiciones.component';
 import { PoliticasPrivacidadComponent } from './politicas-privacidad/politicas-privacidad.component';
+import { FaqClientesComponent } from './faq-clientes/faq-clientes.component';
 
 
 
@@ -54,7 +55,8 @@ import { PoliticasPrivacidadComponent } from './politicas-privacidad/politicas-p
     CardHorarioEmpresaComponent,
     PaginationComponent,
     TerminosCodicionesComponent,
-    PoliticasPrivacidadComponent
+    PoliticasPrivacidadComponent,
+    FaqClientesComponent
   ],
   imports: [
     CommonModule,
@@ -86,7 +88,8 @@ import { PoliticasPrivacidadComponent } from './politicas-privacidad/politicas-p
     CardHorarioEmpresaComponent,
     PaginationComponent,
     TerminosCodicionesComponent,
-    PoliticasPrivacidadComponent
+    PoliticasPrivacidadComponent,
+    FaqClientesComponent
   ]
 })
 export class GeneralComponentsModule { }
