@@ -13,6 +13,7 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import localeEs from "@angular/common/locales/es";
 import { registerLocaleData } from "@angular/common";
 import { TextShortedPipe } from './pipes/text-shorted.pipe';
+import { HotjarTrackingService } from './services/hotjar-tracking.service';
 registerLocaleData(localeEs, "es");
 
 @NgModule({
@@ -30,8 +31,12 @@ registerLocaleData(localeEs, "es");
   ],
   providers: [
     provideHttpClient(withInterceptorsFromDi()),
-    { provide: LOCALE_ID, useValue: "es" }
+    { provide: LOCALE_ID, useValue: "es" },
+    HotjarTrackingService
   ],
   bootstrap: [AppComponent]
 })
-export class AppModule { }
+export class AppModule {
+  constructor(private hotjarTrackingService: HotjarTrackingService) {
+  }
+}
