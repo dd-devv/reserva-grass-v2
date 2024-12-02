@@ -6,6 +6,8 @@ import { RegistroEmpresaComponent } from './components/registro-empresa/registro
 import { ContainerComponent } from './container/container.component';
 import { WaitComponent } from './components/wait/wait.component';
 import { VerifyComponent } from './components/verify/verify.component';
+import { ResertPasswordComponent } from './components/resert-password/resert-password.component';
+import { ForgottPasswordComponent } from './components/forgott-password/forgott-password.component';
 
 const routes: Routes = [
   {
@@ -16,7 +18,9 @@ const routes: Routes = [
       { path: 'registro', component: RegistroComponent },
       { path: 'verificar', component: VerifyComponent },
       { path: 'registro-empresa', component: RegistroEmpresaComponent },
-      { path: 'wait', component: WaitComponent }
+      { path: 'wait', component: WaitComponent },
+      { path: 'reset-password/:token', component: ResertPasswordComponent },
+      { path: 'forgot-password', component: ForgottPasswordComponent },
     ]
   }
 ];

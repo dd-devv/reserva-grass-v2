@@ -151,7 +151,8 @@ export class ReservacionesComponent implements OnInit {
                 this.initializeModals();
 
                 // Separar las reservaciones en dos arreglos
-                this.reservacionesOcupadas = this.reservaciones.filter(res => res.estado === 'Ocupado');
+                let resOcup = this.reservaciones.filter(res => res.estado === 'Ocupado');
+                this.reservacionesOcupadas = this.procesarReservaciones(resOcup);
                 let procesedRes = this.reservaciones.filter(res => res.estado !== 'Ocupado');
                 this.reservacionesOtras = this.procesarReservaciones(procesedRes);
 

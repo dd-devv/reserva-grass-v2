@@ -12,6 +12,8 @@ import { GoogleMapsModule } from '@angular/google-maps';
 import { WaitComponent } from './components/wait/wait.component';
 import { VerifyComponent } from './components/verify/verify.component';
 import { FormsModule } from '@angular/forms';
+import { ResertPasswordComponent } from './components/resert-password/resert-password.component';
+import { ForgottPasswordComponent } from './components/forgott-password/forgott-password.component';
 
 
 @NgModule({
@@ -21,7 +23,9 @@ import { FormsModule } from '@angular/forms';
     RegistroEmpresaComponent,
     ContainerComponent,
     WaitComponent,
-    VerifyComponent
+    VerifyComponent,
+    ResertPasswordComponent,
+    ForgottPasswordComponent
   ],
   imports: [
     CommonModule,

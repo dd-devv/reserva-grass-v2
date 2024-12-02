@@ -55,7 +55,7 @@
       </div>
 
 
-      <a href="" class="font-bold text-center text-xs text-pretty"> ¿Olvidaste tu contraseña?</a>
+      <a [routerLink]="['/auth/forgot-password']" class="font-bold text-center text-xs text-pretty"> ¿Olvidaste tu contraseña?</a>
 
       @if (!isLoading) {
       <button type="submit" class="w-full bg-blue-600 text-white h-9 rounded-md mt-2">
