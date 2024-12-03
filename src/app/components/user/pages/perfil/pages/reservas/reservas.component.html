@@ -575,7 +575,7 @@
     >
       <div
         id="{{ reserva._id }}"
-        class="grid grid-cols-[32px_repeat(4,1fr)] auto-cols-min grid-rows-5 rounded-lg border border-gray-500 w-full h-[175px] md:h-[190px]"
+        class="grid grid-cols-[32px_repeat(4,1fr)] auto-cols-min grid-rows-5 rounded-lg border border-forestGreen-500 w-full  h-[180px] md:h-[190px]"
       >
         <div class="bg-forestGreen-600 text-white w-8 rounded-l-md row-span-5">
           <p
@@ -585,7 +585,7 @@
           </p>
         </div>
         <div
-          class="flex border-b-2 border-dotted border-seashell-400 flex-col rounded-t-lg col-span-5 w-full h-11 px-2 py-1"
+          class="flex border-b-2 border-dotted border-forestGreen-400 flex-col rounded-t-lg col-span-5 w-full h-11 px-2 py-1"
         >
           <div class="flex">
             <div class="w-6/12">
@@ -612,12 +612,12 @@
 
           <div class="flex flex-col md:gap-1.5">
             <div class="flex w-full">
-              <div class="items-start flex flex-col justify-start w-1/2">
+              <div class="items-start flex flex-col justify-start w-1/2 ">
                 <p class="text-forestGreen-600 text-[10px] font-bold">
                   Dirección
                 </p>
-                <div class="flex gap-4">
-                  <p class="text-[12px]">{{ reserva.empresa.direccion }}</p>
+                <div class="flex gap-1.5 md:gap-4 flex-nowrap ">
+                  <p class="text-[12px] line-clamp-1 max-w-[125px] md:max-w-none">{{ reserva.empresa.direccion }}</p>
                   <button
                     title="Copiar dirección"
                     (click)="
