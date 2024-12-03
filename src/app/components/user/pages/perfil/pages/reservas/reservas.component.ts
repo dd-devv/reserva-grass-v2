@@ -146,7 +146,7 @@ export class ReservasComponent implements OnInit {
     this.subtotal = (this.horaFin! - this.horaInicio!) * this.cancha.precio_reservacion;
   }
 
-  verFinalizadas(){
+  verFinalizadas() {
     this.ver_finalizadas = !this.ver_finalizadas;
   }
 
@@ -210,6 +210,11 @@ export class ReservasComponent implements OnInit {
           }
         });
 
+        let prosPend = this.procesarReservaciones(this.reservaciones_pendientes);
+        this.reservaciones_pendientes = prosPend;
+        let prosAct = this.procesarReservaciones(this.reservaciones_activas);
+        this.reservaciones_activas = prosAct;
+
         this.load_reservas = false;
       },
       error: (err) => {
@@ -219,6 +224,78 @@ export class ReservasComponent implements OnInit {
         this.reservaciones_finalizadas = [];
         this.load_reservas = false;
       }
+    });
+  }
+
+
+  private procesarReservaciones(reservaciones: any) {
+    return reservaciones.map((reservacion: any) => {
+      // Clonar la reservación para no modificar el objeto original
+      const reservacionProcesada = JSON.parse(JSON.stringify(reservacion));
+
+      // Extraer información relevante
+      const {
+        cancha,
+        hora_inicio,
+        hora_fin,
+        tipo_cancha
+      } = reservacionProcesada;
+
+      // Determinar los precios según el tipo de cancha y condiciones
+      let precioHoraDia, precioHoraNoche;
+
+      // Manejar canchas mixtas
+      if (cancha.tipo === 'Mixto') {
+        if (tipo_cancha === 'voley') {
+          precioHoraDia = cancha.precio_dia_voley;
+          precioHoraNoche = cancha.precio_noche_voley;
+        } else {
+          precioHoraDia = cancha.precio_dia;
+          precioHoraNoche = cancha.precio_noche;
+        }
+      } else {
+        // Canchas no mixtas
+        precioHoraDia = cancha.precio_dia;
+        precioHoraNoche = cancha.precio_noche;
+      }
+
+      // Determinar la hora noche de la cancha
+      const horaNoche = cancha.hora_noche || 18;
+
+      // Calcular total a pagar
+      let totalPagar = 0;
+      let duracionReserva = hora_fin - hora_inicio - 1;
+      if (duracionReserva == 0) {
+        duracionReserva = 1;
+      }
+
+      // Caso 1: Todas las horas son de día
+      if (hora_fin <= horaNoche) {
+        totalPagar = duracionReserva * precioHoraDia;
+      }
+      // Caso 2: Todas las horas son de noche
+      else if (hora_inicio >= horaNoche) {
+        totalPagar = duracionReserva * precioHoraNoche;
+      }
+      // Caso 3: Horas mixtas (parte día, parte noche)
+      else {
+        const horasDia = horaNoche - hora_inicio;
+        const horasNoche = hora_fin - horaNoche;
+
+        totalPagar = (horasDia * precioHoraDia) + (horasNoche * precioHoraNoche);
+      }
+
+      // Redondear a dos decimales
+      totalPagar = Number(totalPagar.toFixed(2));
+
+      // Calcular restante
+      const restante = Number((totalPagar - reservacionProcesada.subtotal).toFixed(2));
+
+      // Agregar campos calculados
+      reservacionProcesada.total_pagar = totalPagar;
+      reservacionProcesada.restante = restante;
+
+      return reservacionProcesada;
     });
   }
 

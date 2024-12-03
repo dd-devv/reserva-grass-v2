@@ -1,9 +1,22 @@
 <div class="wrapper">
     <!-- <app-card-sport-features-skeleton></app-card-sport-features-skeleton> -->
+    <div class="flex w-full justify-center px-4 ">
+        <p class="shadow rounded-lg w-full text-center py-2">
+            <span class="font-bold font-jetBrainsMono text-xl">
+                {{empresa.nombre}}
+            </span>
+            <br>
+            <span>
+                Horario {{empresa.hora_inicio | time24to12}} - {{empresa.hora_fin | time24to12}}
+            </span>
+        </p>
+        <p class="text-center">
+        </p>
+    </div>
 
     <div class=" flex flex-col lg:flex-row  self-center justify-center gap-4">
         <div
-        class="flex flex-row justify-start md:justify-center  lg:flex-col lg:justify-start mb-4 overflow-y-auto overflow-x-auto overflow-hidden gap-8 lg:h-[730px] ">
+            class="flex flex-row justify-start md:justify-center  lg:flex-col lg:justify-start mb-4 overflow-y-auto overflow-x-auto overflow-hidden gap-8 lg:h-[730px] ">
             @if (load_data) {
             <app-card-sport-features-skeleton></app-card-sport-features-skeleton>
             }
