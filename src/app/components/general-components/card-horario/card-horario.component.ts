@@ -156,7 +156,7 @@ export class CardHorarioComponent implements OnInit, AfterViewInit {
           this._router.navigate(['/usuario/perfil/reservas']);
         },
         error: (err) => {
-          this.toastService.success(err.error.message || 'No se pudo registrar, intete de nuevo');
+          this.toastService.error(err.error.message || 'No se pudo registrar, intete de nuevo');
 
           setTimeout(() => {
             window.location.reload();

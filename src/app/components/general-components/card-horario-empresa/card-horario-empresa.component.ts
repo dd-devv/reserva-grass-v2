@@ -149,7 +149,7 @@ export class CardHorarioEmpresaComponent implements OnInit, AfterViewInit {
             this.reservacionCreada.emit(true);
           },
           error: (err) => {
-            this.toastService.success(err.message);
+            this.toastService.error(err.error.message);
           }
         });
         
