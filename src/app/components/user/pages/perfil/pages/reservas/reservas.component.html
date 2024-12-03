@@ -277,7 +277,7 @@
               </div>
 
               <div class="items-start flex flex-col justify-start w-5/12">
-                <p class="text-red-500 text-[10px] font-bold">Cliente</p>
+                <p class="text-orange-400 text-[10px] font-bold">Cliente</p>
                 <p class="text-base font-bold">
                   {{ user_lc.nombres | textShorted }}
                 </p>
@@ -311,7 +311,7 @@
               <div class="items-start flex flex-col justify-start">
                 <p class="text-orange-400 text-[10px] font-bold">Monto por pagar</p>
                 <p class="text-base font-bold">
-                  CAMBIAR MONTO
+                  S/ {{reserva.restante}}
                 </p>
               </div>
             </div>
@@ -671,7 +671,7 @@
                   Monto por pagar
                 </p>
                 <p class="text-base font-bold">
-                  MONTO POR CAMBIAR
+                  S/ {{reserva.restante}}
                 </p>
               </div>
             </div>

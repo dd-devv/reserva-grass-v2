@@ -94,6 +94,7 @@ export class HomeComponent implements OnInit {
   }
 
   init_data() {
+    this.load_data = true;
     this.file = null;
     this.fechaSeleccionada = new Date();
     this._userService
