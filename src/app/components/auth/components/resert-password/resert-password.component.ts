@@ -2,7 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { Title } from '@angular/platform-browser';
 import { ActivatedRoute, Router } from '@angular/router';
 import { UserService } from '../../../../services/user.service';
-import { ToastrService } from 'ngx-toastr';
+import { ToastService } from '../../../../services/toast/toast.service';
 
 @Component({
   selector: 'app-resert-password',
@@ -26,7 +26,7 @@ export class ResertPasswordComponent implements OnInit {
     private _title: Title,
     private _route: ActivatedRoute,
     private _userService: UserService,
-    private _toastrService: ToastrService,
+    private _toastrService: ToastService,
     private _router: Router
   ) {
 
@@ -80,11 +80,11 @@ export class ResertPasswordComponent implements OnInit {
     this._userService.cambiar_password_user(data, this.token_pass).subscribe(
       response => {
         if (response.data == undefined) {
-          this._toastrService.error(response.message, 'ERROR');
+          this._toastrService.error(response.message);
 
         } else if (response.data == true || response.data == 'true') {
-          this._toastrService.success('Se cambió la contraseña', 'ACTUALIZADO!');
-          this._router.navigate(['/login']);
+          this._toastrService.success('Se cambió la contraseña');
+          this._router.navigate(['/auth']);
         }
       }
     );
