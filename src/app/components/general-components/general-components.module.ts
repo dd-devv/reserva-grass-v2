@@ -28,6 +28,7 @@ import { TerminosCodicionesComponent } from './terminos-codiciones/terminos-codi
 import { PoliticasPrivacidadComponent } from './politicas-privacidad/politicas-privacidad.component';
 import { FaqClientesComponent } from './faq-clientes/faq-clientes.component';
 import { MapComponent } from './map/map.component';
+import { TicketDisponibleComponent } from './tickets/ticket-disponible/ticket-disponible.component';
 
 
 
@@ -58,7 +59,8 @@ import { MapComponent } from './map/map.component';
     TerminosCodicionesComponent,
     PoliticasPrivacidadComponent,
     FaqClientesComponent,
-    MapComponent
+    MapComponent,
+    TicketDisponibleComponent
   ],
   imports: [
     CommonModule,
