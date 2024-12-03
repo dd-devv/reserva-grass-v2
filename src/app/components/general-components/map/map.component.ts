@@ -13,7 +13,7 @@ export class MapComponent implements OnInit {
     const observer = new IntersectionObserver((entries) => {
       if (entries[0].isIntersecting) {
         this.googleMapsService
-          .loadGoogleMaps('YOUR_API_KEY')
+          .loadGoogleMaps('AIzaSyC21A6bPPc14Vl3YdUxDVBpCJ8d_Y_cTyo')
           .then(() => this.initMap())
           .catch((error) => console.error('Error loading Google Maps', error));
         observer.disconnect(); // Detener la observación después de cargar

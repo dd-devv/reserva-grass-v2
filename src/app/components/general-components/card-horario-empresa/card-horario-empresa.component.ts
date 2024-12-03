@@ -40,6 +40,16 @@ export class CardHorarioEmpresaComponent implements OnInit, AfterViewInit {
   public url_socket = GLOBAL.url_socket;
   private socket: Socket;
 
+  isModalVisible: boolean = false;
+
+  showModal() {
+    this.isModalVisible = true;
+  }
+
+  closeModal() {
+    this.isModalVisible = false;
+  }
+
   constructor(
     private _router: Router,
     private toastService: ToastService,
