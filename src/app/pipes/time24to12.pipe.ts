@@ -5,10 +5,10 @@ import { Pipe, PipeTransform } from '@angular/core';
 })
 export class Time24to12Pipe implements PipeTransform {
   transform(hour: number): string {
-    if (hour < 0 || hour > 23) return '';
+    if (hour < 0 || hour > 24) return '';
 
     // Configurar el periodo (AM/PM)
-    const period = hour >= 12 ? 'Pm' : 'Am';
+    const period = hour >= 12 && hour !== 24 ? 'Pm' : 'Am';
 
     // Convertir a formato 12 horas
     let hour12 = hour % 12;
