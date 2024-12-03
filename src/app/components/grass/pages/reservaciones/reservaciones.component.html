@@ -1,463 +1,394 @@
-@if (load_data) { 
-    <div class="relative overflow-x-auto shadow-md sm:rounded-lg">
-      <div class="relative">
-        <div
-          class="flex flex-row h-[38px] mb-4  p-2 text-sm text-gray-900 border border-gray-300 rounded-lg w-80 bg-white dark:bg-gray-700 dark:border-gray-600 dark:text-white"
-        >
-        <p class="skeleton-svg">
-        .
-        </p>
-        <p class="skeleton">
-        .
-        </p>
-        </div>
-      </div>
-      <table
-        class="w-full text-sm text-left rtl:text-right text-gray-500 dark:text-gray-400"
-      >
-        <thead
-          class="text-xs text-gray-700 uppercase bg-gray-300 dark:bg-gray-700 dark:text-gray-400"
-        >
-          <tr>
-            <th scope="col" class="px-2 py-3 text-center max-w-2">
-              <p class="skeleton-th">
-                .
-              </p>
-            </th>
-            <th scope="col" class="px-2 py-3 text-center ">
-              <div class="flex justify-center">
-
-                <p class="skeleton">
-                  Cliente
-                </p>
-              </div>
-              </th>
-            <th scope="col" class="px-2 py-3 text-center "> 
-              <div class="flex justify-center">
-                
-                <p class="skeleton">
-                  Telefono
-                </p>
-              </div>
-            </th>
-            <th scope="col" class="px-2 py-3 text-center "> 
-              <div class="flex justify-center">
-                
-                <p class="skeleton">
-                  Monto
-                </p>
-              </div>
-            </th>
-            <th scope="col" class="px-2 py-3 text-center "> 
-              <div class="flex justify-center">
-
-                <p class="skeleton">
-                  Opciones
-                </p>
-              </div>
-            </th>
-            <th scope="col" class="px-2 py-3 text-center "> 
-              <div class="flex justify-center">
-                <p class="skeleton">
-                  Canchaaaaaaaaaaa
-                </p>
-              </div>
-            </th>
-            <th scope="col" class="px-2 py-3 text-center "> 
-              <div class="flex justify-center">
-
-                <p class="skeleton">
-                  Fecha 
-                </p>
-              </div>
-            </th>
-            <th scope="col" class="px-2 py-3 text-center "> 
-              <div class="flex justify-center">
-
-                <p class="skeleton">
-                  Horas
-                </p>
-              </div>
-            </th>
-            <th scope="col" class="px-2 py-3 text-center "> 
-              <div class="flex justify-center">
-
-                <p class="skeleton">
-                  Estado
-                </p>
-              </div>
-            </th>
-          </tr>
-        </thead>
-        <tbody>
-          @for (item of [1,2,3,4,5,6,7,8,9]; track $index) {
-          <tr
-            class="bg-white border-b dark:bg-gray-800 dark:border-gray-700 hover:bg-gray-50 dark:hover:bg-gray-600"
-          >
-            <th
-              scope="row"
-              class="px-2 py-3 font-medium text-gray-900 whitespace-nowrap dark:text-white "
-            >
-            <p class="skeleton-th">
-              1
-            </p>
-            </th>
-            <td class="px-2 py-3 ">
-              <p class="skeleton">
-                2
-              </p>
-            </td>
-            <td class="px-2 py-3 ">
-              <p class="skeleton">
-                3
-              </p>
-            </td>
-            <td class="px-2 py-3 ">
-              <p class="skeleton">
-                4
-              </p>
-              </td>
-            <td class="px-2 py-3">
-              <button
-
-                class="flex justify-between items-center px-2 py-1 w-full text-xs font-medium rounded-lg  bg-slate-50 text-forestGreen-500 bg-transparent"
-              >
-              <p class="mx-auto bg-transparent skeleton">
-                5
-              </p>
-              </button>
-    
-            </td>
-            <td class="px-2 py-3 ">
-              <p class="skeleton">
-                6
-              </p>
-            </td>
-            <td class="px-2 py-3 ">
-              <p class="skeleton">
-                7
-              </p>
-            </td>
-            <td class="px-2 py-3">
-              <span class="flex flex-col md:flex-row">
-                <p class="text-nowrap skeleton">
-                  8
-                </p>
-              </span>
-            </td>
-            <td class="px-2 py-3 ">
-              <p class="skeleton">
-                10
-              </p>
-            </td>
-          </tr>}
-        </tbody>
-      </table>
-    </div>
-} 
-
-@if (activePagos && !viewButton) { 
-    
-  <div class="mb-5 flex flex-col items-center ">
-    @for (reservacion of reservacionesOcupadas; track $index) {
-    <div class="flex gap-y-4 rounded-lg w-full justify-center h-fit min-w-lg max-w-lg">
-      <div id="{{ reservacion._id }}"
-        class="grid grid-cols-[32px_repeat(2,1fr)] grid-rows-4 rounded-lg border border-forestGreen-500 w-full h-[175px] md:h-[155px]">
-        <div class="bg-forestGreen-600 text-white w-8 rounded-l-md row-span-5">
-          <p class="w-full -rotate-90 flex justify-center items-center text-center h-full text-nowrap font-semibold">
-            {{ reservacion.codigo }}
-          </p>
-        </div>
-        <div
-          class="flex border-b-2 border-dotted border-forestGreen-500 flex-col rounded-t-lg col-span-2 w-full h-11 px-2 py-1">
-          <div class="flex justify-start">
-            <div class="flex flex-col items-start w-3/5">
-              <label class="text-xs font-semibold text-forestGreen-600">
-                Cliente
-              </label>
-              <p class="font-bold capitalize">
-                {{ reservacion.cliente?.nombres | textShorted }}
-              </p>
-            </div>
-  
-            <div class="flex flex-col items-start w-2/5">
-              <label class="text-xs font-semibold text-forestGreen-600">
-                Cancha
-              </label>
-              <p class="font-bold">{{ reservacion.cancha.nombre | titlecase }} <small>({{reservacion.tipo_cancha}})</small></p>
-            </div>
-          </div>
-  
-          <!-- INICIO PARTE BOLETA -->
-  
-          <div class="flex flex-col md:gap-1.5 pt-2">
-            <div class="flex w-full">
-              <div class="w-3/5 items-start flex flex-col justify-start">
-                <p class="text-forestGreen-600 text-[10px] font-bold">Fecha</p>
-                <p class="text-[12px]">
-                  {{ reservacion.fecha | date : "EEEE, MMMM d " | titlecase }}
-                </p>
-              </div>
-  
-              <div class="w-2/5 items-start flex flex-col justify-start">
-                <p class="text-forestGreen-600 text-[10px] font-bold">Horario</p>
-                <p class="text-[12px]">
-                  {{ reservacion.hora_inicio | time24to12 }} -
-                  {{ reservacion.hora_fin | time24to12 }}
-                </p>
-              </div>
-            </div>
-            <div class="flex w-full">
-              <div class="w-3/5 items-start flex flex-col justify-start">
-                <p class="text-forestGreen-600 text-[10px] font-bold">
-                  Monto de reservación
-                </p>
-                <p class="text-base font-bold">S/ {{ reservacion.subtotal }}</p>
-              </div>
-  
-              <div class="w-2/5 items-start flex flex-col justify-start">
-                <p class="text-forestGreen-600 text-[10px] font-bold">
-                  Falta pagar
-                </p>
-                <p class="text-base font-bold">S/ {{ reservacion.restante }}</p>
-              </div>
-            </div>
-            <div class="flex items-center justify-center">
-              <p class="font-jetBrainsMono text-[12px]">
-                Creación: {{ reservacion.createdAt | date : "medium" }}
-              </p>
-            </div>
-          </div>
-        </div>
-      </div>
-  
-    </div>
-    <button (click)="confirmar_reservacion(reservacion._id)"
-      class="py-1 text-sm flex gap-1.5 items-center px-4 bg-forestGreen-50 border border-forestGreen-500 rounded-full shadow-lg transition hover:bg-gray-100 mt-3">
-      Confirmar reservación
-    </button>
-    }
-  </div>
-
+@if (load_data) {
 <div class="relative overflow-x-auto shadow-md sm:rounded-lg">
-  <div
-    class="flex flex-column sm:flex-row flex-wrap space-y-4 sm:space-y-0 items-center justify-between pb-4"
-  >
-    <label for="table-search" class="sr-only">Search</label>
-    <div class="relative">
-      <div
-        class="absolute inset-y-0 left-0 rtl:inset-r-0 rtl:right-0 flex items-center ps-3 pointer-events-none"
-      >
-        <svg
-          class="w-5 h-5 text-gray-500 dark:text-gray-400"
-          aria-hidden="true"
-          fill="currentColor"
-          viewBox="0 0 20 20"
-          xmlns="http://www.w3.org/2000/svg"
-        >
-          <path
-            fill-rule="evenodd"
-            d="M8 4a4 4 0 100 8 4 4 0 000-8zM2 8a6 6 0 1110.89 3.476l4.817 4.817a1 1 0 01-1.414 1.414l-4.816-4.816A6 6 0 012 8z"
-            clip-rule="evenodd"
-          ></path>
-        </svg>
-      </div>
-      <input
-        [(ngModel)]="search"
-        name="search"
-        (input)="onSearchChange($event)"
-        autocomplete="off"
-        [readonly]="load_data"
-        type="text"
-        id="table-search"
-        class="block p-2 ps-10 text-sm text-gray-900 border border-gray-300 rounded-lg w-80 bg-gray-50 focus:ring-blue-500 focus:border-blue-500 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
-        placeholder="Search for items"
-      />
+  <div class="relative">
+    <div
+      class="flex flex-row h-[38px] mb-4  p-2 text-sm text-gray-900 border border-gray-300 rounded-lg w-80 bg-white dark:bg-gray-700 dark:border-gray-600 dark:text-white">
+      <p class="skeleton-svg">
+        .
+      </p>
+      <p class="skeleton">
+        .
+      </p>
     </div>
   </div>
-  <table
-    class="w-full text-sm text-left rtl:text-right text-gray-500 dark:text-gray-400"
-  >
-    <thead
-      class="text-xs text-gray-700 uppercase bg-gray-300 dark:bg-gray-700 dark:text-gray-400"
-    >
+  <table class="w-full text-sm text-left rtl:text-right text-gray-500 dark:text-gray-400">
+    <thead class="text-xs text-gray-700 uppercase bg-gray-300 dark:bg-gray-700 dark:text-gray-400">
       <tr>
-        <th scope="col" class="px-2 py-3 text-center">Codigo</th>
-        <th scope="col" class="px-2 py-3 text-center">Cliente</th>
-        <th scope="col" class="px-2 py-3 text-center">Telefono</th>
-        <th scope="col" class="px-2 py-3 text-center">Monto</th>
-        <th scope="col" class="px-2 py-3 text-center">Opciones</th>
-        <th scope="col" class="px-2 py-3 text-center">Cancha Reservada</th>
-        <th scope="col" class="px-2 py-3 text-center">Fecha Reserva</th>
-        <th scope="col" class="px-2 py-3 text-center">Horas</th>
-        <th scope="col" class="px-2 py-3 text-center">Estado</th>
+        <th scope="col" class="px-2 py-3 text-center max-w-2">
+          <p class="skeleton-th">
+            .
+          </p>
+        </th>
+        <th scope="col" class="px-2 py-3 text-center ">
+          <div class="flex justify-center">
+
+            <p class="skeleton">
+              Cliente
+            </p>
+          </div>
+        </th>
+        <th scope="col" class="px-2 py-3 text-center ">
+          <div class="flex justify-center">
+
+            <p class="skeleton">
+              Telefono
+            </p>
+          </div>
+        </th>
+        <th scope="col" class="px-2 py-3 text-center ">
+          <div class="flex justify-center">
+
+            <p class="skeleton">
+              Monto
+            </p>
+          </div>
+        </th>
+        <th scope="col" class="px-2 py-3 text-center ">
+          <div class="flex justify-center">
+
+            <p class="skeleton">
+              Opciones
+            </p>
+          </div>
+        </th>
+        <th scope="col" class="px-2 py-3 text-center ">
+          <div class="flex justify-center">
+            <p class="skeleton">
+              Canchaaaaaaaaaaa
+            </p>
+          </div>
+        </th>
+        <th scope="col" class="px-2 py-3 text-center ">
+          <div class="flex justify-center">
+
+            <p class="skeleton">
+              Fecha
+            </p>
+          </div>
+        </th>
+        <th scope="col" class="px-2 py-3 text-center ">
+          <div class="flex justify-center">
+
+            <p class="skeleton">
+              Horas
+            </p>
+          </div>
+        </th>
+        <th scope="col" class="px-2 py-3 text-center ">
+          <div class="flex justify-center">
+
+            <p class="skeleton">
+              Estado
+            </p>
+          </div>
+        </th>
       </tr>
     </thead>
     <tbody>
-      @if (!load_data) { 
-        @for (item of reservacionesOtras | paginate:currentPage:pageSize; track $index) {
-      <tr
-        class="bg-white border-b dark:bg-gray-800 dark:border-gray-700 hover:bg-gray-50 dark:hover:bg-gray-600"
-      >
-        <th
-          scope="row"
-          class="px-2 py-3 font-medium text-gray-900 whitespace-nowrap dark:text-white"
-        >
-          {{ item.codigo }}
+      @for (item of [1,2,3,4,5,6,7,8,9]; track $index) {
+      <tr class="bg-white border-b dark:bg-gray-800 dark:border-gray-700 hover:bg-gray-50 dark:hover:bg-gray-600">
+        <th scope="row" class="px-2 py-3 font-medium text-gray-900 whitespace-nowrap dark:text-white ">
+          <p class="skeleton-th">
+            1
+          </p>
         </th>
-        <td class="px-2 py-3">
-          {{ item.cliente.nombres | textShorted }}
+        <td class="px-2 py-3 ">
+          <p class="skeleton">
+            2
+          </p>
+        </td>
+        <td class="px-2 py-3 ">
+          <p class="skeleton">
+            3
+          </p>
+        </td>
+        <td class="px-2 py-3 ">
+          <p class="skeleton">
+            4
+          </p>
         </td>
         <td class="px-2 py-3">
-          {{ item.cliente.telefono }}
-        </td>
-        <td class="px-2 py-3">S/ {{ item.subtotal }}</td>
-        <td class="px-2 py-3">
-          @if (item.estado === 'Reservado') {
-            <button
-              [disabled]="item.pagado"
-              (click)="eliminar_reservacion(item._id)"
-              class="flex justify-between items-center px-2 py-1 w-full text-xs font-medium rounded-lg border border-red-500 bg-red-100 text-red-500"
-            >
-            <p class="mx-auto">
-              Eliminar
+          <button
+            class="flex justify-between items-center px-2 py-1 w-full text-xs font-medium rounded-lg  bg-slate-50 text-forestGreen-500 bg-transparent">
+            <p class="mx-auto bg-transparent skeleton">
+              5
             </p>
-            </button>
-          }
-          @if (item.estado === 'Finalizado') {
-            <button
-              [disabled]="item.pagado"
-              (click)="openModal(item._id)"
-              [ngClass]="{ ' border border-red-500 text-gray-500': !item.pagado }"
-              class="flex justify-between items-center px-2 py-1 w-full text-xs font-medium rounded-lg  bg-slate-50 text-forestGreen-500 bg-transparent"
-            >
-            <p class="mx-auto bg-transparent">
-              @if (item.pagado) { Pagado } @if (!item.pagado) { Confirmar }
-            </p>
-            </button>
-          }
+          </button>
 
-          <!-- Modal confirmar -->
-          <div
-            id="modal-{{ item._id }}"
-            tabindex="-1"
-            aria-hidden="true"
-            class="hidden overflow-y-auto overflow-x-hidden fixed top-0 right-0 left-0 z-50 justify-center items-center w-full md:inset-0 h-[calc(100%-1rem)] max-h-full"
-          >
-            <div class="relative p-4 w-full max-w-sm max-h-full">
-              <div class="relative bg-white rounded-lg shadow dark:bg-gray-700">
-                <!-- Modal header -->
-                <div
-                  class="flex items-center justify-between p-4 md:p-5 border-b rounded-t dark:border-gray-600"
-                >
-                  <h3
-                    class="text-lg font-semibold text-gray-900 dark:text-white"
-                  >
-                    Confirmar pago completo
-                  </h3>
-                  <button
-                    type="button"
-                    (click)="closeModal(item._id)"
-                    class="text-gray-400 bg-transparent hover:bg-gray-200 hover:text-gray-900 rounded-lg text-sm w-8 h-8 ms-auto inline-flex justify-center items-center dark:hover:bg-gray-600 dark:hover:text-white"
-                  >
-                    <svg
-                      class="w-3 h-3"
-                      xmlns="http://www.w3.org/2000/svg"
-                      fill="none"
-                      viewBox="0 0 14 14"
-                    >
-                      <path
-                        stroke="currentColor"
-                        stroke-linecap="round"
-                        stroke-linejoin="round"
-                        stroke-width="2"
-                        d="m1 1 6 6m0 0 6 6M7 7l6-6M7 7l-6 6"
-                      />
-                    </svg>
-                    <span class="sr-only">Close modal</span>
-                  </button>
-                </div>
-                <!-- Modal body -->
-                <div class="p-4 md:p-5">
-                  <!-- Precios para horas de dia -->
-                  <p class="text-gray-500 dark:text-gray-400">
-                    Precio total: S/.
-                    {{
-                      item.total_pagar
-                    }}
-                  </p>
-                  <p class="text-gray-500 dark:text-gray-400">
-                    Adelantado: S/. {{ item.subtotal }}
-                  </p>
-                  <p class="text-gray-500 dark:text-gray-400">
-                    Restante: S/.
-                    {{
-                      item.restante
-                    }}
-                  </p>
-                  <div
-                    class="flex items-center justify-between p-4 md:p-5 border-t border-gray-200 rounded-b dark:border-gray-600"
-                  >
-                    <button
-                      (click)="closeModal(item._id)"
-                      type="button"
-                      class="py-2.5 px-5 ms-3 text-sm text-gray-900 focus:outline-none bg-white rounded-lg border border-gray-200 hover:bg-gray-100 hover:text-gray-900 focus:z-10 focus:ring-4 focus:ring-gray-100"
-                    >
-                      Cancelar
-                    </button>
-                    <button
-                      (click)="
-                        closeModal(item._id);
-                        actualizar_reserva_total_grass(
-                          item._id,
-                          item.total_pagar
-                        )
-                      "
-                      type="button"
-                      class="ms-3 text-white bg-red-500 hover:bg-red-600 focus:ring-4 focus:outline-none focus:ring-red-300 font-medium rounded-lg text-sm px-5 py-2.5 text-center"
-                    >
-                      Confirmar
-                    </button>
-                  </div>
-                  <!-- Precios para horas de noche -->
-                </div>
-              </div>
-            </div>
-          </div>
         </td>
-        <td class="px-2 py-3">
-          {{ item.cancha.nombre }} <small>({{item.tipo_cancha}})</small>
+        <td class="px-2 py-3 ">
+          <p class="skeleton">
+            6
+          </p>
         </td>
-        <td class="px-2 py-3">
-          {{ item.fecha | date : "mediumDate" }}
+        <td class="px-2 py-3 ">
+          <p class="skeleton">
+            7
+          </p>
         </td>
         <td class="px-2 py-3">
           <span class="flex flex-col md:flex-row">
-            <p class="text-nowrap">
-              {{ item.hora_inicio | time24to12 }}
-            </p>
-            <p class="hidden md:block">
-              -
-            </p>
-            <p class="text-nowrap">
-              {{ item.hora_fin | time24to12 }}
+            <p class="text-nowrap skeleton">
+              8
             </p>
           </span>
         </td>
-        <td class="px-2 py-3">
-          {{ item.estado }}
+        <td class="px-2 py-3 ">
+          <p class="skeleton">
+            10
+          </p>
         </td>
-      </tr>
-      } }
+      </tr>}
     </tbody>
   </table>
+</div>
+}
 
-  <!-- paginacion -->
-  @if (totalPages > 1) {
+@if (activePagos && !viewButton) {
+
+<div class="mb-5 flex flex-col items-center ">
+  @for (reservacion of reservacionesOcupadas; track $index) {
+  <div class="flex gap-y-4 rounded-lg w-full justify-center h-fit min-w-lg max-w-lg">
+    <div id="{{ reservacion._id }}"
+      class="grid grid-cols-[32px_repeat(2,1fr)] grid-rows-4 rounded-lg border border-forestGreen-500 w-full h-[175px] md:h-[155px]">
+      <div class="bg-forestGreen-600 text-white w-8 rounded-l-md row-span-5">
+        <p class="w-full -rotate-90 flex justify-center items-center text-center h-full text-nowrap font-semibold">
+          {{ reservacion.codigo }}
+        </p>
+      </div>
+      <div
+        class="flex border-b-2 border-dotted border-forestGreen-500 flex-col rounded-t-lg col-span-2 w-full h-11 px-2 py-1">
+        <div class="flex justify-start">
+          <div class="flex flex-col items-start w-3/5">
+            <label class="text-xs font-semibold text-forestGreen-600">
+              Cliente
+            </label>
+            <p class="font-bold capitalize">
+              {{ reservacion.cliente?.nombres | textShorted }}
+            </p>
+          </div>
+
+          <div class="flex flex-col items-start w-2/5">
+            <label class="text-xs font-semibold text-forestGreen-600">
+              Cancha
+            </label>
+            <p class="font-bold">{{ reservacion.cancha.nombre | titlecase }}
+              <small>({{reservacion.tipo_cancha}})</small></p>
+          </div>
+        </div>
+
+        <!-- INICIO PARTE BOLETA -->
+
+        <div class="flex flex-col md:gap-1.5 pt-2">
+          <div class="flex w-full">
+            <div class="w-3/5 items-start flex flex-col justify-start">
+              <p class="text-forestGreen-600 text-[10px] font-bold">Fecha</p>
+              <p class="text-[12px]">
+                {{ reservacion.fecha | date : "EEEE, MMMM d " | titlecase }}
+              </p>
+            </div>
+
+            <div class="w-2/5 items-start flex flex-col justify-start">
+              <p class="text-forestGreen-600 text-[10px] font-bold">Horario</p>
+              <p class="text-[12px]">
+                {{ reservacion.hora_inicio | time24to12 }} -
+                {{ reservacion.hora_fin | time24to12 }}
+              </p>
+            </div>
+          </div>
+          <div class="flex w-full">
+            <div class="w-3/5 items-start flex flex-col justify-start">
+              <p class="text-forestGreen-600 text-[10px] font-bold">
+                Monto de reservación
+              </p>
+              <p class="text-base font-bold">S/ {{ reservacion.subtotal }}</p>
+            </div>
+
+            <div class="w-2/5 items-start flex flex-col justify-start">
+              <p class="text-forestGreen-600 text-[10px] font-bold">
+                Falta pagar
+              </p>
+              <p class="text-base font-bold">S/ {{ reservacion.restante }}</p>
+            </div>
+          </div>
+          <div class="flex items-center justify-center">
+            <p class="font-jetBrainsMono text-[12px]">
+              Creación: {{ reservacion.createdAt | date : "medium" }}
+            </p>
+          </div>
+        </div>
+      </div>
+    </div>
+
+  </div>
+  <button (click)="confirmar_reservacion(reservacion._id)"
+    class="py-1 text-sm flex gap-1.5 items-center px-4 bg-forestGreen-50 border border-forestGreen-500 rounded-full shadow-lg transition hover:bg-gray-100 mt-3">
+    Confirmar reservación
+  </button>
+  }
+</div>
+
+<div class="shadow-md sm:rounded-lg">
+  <div class="flex flex-column sm:flex-row flex-wrap space-y-4 sm:space-y-0 items-center justify-between pb-4">
+   <!--  <label for="table-search" class="sr-only">Buscar</label> -->
+    <div class="relative">
+      <div class="absolute inset-y-0 left-0 rtl:inset-r-0 rtl:right-0 flex items-center ps-3 pointer-events-none">
+        <svg class="w-5 h-5 text-gray-500 dark:text-gray-400" aria-hidden="true" fill="currentColor" viewBox="0 0 20 20"
+          xmlns="http://www.w3.org/2000/svg">
+          <path fill-rule="evenodd"
+            d="M8 4a4 4 0 100 8 4 4 0 000-8zM2 8a6 6 0 1110.89 3.476l4.817 4.817a1 1 0 01-1.414 1.414l-4.816-4.816A6 6 0 012 8z"
+            clip-rule="evenodd"></path>
+        </svg>
+      </div>
+      <input [(ngModel)]="search" name="search" (input)="onSearchChange($event)" autocomplete="off"
+        [readonly]="load_data" type="text" id="table-search"
+        class="block p-2 ps-10 text-sm text-gray-900 border border-gray-300 rounded-lg w-80 bg-gray-50 focus:ring-blue-500 focus:border-blue-500 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
+        placeholder="Buscar..." />
+    </div>
+  </div>
+  <div class="relative overflow-x-auto shadow-md sm:rounded-lg">
+    <table class="w-full text-sm text-left rtl:text-right text-gray-500 dark:text-gray-400">
+      <thead class="text-xs text-gray-700 uppercase bg-gray-300 dark:bg-gray-700 dark:text-gray-400">
+        <tr>
+          <th scope="col" class="px-2 py-3 text-center">Codigo</th>
+          <th scope="col" class="px-2 py-3 text-center sticky left-0 z-10 backdrop-blur-sm">Cliente</th>
+          <th scope="col" class="px-2 py-3 text-center">Telefono</th>
+          <th scope="col" class="px-2 py-3 text-center">Monto</th>
+          <th scope="col" class="px-2 py-3 text-center">Opciones</th>
+          <th scope="col" class="px-2 py-3 text-center">Cancha Reservada</th>
+          <th scope="col" class="px-2 py-3 text-center">Fecha Reserva</th>
+          <th scope="col" class="px-2 py-3 text-center">Horas</th>
+          <th scope="col" class="px-2 py-3 text-center">Estado</th>
+        </tr>
+      </thead>
+      <tbody>
+        @if (!load_data) {
+        @for (item of reservacionesOtras | paginate:currentPage:pageSize; track $index) {
+        <tr class="bg-white border-b dark:bg-gray-800 dark:border-gray-700 hover:bg-gray-50 dark:hover:bg-gray-600">
+          <th scope="row" class="px-2 py-3 font-medium text-gray-900 whitespace-nowrap dark:text-white">
+            {{ item.codigo }}
+          </th>
+          <td class="px-2 py-3 sticky left-0 backdrop-blur-3xl dark:bg-gray-800 z-10">
+            {{ item.cliente.nombres | textShorted }}
+          </td>
+          <td class="px-2 py-3">
+            {{ item.cliente.telefono }}
+          </td>
+          <td class="px-2 py-3">S/ {{ item.subtotal }}</td>
+          <td class="px-2 py-3">
+            @if (item.estado === 'Reservado') {
+            <button [disabled]="item.pagado" (click)="eliminar_reservacion(item._id)"
+              class="flex justify-between items-center px-2 py-1 w-full text-xs font-medium rounded-lg border border-red-500 bg-red-100 text-red-500">
+              <p class="mx-auto">
+                Eliminar
+              </p>
+            </button>
+            }
+            @if (item.estado === 'Finalizado') {
+            <button [disabled]="item.pagado" (click)="openModal(item._id)"
+              [ngClass]="{ ' border border-red-500 text-gray-500': !item.pagado }"
+              class="flex justify-between items-center px-2 py-1 w-full text-xs font-medium rounded-lg  bg-slate-50 text-forestGreen-500 bg-transparent">
+              <p class="mx-auto bg-transparent">
+                @if (item.pagado) { Pagado } @if (!item.pagado) { Confirmar }
+              </p>
+            </button>
+            }
+            <!-- Modal confirmar -->
+            <div id="modal-{{ item._id }}" tabindex="-1" aria-hidden="true"
+              class="hidden overflow-y-auto overflow-x-hidden fixed top-0 right-0 left-0 z-50 justify-center items-center w-full md:inset-0 h-[calc(100%-1rem)] max-h-full">
+              <div class="relative p-4 w-full max-w-sm max-h-full">
+                <div class="relative bg-white rounded-lg shadow dark:bg-gray-700">
+                  <!-- Modal header -->
+                  <div class="flex items-center justify-between p-4 md:p-5 border-b rounded-t dark:border-gray-600">
+                    <h3 class="text-lg font-semibold text-gray-900 dark:text-white">
+                      Confirmar pago completo
+                    </h3>
+                    <button type="button" (click)="closeModal(item._id)"
+                      class="text-gray-400 bg-transparent hover:bg-gray-200 hover:text-gray-900 rounded-lg text-sm w-8 h-8 ms-auto inline-flex justify-center items-center dark:hover:bg-gray-600 dark:hover:text-white">
+                      <svg class="w-3 h-3" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 14 14">
+                        <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                          d="m1 1 6 6m0 0 6 6M7 7l6-6M7 7l-6 6" />
+                      </svg>
+                      <span class="sr-only">Close modal</span>
+                    </button>
+                  </div>
+                  <!-- Modal body -->
+                  <div class="p-4 md:p-5">
+                    <!-- Precios para horas de dia -->
+                    <p class="text-gray-500 dark:text-gray-400">
+                      Precio total: S/.
+                      {{
+                      item.total_pagar
+                      }}
+                    </p>
+                    <p class="text-gray-500 dark:text-gray-400">
+                      Adelantado: S/. {{ item.subtotal }}
+                    </p>
+                    <p class="text-gray-500 dark:text-gray-400">
+                      Restante: S/.
+                      {{
+                      item.restante
+                      }}
+                    </p>
+                    <div
+                      class="flex items-center justify-between p-4 md:p-5 border-t border-gray-200 rounded-b dark:border-gray-600">
+                      <button (click)="closeModal(item._id)" type="button"
+                        class="py-2.5 px-5 ms-3 text-sm text-gray-900 focus:outline-none bg-white rounded-lg border border-gray-200 hover:bg-gray-100 hover:text-gray-900 focus:z-10 focus:ring-4 focus:ring-gray-100">
+                        Cancelar
+                      </button>
+                      <button (click)="
+                          closeModal(item._id);
+                          actualizar_reserva_total_grass(
+                            item._id,
+                            item.total_pagar
+                          )
+                        " type="button"
+                        class="ms-3 text-white bg-red-500 hover:bg-red-600 focus:ring-4 focus:outline-none focus:ring-red-300 font-medium rounded-lg text-sm px-5 py-2.5 text-center">
+                        Confirmar
+                      </button>
+                    </div>
+                    <!-- Precios para horas de noche -->
+                  </div>
+                </div>
+              </div>
+            </div>
+          </td>
+          <td class="px-2 py-3">
+            {{ item.cancha.nombre }} <small>({{item.tipo_cancha}})</small>
+          </td>
+          <td class="px-2 py-3">
+            {{ item.fecha | date : "mediumDate" }}
+          </td>
+          <td class="px-2 py-3">
+            <span class="flex flex-col md:flex-row">
+              <p class="text-nowrap">
+                {{ item.hora_inicio | time24to12 }}
+              </p>
+              <p class="hidden md:block">
+                -
+              </p>
+              <p class="text-nowrap">
+                {{ item.hora_fin | time24to12 }}
+              </p>
+            </span>
+          </td>
+          <td class="px-2 py-3">
+            {{ item.estado }}
+          </td>
+        </tr>
+        } }
+      </tbody>
+    </table>
+  
+    <!-- paginacion -->
+    @if (totalPages > 1) {
     <app-pagination [currentPage]="currentPage" [totalPages]="totalPages" (pageChange)="onPageChange($event)">
     </app-pagination>
-  }
- <!-- paginacion -->
+    }
+    <!-- paginacion -->
+  </div>
+  
 </div>
+
 
 }
