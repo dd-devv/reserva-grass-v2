@@ -1,6 +1,6 @@
 <div class="wrapper">
     <!-- <app-card-sport-features-skeleton></app-card-sport-features-skeleton> -->
-    <div class="flex w-full justify-center px-4 ">
+    <div class="flex w-full justify-center mb-2 ">
         <p class="shadow rounded-lg w-full text-center py-2">
             <span class="font-bold font-jetBrainsMono text-xl">
                 {{empresa.nombre}}
@@ -19,7 +19,7 @@
             class="flex flex-row justify-start md:justify-center  lg:flex-col lg:justify-start mb-4 overflow-y-auto overflow-x-auto overflow-hidden gap-8 lg:h-[730px] ">
             @if (load_data) {
             <app-card-sport-features-skeleton></app-card-sport-features-skeleton>
-            }
+            } 
             @if (!load_data) {
             @for (cancha of canchas; track $index) {
             <app-card-sport-features [cancha]="cancha" (tipo_cancha)="handleCancha($event)"
