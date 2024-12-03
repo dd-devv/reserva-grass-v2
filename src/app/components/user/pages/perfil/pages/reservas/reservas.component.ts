@@ -95,7 +95,6 @@ export class ReservasComponent implements OnInit {
       response => {
         this.cancha = response.data;
         this.load_data = false;
-        this.calcular_subtotal();
       }
     );
 
@@ -140,10 +139,6 @@ export class ReservasComponent implements OnInit {
   closeModal() {
     this.isOpen = false;
     document.body.style.overflow = 'auto';
-  }
-
-  calcular_subtotal() {
-    this.subtotal = (this.horaFin! - this.horaInicio!) * this.cancha.precio_reservacion;
   }
 
   verFinalizadas() {

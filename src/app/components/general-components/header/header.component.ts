@@ -20,7 +20,7 @@ export class HeaderComponent implements OnInit {
     this.screenHeight = window.innerHeight;
 
     if (this.screenHeight > this.screenWidth) {
-      this.isMenuHidden = true;
+      this.isMenuHidden = false;
     }
   }
 
