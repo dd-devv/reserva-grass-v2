@@ -4,6 +4,9 @@ module.exports = {
   content: ["./src/**/*.{html,ts}", "./node_modules/flowbite/**/*.js"],
   theme: {
     extend: {
+      screens:{
+print:{raw:'print'}
+      },
       backgroundImage: {
         'user-pattern': "url('/assets/img/default_user.png')",
       },

@@ -6,6 +6,8 @@ import { ToastService } from '../../../../../../services/toast/toast.service';
 import { io, Socket } from 'socket.io-client';
 import { GLOBAL } from '../../../../../../services/global';
 import html2canvas from 'html2canvas';
+import {jsPDF} from 'jspdf';
+
 
 @Component({
   selector: 'app-reservas',
@@ -328,34 +330,41 @@ export class ReservasComponent implements OnInit {
 
   captureAndSaveView(id: any, codigo: string) {
     this.descargando = true;
-
+  
     const container = document.getElementById(id);
-
+  
     if (container) {
       // Capturar el contenido del contenedor
       html2canvas(container).then(contentCanvas => {
-        // Crear un nuevo canvas solo para el contenido capturado
+        // Definir un padding transparente (por ejemplo, 10px)
+        const padding = 10;
+  
+        // Crear un nuevo canvas con el padding
         const combinedCanvas = document.createElement('canvas');
-        combinedCanvas.width = contentCanvas.width;
-        combinedCanvas.height = contentCanvas.height;
-
+        combinedCanvas.width = contentCanvas.width + padding * 2;
+        combinedCanvas.height = contentCanvas.height + padding * 2;
+  
         const ctx = combinedCanvas.getContext('2d')!;
-
-        // Dibujar el contenido capturado
-        ctx.drawImage(contentCanvas, 0, 0);
-
+  
+        // Rellenar el fondo del nuevo canvas con transparencia
+        ctx.fillStyle = 'transparent';
+        ctx.fillRect(0, 0, combinedCanvas.width, combinedCanvas.height);
+  
+        // Dibujar el contenido capturado dentro del canvas con el padding
+        ctx.drawImage(contentCanvas, padding, padding);
+  
         // Obtener la imagen capturada como una URL
         const combinedImage = combinedCanvas.toDataURL('image/png');
-
-        // Crear un elemento a para la descarga
+  
+        // Crear un elemento <a> para la descarga
         const downloadLink = document.createElement('a');
         downloadLink.href = combinedImage;
         downloadLink.download = `${codigo}.png`;
-
+  
         // Simular el clic en el enlace
         const clickEvent = new MouseEvent('click', { bubbles: true, cancelable: true, view: window });
         downloadLink.dispatchEvent(clickEvent);
-
+  
         // Reiniciar la propiedad descargando después de la simulación del clic
         this.descargando = false;
       });
@@ -374,5 +383,8 @@ export class ReservasComponent implements OnInit {
 
     window.location.reload();
   }
+
+
+  
 
 }
