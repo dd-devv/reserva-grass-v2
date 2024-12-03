@@ -11,7 +11,7 @@ export class TextShortedPipe implements PipeTransform {
 
     const palabras = texto.split(' ');
 
-    if (palabras.length <= 2) {
+    if (palabras.length < 2) {
       return texto;
     }
 
