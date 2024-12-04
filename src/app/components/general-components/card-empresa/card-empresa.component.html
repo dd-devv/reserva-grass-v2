@@ -1,5 +1,5 @@
 <div
-  class="max-w-80 flex flex-col justify-around rounded-lg p-3 pb-0 bg-gray-50 border border-gray-300 w-full h-96 shadow-md"
+  class="max-w-80 flex flex-col rounded-lg p-3 bg-gray-50 border border-gray-300 w-full shadow-md"
 >
   <div class="object-contain w-full h-40">
     <div class="relative h-full overflow-hidden">
@@ -235,13 +235,22 @@
       <p class="font-bold text-lg font-quicksand text-center pt-1 pb-1.5">
         {{ caracteristicas.empresa.nombre | titlecase }}
       </p>
-      <div class=" flex items-center gap-2">
-        <svg width="14" height="20" viewBox="0 0 14 20" fill="none" xmlns="http://www.w3.org/2000/svg">
-          <path d="M7 9.5C6.33696 9.5 5.70107 9.23661 5.23223 8.76777C4.76339 8.29893 4.5 7.66304 4.5 7C4.5 6.33696 4.76339 5.70107 5.23223 5.23223C5.70107 4.76339 6.33696 4.5 7 4.5C7.66304 4.5 8.29893 4.76339 8.76777 5.23223C9.23661 5.70107 9.5 6.33696 9.5 7C9.5 7.3283 9.43534 7.65339 9.3097 7.95671C9.18406 8.26002 8.99991 8.53562 8.76777 8.76777C8.53562 8.99991 8.26002 9.18406 7.95671 9.3097C7.65339 9.43534 7.3283 9.5 7 9.5ZM7 0C5.14348 0 3.36301 0.737498 2.05025 2.05025C0.737498 3.36301 0 5.14348 0 7C0 12.25 7 20 7 20C7 20 14 12.25 14 7C14 5.14348 13.2625 3.36301 11.9497 2.05025C10.637 0.737498 8.85652 0 7 0Z" fill="#135429"/>
-          </svg>
-          
+      <div class="flex items-center gap-2 mb-2">
+        <svg
+          width="14"
+          height="20"
+          viewBox="0 0 14 20"
+          fill="none"
+          xmlns="http://www.w3.org/2000/svg"
+        >
+          <path
+            d="M7 9.5C6.33696 9.5 5.70107 9.23661 5.23223 8.76777C4.76339 8.29893 4.5 7.66304 4.5 7C4.5 6.33696 4.76339 5.70107 5.23223 5.23223C5.70107 4.76339 6.33696 4.5 7 4.5C7.66304 4.5 8.29893 4.76339 8.76777 5.23223C9.23661 5.70107 9.5 6.33696 9.5 7C9.5 7.3283 9.43534 7.65339 9.3097 7.95671C9.18406 8.26002 8.99991 8.53562 8.76777 8.76777C8.53562 8.99991 8.26002 9.18406 7.95671 9.3097C7.65339 9.43534 7.3283 9.5 7 9.5ZM7 0C5.14348 0 3.36301 0.737498 2.05025 2.05025C0.737498 3.36301 0 5.14348 0 7C0 12.25 7 20 7 20C7 20 14 12.25 14 7C14 5.14348 13.2625 3.36301 11.9497 2.05025C10.637 0.737498 8.85652 0 7 0Z"
+            fill="#135429"
+          />
+        </svg>
+
         <a
-          class="font-semibold text-base text-forestGreen-900"
+          class="font-semibold text-base text-forestGreen-900 leading-4"
           href="{{ caracteristicas.empresa.ubicacion }}"
           target="_blank"
         >
@@ -262,14 +271,16 @@
         </a>
       </div>
       <div>
-        <p class="font-normal text-xs text-gray-600 text-pretty line-clamp-3">
+        <p
+          class="font-normal text-xs text-gray-600 text-pretty line-clamp-3 mb-3"
+        >
           {{ caracteristicas.empresa.referencia }}
         </p>
       </div>
     </div>
-    <div class="mt-auto flex justify-center mb-2">
+    <div class="mt-auto flex justify-center">
       <button
-        class="text-sm w-full px-7 flex gap-2 justify-center items-center w-fit p-4 self-center bg-forestGreen-600 rounded-lg py-1.5 hover:scale-105 hover:bg-forestGreen-500 text-forestGreen-50 mb-1"
+        class="text-sm w-full flex gap-2 py-1 justify-center items-center self-center bg-forestGreen-600 rounded-lg hover:scale-105 hover:bg-forestGreen-500 text-forestGreen-50"
         (click)="redirect(caracteristicas.empresa.path)"
       >
         Reservar
