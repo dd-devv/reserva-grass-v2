@@ -3,7 +3,7 @@ import { Router } from '@angular/router';
 import { UserService } from '../../../../services/user.service';
 import { Title } from '@angular/platform-browser';
 import { ToastrService } from 'ngx-toastr';
-import { GLOBAL } from '../../../../services/global';
+import { environment } from '../../../../../environments/environment';
 
 interface BotonHora {
   estado: string;
@@ -46,7 +46,7 @@ export class CanchasComponent implements OnInit {
     private _title: Title,
     private _toastrService: ToastrService
   ) {
-    this.url = GLOBAL.url;
+    this.url = environment.url;
     const ruta = _router.url.split('/');
     this.path = ruta[ruta.length - 1];
   }

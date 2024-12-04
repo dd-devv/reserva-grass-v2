@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
-import { GLOBAL } from '../../../../services/global';
 import { io, Socket } from 'socket.io-client';
 import { UserService } from '../../../../services/user.service';
+import { environment } from '../../../../../environments/environment';
 
 @Component({
   selector: 'app-suscripcion',
@@ -23,8 +23,8 @@ export class SuscripcionComponent implements OnInit {
     this.token = localStorage.getItem('token') || sessionStorage.getItem('token');
     this.id = localStorage.getItem('_id') || sessionStorage.getItem('_id');
 
-    this.socket = io(GLOBAL.url_socket, {
-      path: '/socket.io'
+    this.socket = io(environment.url_socket, {
+      path: environment.socketPath
     });
     this.socket.on('connect', () => {
     });

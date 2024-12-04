@@ -1,5 +1,4 @@
 import { Component, OnInit } from '@angular/core';
-import { GLOBAL } from '../../../../services/global';
 import { io, Socket } from 'socket.io-client';
 import { Router } from '@angular/router';
 import { Title } from '@angular/platform-browser';
@@ -7,6 +6,7 @@ import { UserService } from '../../../../services/user.service';
 import { ToastService } from '../../../../services/toast/toast.service';
 import { BehaviorSubject, debounceTime, distinctUntilChanged, Subject, takeUntil } from 'rxjs';
 import { initFlowbite, Modal, ModalInterface, ModalOptions } from 'flowbite';
+import { environment } from '../../../../../environments/environment';
 
 @Component({
   selector: 'app-reservaciones',
@@ -40,7 +40,7 @@ export class ReservacionesComponent implements OnInit {
 
   public search = '';
 
-  public url_socket = GLOBAL.url_socket;
+  public url_socket = environment.url_socket;
   private socket: Socket;
 
   public exist_susc = true;
@@ -59,8 +59,8 @@ export class ReservacionesComponent implements OnInit {
     this.token = localStorage.getItem('token') || sessionStorage.getItem('token');
     this.id = localStorage.getItem('_id') || sessionStorage.getItem('_id');
 
-    this.socket = io(GLOBAL.url_socket, {
-      path: '/socket.io'
+    this.socket = io(environment.url_socket, {
+      path: environment.socketPath
     });
     this.socket.on('connect', () => {
     });

@@ -1,8 +1,8 @@
 import { Component, Input, OnInit } from '@angular/core';
 import { caracteristicasCancha } from './core/core';
-import { GLOBAL } from '../../../services/global';
 import { AuthService } from '../../../services/auth.service';
 import { Router } from '@angular/router';
+import { environment } from '../../../../environments/environment';
 
 @Component({
   selector: 'app-card-empresa',
@@ -22,7 +22,7 @@ export class CardEmpresaComponent implements OnInit {
     private _authService: AuthService,
     private _router: Router
   ) {
-    this.url = GLOBAL.url;
+    this.url = environment.url;
   }
 
   ngOnInit(): void {

@@ -3,10 +3,10 @@ import { DomSanitizer, SafeUrl, Title } from '@angular/platform-browser';
 import { ActivatedRoute } from '@angular/router';
 import { UserService } from '../../../../../services/user.service';
 import { ToastService } from '../../../../../services/toast/toast.service';
-import { GLOBAL } from '../../../../../services/global';
 import { ImageCroppedEvent, LoadedImage } from 'ngx-image-cropper';
 import { v4 as uuidv4 } from 'uuid';
 import { initFlowbite } from 'flowbite';
+import { environment } from '../../../../../../environments/environment';
 
 @Component({
   selector: 'app-galeria',
@@ -70,7 +70,7 @@ handleFileUpload(files: FileList) {
     private sanitizer: DomSanitizer
   ) {
     this.token = localStorage.getItem('token');
-    this.url = GLOBAL.url;
+    this.url = environment.url;
 
     this._route.params.subscribe((params) => {
       this.id = params['id_cancha'];

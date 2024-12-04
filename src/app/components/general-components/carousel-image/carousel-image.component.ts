@@ -1,6 +1,6 @@
 import { AfterViewInit, Component, ElementRef, Input, OnDestroy, OnInit, ViewChild } from '@angular/core';
-import { GLOBAL } from '../../../services/global';
 import { CarouselItem, CarouselOptions, initFlowbite } from 'flowbite';
+import { environment } from '../../../../environments/environment';
 
 interface GalleryItem {
   imagen: string;
@@ -25,7 +25,7 @@ export class CarouselImageComponent implements OnInit, AfterViewInit, OnDestroy 
 
   private carousel: any;
   public images: ImageItem[] = [];
-  private url = GLOBAL.url;
+  private url = environment.url;
   public uniqueId: string;
 
   constructor() {
