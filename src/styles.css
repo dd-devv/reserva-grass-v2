@@ -210,30 +210,28 @@ body {
   background-color: #0056b3; /* Color más oscuro cuando se pasa el ratón por encima */
 }
 
-.mirko{
+.mirko {
   display: grid;
   grid-template-columns: 1fr;
   grid-gap: 20px;
   max-width: 1440px;
   margin: auto;
+  margin-bottom: 50px;
 }
 
-@media screen and (min-width: 576px){
-  .mirko{
-      grid-template-columns: 1fr 1fr;
+@media screen and (min-width: 576px) {
+  .mirko {
+    grid-template-columns: 1fr 1fr;
   }
-  
 }
 
-@media screen and (min-width: 900px){
-  .mirko{
-      grid-template-columns: 1fr 1fr 1fr;
+@media screen and (min-width: 900px) {
+  .mirko {
+    grid-template-columns: 1fr 1fr 1fr;
   }
-  
 }
-@media screen and (min-width: 1200px){
-  .mirko{
-      grid-template-columns: 1fr 1fr 1fr 1fr;
+@media screen and (min-width: 1200px) {
+  .mirko {
+    grid-template-columns: 1fr 1fr 1fr 1fr;
   }
-  
 }
