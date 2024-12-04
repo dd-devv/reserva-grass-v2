@@ -1,10 +1,10 @@
 import { AfterViewInit, Component, EventEmitter, Input, OnInit, Output, SimpleChanges } from '@angular/core';
-import { GLOBAL } from '../../../services/global';
 import { Router } from '@angular/router';
 import { ToastService } from '../../../services/toast/toast.service';
 import { UserService } from '../../../services/user.service';
 import { Datepicker, DatepickerOptions, initFlowbite } from 'flowbite';
 import { io, Socket } from 'socket.io-client';
+import { environment } from '../../../../environments/environment';
 
 @Component({
   selector: 'app-card-horario-empresa',
@@ -37,7 +37,7 @@ export class CardHorarioEmpresaComponent implements OnInit, AfterViewInit {
   public reservacion: any = {};
   public load_reserva = true;
 
-  public url_socket = GLOBAL.url_socket;
+  public url_socket = environment.url_socket;
   private socket: Socket;
 
   isModalVisible: boolean = false;
@@ -66,8 +66,8 @@ export class CardHorarioEmpresaComponent implements OnInit, AfterViewInit {
     unMesDespues.setMonth(unMesDespues.getMonth() + 1);
     this.fechaMaxima = this.formatearFecha(unMesDespues);
 
-    this.socket = io(GLOBAL.url_socket, {
-      path: '/socket.io'
+    this.socket = io(environment.url_socket, {
+      path: environment.socketPath
     });
     this.socket.on('connect', () => {
     });

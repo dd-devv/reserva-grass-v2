@@ -4,7 +4,7 @@ import { initFlowbite } from 'flowbite';
 import { UserService } from '../../../../services/user.service';
 import { Title } from '@angular/platform-browser';
 import { ToastrService } from 'ngx-toastr';
-import { GLOBAL } from '../../../../services/global';
+import { environment } from '../../../../../environments/environment';
 
 
 @Component({
@@ -33,7 +33,7 @@ export class CanchasComponent implements OnInit {
 
     this.token = localStorage.getItem('token') || sessionStorage.getItem('token');
     this.id = localStorage.getItem('_id') || sessionStorage.getItem('_id');
-    this.url = GLOBAL.url;
+    this.url = environment.url;
   }
 
   ngOnInit(): void {

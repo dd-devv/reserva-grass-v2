@@ -2,9 +2,9 @@ import { Component, OnInit } from '@angular/core';
 import { UserService } from '../../../../services/user.service';
 import { Title } from '@angular/platform-browser';
 import { ToastService } from '../../../../services/toast/toast.service';
-import { GLOBAL } from '../../../../services/global';
 import Chart from 'chart.js/auto';
 import { io, Socket } from 'socket.io-client';
+import { environment } from '../../../../../environments/environment';
 
 interface BotonHora {
   estado: string;
@@ -60,7 +60,7 @@ export class HomeComponent implements OnInit {
 
   ahora: Date = new Date();
 
-  public url_socket = GLOBAL.url_socket;
+  public url_socket = environment.url_socket;
   private socket: Socket;
 
   public meses_comp: string[] = ['Enero', 'Febrero', 'Marzo', 'Abril', 'Mayo', 'Junio', 'Julio', 'Agosto', 'Septiembre', 'Octubre', 'Noviembre', 'Diciembre'];
@@ -73,10 +73,10 @@ export class HomeComponent implements OnInit {
   ) {
     this.token = localStorage.getItem('token') || sessionStorage.getItem('token');
     this.id = localStorage.getItem('_id') || sessionStorage.getItem('_id');
-    this.url = GLOBAL.url;
+    this.url = environment.url;
 
-    this.socket = io(GLOBAL.url_socket, {
-      path: '/socket.io'
+    this.socket = io(environment.url_socket, {
+      path: environment.socketPath
     });
     this.socket.on('connect', () => {
     });

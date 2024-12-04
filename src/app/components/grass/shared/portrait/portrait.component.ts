@@ -1,5 +1,4 @@
 import { Component, OnInit } from '@angular/core';
-import { GLOBAL } from '../../../../services/global';
 import { DomSanitizer, SafeUrl } from '@angular/platform-browser';
 import { ToastService } from '../../../../services/toast/toast.service';
 import { UserService } from '../../../../services/user.service';
@@ -7,6 +6,7 @@ import { ImageCroppedEvent, LoadedImage } from 'ngx-image-cropper';
 import { v4 as uuidv4 } from 'uuid';
 import { Router } from '@angular/router';
 import { Modal } from 'flowbite';
+import { environment } from '../../../../../environments/environment';
 
 @Component({
   selector: 'app-portrait',
@@ -41,7 +41,7 @@ export class PortraitComponent implements OnInit {
   ) {
     this.token = localStorage.getItem('token') || sessionStorage.getItem('token');
     this.id = localStorage.getItem('_id') || sessionStorage.getItem('_id');
-    this.url = GLOBAL.url;
+    this.url = environment.url;
   }
 
   ngOnInit(): void {

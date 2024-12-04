@@ -2,9 +2,9 @@ import { Component, OnInit } from '@angular/core';
 import { Title } from '@angular/platform-browser';
 import { UserService } from '../../../../services/user.service';
 import { GuestService } from '../../../../services/guest.service';
-import { GLOBAL } from '../../../../services/global';
 import { forkJoin, map, of, switchMap } from 'rxjs';
 import { Caracteristica, Empresa, Region } from '../../../general-components/interfaces/interfaces';
+import { environment } from '../../../../../environments/environment';
 
 @Component({
   selector: 'app-home',
@@ -68,7 +68,7 @@ export class HomeComponent implements OnInit {
     private _userService: UserService
   ) {
 
-    this.url = GLOBAL.url;
+    this.url = environment.url;
     this.user_lc = undefined;
 
     this.token =

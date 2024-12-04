@@ -2,7 +2,6 @@ import { Injectable } from '@angular/core';
 import { JwtHelperService } from '@auth0/angular-jwt';
 import { Router } from '@angular/router';
 import { UserService } from './user.service';
-import { GLOBAL } from './global';
 import { HttpClient } from '@angular/common/http';
 import { catchError, map, Observable, of } from 'rxjs';
 
@@ -11,7 +10,6 @@ import { catchError, map, Observable, of } from 'rxjs';
 })
 export class AuthService {
   private jwtHelper = new JwtHelperService();
-  private apiUrl = GLOBAL.url;
 
   constructor(
     private router: Router,

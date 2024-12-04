@@ -4,9 +4,9 @@ import { UserService } from '../../../../../../services/user.service';
 import { Title } from '@angular/platform-browser';
 import { ToastService } from '../../../../../../services/toast/toast.service';
 import { io, Socket } from 'socket.io-client';
-import { GLOBAL } from '../../../../../../services/global';
 import html2canvas from 'html2canvas';
 import {jsPDF} from 'jspdf';
+import { environment } from '../../../../../../../environments/environment';
 
 
 @Component({
@@ -53,7 +53,7 @@ export class ReservasComponent implements OnInit {
   currentPage = 1;
   pageSize = 8;
 
-  public url_socket = GLOBAL.url_socket;
+  public url_socket = environment.url_socket;
   private socket: Socket;
 
   public ver_finalizadas = false;
@@ -81,8 +81,8 @@ export class ReservasComponent implements OnInit {
       this.fromOut = false;
     }
 
-    this.socket = io(GLOBAL.url_socket, {
-      path: '/socket.io'
+    this.socket = io(environment.url_socket, {
+      path: environment.socketPath
     });
     this.socket.on('connect', () => {
     });

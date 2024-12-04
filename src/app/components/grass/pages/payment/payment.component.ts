@@ -1,9 +1,9 @@
 import { Component, OnInit } from '@angular/core';
-import { GLOBAL } from '../../../../services/global';
 import { UserService } from '../../../../services/user.service';
 import { io, Socket } from 'socket.io-client';
 import { ToastService } from '../../../../services/toast/toast.service';
 import { Router } from '@angular/router';
+import { environment } from '../../../../../environments/environment';
 
 @Component({
   selector: 'app-payment',
@@ -31,8 +31,8 @@ export class PaymentComponent implements OnInit {
     this.token = localStorage.getItem('token') || sessionStorage.getItem('token');
     this.id = localStorage.getItem('_id') || sessionStorage.getItem('_id');
 
-    this.socket = io(GLOBAL.url_socket, {
-      path: '/socket.io'
+    this.socket = io(environment.url_socket, {
+      path: environment.socketPath
     });
     this.socket.on('connect', () => {
     });

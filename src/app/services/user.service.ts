@@ -1,8 +1,8 @@
 import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs';
-import { GLOBAL } from './global';
 import { JwtHelperService } from "@auth0/angular-jwt";
+import { environment } from '../../environments/environment';
 
 @Injectable({
   providedIn: 'root'
@@ -14,7 +14,7 @@ export class UserService {
   constructor(
     private _http: HttpClient
   ) {
-    this.url = GLOBAL.url;
+    this.url = environment.url;
   }
 
   //USER

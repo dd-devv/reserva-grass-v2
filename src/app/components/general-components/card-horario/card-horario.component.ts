@@ -5,8 +5,8 @@ import type { DatepickerOptions } from 'flowbite';
 import { ToastService } from '../../../services/toast/toast.service';
 import { AuthService } from '../../../services/auth.service';
 import { UserService } from '../../../services/user.service';
-import { GLOBAL } from '../../../services/global';
 import { io, Socket } from 'socket.io-client';
+import { environment } from '../../../../environments/environment';
 
 @Component({
   selector: 'app-card-horario',
@@ -34,7 +34,7 @@ export class CardHorarioComponent implements OnInit, AfterViewInit {
   public user_lc: any;
   public mostrar_btn_next = false;
 
-  public url_socket = GLOBAL.url_socket;
+  public url_socket = environment.url_socket;
   private socket: Socket;
 
   constructor(
@@ -55,8 +55,8 @@ export class CardHorarioComponent implements OnInit, AfterViewInit {
     this.fechaMaxima = this.formatearFecha(unMesDespues);
 
 
-    this.socket = io(GLOBAL.url_socket, {
-      path: '/socket.io'
+    this.socket = io(environment.url_socket, {
+      path: environment.socketPath
     });
     this.socket.on('connect', () => {
     });
