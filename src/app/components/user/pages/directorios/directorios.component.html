@@ -1,0 +1,200 @@
+<div class="wrapper">
+    @if (load_data) {
+    <div class="relative overflow-x-auto shadow-md sm:rounded-lg">
+        <table class="w-full text-sm text-left rtl:text-right text-gray-500 dark:text-gray-400">
+            <thead class="text-xs text-gray-700 uppercase bg-gray-300 dark:bg-gray-700 dark:text-gray-400">
+                <tr>
+                    <th scope="col" class="px-2 py-3 text-center max-w-2">
+                        <p class="skeleton-th">
+                            .
+                        </p>
+                    </th>
+                    <th scope="col" class="px-2 py-3 text-center ">
+                        <div class="flex justify-center">
+
+                            <p class="skeleton">
+                                Cliente
+                            </p>
+                        </div>
+                    </th>
+                    <th scope="col" class="px-2 py-3 text-center ">
+                        <div class="flex justify-center">
+
+                            <p class="skeleton">
+                                Telefono
+                            </p>
+                        </div>
+                    </th>
+                    <th scope="col" class="px-2 py-3 text-center ">
+                        <div class="flex justify-center">
+
+                            <p class="skeleton">
+                                Monto
+                            </p>
+                        </div>
+                    </th>
+                    <th scope="col" class="px-2 py-3 text-center ">
+                        <div class="flex justify-center">
+
+                            <p class="skeleton">
+                                Opciones
+                            </p>
+                        </div>
+                    </th>
+                    <th scope="col" class="px-2 py-3 text-center ">
+                        <div class="flex justify-center">
+                            <p class="skeleton">
+                                Canchaaaaaaaaaaa
+                            </p>
+                        </div>
+                    </th>
+                    <th scope="col" class="px-2 py-3 text-center ">
+                        <div class="flex justify-center">
+
+                            <p class="skeleton">
+                                Fecha
+                            </p>
+                        </div>
+                    </th>
+                    <th scope="col" class="px-2 py-3 text-center ">
+                        <div class="flex justify-center">
+
+                            <p class="skeleton">
+                                Horas
+                            </p>
+                        </div>
+                    </th>
+                    <th scope="col" class="px-2 py-3 text-center ">
+                        <div class="flex justify-center">
+
+                            <p class="skeleton">
+                                Estado
+                            </p>
+                        </div>
+                    </th>
+                </tr>
+            </thead>
+            <tbody>
+                @for (item of [1,2,3,4,5,6,7,8,9,10,11,12]; track $index) {
+                <tr
+                    class="bg-white border-b dark:bg-gray-800 dark:border-gray-700 hover:bg-gray-50 dark:hover:bg-gray-600">
+                    <th scope="row" class="px-2 py-3 font-medium text-gray-900 whitespace-nowrap dark:text-white ">
+                        <p class="skeleton-th">
+                            1
+                        </p>
+                    </th>
+                    <td class="px-2 py-3 ">
+                        <p class="skeleton">
+                            2
+                        </p>
+                    </td>
+                    <td class="px-2 py-3 ">
+                        <p class="skeleton">
+                            3
+                        </p>
+                    </td>
+                    <td class="px-2 py-3 ">
+                        <p class="skeleton">
+                            4
+                        </p>
+                    </td>
+                    <td class="px-2 py-3">
+                        <button
+                            class="flex justify-between items-center px-2 py-1 w-full text-xs font-medium rounded-lg  bg-slate-50 text-forestGreen-500 bg-transparent">
+                            <p class="mx-auto bg-transparent skeleton">
+                                5
+                            </p>
+                        </button>
+
+                    </td>
+                    <td class="px-2 py-3 ">
+                        <p class="skeleton">
+                            6
+                        </p>
+                    </td>
+                    <td class="px-2 py-3 ">
+                        <p class="skeleton">
+                            7
+                        </p>
+                    </td>
+                    <td class="px-2 py-3">
+                        <span class="flex flex-col md:flex-row">
+                            <p class="text-nowrap skeleton">
+                                8
+                            </p>
+                        </span>
+                    </td>
+                    <td class="px-2 py-3 ">
+                        <p class="skeleton">
+                            10
+                        </p>
+                    </td>
+                </tr>}
+            </tbody>
+        </table>
+    </div>
+    }
+
+
+    @if (!load_data) {
+    <div class="relative overflow-x-auto shadow-md sm:rounded-lg">
+        <table class="w-full text-sm text-left rtl:text-right text-gray-500 dark:text-gray-400">
+            <thead class="text-xs text-gray-700 uppercase bg-gray-300 dark:bg-gray-700 dark:text-gray-400">
+                <tr>
+                    <th scope="col" class="px-2 py-3 text-center">N°</th>
+                    <th scope="col" class="px-2 py-3">Nombre</th>
+                    <th scope="col" class="px-2 py-3">Region</th>
+                    <th scope="col" class="px-2 py-3">Provincia</th>
+                    <th scope="col" class="px-2 py-3">Direccion</th>
+                    <th scope="col" class="px-2 py-3 text-center">Ubicacion</th>
+                    <th scope="col" class="px-2 py-3 text-center">Accion</th>
+                </tr>
+            </thead>
+            <tbody>
+                @for (item of primeras_empresas | paginate:currentPage:pageSize; track $index) {
+                <tr
+                    class="bg-white border-b dark:bg-gray-800 dark:border-gray-700 hover:bg-gray-50 dark:hover:bg-gray-600">
+                    <th scope="row" class="px-2 py-3 font-medium text-gray-900 whitespace-nowrap dark:text-white">
+                        {{$index+1}}
+                    </th>
+                    <td class="px-2 py-3">
+                        {{item.nombre}}
+                    </td>
+                    <td class="px-2 py-3">
+                        {{item.region}}
+                    </td>
+                    <td class="px-2 py-3">
+                        {{item.provincia}}
+                    </td>
+                    <td class="px-2 py-3">
+                        {{item.direccion}}
+                    </td>
+                    <td class="px-2 py-3 flex justify-center items-center">
+                        <a href="{{item.ubicacion}}" target="_blank">
+                            <svg width="14" height="20" viewBox="0 0 14 20" fill="none"
+                                xmlns="http://www.w3.org/2000/svg">
+                                <path
+                                    d="M7 9.5C6.33696 9.5 5.70107 9.23661 5.23223 8.76777C4.76339 8.29893 4.5 7.66304 4.5 7C4.5 6.33696 4.76339 5.70107 5.23223 5.23223C5.70107 4.76339 6.33696 4.5 7 4.5C7.66304 4.5 8.29893 4.76339 8.76777 5.23223C9.23661 5.70107 9.5 6.33696 9.5 7C9.5 7.3283 9.43534 7.65339 9.3097 7.95671C9.18406 8.26002 8.99991 8.53562 8.76777 8.76777C8.53562 8.99991 8.26002 9.18406 7.95671 9.3097C7.65339 9.43534 7.3283 9.5 7 9.5ZM7 0C5.14348 0 3.36301 0.737498 2.05025 2.05025C0.737498 3.36301 0 5.14348 0 7C0 12.25 7 20 7 20C7 20 14 12.25 14 7C14 5.14348 13.2625 3.36301 11.9497 2.05025C10.637 0.737498 8.85652 0 7 0Z"
+                                    fill="#135429" />
+                            </svg>
+                        </a> &nbsp;
+                    </td>
+                    <td class="px-2 py-3 text-center">
+                        <button type="button"
+                            class="btn btn-primary btn-sm bg-forestGreen-500 px-3 py-1 rounded-md text-gray-100"
+                            [routerLink]="['/ver', item.path]">Reservar</button>
+                    </td>
+                </tr>
+                }
+            </tbody>
+        </table>
+
+        <!-- paginacion -->
+        @if (totalPages > 1) {
+        <app-pagination [currentPage]="currentPage" [totalPages]="totalPages" (pageChange)="onPageChange($event)">
+        </app-pagination>
+        }
+        <!-- paginacion -->
+    </div>
+    }
+</div>

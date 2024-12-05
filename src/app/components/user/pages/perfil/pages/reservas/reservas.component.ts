@@ -156,9 +156,9 @@ export class ReservasComponent implements OnInit {
     }
   }
 
-  async copiar_ubicacion_portapapeles(ubicacion: string) {
+  async copiar_ubicacion_portapapeles(nombre: string, direccion: string, ubicacion: string) {
     try {
-      await navigator.clipboard.writeText(`La ubicación de la cancha es ${ubicacion}`);
+      await navigator.clipboard.writeText(`Dirección de ${nombre}:  ${direccion}. \n Ubicación: ${ubicacion}.`);
       this._toastrService.success('Direccion copiado!');
     } catch (err) {
       this._toastrService.error('No se pudo copiar al portapapeles.');
