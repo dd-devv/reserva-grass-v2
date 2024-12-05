@@ -261,7 +261,7 @@ export class ReservasComponent implements OnInit {
 
       // Calcular total a pagar
       let totalPagar = 0;
-      let duracionReserva = hora_fin - hora_inicio - 1;
+      let duracionReserva = hora_fin - hora_inicio;
       if (duracionReserva == 0) {
         duracionReserva = 1;
       }
