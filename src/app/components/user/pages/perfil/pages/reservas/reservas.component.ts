@@ -5,7 +5,7 @@ import { Title } from '@angular/platform-browser';
 import { ToastService } from '../../../../../../services/toast/toast.service';
 import { io, Socket } from 'socket.io-client';
 import html2canvas from 'html2canvas';
-import {jsPDF} from 'jspdf';
+import { jsPDF } from 'jspdf';
 import { environment } from '../../../../../../../environments/environment';
 
 
@@ -93,11 +93,14 @@ export class ReservasComponent implements OnInit {
       this.openModal();
     }
 
-    this._userService.obtener_cancha_publico(this.idCancha).subscribe(
-      response => {
-        this.cancha = response.data;
+    this._userService.obtener_cancha_publico(this.idCancha).subscribe({
+      next: (res) => {
+        this.cancha = res.data;
         this.load_data = false;
+      },
+      error: (err) => {
       }
+    }
     );
 
     this.obtener_reservas();
@@ -330,41 +333,41 @@ export class ReservasComponent implements OnInit {
 
   captureAndSaveView(id: any, codigo: string) {
     this.descargando = true;
-  
+
     const container = document.getElementById(id);
-  
+
     if (container) {
       // Capturar el contenido del contenedor
       html2canvas(container).then(contentCanvas => {
         // Definir un padding transparente (por ejemplo, 10px)
         const padding = 10;
-  
+
         // Crear un nuevo canvas con el padding
         const combinedCanvas = document.createElement('canvas');
         combinedCanvas.width = contentCanvas.width + padding * 2;
         combinedCanvas.height = contentCanvas.height + padding * 2;
-  
+
         const ctx = combinedCanvas.getContext('2d')!;
-  
+
         // Rellenar el fondo del nuevo canvas con transparencia
         ctx.fillStyle = 'transparent';
         ctx.fillRect(0, 0, combinedCanvas.width, combinedCanvas.height);
-  
+
         // Dibujar el contenido capturado dentro del canvas con el padding
         ctx.drawImage(contentCanvas, padding, padding);
-  
+
         // Obtener la imagen capturada como una URL
         const combinedImage = combinedCanvas.toDataURL('image/png');
-  
+
         // Crear un elemento <a> para la descarga
         const downloadLink = document.createElement('a');
         downloadLink.href = combinedImage;
         downloadLink.download = `${codigo}.png`;
-  
+
         // Simular el clic en el enlace
         const clickEvent = new MouseEvent('click', { bubbles: true, cancelable: true, view: window });
         downloadLink.dispatchEvent(clickEvent);
-  
+
         // Reiniciar la propiedad descargando después de la simulación del clic
         this.descargando = false;
       });
@@ -385,6 +388,6 @@ export class ReservasComponent implements OnInit {
   }
 
 
-  
+
 
 }
