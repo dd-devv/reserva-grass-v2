@@ -101,7 +101,6 @@ export class CardHorarioComponent implements OnInit, AfterViewInit {
         maxDate: this.fechaMaxima,
         autohide: true,
         format: 'dd/mm/yyyy',
-        title: "prueba",
         autoSelectToday: 1
 
       };
