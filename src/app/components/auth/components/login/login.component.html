@@ -13,7 +13,7 @@
     <form [formGroup]="loginForm" (ngSubmit)="onSubmit()" autocomplete="off"
       class="flex flex-col justify-between rounded-l rounded-2xl md:border-none shadow-lg shadow-slate-200 border border-slate-400 px-2.5 md:px-8 py-4 gap-2.5 md:gap-4">
       <div>
-        <label for="email" class="block mb-1 text-sm font-medium text-gray-900 dark:text-white">Correo
+        <label for="email" class="block mb-1 text-sm font-medium text-gray-900 dark:text-white">Whatsapp o Correo
 
           <!-- Para mostrar texto de error de las validaciones -->
           @if (isValidField('email')) {
@@ -22,7 +22,7 @@
           </span>
           }
         </label>
-        <input formControlName="email" id="email" placeholder="Ingrese su correo" type="text" id="email" autocapitalize="off"
+        <input formControlName="email" id="email" type="text" id="email" autocapitalize="off"
           class="block w-full p-2 h-9 text-gray-900 border border-gray-300 rounded-md bg-gray-50 text-xs focus:ring-blue-500 focus:border-blue-500 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500" />
       </div>
 
@@ -40,7 +40,6 @@
         </label>
         <div class="relative">
           <input formControlName="password" id="password" [type]="showPassword ? 'text' : 'password'"
-            placeholder="Ingrese su contraseña"
             class="block w-full p-2 h-9 text-gray-900 border border-gray-300 rounded-md bg-gray-50 text-xs focus:ring-blue-500 focus:border-blue-500 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500" />
           <button (click)="togglePasswordVisibility('password')" type="button"
             class="absolute inset-y-0 right-0 flex items-center pr-3 text-gray-600 dark:text-gray-400">
@@ -77,7 +76,7 @@
         </div>
       }
 
-     
+
 
       <div class="inline-flex items-center justify-center w-full font-medium">
         <hr class="w-full my-3 bg-gray-200 border-0 dark:bg-gray-700" />

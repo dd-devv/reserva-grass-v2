@@ -48,7 +48,7 @@ export class LoginComponent implements OnInit {
     this.courtId = localStorage.getItem('id_cancha');
 
     this.loginForm = this.fb.group({
-      email: ['', [Validators.required, Validators.email, this.gmailValidator()]],
+      email: ['', [Validators.required]],
       password: ['', [Validators.required]]
     });
   }
@@ -62,14 +62,6 @@ export class LoginComponent implements OnInit {
     if (this.token && this.userId) {
       this.redirectBasedOnRole();
     }
-  }
-
-  private gmailValidator() {
-    return (control: AbstractControl): ValidationErrors | null => {
-      if (!control.value) return null;
-      const isGmail = control.value.toLowerCase().endsWith('@gmail.com');
-      return isGmail ? null : { invalidGmail: true };
-    };
   }
 
   isValidField(field: string): boolean {
