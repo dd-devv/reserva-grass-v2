@@ -32,7 +32,7 @@ export class RegistroComponent implements OnInit {
   ) {
     this.registerForm = this.fb.group({
       nombres: ['', [Validators.required, Validators.minLength(3)]],
-      email: ['', [Validators.required, Validators.email, this.gmailValidator()]],
+      // email: ['', [Validators.required, Validators.email, this.gmailValidator()]],
       region: ['', Validators.required],
       whatsapp: ['', [Validators.required, this.phoneValidator()]],
       password: ['', [Validators.required, Validators.minLength(6)]],
@@ -77,9 +77,9 @@ export class RegistroComponent implements OnInit {
   private passwordMatchValidator(group: FormGroup): ValidationErrors | null {
     const password = group.get('password');
     const confirmPassword = group.get('confirmPassword');
-    
+
     if (!password || !confirmPassword) return null;
-    
+
     return password.value === confirmPassword.value ? null : { passwordMismatch: true };
   }
 
@@ -95,8 +95,8 @@ export class RegistroComponent implements OnInit {
     const errors = control.errors;
     const errorMessages: { [key: string]: string } = {
       required: 'Este campo es requerido',
-      email: 'Formato de correo inválido',
-      invalidGmail: 'Solo se permiten correos de Gmail',
+      // email: 'Formato de correo inválido',
+      // invalidGmail: 'Solo se permiten correos de Gmail',
       minlength: `Mínimo ${errors['minlength']?.requiredLength} caracteres`,
       invalidPhone: 'El teléfono debe empezar con 9 y tener 9 dígitos',
       passwordMismatch: 'Las contraseñas no coinciden'
@@ -127,12 +127,12 @@ export class RegistroComponent implements OnInit {
 
     const registerData: RegisterData = {
       nombres: formData.nombres,
-      email: formData.email,
+      // email: formData.email,
       ciudad: formData.region,
       telefono: formData.whatsapp,
       password: formData.password,
     };
-    
+
     this.userService
       .registro_user(registerData)
       .pipe(finalize(() => this.isLoading = false))
@@ -142,7 +142,7 @@ export class RegistroComponent implements OnInit {
         },
         error: (error) => {
           console.log(error);
-          
+
           this.toastr.success(error.error.message || 'Error en el registro');
         },
       });
@@ -150,7 +150,7 @@ export class RegistroComponent implements OnInit {
 
   private handleSuccessfulRegistration(response: any): void {
     localStorage.setItem('_id', response.data._id);
-    localStorage.setItem('user_email', this.registerForm.get('email')?.value);
+    localStorage.setItem('telefono', this.registerForm.get('whatsapp')?.value);
     sessionStorage.setItem('password', this.registerForm.get('password')?.value);
     this.toastr.success('Se registró con éxito');
     this.sendConfirmationEmail(response.data._id);

@@ -16,16 +16,21 @@ Mirkooooo, el skeleon :v
             <input class=" rounded-lg h-9 border-gray-300 text-gray-900 text-xs" name="nombre" id="nombre"
                 [(ngModel)]="empresa.nombre" type="text" readonly>
         </div>
-        <div class="flex flex-col gap-1 w-full">
+        <!-- <div class="flex flex-col gap-1 w-full">
             <label class="text-xs" for="email">Correo </label>
             <input class="rounded-lg h-9 border-gray-300 text-gray-900 text-xs" name="email" id="email"
                 [(ngModel)]="empresa.email" type="text" readonly>
+        </div> -->
+        <div class="flex flex-col gap-1 w-full">
+            <label class="text-xs" for="direccion">Dirección</label>
+            <input class="rounded-lg h-9 border-gray-300 text-gray-900 text-xs" name="direccion" id="direccion"
+                [(ngModel)]="empresa.direccion" type="text" autocomplete="off">
         </div>
     </div>
     <div class="flex w-full gap-3">
         <div class="flex flex-col gap-1 w-full">
             <label class="text-xs" for="telefono">WhatsApp</label>
-            <input class="rounded-lg h-9 border-gray-300 text-gray-900 text-xs" name="telefono" id="telefono" maxlength="9"
+            <input readonly class="rounded-lg h-9 border-gray-300 text-gray-900 text-xs" name="telefono" id="telefono" maxlength="9"
                 [(ngModel)]="empresa.telefono" type="text">
         </div>
         <div class="flex flex-col gap-1 w-full">
@@ -41,11 +46,6 @@ Mirkooooo, el skeleon :v
             [(ngModel)]="empresa.referencia" type="text">
     </div>
 
-    <div class="flex flex-col gap-1 w-full">
-        <label class="text-xs" for="direccion">Dirección</label>
-        <input class="rounded-lg h-9 border-gray-300 text-gray-900 text-xs" name="direccion" id="direccion"
-            [(ngModel)]="empresa.direccion" type="text" autocomplete="off">
-    </div>
 
     <div class="flex flex-col w-full ">
         <label class="text-xs" for="hora_inicio">Horario de atención</label>
@@ -111,13 +111,13 @@ Mirkooooo, el skeleon :v
                 <label for="canchas_voley" class="ms-2 text-sm font-medium text-gray-900 text-nowrap">Voley</label>
             </div>
 
-        
-        
-       
+
+
+
 
     </div>
 
-   
+
 <div class="flex gap-4">
     <button (click)="actualizar()"
     class="flex font-semibold items-center justify-center text-xs text-nowrap md:text-base text-white bg-forestGreen-500 h-10 w-1/2  rounded-lg self-center">
@@ -142,7 +142,7 @@ Mirkooooo, el skeleon :v
 
 
 
-   
+
 
 </div>
 

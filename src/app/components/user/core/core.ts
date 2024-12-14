@@ -6,4 +6,5 @@ export interface Region {
 export interface UpdateData {
   nombres: string;
   ciudad: string;
+  telefono: string;
 }

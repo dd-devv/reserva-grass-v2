@@ -5,7 +5,7 @@ export interface Region {
 
 export interface RegisterData {
   nombres: string;
-  email: string;
+  // email: string;
   ciudad: string;
   telefono: string;
   password: string;

@@ -43,13 +43,15 @@ export class PasswordComponent implements OnInit {
     this._userService.obtener_empresa(this.id, this.token).subscribe({
       next: (res) => {
         this.empresa = res.data;
+        console.log(this.empresa);
+
       }
     });
   }
 
   comparar_password() {
     let data = {
-      email: this.empresa.email,
+      email: this.empresa.telefono,
       password: this.pass
     }
 
@@ -57,15 +59,15 @@ export class PasswordComponent implements OnInit {
       next: (res) => {
         if (res.data) {
           this._toastrService.success('Se verificó con éxito');
-  
+
           this.verificado = true;
           this.pass = '';
         } else {
           this._toastrService.warning('Contraseña incorrecta, intenta de nuevo!');
-  
+
           this.verificado = false;
         }
-        
+
       },
       error: (err) => {
         this._toastrService.error(err.message);

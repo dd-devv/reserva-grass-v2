@@ -41,7 +41,7 @@ export class AccesoComponent implements OnInit {
 
   comparar_password() {
     let data = {
-      email: this.user.email,
+      email: this.user.telefono,
       password: this.pass
     }
 
