@@ -1,13 +1,21 @@
-// registro.component.ts
 import { Component, OnInit } from '@angular/core';
-import { FormBuilder, FormGroup, Validators, AbstractControl, ValidationErrors } from '@angular/forms';
+import {
+  FormBuilder,
+  FormGroup,
+  Validators,
+  AbstractControl,
+  ValidationErrors,
+  AsyncValidatorFn
+} from '@angular/forms';
 import { Router } from '@angular/router';
 import { Title } from '@angular/platform-browser';
 import { UserService } from '../../../../services/user.service';
 import { GuestService } from '../../../../services/guest.service';
-import { finalize } from 'rxjs/operators';
 import { ToastService } from '../../../../services/toast/toast.service';
 import { Region, RegisterData } from '../../core/core';
+
+import { Observable, of } from 'rxjs';
+import { map, catchError, finalize } from 'rxjs/operators';
 
 @Component({
   selector: 'app-registro',
@@ -16,9 +24,8 @@ import { Region, RegisterData } from '../../core/core';
 })
 export class RegistroComponent implements OnInit {
   registerForm: FormGroup;
-  regiones: Region[] = [];
+  regiones: string[] = [];
   isLoading = false;
-  selectedRegion: Region | null = null;
   showPassword = false;
   showConfirmPassword = false;
 
@@ -31,13 +38,30 @@ export class RegistroComponent implements OnInit {
     private toastr: ToastService
   ) {
     this.registerForm = this.fb.group({
-      nombres: ['', [Validators.required, Validators.minLength(3)]],
-      // email: ['', [Validators.required, Validators.email, this.gmailValidator()]],
+      nombres: ['', [
+        Validators.required,
+        Validators.minLength(3),
+        Validators.pattern(/^[a-zA-Z\s]+$/)  // Solo letras y espacios
+      ]],
       region: ['', Validators.required],
-      whatsapp: ['', [Validators.required, this.phoneValidator()]],
-      password: ['', [Validators.required, Validators.minLength(6)]],
+      whatsapp: ['',
+        {
+          validators: [
+            Validators.required,
+            Validators.pattern(/^9\d{8}$/)  // Validación de patrón de teléfono
+          ],
+          asyncValidators: [this.whatsappValidator()],
+          updateOn: 'blur'
+        }
+      ],
+      password: ['', [
+        Validators.required,
+        Validators.minLength(6)
+      ]],
       confirmPassword: ['', [Validators.required]]
-    }, { validator: this.passwordMatchValidator });
+    }, {
+      validators: this.passwordMatchValidator
+    });
   }
 
   ngOnInit(): void {
@@ -46,10 +70,53 @@ export class RegistroComponent implements OnInit {
     this.guestService.obtener_regiones().subscribe({
       next: (res) => {
         this.regiones = res.map((item: Region) => item.name);
+      },
+      error: (err) => {
+        this.toastr.error('Error al cargar regiones');
+        console.error(err);
       }
     });
+
+    this.checkExistingSession();
   }
 
+  // Validador de WhatsApp como función que devuelve un Observable
+  private whatsappValidator(): AsyncValidatorFn {
+    return (control: AbstractControl): Observable<ValidationErrors | null> => {
+      const phoneNumber = control.value;
+
+      // Si no hay valor, no hay error
+      if (!phoneNumber) {
+        return of(null);
+      }
+
+      console.log(phoneNumber);
+
+      // Verificación de WhatsApp
+      return this.userService.verificar_whatsapp(phoneNumber).pipe(
+        map(response => {
+          console.log('WhatsApp Verification Response:', response);
+          return response.data ? null : { noWhatsapp: true };
+        }),
+        catchError((error) => {
+          console.error('WhatsApp Verification Error:', error);
+          return of({ whatsappVerificationError: true });
+        })
+      );
+    };
+  }
+
+  // Validador personalizado para coincidir contraseñas
+  private passwordMatchValidator(group: FormGroup): ValidationErrors | null {
+    const password = group.get('password');
+    const confirmPassword = group.get('confirmPassword');
+
+    return password && confirmPassword && password.value === confirmPassword.value
+      ? null
+      : { passwordMismatch: true };
+  }
+
+  // Método para alternar visibilidad de contraseña
   togglePasswordVisibility(field: 'password' | 'confirmPassword'): void {
     if (field === 'password') {
       this.showPassword = !this.showPassword;
@@ -58,36 +125,13 @@ export class RegistroComponent implements OnInit {
     }
   }
 
-  private gmailValidator() {
-    return (control: AbstractControl): ValidationErrors | null => {
-      if (!control.value) return null;
-      const isGmail = control.value.toLowerCase().endsWith('@gmail.com');
-      return isGmail ? null : { invalidGmail: true };
-    };
-  }
-
-  private phoneValidator() {
-    return (control: AbstractControl): ValidationErrors | null => {
-      if (!control.value) return null;
-      const phonePattern = /^9\d{8}$/;
-      return phonePattern.test(control.value) ? null : { invalidPhone: true };
-    };
-  }
-
-  private passwordMatchValidator(group: FormGroup): ValidationErrors | null {
-    const password = group.get('password');
-    const confirmPassword = group.get('confirmPassword');
-
-    if (!password || !confirmPassword) return null;
-
-    return password.value === confirmPassword.value ? null : { passwordMismatch: true };
-  }
-
+  // Verificar si un campo tiene errores de validación
   isValidField(field: string): boolean {
     const control = this.registerForm.get(field);
-    return !!control && control.errors !== null && (control.dirty || control.touched);
+    return control ? control.invalid && (control.dirty || control.touched) : false;
   }
 
+  // Obtener mensaje de error para un campo
   getFieldError(field: string): string {
     const control = this.registerForm.get(field);
     if (!control || !control.errors) return '';
@@ -95,17 +139,19 @@ export class RegistroComponent implements OnInit {
     const errors = control.errors;
     const errorMessages: { [key: string]: string } = {
       required: 'Este campo es requerido',
-      // email: 'Formato de correo inválido',
-      // invalidGmail: 'Solo se permiten correos de Gmail',
       minlength: `Mínimo ${errors['minlength']?.requiredLength} caracteres`,
-      invalidPhone: 'El teléfono debe empezar con 9 y tener 9 dígitos',
-      passwordMismatch: 'Las contraseñas no coinciden'
+      pattern: 'Formato inválido',
+      invalidPhone: 'El teléfono debe tener 9 dígitos',
+      noWhatsapp: 'El número no tiene WhatsApp',
+      passwordMismatch: 'Las contraseñas no coinciden',
+      whatsappVerificationError: 'Error al verificar WhatsApp'
     };
 
     const firstError = Object.keys(errors)[0];
     return errorMessages[firstError] || 'Error de validación';
   }
 
+  // Verificar si existe una sesión activa
   private checkExistingSession(): void {
     const token = localStorage.getItem('token') || sessionStorage.getItem('token');
     const userId = localStorage.getItem('_id') || sessionStorage.getItem('_id');
@@ -115,10 +161,20 @@ export class RegistroComponent implements OnInit {
     }
   }
 
+  // Envío del formulario
   onSubmit(): void {
+    // Marcar todos los campos como tocados para mostrar validaciones
+    this.registerForm.markAllAsTouched();
+
+    // Verificar validez del formulario
     if (this.registerForm.invalid || this.isLoading) {
-      this.registerForm.markAllAsTouched();
-      this.toastr.success('Por favor, complete todos los campos correctamente');
+      this.toastr.error('Por favor, complete todos los campos correctamente');
+      return;
+    }
+
+    // Prevenir múltiples envíos
+    if (this.registerForm.pending) {
+      this.toastr.info('Verificando datos...');
       return;
     }
 
@@ -127,47 +183,45 @@ export class RegistroComponent implements OnInit {
 
     const registerData: RegisterData = {
       nombres: formData.nombres,
-      // email: formData.email,
       ciudad: formData.region,
       telefono: formData.whatsapp,
       password: formData.password,
     };
 
-    this.userService
-      .registro_user(registerData)
+    this.userService.registro_user(registerData)
       .pipe(finalize(() => this.isLoading = false))
       .subscribe({
-        next: (response) => {
-          this.handleSuccessfulRegistration(response);
-        },
+        next: (response) => this.handleSuccessfulRegistration(response),
         error: (error) => {
-          console.log(error);
-
-          this.toastr.success(error.error.message || 'Error en el registro');
-        },
+          console.error(error);
+          this.toastr.error(error.error?.message || 'Error en el registro');
+        }
       });
   }
 
+  // Manejar registro exitoso
   private handleSuccessfulRegistration(response: any): void {
     localStorage.setItem('_id', response.data._id);
     localStorage.setItem('telefono', this.registerForm.get('whatsapp')?.value);
     sessionStorage.setItem('password', this.registerForm.get('password')?.value);
-    this.toastr.success('Se registró con éxito');
+
+    this.toastr.success('Registro exitoso');
     this.sendConfirmationEmail(response.data._id);
   }
 
+  // Enviar correo de confirmación
   private sendConfirmationEmail(userId: string): void {
     this.userService.enviar_correo_confirmacion(userId).subscribe({
       next: (response) => {
         if (response.data) {
-          this.toastr.success('Se envió el código de verificación');
+          this.toastr.success('Código de verificación enviado');
           this.router.navigate(['/auth/verificar']);
         }
       },
       error: (error) => {
-        this.toastr.success('Error al enviar el correo de confirmación');
+        this.toastr.error('Error al enviar el correo de confirmación');
         console.error('Error sending confirmation email:', error);
-      },
+      }
     });
   }
 }

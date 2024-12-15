@@ -18,8 +18,8 @@ export class UserService {
   }
 
   //USER
-  verificar_whatsapp(data: any): Observable<any> {
-    return this._http.get(this.url + 'verificar_whatsapp', data);
+  verificar_whatsapp(telefono: string): Observable<any> {
+    return this._http.post(this.url + 'verificar_whatsapp', { numero: telefono });
   }
 
   registro_user(data: any): Observable<any> {
