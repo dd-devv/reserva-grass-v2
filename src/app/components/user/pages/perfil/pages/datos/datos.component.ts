@@ -32,7 +32,7 @@ export class DatosComponent implements OnInit {
 
     this.updateForm = this.fb.group({
       nombres: ['', Validators.required],
-      email: [''],
+      // email: [''],
       region: ['', Validators.required],
       whatsapp: ['']
     });
@@ -49,11 +49,11 @@ export class DatosComponent implements OnInit {
     this._userService.obtener_user(this.id, this.token).subscribe({
       next: (res) => {
         this.user = res.data;
-        
+
         // Asignar valores al formulario
         this.updateForm.patchValue({
           nombres: this.user.nombres,
-          email: this.user.email,
+          // email: this.user.email,
           region: this.user.ciudad,
           whatsapp: this.user.telefono
         });
@@ -89,15 +89,16 @@ export class DatosComponent implements OnInit {
         this.toastr.success('Por favor, complete todos los campos correctamente');
         return;
       }
-  
+
       this.isLoading = true;
       const formData = this.updateForm.value;
-  
+
       const updateData: UpdateData = {
         nombres: formData.nombres,
-        ciudad: formData.region
+        ciudad: formData.region,
+        telefono: formData.whatsapp
       };
-      
+
       this._userService
         .actualizar_user(this.id, updateData, this.token)
         .pipe(finalize(() => this.isLoading = false))

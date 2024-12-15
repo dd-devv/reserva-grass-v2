@@ -18,6 +18,10 @@ export class UserService {
   }
 
   //USER
+  verificar_whatsapp(telefono: string): Observable<any> {
+    return this._http.post(this.url + 'verificar_whatsapp', { numero: telefono });
+  }
+
   registro_user(data: any): Observable<any> {
     let headers = new HttpHeaders({ 'Content-Type': 'application/json' });
     return this._http.post(this.url + 'registro_user', data, { headers: headers });

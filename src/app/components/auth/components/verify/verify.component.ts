@@ -1,66 +1,3 @@
-// import { Component, OnInit } from '@angular/core';
-// import { Title } from '@angular/platform-browser';
-// import { UserService } from '../../../../services/user.service';
-// import { Router } from '@angular/router';
-// import { ToastService } from '../../../../services/toast.service';
-
-// @Component({
-//   selector: 'app-verify',
-//   templateUrl: './verify.component.html',
-//   styleUrl: './verify.component.css'
-// })
-// export class VerifyComponent implements OnInit {
-
-//   public codigo = '';
-//   public id: any;
-//   public email: any;
-
-//   constructor(
-//     private _title: Title,
-//     private _userService: UserService,
-//     private _toastrService: ToastService,
-//     private _router: Router
-//   ) {
-
-//     this.id = localStorage.getItem('_id');
-//     this.email = localStorage.getItem('user_email');
-//   }
-
-//   ngOnInit(): void {
-//     this._title.setTitle('Verificar correo');
-//   }
-
-//   verificar(verificarForm: any) {
-//     if (verificarForm.valid) {
-//       if (this.id) {
-//         this._userService.actualizar_user_verificado(this.id, this.codigo).subscribe({
-//           next: (res) => {
-//             this._toastrService.success('Se verificó correctamente');
-//             this._router.navigate(['/login']);
-//             localStorage.removeItem('user_email');
-//           },
-//           error: (err) => {
-//             this._toastrService.success('Código incorrecto, vuelve a intentarlo');
-//             this.codigo = '';
-//           }
-//         });
-//       } else {
-//         this._toastrService.success('Verifique su cuenta en el mismo dispositivo');
-//         this.codigo = '';
-//       }
-//     }
-//   }
-// }
-
-
-
-
-
-
-
-
-
-
 import { Component, OnInit } from '@angular/core';
 import { Title } from '@angular/platform-browser';
 import { UserService } from '../../../../services/user.service';
@@ -81,7 +18,7 @@ export class VerifyComponent implements OnInit {
   public codigo5 = '';
   public codigo6 = '';
   public id: any;
-  public email: any;
+  public telefono: any;
 
   rememberMe = true;
 
@@ -92,7 +29,7 @@ export class VerifyComponent implements OnInit {
     private _router: Router
   ) {
     this.id = localStorage.getItem('_id');
-    this.email = localStorage.getItem('user_email');
+    this.telefono = localStorage.getItem('telefono');
   }
 
   ngOnInit(): void {
@@ -182,7 +119,7 @@ export class VerifyComponent implements OnInit {
         this._userService.actualizar_user_verificado(this.id, this.codigo).subscribe({
           next: (res) => {
             let loginData = {
-              email: this.email,
+              email: this.telefono,
               password: sessionStorage.getItem('password'),
             }
             this._userService
@@ -195,7 +132,7 @@ export class VerifyComponent implements OnInit {
                   this._router
                     .navigate(['/usuario'])
                     .then(() => setTimeout(() => location.reload(), 500));
-                  localStorage.removeItem('user_email');
+                  localStorage.removeItem('telefono');
                   sessionStorage.removeItem('password');
                 },
                 error: (error) => {

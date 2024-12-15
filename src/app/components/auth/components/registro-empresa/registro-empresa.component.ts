@@ -34,7 +34,7 @@ interface Distrito {
 interface Company {
   nombre: string;
   direccion: string;
-  email: string;
+  // email: string;
   telefono: string;
   telefono_fijo: string;
   region: string;
@@ -156,7 +156,7 @@ export class RegistroEmpresaComponent implements OnInit {
     this.registrationForm = this.fb.group({
       nombre: ['', Validators.required],
       direccion: ['', Validators.required],
-      email: ['', [Validators.required, this.gmailValidator()]],
+      // email: ['', [Validators.required, this.gmailValidator()]],
       telefono: ['', [Validators.required, this.phoneValidator()]],
       telefono_fijo: ['', [this.telefonoFijoValidator]], // Opcional con validación
       region: ['', Validators.required],
@@ -250,8 +250,8 @@ export class RegistroEmpresaComponent implements OnInit {
     const errors = control.errors;
     const errorMessages: { [key: string]: string } = {
       required: 'Este campo es requerido',
-      email: 'Formato de correo inválido',
-      invalidGmail: 'Solo se permiten correos de Gmail',
+      // email: 'Formato de correo inválido',
+      // invalidGmail: 'Solo se permiten correos de Gmail',
       minlength: `Mínimo ${errors['minlength']?.requiredLength} caracteres`,
       invalidPhone: 'El teléfono debe empezar con 9 y tener 9 dígitos',
       invalidLandline: 'Solo se permiten números en el teléfono fijo',

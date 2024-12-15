@@ -21,6 +21,7 @@ import { AboutComponent } from './pages/about/about.component';
 import { PoliticasComponent } from './pages/politicas/politicas.component';
 import { TerminosComponent } from './pages/terminos/terminos.component';
 import { FaqUserComponent } from './pages/faq-user/faq-user.component';
+import { DirectoriosComponent } from './pages/directorios/directorios.component';
 
 
 @NgModule({
@@ -38,7 +39,8 @@ import { FaqUserComponent } from './pages/faq-user/faq-user.component';
     AboutComponent,
     PoliticasComponent,
     TerminosComponent,
-    FaqUserComponent
+    FaqUserComponent,
+    DirectoriosComponent
   ],
   imports: [
     CommonModule,
