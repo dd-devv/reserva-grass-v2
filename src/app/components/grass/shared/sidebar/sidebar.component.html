@@ -10,11 +10,13 @@
       routerLinkActive="text-forestGreen-500 bg-forestGreen-50"
       [routerLinkActiveOptions]="{ exact: true }"
     >
+    <!-- class="flex flex-col justify-center items-center align-middle p-4 border-b-2 rounded-t-lg w-full" -->
       <button
-        class="flex flex-col justify-center items-center align-middle p-4 border-b-2 rounded-t-lg w-full"
+        class="flex flex-col justify-center items-center align-middle p-4 border-b-2 rounded-t-lg w-full  hover:border-gray-300 dark:hover:text-gray-300"
+
         type="button"
       >
-        <svg
+        <!-- <svg
           width="25"
           height="24"
           viewBox="0 0 25 24"
@@ -45,8 +47,18 @@
               />
             </clipPath>
           </defs>
+        </svg> -->
+        <!-- <svg width="101" height="99" viewBox="0 0 101 99" fill="none" xmlns="http://www.w3.org/2000/svg"> -->
+        <svg 
+          viewBox="0 0 101 99" 
+          fill="none"
+          class="size-6 stroke-black fill-none"
+          xmlns="http://www.w3.org/2000/svg"
+          routerLinkActive="stroke-forestGreen-500">
+          <path d="M53 85.5H3.50001V22M23.5 7C23.5 7 8.99999 7 8.00001 7C7.00002 7 5.85337 7.58624 4.99999 8.5C4.03893 9.52906 3.50002 11 3.50001 12C3.49999 13 3.50001 22 3.50001 22M23.5 7H67.5C67.5 7 82 7 82.5 7C83 7 84.5573 7.2023 85.5 8C86.4999 8.84609 87 10 87 11C87 12 87 22 87 22M23.5 7V12M23.5 7V1M87 22V49M87 22H3.50001M67.5 12V0.5M17 37.5H24.5M17 53H24.5M24.5 68.5H17M33.5 68.5H41.5M41.5 53H33.5M33.5 37.5H41.5M49.5 37.5H57.5M57.5 53H49.5M66.5 37.5H74.5" stroke-width="6"/>
+          <path d="M78.5 63.5V76.5L71.5 81" stroke-width="6"/>
+          <circle cx="78.5" cy="76.5" r="19.5" stroke-width="6"/>
         </svg>
-
         Horario
       </button>
     </li>
@@ -56,7 +68,7 @@
       routerLinkActive="text-forestGreen-500 bg-forestGreen-50"
     >
       <button
-        class="flex flex-col justify-center items-center align-middle p-4 border-b-2 rounded-t-lg w-full hover:text-gray-600 hover:border-gray-300 dark:hover:text-gray-300"
+        class="flex flex-col justify-center items-center align-middle p-4 border-b-2 rounded-t-lg w-full  hover:border-gray-300 dark:hover:text-gray-300"
         type="button"
       >
         <!-- este el svg de cancha antiguo -->
@@ -71,6 +83,7 @@
           fill="none"
           class="size-6 stroke-black fill-none"
           xmlns="http://www.w3.org/2000/svg"
+          routerLinkActive="stroke-forestGreen-500"
         >
           <path
             d="M51.1884 64.7202C51.1884 64.7202 78.7486 64.7202 97.0253 64.7202C98.4082 64.7202 99.3777 64.0987 100.216 63.0327C100.957 62.0921 101.087 61.1218 101.087 59.9389C101.087 54.595 101.087 47.001 101.087 47.001M51.1884 64.7202C51.1884 64.7202 17.246 64.7202 5.35161 64.7202C3.96868 64.7202 3.05211 64.0575 2.16043 63.0327C1.34371 62.094 1.00002 61.1669 1.00001 59.9389C0.999988 55.4388 1.00001 47.001 1.00001 47.001M51.1884 64.7202V2M51.1884 2C51.1884 2 83.1002 2.00007 97.0253 2C98.3465 1.99999 99.3677 2.42467 100.216 3.40628C100.933 4.23529 101.087 5.13707 101.087 6.21885C101.087 11.2815 101.087 19.4379 101.087 19.4379M51.1884 2C51.1884 2 20.147 2.00007 5.35161 2C4.03039 1.99999 2.16043 3.68754 2.16043 3.68754C2.16043 3.68754 1.00001 5.088 1.00001 6.21885C0.999996 11.2814 1.00001 19.4379 1.00001 19.4379M1.00001 19.4379H14.9251V47.001H1.00001M1.00001 19.4379V47.001M101.087 19.4379H87.1617V47.001H101.087M101.087 19.4379V47.001"
@@ -88,11 +101,11 @@
       class="w-full flex items-center flex-col justify-center align-middle text-center"
     >
       <button
-        class="flex flex-col justify-center items-center align-middle p-4 border-b-2 rounded-t-lg w-full hover:text-gray-600 hover:border-gray-300 dark:hover:text-gray-300"
+        class="flex flex-col justify-center items-center align-middle p-4 border-b-2 rounded-t-lg w-full  hover:border-gray-300 dark:hover:text-gray-300"
         [routerLink]="['/grass/datos']"
         routerLinkActive="text-forestGreen-500 bg-forestGreen-50"
       >
-        <svg
+        <!-- <svg
           width="25"
           height="24"
           viewBox="0 0 25 24"
@@ -119,8 +132,11 @@
               />
             </clipPath>
           </defs>
-        </svg>
-
+        </svg> -->
+        <svg viewBox="0 0 76 100" fill="none" class="size-6 stroke-black fill-none" xmlns="http://www.w3.org/2000/svg" routerLinkActive="stroke-forestGreen-500">
+          <path d="M61.5 20.5001C61.5 20.5001 69 20.5001 69.5 20.5001C70.0001 20.5001 71.3353 20.785 72 21.5001C72.7752 22.334 73.0001 24.0001 73 24.5001C73 25.0001 73 91.0001 73 91.5001C73 92.0001 72.325 94.2154 71.5 95.0001C70.2912 96.1498 68 96.5001 67.5 96.5001C67 96.5001 9.00002 96.5001 8.00002 96.5001C7.00002 96.5001 5.55154 96.0516 4.50002 95.0001C3.4485 93.9486 3.00002 92.5001 3.00002 91.5001C3.00002 90.5001 2.99998 25.0001 3.00002 24.5001C3.00005 24.0001 3.17514 22.2849 4 21.5001C5.07734 20.475 7.50002 20.5001 8.00002 20.5001C8.50002 20.5001 15 20.5001 15 20.5001M61.5 20.5001C61.5 20.5001 62.0001 25.0001 61.5 25.5001C61 26.0001 15.5 26.0001 15 25.5001C14.5 25.0001 15 20.5001 15 20.5001M61.5 20.5001C61.5 20.5001 61.5 18.0001 61.5 17.5001C61.5 17.0001 60.8694 15.6815 60 15.0001C59.1039 14.2977 58.0001 14.0001 57 14.0001C56 14.0001 50 14.0001 50 14.0001L48.5 7C48.5 7 48.1322 4.8372 47 4.00009C46.1545 3.37495 45.0001 3.00018 44.5 3.00009C44 3 32 3 31.5 3.00009C31 3.00018 29.6175 3.38262 29 4.00009C28.1268 4.87333 27.5 7.00009 27.5 7.00009L25.5 14C25.5 14 19.5 14.0001 19 14.0001C18.5 14.0001 16.8664 14.1201 16 15.0001C15.2623 15.7494 15 17.0001 15 17.5001C15 18.0001 15 20.5001 15 20.5001M14 43.0001L20 49.0001L32.5 37.0001M14 61.0001L20 67.0001L32.5 55.0001M14 78.5001L20 84.5001L32.5 72.5001M42.5 43.5001H62.5M62.5 61.0001H42.5M42.5 78.5001H62.5" stroke-width="6"/>
+          <circle cx="38" cy="14" r="1.5" stroke-width="3"/>
+          </svg>
         Datos
       </button>
     </li>
@@ -128,11 +144,11 @@
       class="w-full flex items-center flex-col justify-center align-middle text-center"
     >
       <button
-        class="flex flex-col justify-center items-center align-middle p-4 border-b-2 rounded-t-lg w-full hover:text-gray-600 hover:border-gray-300 dark:hover:text-gray-300"
+        class="flex flex-col justify-center items-center align-middle p-4 border-b-2 rounded-t-lg w-full  hover:border-gray-300 dark:hover:text-gray-300"
         [routerLink]="['/grass/suscripcion']"
         routerLinkActive="text-forestGreen-500 bg-forestGreen-50"
       >
-        <svg
+        <!-- <svg
           width="25"
           height="24"
           viewBox="0 0 25 24"
@@ -143,7 +159,12 @@
             d="M12.25 2.25195C11.0166 2.25195 10 3.26855 10 4.50195C10 5.3457 10.4746 6.08691 11.1719 6.4707L8.96875 10.877L5.52344 8.41602C5.97461 8.00293 6.25 7.40527 6.25 6.75195C6.25 5.51855 5.2334 4.50195 4 4.50195C2.7666 4.50195 1.75 5.51855 1.75 6.75195C1.75 7.7627 2.44434 8.60352 3.36719 8.88477L4.75 16.502V20.252H19.75V16.502L21.1328 8.88477C22.0557 8.60352 22.75 7.7627 22.75 6.75195C22.75 5.51855 21.7334 4.50195 20.5 4.50195C19.2666 4.50195 18.25 5.51855 18.25 6.75195C18.25 7.40527 18.5254 8.00293 18.9766 8.41602L15.5312 10.877L13.3281 6.4707C14.0254 6.08691 14.5 5.3457 14.5 4.50195C14.5 3.26855 13.4834 2.25195 12.25 2.25195ZM12.25 3.75195C12.6719 3.75195 13 4.08008 13 4.50195C13 4.92383 12.6719 5.25195 12.25 5.25195C11.8281 5.25195 11.5 4.92383 11.5 4.50195C11.5 4.08008 11.8281 3.75195 12.25 3.75195ZM4 6.00195C4.42188 6.00195 4.75 6.33008 4.75 6.75195C4.75 7.17383 4.42188 7.50195 4 7.50195C3.57812 7.50195 3.25 7.17383 3.25 6.75195C3.25 6.33008 3.57812 6.00195 4 6.00195ZM20.5 6.00195C20.9219 6.00195 21.25 6.33008 21.25 6.75195C21.25 7.17383 20.9219 7.50195 20.5 7.50195C20.0781 7.50195 19.75 7.17383 19.75 6.75195C19.75 6.33008 20.0781 6.00195 20.5 6.00195ZM12.25 7.68945L14.5703 12.3301L15.6953 12.6113L19.4453 9.93945L18.3906 15.752H6.10938L5.05469 9.93945L8.80469 12.6113L9.92969 12.3301L12.25 7.68945ZM6.25 17.252H18.25V18.752H6.25V17.252Z"
             fill="black"
           />
-        </svg>
+        </svg> -->
+        <svg viewBox="0 0 100 100" fill="none" class="size-6 stroke-black fill-none" xmlns="http://www.w3.org/2000/svg" routerLinkActive="stroke-forestGreen-500">
+          <path d="M51 22C51 22 50.7761 21.5 50.5 21.5C50.2239 21.5 50 22 50 22L40.5 40L22.5 43C22.5 43 22 43.2239 22 43.5C22 43.7761 22.5 44 22.5 44L35 58L32.5 77C32.5 77 32.738 77.9127 33 78C33.1852 78.0617 34 78 34 78C34 78 49 70 49.5 69.5C50 69 50.2239 69 50.5 69C50.7761 69 51 69 51.5 69.5C52 70 67.5 78 67.5 78C67.5 78 68.1609 78.1938 68.5 78C68.8791 77.7834 69 77 69 77L66 58L79 44C79 44 79.5 43.7761 79.5 43.5C79.5 43.2239 79 43 79 43L60.5384 40.0062L60.5 40L51 22Z" stroke-width="6"/>
+          <circle cx="50" cy="50" r="47" stroke-width="6"/>
+          </svg>
+          
         Suscripción
       </button>
     </li>
