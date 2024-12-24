@@ -1,75 +1,185 @@
 <nav
-  class="items-center w-full text-lg border-b border-gray-200 dark:bg-gray-900 sticky top-0 z-50 bg-white/80 backdrop-blur-sm">
-  <div class="flex flex-nowrap justify-between items-center px-4 py-2 mx-auto max-w-screen-xl">
-    <a [routerLink]="['/grass']" class="flex flex-nowrap items-center space-x-3">
-      <img src="../../../../assets/svg/logo.svg" class="h-10" alt="Reserva Tu Grass Logo" />
-      <p class="text-lg font-semibold leading-4 logo-nombre">
-        <span>Tu</span><br />grass
-      </p>
+  class="items-center w-full text-lg border-b border-gray-200 dark:bg-gray-900 sticky top-0 z-50 bg-white/80 backdrop-blur-sm"
+>
+  <div
+    class="flex flex-nowrap justify-between items-center px-4 py-2 mx-auto max-w-screen-xl"
+  >
+    <a
+      [routerLink]="['/grass']"
+      class="flex flex-nowrap items-center space-x-3"
+    >
+      <img
+        src="../../../../assets/svg/logo.svg"
+        class="h-10"
+        alt="Tu Grass Logo"
+      />
     </a>
 
     <ul class="flex gap-6 justify-between relative">
+      <li
+        id="dropdownDefaultButton"
+        class="flex flex-row gap-1.5 items-center cursor-pointer relative"
+      >
+      <svg
+        width="20"
+        height="20"
+        viewBox="0 0 20 20"
+        fill="none"
+        class="stroke-none fill-black"
+        [routerLink]="['/grass']"
+        routerLinkActive="fill-chambray-500"
+        [routerLinkActiveOptions]="{ exact: true }"
+        xmlns="http://www.w3.org/2000/svg"
+      >
+        <path
+          fill-rule="evenodd"
+          clip-rule="evenodd"
+          d="M2.5 16.875V8.75H3.75V16.875C3.75 17.0408 3.81585 17.1997 3.93306 17.3169C4.05027 17.4342 4.20924 17.5 4.375 17.5H15.625C15.7908 17.5 15.9497 17.4342 16.0669 17.3169C16.1842 17.1997 16.25 17.0408 16.25 16.875V8.75H17.5V16.875C17.5 17.3723 17.3025 17.8492 16.9508 18.2008C16.5992 18.5525 16.1223 18.75 15.625 18.75H4.375C3.87772 18.75 3.40081 18.5525 3.04917 18.2008C2.69754 17.8492 2.5 17.3723 2.5 16.875ZM16.25 3.125V7.5L13.75 5V3.125C13.75 2.95924 13.8158 2.80027 13.9331 2.68306C14.0503 2.56585 14.2092 2.5 14.375 2.5H15.625C15.7908 2.5 15.9497 2.56585 16.0669 2.68306C16.1842 2.80027 16.25 2.95924 16.25 3.125Z"
+        />
+        <path
+          fill-rule="evenodd"
+          clip-rule="evenodd"
+          d="M9.11631 1.87477C9.35072 1.64043 9.6686 1.50879 10.0001 1.50879C10.3315 1.50879 10.6494 1.64043 10.8838 1.87477L19.1926 10.1823C19.3099 10.2996 19.3758 10.4588 19.3758 10.6248C19.3758 10.7907 19.3099 10.9499 19.1926 11.0673C19.0752 11.1846 18.916 11.2506 18.7501 11.2506C18.5841 11.2506 18.4249 11.1846 18.3076 11.0673L10.0001 2.75852L1.69256 11.0673C1.5752 11.1846 1.41603 11.2506 1.25006 11.2506C1.08409 11.2506 0.924915 11.1846 0.807557 11.0673C0.690199 10.9499 0.624268 10.7907 0.624268 10.6248C0.624268 10.4588 0.690199 10.2996 0.807557 10.1823L9.11631 1.87477Z"
+        />
+      </svg>
 
-      <li id="dropdownDefaultButton" class="flex flex-row gap-3 items-center cursor-pointer relative">
-        <img src="../../../../assets/svg-icons/house.svg" alt="">
-        <div class="hidden gap-3 items-center md:flex" [routerLink]="['/grass']" 
-        routerLinkActive="text-chambray-500 font-bold" [routerLinkActiveOptions]="{ exact: true }">
+        <div
+          class="hidden gap-3 items-center md:flex"
+          [routerLink]="['/grass']"
+          routerLinkActive="text-chambray-500 font-bold"
+          [routerLinkActiveOptions]="{ exact: true }"
+        >
           Inicio
         </div>
-        <img class="hover:rotate-90 hover:scale-105 hover:duration-150"
-          src="../../../../assets/svg-icons/arrow-right.svg" alt="">
+        <img
+          class="hover:rotate-90 hover:scale-105 hover:duration-150"
+          src="../../../../assets/svg-icons/arrow-right.svg"
+          alt=""
+        />
         <!-- Dropdown menu -->
-        <div id="dropdown"
-          class="hidden z-10 w-44 bg-white rounded-lg divide-y divide-gray-100 shadow dark:bg-gray-700">
+        <div
+          id="dropdown"
+          class="hidden z-10 w-44 bg-white rounded-lg divide-y divide-gray-100 shadow dark:bg-gray-700"
+        >
           <ul class="py-2 text-sm text-gray-700 dark:text-gray-200">
-            <li [routerLink]="['/grass']"
-              class="block px-4 py-2 hover:bg-gray-100 dark:hover:bg-gray-600 dark:hover:text-white">
+            <li
+              [routerLink]="['/grass']"
+              class="block px-4 py-2 hover:bg-gray-100 dark:hover:bg-gray-600 dark:hover:text-white"
+            >
               Horario
             </li>
-            <li [routerLink]="['canchas']"
-              class="block px-4 py-2 hover:bg-gray-100 dark:hover:bg-gray-600 dark:hover:text-white">
+            <li
+              [routerLink]="['canchas']"
+              class="block px-4 py-2 hover:bg-gray-100 dark:hover:bg-gray-600 dark:hover:text-white"
+            >
               Canchas
             </li>
-            <li [routerLink]="['datos']"
-              class="block px-4 py-2 hover:bg-gray-100 dark:hover:bg-gray-600 dark:hover:text-white">
+            <li
+              [routerLink]="['datos']"
+              class="block px-4 py-2 hover:bg-gray-100 dark:hover:bg-gray-600 dark:hover:text-white"
+            >
               Datos
             </li>
-            <li [routerLink]="['suscripcion']"
-              class="block px-4 py-2 hover:bg-gray-100 dark:hover:bg-gray-600 dark:hover:text-white">
+            <li
+              [routerLink]="['suscripcion']"
+              class="block px-4 py-2 hover:bg-gray-100 dark:hover:bg-gray-600 dark:hover:text-white"
+            >
               Suscripción
             </li>
           </ul>
         </div>
       </li>
 
-      <li [routerLink]="['/grass/clientes']" routerLinkActive="text-chambray-500 font-bold" class="flex flex-row-reverse gap-3 items-center cursor-pointer">
+      <li
+        [routerLink]="['/grass/clientes']"
+        routerLinkActive="text-chambray-500 font-bold"
+        class="flex flex-row-reverse gap-1.5 items-center cursor-pointer"
+      >
         <p class="hidden md:block">Clientes</p>
-        <img src="../../../../assets/svg-icons/users.svg" alt="">
+        <svg
+          width="20"
+          height="20"
+          viewBox="0 0 20 20"
+          class="stroke-none fill-black"
+          routerLinkActive="fill-chambray-500"
+          fill="none"
+          xmlns="http://www.w3.org/2000/svg"
+        >
+          <path
+            d="M18.75 17.5C18.75 17.5 20 17.5 20 16.25C20 15 18.75 11.25 13.75 11.25C8.75 11.25 7.5 15 7.5 16.25C7.5 17.5 8.75 17.5 8.75 17.5H18.75ZM8.7775 16.25C8.76827 16.2487 8.75909 16.2471 8.75 16.245C8.75125 15.915 8.95875 14.9575 9.7 14.095C10.39 13.2863 11.6025 12.5 13.75 12.5C15.8962 12.5 17.1087 13.2875 17.8 14.095C18.5413 14.9575 18.7475 15.9163 18.75 16.245L18.74 16.2475C18.7342 16.2485 18.7284 16.2493 18.7225 16.25H8.7775ZM13.75 8.75C14.413 8.75 15.0489 8.48661 15.5178 8.01777C15.9866 7.54893 16.25 6.91304 16.25 6.25C16.25 5.58696 15.9866 4.95107 15.5178 4.48223C15.0489 4.01339 14.413 3.75 13.75 3.75C13.087 3.75 12.4511 4.01339 11.9822 4.48223C11.5134 4.95107 11.25 5.58696 11.25 6.25C11.25 6.91304 11.5134 7.54893 11.9822 8.01777C12.4511 8.48661 13.087 8.75 13.75 8.75ZM17.5 6.25C17.5 6.74246 17.403 7.23009 17.2145 7.68506C17.0261 8.14003 16.7499 8.55343 16.4017 8.90165C16.0534 9.24987 15.64 9.52609 15.1851 9.71455C14.7301 9.903 14.2425 10 13.75 10C13.2575 10 12.7699 9.903 12.3149 9.71455C11.86 9.52609 11.4466 9.24987 11.0983 8.90165C10.7501 8.55343 10.4739 8.14003 10.2855 7.68506C10.097 7.23009 10 6.74246 10 6.25C10 5.25544 10.3951 4.30161 11.0983 3.59835C11.8016 2.89509 12.7554 2.5 13.75 2.5C14.7446 2.5 15.6984 2.89509 16.4017 3.59835C17.1049 4.30161 17.5 5.25544 17.5 6.25ZM8.67 11.6C8.16998 11.4425 7.65454 11.339 7.1325 11.2913C6.83916 11.2634 6.54466 11.2496 6.25 11.25C1.25 11.25 0 15 0 16.25C0 17.0837 0.41625 17.5 1.25 17.5H6.52C6.33469 17.1098 6.24228 16.6819 6.25 16.25C6.25 14.9875 6.72125 13.6975 7.6125 12.62C7.91625 12.2525 8.27 11.9087 8.67 11.6ZM6.15 12.5C5.41019 13.6116 5.01055 14.9148 5 16.25H1.25C1.25 15.925 1.455 14.9625 2.2 14.095C2.88125 13.3 4.065 12.525 6.15 12.5013V12.5ZM1.875 6.875C1.875 5.88044 2.27009 4.92661 2.97335 4.22335C3.67661 3.52009 4.63044 3.125 5.625 3.125C6.61956 3.125 7.57339 3.52009 8.27665 4.22335C8.97991 4.92661 9.375 5.88044 9.375 6.875C9.375 7.86956 8.97991 8.82339 8.27665 9.52665C7.57339 10.2299 6.61956 10.625 5.625 10.625C4.63044 10.625 3.67661 10.2299 2.97335 9.52665C2.27009 8.82339 1.875 7.86956 1.875 6.875ZM5.625 4.375C4.96196 4.375 4.32607 4.63839 3.85723 5.10723C3.38839 5.57607 3.125 6.21196 3.125 6.875C3.125 7.53804 3.38839 8.17393 3.85723 8.64277C4.32607 9.11161 4.96196 9.375 5.625 9.375C6.28804 9.375 6.92393 9.11161 7.39277 8.64277C7.86161 8.17393 8.125 7.53804 8.125 6.875C8.125 6.21196 7.86161 5.57607 7.39277 5.10723C6.92393 4.63839 6.28804 4.375 5.625 4.375Z"
+          />
+        </svg>
       </li>
 
-      <li [routerLink]="['/grass/contacto']" routerLinkActive="text-chambray-500 font-bold" class="flex flex-row-reverse gap-3 items-center cursor-pointer">
+      <li
+        [routerLink]="['/grass/contacto']"
+        routerLinkActive="text-chambray-500 font-bold"
+        class="flex flex-row-reverse gap-1.5 items-center cursor-pointer"
+      >
         <p class="hidden md:block">Contactos</p>
-        <img src="../../../../assets/svg-icons/message.svg" alt="">
+        <svg
+          width="18"
+          height="18"
+          viewBox="0 0 18 18"
+          class="stroke-none fill-black"
+          routerLinkActive="fill-chambray-500"
+          fill="none"
+          xmlns="http://www.w3.org/2000/svg"
+        >
+          <path
+            d="M15.75 1.52295C16.0484 1.52295 16.3345 1.64148 16.5455 1.85245C16.7565 2.06343 16.875 2.34958 16.875 2.64795V11.6479C16.875 11.9463 16.7565 12.2325 16.5455 12.4434C16.3345 12.6544 16.0484 12.7729 15.75 12.7729H4.96575C4.36906 12.7731 3.79686 13.0102 3.375 13.4322L1.125 15.6822V2.64795C1.125 2.34958 1.24353 2.06343 1.4545 1.85245C1.66548 1.64148 1.95163 1.52295 2.25 1.52295H15.75ZM2.25 0.397949C1.65326 0.397949 1.08097 0.635002 0.65901 1.05696C0.237053 1.47892 0 2.05121 0 2.64795L0 17.0401C2.36417e-05 17.1514 0.0330667 17.2602 0.0949469 17.3527C0.156827 17.4452 0.244763 17.5173 0.347624 17.5598C0.450486 17.6023 0.563649 17.6134 0.672791 17.5915C0.781932 17.5697 0.882147 17.516 0.96075 17.4372L4.17037 14.2276C4.3813 14.0166 4.66741 13.898 4.96575 13.8979H15.75C16.3467 13.8979 16.919 13.6609 17.341 13.2389C17.7629 12.817 18 12.2447 18 11.6479V2.64795C18 2.05121 17.7629 1.47892 17.341 1.05696C16.919 0.635002 16.3467 0.397949 15.75 0.397949L2.25 0.397949Z"
+          />
+        </svg>
       </li>
 
-      <li [routerLink]="['/grass/ayuda']" routerLinkActive="text-chambray-500 font-bold" class="flex flex-row-reverse gap-3 items-center cursor-pointer">
+      <li
+        [routerLink]="['/grass/ayuda']"
+        routerLinkActive="text-chambray-500 font-bold"
+        class="flex flex-row-reverse gap-1.5 items-center cursor-pointer"
+      >
         <p class="hidden md:block">Ayuda</p>
-        <img src="../../../../assets/svg-icons/light-2.svg" alt="">
+        <svg
+          width="18"
+          height="18"
+          viewBox="0 0 18 18"
+          class="stroke-none fill-black"
+          routerLinkActive="fill-chambray-500"
+          fill="none"
+          xmlns="http://www.w3.org/2000/svg"
+        >
+          <g clip-path="url(#clip0_1024_2039)">
+            <path
+              d="M2.25 6.75021C2.24997 5.63558 2.52596 4.53828 3.05334 3.5563C3.58072 2.57432 4.34307 1.73822 5.27232 1.12267C6.20157 0.50711 7.2688 0.131253 8.3787 0.0286564C9.48861 -0.0739402 10.6066 0.0999171 11.633 0.534704C12.6593 0.969492 13.562 1.65168 14.2605 2.52034C14.9589 3.38901 15.4314 4.41712 15.6357 5.51288C15.84 6.60863 15.7697 7.73793 15.4312 8.79992C15.0927 9.86191 14.4965 10.8235 13.6958 11.599C13.4674 11.8195 13.2919 12.049 13.1861 12.2953L12.3289 14.2855C12.2854 14.3863 12.2133 14.4722 12.1215 14.5326C12.0298 14.593 11.9223 14.6252 11.8125 14.6252C11.9617 14.6252 12.1048 14.6845 12.2103 14.79C12.3157 14.8955 12.375 15.0385 12.375 15.1877C12.375 15.3369 12.3157 15.48 12.2103 15.5855C12.1048 15.691 11.9617 15.7502 11.8125 15.7502C11.9617 15.7502 12.1048 15.8095 12.2103 15.915C12.3157 16.0205 12.375 16.1635 12.375 16.3127C12.375 16.4619 12.3157 16.605 12.2103 16.7105C12.1048 16.816 11.9617 16.8752 11.8125 16.8752L11.5605 17.3781C11.4671 17.5649 11.3236 17.7221 11.146 17.832C10.9683 17.9418 10.7636 18.0001 10.5548 18.0002H7.44525C7.23638 18.0001 7.03167 17.9418 6.85404 17.832C6.6764 17.7221 6.53287 17.5649 6.4395 17.3781L6.1875 16.8752C6.03832 16.8752 5.89525 16.816 5.78976 16.7105C5.68427 16.605 5.625 16.4619 5.625 16.3127C5.625 16.1635 5.68427 16.0205 5.78976 15.915C5.89525 15.8095 6.03832 15.7502 6.1875 15.7502C6.03832 15.7502 5.89525 15.691 5.78976 15.5855C5.68427 15.48 5.625 15.3369 5.625 15.1877C5.625 15.0385 5.68427 14.8955 5.78976 14.79C5.89525 14.6845 6.03832 14.6252 6.1875 14.6252C6.07747 14.6254 5.96979 14.5933 5.87781 14.5329C5.78583 14.4725 5.71358 14.3865 5.67 14.2855L4.81388 12.2942C4.6913 12.0313 4.51813 11.795 4.30425 11.599C3.65358 10.9703 3.13631 10.2169 2.78336 9.38378C2.43041 8.55069 2.24901 7.65499 2.25 6.75021ZM9 1.12521C7.87969 1.12502 6.78483 1.45937 5.85576 2.08541C4.92668 2.71145 4.20571 3.60066 3.78524 4.63908C3.36478 5.6775 3.26397 6.81782 3.49574 7.9139C3.72751 9.00998 4.28129 10.0119 5.08613 10.7912C5.382 11.077 5.66438 11.4257 5.84663 11.8498L6.55875 13.5002H11.4435L12.1545 11.8498C12.3368 11.4257 12.6191 11.077 12.915 10.7912C13.7199 10.0118 14.2737 9.00981 14.5055 7.91363C14.7372 6.81744 14.6363 5.67703 14.2157 4.63856C13.7951 3.6001 13.0739 2.7109 12.1447 2.08494C11.2154 1.45899 10.1204 1.1248 9 1.12521Z"
+            />
+          </g>
+          <defs>
+            <clipPath id="clip0_1024_2039">
+              <rect width="18" height="18" fill="white" />
+            </clipPath>
+          </defs>
+        </svg>
       </li>
-
     </ul>
 
     <div class="flex gap-2">
-      <button data-modal-target="modalSalir" data-modal-toggle="modalSalir" class="flex">
-        <img src="../../../../../../assets/svg-icons/exit.svg" alt="">
+      <button
+        data-modal-target="modalSalir"
+        data-modal-toggle="modalSalir"
+        class="flex"
+      >
+        <img src="../../../../../../assets/svg-icons/exit.svg" alt="" />
       </button>
     </div>
   </div>
 </nav>
 
 <!-- Main modal -->
-<div id="modalSalir" tabindex="-1" aria-hidden="true"
-  class="hidden overflow-y-auto overflow-x-hidden fixed top-0 right-0 left-0 z-50 justify-center items-center w-full md:inset-0 h-[calc(100%-1rem)] max-h-full">
+<div
+  id="modalSalir"
+  tabindex="-1"
+  aria-hidden="true"
+  class="hidden overflow-y-auto overflow-x-hidden fixed top-0 right-0 left-0 z-50 justify-center items-center w-full md:inset-0 h-[calc(100%-1rem)] max-h-full"
+>
   <div class="relative p-4 w-full max-w-sm max-h-full">
     <!-- Modal content -->
     <div class="relative bg-white rounded-lg shadow dark:bg-gray-700">
@@ -79,13 +189,24 @@
       </div>
 
       <!-- Modal footer -->
-      <div class="font-semibold flex items-center pb-2 px-1.5 justify-between md:p-5 md:pt-0 pt-0 rounded-b">
-        <button data-modal-hide="modalSalir" type="button"
-          class="py-2.5 px-5 ms-3 text-sm text-gray-900 focus:outline-none bg-white rounded-lg border border-gray-200 hover:bg-gray-100 hover:text-forestGreen-700 focus:z-10 focus:ring-4 focus:ring-gray-100">
-          Cancelar</button>
-        <button data-modal-hide="modalSalir" type="button" (click)="logout()"
-          class="font-semibold text-white bg-forestGreen-500 hover:bg-forestGreen-600 focus:ring-4 focus:outline-none focus:ring-blue-300 rounded-lg text-sm px-5 py-2.5 text-center">
-          Cerrar sesión</button>
+      <div
+        class="font-semibold flex items-center pb-2 px-1.5 justify-between md:p-5 md:pt-0 pt-0 rounded-b"
+      >
+        <button
+          data-modal-hide="modalSalir"
+          type="button"
+          class="py-2.5 px-5 ms-3 text-sm text-gray-900 focus:outline-none bg-white rounded-lg border border-gray-200 hover:bg-gray-100 hover:text-forestGreen-700 focus:z-10 focus:ring-4 focus:ring-gray-100"
+        >
+          Cancelar
+        </button>
+        <button
+          data-modal-hide="modalSalir"
+          type="button"
+          (click)="logout()"
+          class="font-semibold text-white bg-forestGreen-500 hover:bg-forestGreen-600 focus:ring-4 focus:outline-none focus:ring-blue-300 rounded-lg text-sm px-5 py-2.5 text-center"
+        >
+          Cerrar sesión
+        </button>
       </div>
     </div>
   </div>
