@@ -7,32 +7,92 @@
       <li class="w-full flex items-center flex-col justify-center align-middle text-center" role="presentation">
         <button [routerLink]="['/usuario/perfil']" routerLinkActive="text-forestGreen-500 bg-forestGreen-50"
           [routerLinkActiveOptions]="{ exact: true }"
-          class="flex flex-col justify-center items-center align-middle p-4 border-b-2 rounded-t-lg w-full"
+          class="flex flex-col justify-center items-center align-middle p-4 border-b-2 rounded-t-lg w-full  hover:border-gray-300 dark:hover:text-gray-300"
           type="button">
-          <img class="stroke-2 fill-red-400 stroke-red-400" src="../../../../../../assets/svg-icons/user.svg" alt="">
-          
+          <!-- <img class="stroke-2 fill-red-400 stroke-red-400" src="../../../../../../assets/svg-icons/user.svg" alt=""> -->
+
+          <!-- <svg width="97" height="98" viewBox="0 0 97 98" fill="none" xmlns="http://www.w3.org/2000/svg">
+            <path d="M4 93C3.17157 92.1716 3 89.5 3 89.5C3 89.5 3.00001 48.5 47.5 48.5C92 48.5 93.5 89.5 93.5 89.5C93.5 89.5 93.4229 91.4074 93 92.5C92.2119 94.5359 89 95 88.5 95H8C7.5 95 5.5 94.5 4 93Z" stroke="black" stroke-width="6"/>
+            <circle cx="48.5" cy="24" r="21" stroke="black" stroke-width="6"/>
+          </svg> -->
+
+          <svg  
+            viewBox="0 0 97 98" 
+            fill="none" 
+            class="size-6 stroke-black fill-none" 
+            xmlns="http://www.w3.org/2000/svg" 
+            routerLinkActive="stroke-forestGreen-500"
+            [routerLinkActiveOptions]="{ exact: true }">
+            <path d="M4 93C3.17157 92.1716 3 89.5 3 89.5C3 89.5 3.00001 48.5 47.5 48.5C92 48.5 93.5 89.5 93.5 89.5C93.5 89.5 93.4229 91.4074 93 92.5C92.2119 94.5359 89 95 88.5 95H8C7.5 95 5.5 94.5 4 93Z" stroke-width="6"/>
+            <circle cx="48.5" cy="24" r="21"  stroke-width="6"/>
+          </svg>
           Datos
         </button>
       </li>
       <li class="w-full flex items-center flex-col justify-center align-middle text-center" role="presentation">
         <button [routerLink]="['/usuario/perfil/reservas']" routerLinkActive="text-forestGreen-500 bg-forestGreen-50"
-          class="flex flex-col justify-center items-center align-middle p-4 border-b-2 rounded-t-lg w-full hover:text-gray-600 hover:border-gray-300 dark:hover:text-gray-300"
+          [routerLinkActiveOptions]="{ exact: true }"
+          class="flex flex-col justify-center items-center align-middle p-4 border-b-2 rounded-t-lg w-full  hover:border-gray-300 dark:hover:text-gray-300"
           type="button">
-          <img src="../../../../../../assets/svg-icons/soccer-ball.svg" alt="">
+          <!-- <img src="../../../../../../assets/svg-icons/soccer-ball.svg" alt=""> -->
+          <!-- <svg  
+            viewBox="0 0 96 96" 
+            fill="none"
+            class="size-6 stroke-black fill-none"  
+            xmlns="http://www.w3.org/2000/svg"
+            routerLinkActive="stroke-forestGreen-500"
+            [routerLinkActiveOptions]="{ exact: true }">
+            <path d="M28.8525 40.4929L26.9086 41.7703L27.6615 43.9711L34.1615 62.9711L34.8556 65H37H57.5H59.6444L60.3385 62.9711L66.8385 43.9711L67.5594 41.8638L65.7509 40.564L49.7509 29.064L48.0761 27.8602L46.3525 28.9929L28.8525 40.4929ZM39.1444 59L34.0914 44.2297L47.9239 35.1398L60.4406 44.1362L55.3556 59H39.1444ZM93 48C93 72.8528 72.8528 93 48 93C23.1472 93 3 72.8528 3 48C3 23.1472 23.1472 3 48 3C72.8528 3 93 23.1472 93 48Z"  stroke-width="6"/>
+            <path d="M12 20.5L17 38L3.5 47.5M10.5 72H29L34.5 91M60.5 92C62.4526 84.1895 63.5474 79.8105 65.5 72H85.5M83 19.5L77.5 38L93.5 49.5M61.5 5L47.5 15.5L34.5 6"  stroke-width="6"/>
+            </svg> -->
+
+            <svg 
+            viewBox="0 0 96 96" 
+            fill="none" 
+            class="size-6 stroke-black fill-none"
+            xmlns="http://www.w3.org/2000/svg"
+            routerLinkActive="stroke-forestGreen-500"
+            [routerLinkActiveOptions]="{ exact: true }">
+              <path d="M63.5 42.5L57.5 61H37L31 41.5L48 30.5L63.5 42.5Z"  stroke-width="6"/>
+              <path d="M12 20.5L17 38L3.5 47.5M10.5 72H29L34.5 91M60.5 92C62.4526 84.1895 63.5474 79.8105 65.5 72H85.5M83 19.5L77.5 38L93.5 49.5M61.5 5L47.5 15.5L34.5 6"  stroke-width="6"/>
+              <circle cx="48" cy="48" r="45"  stroke-width="6"/>
+              </svg>
+              
+            
           Reservas
         </button>
       </li>
       <li class="w-full flex items-center flex-col justify-center align-middle text-center" role="presentation">
         <button [routerLink]="['/usuario/perfil/acceso']" routerLinkActive="text-forestGreen-500 bg-forestGreen-50"
-          class="flex flex-col justify-center items-center align-middle p-4 border-b-2 rounded-t-lg w-full hover:text-gray-600 hover:border-gray-300 dark:hover:text-gray-300"
-          id="settings-styled-tab" type="button">
-          <img src="../../../../../../assets/svg-icons/access.svg" alt="">
+        [routerLinkActiveOptions]="{ exact: true }"
+        class="flex flex-col justify-center items-center align-middle p-4 border-b-2 rounded-t-lg w-full  hover:border-gray-300 dark:hover:text-gray-300"
+        type="button">
+          <!-- <img src="../../../../../../assets/svg-icons/access.svg" alt=""> -->
+          <svg 
+            viewBox="0 0 95 101" 
+            fill="none" 
+            class="size-6 stroke-black fill-none"
+            xmlns="http://www.w3.org/2000/svg"
+            routerLinkActive="stroke-forestGreen-500"
+            [routerLinkActiveOptions]="{ exact: true }">
+            <path d="M62 39C62 39 65.5 39 66 39C66.5 39 67.6592 38.9667 68.5 39.5C69.9088 40.3936 70 43 70 43.5C70 44 70 77.5 70 77.5M62 39C62 39 66.2366 3.5 36.5 3.5C6.76351 3.5 11.5 39 11.5 39M62 39H11.5M36 91.5C36 91.5 7.5 91.5 7.00002 91.5C6.50004 91.5 4.84612 90.9999 4.00002 90C3.3208 89.1973 3.00005 88 3.00002 87.5C3 87 2.99999 44 3.00002 43.5C3.00006 43 3.20232 41.4427 4.00002 40.5C4.84612 39.5001 6.50002 39 7.00002 39C7.50002 39 11.5 39 11.5 39"  stroke-width="6"/>
+            <path d="M92 87.9983C92 90.8269 91.261 92.5837 90.2181 93.7809C89.1302 95.0297 87.4224 96.0017 84.9041 96.6899C80.069 98.0112 73.4676 98.005 65.7291 97.9977C65.1504 97.9972 64.5653 97.9967 63.9741 97.9967C63.3891 97.9967 62.8116 97.9972 62.2415 97.9977C54.5171 98.0047 48.1796 98.0104 43.6055 96.6998C41.2465 96.0239 39.6778 95.0748 38.6777 93.852C37.71 92.669 37.0099 90.9059 37.0001 88.0591C37.1191 85.3593 37.8543 83.623 38.8708 82.4177C39.9202 81.1732 41.5163 80.2024 43.8469 79.4957C48.6811 78.0299 55.5183 78 63.9741 78C72.4136 78 79.6798 78.0263 84.8708 79.5094C87.4013 80.2323 89.1318 81.2251 90.2322 82.4703C91.2801 83.6561 92 85.3449 92 87.9983Z"  stroke-width="6"/>
+            <path d="M13 59C13 68.9584 13 84.5 13 84.5M59.5 47V69.5M33 72H39.5V62C39.5 62 42.5 60 42.5 56C42.5 52.6863 40 50.5 36.5 50.5C33.3214 50.5 30 52.8214 30 56C30 60 33 62 33 62V72Z"  stroke-width="6"/>
+            <path d="M62 39C62 39 65.5 39 66 39C66.5 39 67.6592 38.9667 68.5 39.5C69.9088 40.3936 70 43 70 43.5C70 44 70 77.5 70 77.5M62 39C62 39 66.2366 3.5 36.5 3.5C6.76351 3.5 11.5 39 11.5 39M62 39H11.5M36 91.5C36 91.5 7.5 91.5 7.00002 91.5C6.50004 91.5 4.84612 90.9999 4.00002 90C3.3208 89.1973 3.00005 88 3.00002 87.5C3 87 2.99999 44 3.00002 43.5C3.00006 43 3.20232 41.4427 4.00002 40.5C4.84612 39.5001 6.50002 39 7.00002 39C7.50002 39 11.5 39 11.5 39" stroke-width="6"/>
+            <ellipse cx="65" cy="87.5" rx="0.5" ry="2.5" stroke-width="6"/>
+            <path d="M68 87.5C68 87.2239 66.933 87 65 87C63.067 87 62 87.2239 62 87.5C62 87.7761 63.067 88 65 88C66.933 88 68 87.7761 68 87.5Z" stroke-width="6"/>
+            <ellipse cx="79" cy="87.5" rx="0.5" ry="2.5" stroke-width="6"/>
+            <path d="M82 87.5C82 87.2239 80.933 87 79 87C77.067 87 76 87.2239 76 87.5C76 87.7761 77.067 88 79 88C80.933 88 82 87.7761 82 87.5Z" stroke-width="6"/>
+            <ellipse cx="51" cy="87.5" rx="0.5" ry="2.5" stroke-width="6"/>
+            <path d="M54 87.5C54 87.2239 52.933 87 51 87C49.067 87 48 87.2239 48 87.5C48 87.7761 49.067 88 51 88C52.933 88 54 87.7761 54 87.5Z" stroke-width="6"/>
+            </svg>
+            
           Acceso
         </button>
       </li>
       <li class="w-full flex items-center flex-col justify-center align-middle text-center">
         <button data-modal-target="modalSalir" data-modal-toggle="modalSalir"
-          class="flex flex-col justify-center items-center align-middle p-4 border-b-2 rounded-t-lg w-full hover:text-gray-600 hover:border-gray-300 dark:hover:text-gray-300">
+          class="flex flex-col justify-center items-center align-middle p-4 border-b-2 rounded-t-lg w-full  hover:border-gray-300 dark:hover:text-gray-300">
           <img src="../../../../../../assets/svg-icons/exit.svg" alt="">
           Salir
         </button>
