@@ -36,6 +36,8 @@ export class HomeComponent implements OnInit {
   public provincias_arr: Array<any> = [];
   public distritos_arr: Array<any> = [];
 
+  public canchas_json: any[]= [];
+
   public empresas: Array<any> = [];
   public caracteristicas: Array<any> = [];
   public caracBuscada: Array<any> = [];
@@ -82,7 +84,13 @@ export class HomeComponent implements OnInit {
 
     this.load_data = true;
 
-    this._title.setTitle('Reserva tu Grass');
+    this._title.setTitle('Tu Grass');
+
+    this._guestService.obtener_canchas_json().subscribe({
+      next: (res) => {
+        this.canchas_json = res;
+      }
+    });
 
     forkJoin({
       regiones: this._guestService.obtener_regiones(),

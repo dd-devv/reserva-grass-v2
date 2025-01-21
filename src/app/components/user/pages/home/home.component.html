@@ -1,9 +1,9 @@
 <div class="wrapper min-h-32">
 
     <!-- <app-button-search class="mb-3" (option)="handleSearch($event)"></app-button-search> -->
-  
+
     <div class=" rounded-b-xl flex  md:bg-blend-darken md:bg-black/30 justify-center h-fit max-h-24  md:max-h-96 bg-cover w-full md:py-8 bg-no-repeat bg-center md:bg-[url('https://images.pexels.com/photos/47730/the-ball-stadion-football-the-pitch-47730.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1')]">
-  
+
       <div class="h-full gap-y-1  md:bg-white/70 flex-col md:flex-row rounded-full w-full max-w-6xl px-3.5 md:p-4 justify-center  md:gap-0.5 flex md:h-20">
         <select id="region" class="w-full text-xs md:text-base  md:border-none rounded-lg md:rounded-l-full" name="region" [(ngModel)]="empresa.region"
           (change)="select_region()" required>
@@ -12,7 +12,7 @@
             {{ item.name }}
           </option>
         </select>
-  
+
         <select id="provincia" class="w-full text-xs md:text-base md:border-none rounded-lg md:rounded-none " name="provincia" (change)="select_provincia()"
           [(ngModel)]="empresa.provincia" required>
           <option value="" selected disabled>Provincia</option>
@@ -20,15 +20,15 @@
             {{ item.name }}
           </option>
         </select>
-  
-  
+
+
         <input type="text" class="w-full text-xs md:text-base  md:border-none rounded-lg md:rounded-r-full" placeholder="Escribe el nombre del grass aquí"
           aria-label="buscar" autocomplete="off" aria-describedby="button-addon2" [(ngModel)]="busqueda" name="busqueda"
           (keyup)="buscarName()" />
-  
+
       </div>
-  
-  
+
+
       <!-- <select id="distrito" class="form-select" name="distrito" [(ngModel)]="empresa.distrito" (change)="select_distrito()"
         required>
         <option value="" selected disabled>Distrito</option>
@@ -36,10 +36,10 @@
           {{ item.name }}
         </option>
       </select> -->
-  
+
     </div>
   </div>
-  
+
   <div class="wrapper ">
 
     @if(load_data) {
@@ -57,13 +57,56 @@
       }
     </div>
     }
-    @if (caracBuscada.length < 1) { 
+    @if (caracBuscada.length < 1) {
       <div class="flex justify-center w-100 mt-10">
       <img src="../../../../../assets/svg/no-items-found.svg">
   </div>
   }
+
+  <!-- Canchas cargadas desde Json -->
+  <div class="mirko">
+    @for (item of canchas_json; track $index) {
+    <div
+      class="max-w-sm bg-white border border-gray-200 rounded-lg shadow dark:bg-gray-800 dark:border-gray-700"
+    >
+      <div>
+        <img class="rounded-t-lg" [src]="item.foto" [alt]="item.nombre" />
+      </div>
+      <div class="p-5">
+        <div>
+          <h5
+            class="mb-2 text-2xl font-bold tracking-tight text-gray-900 dark:text-white"
+          >
+            {{ item.nombre | titlecase }}
+          </h5>
+        </div>
+        <p class="mb-3 font-normal text-gray-700 dark:text-gray-400">
+          <a
+            href="{{ item.link }}"
+            target="_blank"
+            class="text-blue-500 hover:underline"
+          >
+            {{ item.direccion }}
+          </a>
+        </p>
+        <p class="mb-3 font-normal text-gray-700 dark:text-gray-400">
+          {{ item.referencia }}
+        </p>
+        <span class="font-bold">Contacto:</span>
+        <p>
+          {{ item.telefono }}
+        </p>
+        @if (item.whatsapp) {
+        <p>
+          {{ item.whatsapp }}
+        </p>
+        }
+      </div>
+    </div>
+    }
+  </div>
   }
-  
+
   <!-- paginacion -->
   @if (totalPages > 1) {
     <app-pagination [currentPage]="currentPage" [totalPages]="totalPages" (pageChange)="onPageChange($event)">
@@ -85,13 +128,13 @@
     <svg width="20" height="20" viewBox="0 0 20 20" fill="none" xmlns="http://www.w3.org/2000/svg">
       <path d="M8.83357 4.9999H17.8336M8.83357 10.4167H17.8336M8.99992 15.8334H17.8336M2.08325 13.3333C2.08325 12.8912 2.25885 12.4673 2.57141 12.1547C2.88397 11.8422 3.30789 11.6666 3.74992 11.6666C4.19195 11.6666 4.61587 11.8422 4.92843 12.1547C5.24099 12.4673 5.41659 12.8912 5.41659 13.3333C5.41659 13.8258 4.99992 14.1666 4.58325 14.5833L2.08325 16.6666H5.41659M3.74992 8.33325V3.33325L2.08325 4.99992" stroke="#F1F6FD" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
       </svg>
-      
+
     Ver lista de empresas
     </button>
   </div>
-  
+
   <div class="w-full">
     <iframe  src="https://www.google.com/maps/d/u/1/embed?mid=1IPL7gwSFUu5cPBuOhzznEa-UKTfDMOU&ehbc=2E312F&noprof=1" width="100%" height="480"></iframe>
   </div>
-  
+
   </div>

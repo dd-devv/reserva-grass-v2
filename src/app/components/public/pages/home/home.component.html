@@ -70,11 +70,57 @@
     />
     }
   </div>
-  } @if (caracBuscada.length < 1) {
+
+
+} @if (caracBuscada.length < 1) {
   <div class="flex justify-center w-100 mt-10">
     <img src="../../../../../assets/svg/no-items-found.svg" />
   </div>
-  } }
+}
+<!-- Canchas cargadas desde Json -->
+<div class="mirko">
+  @for (item of canchas_json; track $index) {
+  <div
+    class="max-w-sm bg-white border border-gray-200 rounded-lg shadow dark:bg-gray-800 dark:border-gray-700"
+  >
+    <div>
+      <img class="rounded-t-lg" [src]="item.foto" [alt]="item.nombre" />
+    </div>
+    <div class="p-5">
+      <div>
+        <h5
+          class="mb-2 text-2xl font-bold tracking-tight text-gray-900 dark:text-white"
+        >
+          {{ item.nombre | titlecase }}
+        </h5>
+      </div>
+      <p class="mb-3 font-normal text-gray-700 dark:text-gray-400">
+        <a
+          href="{{ item.link }}"
+          target="_blank"
+          class="text-blue-500 hover:underline"
+        >
+          {{ item.direccion }}
+        </a>
+      </p>
+      <p class="mb-3 font-normal text-gray-700 dark:text-gray-400">
+        {{ item.referencia }}
+      </p>
+      <span class="font-bold">Contacto:</span>
+      <p>
+        {{ item.telefono }}
+      </p>
+      @if (item.whatsapp) {
+      <p>
+        {{ item.whatsapp }}
+      </p>
+      }
+    </div>
+  </div>
+  }
+</div>
+
+}
 
   <!-- paginacion -->
   @if (totalPages > 1) {
