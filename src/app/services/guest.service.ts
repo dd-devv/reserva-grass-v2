@@ -24,9 +24,13 @@ export class GuestService {
   obtener_provincias(): Observable<any> {
     return this._http.get('./assets/provincias.json');
   }
-  
+
   obtener_distritos(): Observable<any> {
     return this._http.get('./assets/distritos.json');
+  }
+
+  obtener_canchas_json(): Observable<any> {
+    return this._http.get('./assets/grasses.json');
   }
 
 }
