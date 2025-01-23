@@ -210,7 +210,7 @@
           </p>
           <div class="mt-auto text-sm">
             <p class="font-bold mb-1">Contacto:</p>
-            <div class="flex items-center gap-1 mb-1 ml-1">
+            <a class="flex items-center gap-1 mb-1 ml-1" href="tel:{{ item.telefono }}">
               <svg
                 width="16"
                 height="16"
@@ -226,9 +226,9 @@
               <p>
                 {{ item.telefono }}
               </p>
-            </div>
+            </a>
             @if (item.whatsapp) {
-            <div class="flex items-center gap-1 ml-1">
+            <a class="flex items-center gap-1 ml-1" href="https://wa.me/51{{item.whatsapp}}" target="_blank">
               <svg
                 xmlns="http://www.w3.org/2000/svg"
                 x="0px"
@@ -264,7 +264,7 @@
               <p>
                 {{ item.whatsapp }}
               </p>
-            </div>
+            </a>
             }
           </div>
         </div>
