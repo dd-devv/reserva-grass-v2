@@ -72,7 +72,7 @@
     "telefono": "995505359"
   },
   {
-    "foto": "https://static.wixstatic.com/media/a74d9b_8cbb03ac4b8f4797b51debadbf35874f~mv2.jpg/v1/fill/w_640,h_428,al_c,q_80,usm_0.66_1.00_0.01,enc_avif,quality_auto/a74d9b_8cbb03ac4b8f4797b51debadbf35874f~mv2.jpg",
+    "foto": "../../../../../assets/img-grasses/COMPADRE.webp",
     "nombre": "Grass Sintético el Compadre",
     "direccion": "Via Mollepata",
     "link": "https://maps.app.goo.gl/dRK24PyQwZYeWpzh7",
@@ -81,7 +81,7 @@
     "telefono": "966197074"
   },
   {
-    "foto": "https://static.wixstatic.com/media/a74d9b_8cbb03ac4b8f4797b51debadbf35874f~mv2.jpg/v1/fill/w_640,h_428,al_c,q_80,usm_0.66_1.00_0.01,enc_avif,quality_auto/a74d9b_8cbb03ac4b8f4797b51debadbf35874f~mv2.jpg",
+    "foto": "../../../../../assets/img-grasses/SANCRISTOBAL.webp",
     "nombre": "Grass San Cristobal",
     "direccion": "Jr 02 de Mayo N°370",
     "link": "https://maps.app.goo.gl/kgV2KfWDNCJqB3CVA",
