@@ -18,7 +18,7 @@
     "telefono": "943415371"
   },
   {
-    "foto": "../../../../../assets/img-grasses/MUNDIALITO.webp",
+    "foto": "https://static.wixstatic.com/media/a74d9b_8cbb03ac4b8f4797b51debadbf35874f~mv2.jpg/v1/fill/w_640,h_428,al_c,q_80,usm_0.66_1.00_0.01,enc_avif,quality_auto/a74d9b_8cbb03ac4b8f4797b51debadbf35874f~mv2.jpg",
     "nombre": "Grass Mundialito",
     "direccion": "Asoc Luis Alberto Sánchez Mz A Lt 1",
     "link": "https://maps.app.goo.gl/avpcVSuJqRRDQZ9RA",
@@ -61,5 +61,14 @@
     "referencia": "Espalda del complejo Leoncio Prado",
     "whatsapp": "928213932",
     "telefono": "928213932"
+  },
+  {
+    "foto": "../../../../../assets/img-grasses/PERUANITO.webp",
+    "nombre": "Grass Peruanito",
+    "direccion": "Asoc Luis Alberto Sánchez Mz A Lt 1",
+    "link": "https://maps.app.goo.gl/avpcVSuJqRRDQZ9RA",
+    "referencia": "Espaldas del IPD y espalda de la IE Señor de Agonía",
+    "whatsapp": "924104258",
+    "telefono": "924104258"
   }
 ]
