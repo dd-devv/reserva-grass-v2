@@ -18,7 +18,7 @@
     "telefono": "943415371"
   },
   {
-    "foto": "../../../../../assets/img-grasses/MUNDIALITO.webp",
+    "foto": "https://static.wixstatic.com/media/a74d9b_8cbb03ac4b8f4797b51debadbf35874f~mv2.jpg/v1/fill/w_640,h_428,al_c,q_80,usm_0.66_1.00_0.01,enc_avif,quality_auto/a74d9b_8cbb03ac4b8f4797b51debadbf35874f~mv2.jpg",
     "nombre": "Grass Mundialito",
     "direccion": "Asoc Luis Alberto Sánchez Mz A Lt 1",
     "link": "https://maps.app.goo.gl/avpcVSuJqRRDQZ9RA",
@@ -61,5 +61,32 @@
     "referencia": "Espalda del complejo Leoncio Prado",
     "whatsapp": "928213932",
     "telefono": "928213932"
+  },
+  {
+    "foto": "../../../../../assets/img-grasses/PERUANITO.webp",
+    "nombre": "Grass Peruanito",
+    "direccion": "Totora",
+    "link": "https://maps.app.goo.gl/UFh9HP1ywP5ozywF9",
+    "referencia": "Terminal Totora",
+    "whatsapp": "995505359",
+    "telefono": "995505359"
+  },
+  {
+    "foto": "../../../../../assets/img-grasses/COMPADRE.webp",
+    "nombre": "Grass Sintético el Compadre",
+    "direccion": "Via Mollepata",
+    "link": "https://maps.app.goo.gl/dRK24PyQwZYeWpzh7",
+    "referencia": "A 2 minutos del terminal Wari",
+    "whatsapp": "966197074",
+    "telefono": "966197074"
+  },
+  {
+    "foto": "../../../../../assets/img-grasses/SANCRISTOBAL.webp",
+    "nombre": "Grass San Cristobal",
+    "direccion": "Jr 02 de Mayo N°370",
+    "link": "https://maps.app.goo.gl/kgV2KfWDNCJqB3CVA",
+    "referencia": "A media de 5 esquinas, Costado de la Clinica San Cristobal",
+    "whatsapp": "966021625",
+    "telefono": "966021625"
   }
 ]
